@@ -13,7 +13,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('includes/head');
 		$this->load->view('includes/top-navigation');
 		$this->load->view('includes/left-navigation');
-		$this->load->view('blank');
+		$this->load->view('dashboard');
 		$this->load->view('includes/footer');
 	}
 
