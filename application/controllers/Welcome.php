@@ -1,0 +1,24 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Welcome extends CI_Controller {
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->helper('url');
+	}
+	public function index()
+	{
+		$this->load->view('includes/head');
+		$this->load->view('includes/top-navigation');
+		$this->load->view('includes/left-navigation');
+		$this->load->view('blank');
+		$this->load->view('includes/footer');
+	}
+
+	public function test()
+	{
+		echo "TEst";
+	}
+}
