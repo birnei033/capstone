@@ -6,8 +6,9 @@ class Subjects extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-        $this->load->helper('url');
-        $this->load->model('subjects_model');
+		$this->load->helper('url');
+		$this->load->model('subjects_model');
+		$this->load->helper('date');
 	}
 	public function index()
 	{
@@ -27,16 +28,24 @@ class Subjects extends CI_Controller {
 	}
 
 	public function add(){
-		$sata = array(
+		$data = array(
 			'subject_title' => $this->input->post('subj-name'),
-			'create_on' => now()
+			'create_on' => date('Y-d-m')
 		);
-		$add = $this->subject_model->add($data);
+		// if (condition) {
+		// 	# code...
+		// }
+		$add = $this->subjects_model->add($data);
 		echo json_encode(array("status" => TRUE));
 	}
 
 	public function delete($id){
-		$this->subjects_model->delete($id);
-		echo json_encode(array("status" => TRUE));
+		$delete_result = $this->subjects_model->delete($id);
+		echo json_encode(array("status" => $delete_result));
+	}
+
+	public function getById($id){
+		$result = $this->subjects_model->getSubjectByID($id);
+		echo json_encode(array("subject"=>$result[0]));
 	}
 }

@@ -34,7 +34,7 @@
                                     <a href="<?php echo base_url(); ?>subjects">All Subjects</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url(); ?>subjects/add">Add Subjects</a>
+                                    <a href="<?php echo base_url(); ?>subjects/addsubject">Add Subjects</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
