@@ -169,7 +169,6 @@
                     dataType: "JSON",
                     success: function(data)
                     {
-                        console.log(data.subject.subject_title);
                        $('#modal-form #subj-name').val(data.subject.subject_title);
                     },
                     error: function (jqXHR, textStatus, errorThrown)
