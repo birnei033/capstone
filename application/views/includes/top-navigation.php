@@ -7,7 +7,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">My CodeIgniter CMS</a>
+                <a class="navbar-brand" href="<?php echo base_url();?>">HCCS E-Learning</a>
             </div>
             <!-- /.navbar-header -->
 
