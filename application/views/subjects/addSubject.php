@@ -89,12 +89,13 @@
                         <!-- <label for="subj-name">Subject Title</label> -->
                         <input placeholder="Subject Title" type="text" name="subj-name" id="subj-name" class="form-control" placeholder="" aria-describedby="helpId">
                         </div>
-                    </form>
+                   
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         <button type="submit" id="modal-form-update" class="btn btn-primary">Update</button>
                     </div>
+                    </form>
                 </div>
                 <!-- /.modal-content -->
             </div>

@@ -111,6 +111,9 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
+                        <li>
+                            <a href="<?php echo base_url() ?>sb-admin"><i class="fa fa-table fa-fw"></i>Samples</a>
+                        </li>
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
