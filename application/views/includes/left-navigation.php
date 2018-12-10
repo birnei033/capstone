@@ -19,7 +19,7 @@
                             <a href="#"><i class="fa fa-file-text fa-fw"></i>Lessons<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html">All Lessons</a>
+                                    <a href="<?php echo base_url(); ?>lessons">All Lessons</a>
                                 </li>
                                 <li>
                                     <a href="morris.html">Add Lesson</a>

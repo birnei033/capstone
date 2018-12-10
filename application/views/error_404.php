@@ -54,6 +54,9 @@ p {
 	margin: 12px 15px 12px 15px;
 }
 </style>
+<script>
+history.go(-1);
+</script>
 </head>
 <body>
 	<div id="container">

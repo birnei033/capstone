@@ -7,7 +7,7 @@ class Subjects_Model extends CI_Controller {
 	{
         parent::__construct();
         $this->load->helper('date');
-		$this->load->database();
+		$this->load->database();                                                          
     }
     
     public function add($data){
@@ -27,6 +27,16 @@ class Subjects_Model extends CI_Controller {
 
     public function delete($id){
         return $this->db->delete('subjects', array('subject_id'=>$id));
+    }
+
+    public function update($data){
+        $a = array(
+            'subject_title'=> $data["subject_title"],
+			'update_on'=>$data['update_on']
+        );
+        $this->db->set($a);
+        $this->db->where('subject_id', $data['subject_id']);
+        return $this->db->update('subjects'); 
     }
   
 }
