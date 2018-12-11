@@ -1,122 +1,91 @@
-<div class="navbar-default sidebar" role="navigation">
-                <div class="sidebar-nav navbar-collapse">
-                    <ul class="nav" id="side-menu">
-                        <li class="sidebar-search">
-                            <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </span>
-                            </div>
-                            <!-- /input-group -->
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url(); ?>"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-file-text fa-fw"></i>Lessons<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo base_url(); ?>lessons">All Lessons</a>
-                                </li>
-                                <li>
-                                    <a href="morris.html">Add Lesson</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-pencil fa-fw"></i>Subjects<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="<?php echo base_url(); ?>subjects">All Subjects</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url(); ?>subjects/addsubject">Add Subjects</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="tables.html"><i class="fa fa-table fa-fw"></i> Tables</a>
-                        </li>
-                        <li>
-                            <a href="forms.html"><i class="fa fa-edit fa-fw"></i> Forms</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="panels-wells.html">Panels and Wells</a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo base_url(); ?>buttons">Buttons</a>
-                                </li>
-                                <li>
-                                    <a href="notifications.html">Notifications</a>
-                                </li>
-                                <li>
-                                    <a href="typography.html">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Second Level Item</a>
-                                </li>
-                                <li>
-                                    <a href="#">Third Level <span class="fa arrow"></span></a>
-                                    <ul class="nav nav-third-level">
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Third Level Item</a>
-                                        </li>
-                                    </ul>
-                                    <!-- /.nav-third-level -->
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html">Login Page</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="<?php echo base_url() ?>sb-admin"><i class="fa fa-table fa-fw"></i>Samples</a>
-                        </li>
-                    </ul>
+<nav class="pcoded-navbar">
+    <div class="pcoded-inner-navbar main-menu">
+        <div class="">
+            <div class="main-menu-header">
+                <img class="img-menu-user img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="User-Profile-Image">
+                <div class="user-details">
+                    <p id="more-details">John Doe<i class="feather icon-chevron-down m-l-10"></i></p>
                 </div>
-                <!-- /.sidebar-collapse -->
             </div>
-            <!-- /.navbar-static-side -->
-        </nav>
+            <div class="main-menu-content">
+                <ul>
+                    <li class="more-details">
+                        <a href="user-profile.html">
+                        <i class="feather icon-user"></i>View Profile
+                    </a>
+                        <a href="#!">
+                        <i class="feather icon-settings"></i>Settings
+                    </a>
+                        <a href="auth-normal-sign-in.html">
+                        <i class="feather icon-log-out"></i>Logout
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="pcoded-navigation-label">Navigation</div>
+        <ul class="pcoded-item pcoded-left-item">
+            <li class="pcoded-hasmenu ">
+                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                    <span class="pcoded-mtext">Dashboard</span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li class="">
+                        <a href="<?php echo base_url(); ?>" class="waves-effect waves-dark">
+                            <span class="pcoded-mtext">Default</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class=" ">
+                <a href="<?php echo base_url(); ?>lessons" class="waves-effect waves-dark">
+                <span class="pcoded-micon">
+                    <i class="feather icon-menu"></i>
+                </span>
+                <span class="pcoded-mtext">Lessons</span>
+            </a>
+            </li>
+            <li class="">
+                <a href="<?php echo base_url(); ?>subjects" class="waves-effect waves-dark">
+                <span class="pcoded-micon">
+                    <i class="feather icon-menu"></i>
+                </span>
+                <span class="pcoded-mtext">Subjects</span>
+            </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- [ navigation menu ] start -->
+
+<!-- [ navigation menu ] end -->
+<div class="pcoded-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+        <div class="page-block">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <div class="page-header-title">
+                        <h4 class="m-b-10" id="page-title">Dashboard</h4>
+                    </div>
+                    <!-- <ul class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="index.html">
+                                <i class="feather icon-home"></i>
+                            </a>
+                        </li>
+                        <li class="breadcrumb-item">
+                            <a href="#!">Dashboard</a>
+                        </li>
+                    </ul> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+        <div class="page-wrapper">
+        <div class="page-body">

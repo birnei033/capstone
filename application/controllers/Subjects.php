@@ -10,7 +10,6 @@ class Subjects extends CI_Controller {
 		$this->load->model('subjects_model');
 		$this->load->library('user_agent');
 		$this->load->helper('date');
-		include "includes/subjects_functions.php";
 	}
 
 	private function alert($message = "", $type = 'default'){
@@ -38,21 +37,17 @@ class Subjects extends CI_Controller {
 		}
 	}
 
-	public function index()
-	{
-		$this->load->view('includes/head');
-		$this->load->view('includes/top-navigation');
-		$this->load->view('includes/left-navigation');
-		$this->load->view('subjects/subjects');
-		$this->load->view('includes/footer');
-	}
-	public function addSubject(){
+	// public function index()
+	// {
+	// 	$this->load->view('includes/head');
+	// 	$this->load->view('includes/top-navigation');
+	// 	$this->load->view('includes/left-navigation');
+	// 	$this->load->view('subjects/addsubject');
+	// 	$this->load->view('includes/footer');
+	// }
+	public function index(){
 		$data['subjects'] = $this->subjects_model->getAll();
-		$this->load->view('includes/head');
-		$this->load->view('includes/top-navigation');
-		$this->load->view('includes/left-navigation');
-		$this->load->view('subjects/addSubject', $data);
-		$this->load->view('includes/footer');
+		$this->view("subjects/addSubject", $data);
 	}
 
 	public function add(){
@@ -96,5 +91,12 @@ class Subjects extends CI_Controller {
 			$updateResult = $this->subjects_model->update($data);
 			echo json_encode(array("status" => $updateResult));
 		}
+	}
+	public function test(){
+		$this->load->view('includes/head');
+		$this->load->view('includes/top-navigation');
+		$this->load->view('includes/left-navigation');
+		$this->load->view('blank');
+		$this->load->view('includes/footer');
 	}
 }

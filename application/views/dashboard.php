@@ -1,540 +1,650 @@
-        <div id="page-wrapper">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
-                </div>
-                <!-- /.col-lg-12 -->
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">26</div>
-                                    <div>New Comments!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-green">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-tasks fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">12</div>
-                                    <div>New Tasks!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-yellow">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-shopping-cart fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">124</div>
-                                    <div>New Orders!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="panel panel-red">
-                        <div class="panel-heading">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <i class="fa fa-support fa-5x"></i>
-                                </div>
-                                <div class="col-xs-9 text-right">
-                                    <div class="huge">13</div>
-                                    <div>Support Tickets!</div>
-                                </div>
-                            </div>
-                        </div>
-                        <a href="#">
-                            <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
-                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                <div class="clearfix"></div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            <!-- /.row -->
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Area Chart Example
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div id="morris-area-chart"></div>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Bar Chart Example
-                            <div class="pull-right">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                        Actions
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu pull-right" role="menu">
-                                        <li><a href="#">Action</a>
-                                        </li>
-                                        <li><a href="#">Another action</a>
-                                        </li>
-                                        <li><a href="#">Something else here</a>
-                                        </li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="row">
-                                <div class="col-lg-4">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered table-hover table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>#</th>
-                                                    <th>Date</th>
-                                                    <th>Time</th>
-                                                    <th>Amount</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>3326</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>3:29 PM</td>
-                                                    <td>$321.33</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3325</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>3:20 PM</td>
-                                                    <td>$234.34</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3324</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>3:03 PM</td>
-                                                    <td>$724.17</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3323</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>3:00 PM</td>
-                                                    <td>$23.71</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3322</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>2:49 PM</td>
-                                                    <td>$8345.23</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3321</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>2:23 PM</td>
-                                                    <td>$245.12</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3320</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>2:15 PM</td>
-                                                    <td>$5663.54</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>3319</td>
-                                                    <td>10/21/2013</td>
-                                                    <td>2:13 PM</td>
-                                                    <td>$943.45</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-                                    <!-- /.table-responsive -->
-                                </div>
-                                <!-- /.col-lg-4 (nested) -->
-                                <div class="col-lg-8">
-                                    <div id="morris-bar-chart"></div>
-                                </div>
-                                <!-- /.col-lg-8 (nested) -->
-                            </div>
-                            <!-- /.row -->
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-clock-o fa-fw"></i> Responsive Timeline
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <ul class="timeline">
-                                <li>
-                                    <div class="timeline-badge"><i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                            <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago via Twitter</small>
-                                            </p>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam dolor perspiciatis omnis exercitationem. Beatae, officia pariatur? Est cum veniam excepturi. Maiores praesentium, porro voluptas suscipit facere rem dicta, debitis.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-inverted">
-                                    <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem quibusdam, tenetur commodi provident cumque magni voluptatem libero, quis rerum. Fugiat esse debitis optio, tempore. Animi officiis alias, officia repellendus.</p>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-badge danger"><i class="fa fa-bomb"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus numquam facilis enim eaque, tenetur nam id qui vel velit similique nihil iure molestias aliquam, voluptatem totam quaerat, magni commodi quisquam.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-inverted">
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut debitis!</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-badge info"><i class="fa fa-save"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis minus modi quam ipsum alias at est molestiae excepturi delectus nesciunt, quibusdam debitis amet, beatae consequuntur impedit nulla qui! Laborum, atque.</p>
-                                            <hr>
-                                            <div class="btn-group">
-                                                <button type="button" class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown">
-                                                    <i class="fa fa-gear"></i> <span class="caret"></span>
-                                                </button>
-                                                <ul class="dropdown-menu" role="menu">
-                                                    <li><a href="#">Action</a>
-                                                    </li>
-                                                    <li><a href="#">Another action</a>
-                                                    </li>
-                                                    <li><a href="#">Something else here</a>
-                                                    </li>
-                                                    <li class="divider"></li>
-                                                    <li><a href="#">Separated link</a>
-                                                    </li>
-                                                </ul>
+
+                  
+
+                                        <!-- [ page content ] start -->
+                                        <div class="row">
+
+                                            <!-- site Analytics card start -->
+                                            <div class="col-lg-7 col-md-12">
+                                                <div class="card">
+                                                    <div class="card-header borderless">
+                                                        <h5>Site Analytics</h5>
+                                                        <span class="text-muted">For more details about usage, please refer <a href="https://www.amcharts.com/online-store/" target="_blank">amCharts</a> licences.</span>
+                                                        <div class="card-header-right">
+                                                            <ul class="list-unstyled card-option">
+                                                                <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                                <li><i class="feather icon-maximize full-card"></i></li>
+                                                                <li><i class="feather icon-minus minimize-card"></i></li>
+                                                                <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                                                                <li><i class="feather icon-trash close-card"></i></li>
+                                                                <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div id="seo-ecommerce-barchart" style="height: 375px"></div>
+                                                    </div>
+                                                </div>
                                             </div>
+                                            <div class="col-lg-5 col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="card">
+                                                            <div class="card-block">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-8">
+                                                                        <h4 class="text-c-yellow">$30200</h4>
+                                                                        <h6 class="text-muted m-b-0">All Earnings</h6>
+                                                                    </div>
+                                                                    <div class="col-4 text-right">
+                                                                        <i class="feather icon-bar-chart-2 f-28"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer bg-c-yellow">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-9">
+                                                                        <p class="text-white m-b-0">% change</p>
+                                                                    </div>
+                                                                    <div class="col-3 text-right">
+                                                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="card">
+                                                            <div class="card-block">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-8">
+                                                                        <h4 class="text-c-green">290+</h4>
+                                                                        <h6 class="text-muted m-b-0">Page Views</h6>
+                                                                    </div>
+                                                                    <div class="col-4 text-right">
+                                                                        <i class="feather icon-file-text f-28"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer bg-c-green">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-9">
+                                                                        <p class="text-white m-b-0">% change</p>
+                                                                    </div>
+                                                                    <div class="col-3 text-right">
+                                                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="card">
+                                                            <div class="card-block">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-8">
+                                                                        <h4 class="text-c-red">145</h4>
+                                                                        <h6 class="text-muted m-b-0">Task</h6>
+                                                                    </div>
+                                                                    <div class="col-4 text-right">
+                                                                        <i class="feather icon-calendar f-28"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer bg-c-red">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-9">
+                                                                        <p class="text-white m-b-0">% change</p>
+                                                                    </div>
+                                                                    <div class="col-3 text-right">
+                                                                        <i class="feather icon-trending-down text-white f-16"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="card">
+                                                            <div class="card-block">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-8">
+                                                                        <h4 class="text-c-blue">500</h4>
+                                                                        <h6 class="text-muted m-b-0">Downloads</h6>
+                                                                    </div>
+                                                                    <div class="col-4 text-right">
+                                                                        <i class="feather icon-thumbs-down f-28"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-footer bg-c-blue">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-9">
+                                                                        <p class="text-white m-b-0">% change</p>
+                                                                    </div>
+                                                                    <div class="col-3 text-right">
+                                                                        <i class="feather icon-trending-down text-white f-16"></i>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-12">
+                                                        <div class="card social-card bg-twitter">
+                                                            <div class="card-block">
+                                                                <div class="row align-items-center">
+                                                                    <div class="col-auto">
+                                                                        <i class="feather icon-twitter f-34 text-twitter social-icon"></i>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <h6 class="m-b-0">Twitter</h6>
+                                                                        <p>231.2w downloads</p>
+                                                                        <p class="m-b-0">Lorem Ipsum is simply dummy text of the printing</p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <a href="#!" class="download-icon"><i class="feather icon-arrow-down"></i></a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- site Analytics card end -->
+
+                                            <!-- project and updates start -->
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="card table-card">
+                                                    <div class="card-header borderless ">
+                                                        <h5>Projects</h5>
+                                                        <div class="card-header-right">
+                                                            <ul class="list-unstyled card-option">
+                                                                <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                                <li><i class="feather icon-maximize full-card"></i></li>
+                                                                <li><i class="feather icon-minus minimize-card"></i></li>
+                                                                <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                                                                <li><i class="feather icon-trash close-card"></i></li>
+                                                                <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="table-responsive">
+                                                            <table class="table table-hover">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>
+                                                                            <div class="chk-option">
+                                                                                <div class="checkbox-fade fade-in-primary">
+                                                                                    <label class="check-task">
+                                                                                        <input type="checkbox" id="selectall"/>
+                                                                                        <span class="cr">
+                                                                                            <i class="cr-icon feather icon-check f-w-600 txt-default"></i>
+                                                                                        </span>
+                                                                                    </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            Assigned</th>
+                                                                        <th>Name</th>
+                                                                        <th>Due Date</th>
+                                                                        <th class="text-right">Priority</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="chk-option">
+                                                                                <div class="checkbox-fade fade-in-primary">
+                                                                                    <label class="check-task">
+                                                                                            <input type="checkbox" class="case" name="case" value="1"/>
+                                                                                            <span class="cr">
+                                                                                                <i class="cr-icon feather icon-check f-w-600 txt-default"></i>
+                                                                                            </span>
+                                                                                        </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="d-inline-block align-middle">
+                                                                                <img src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                                <div class="d-inline-block">
+                                                                                    <h6>John Deo</h6>
+                                                                                    <p class="text-muted m-b-0">Graphics Designer</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>Able Pro</td>
+                                                                        <td>Jun, 26</td>
+                                                                        <td class="text-right"><label class="label label-danger">Low</label></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="chk-option">
+                                                                                <div class="checkbox-fade fade-in-primary">
+                                                                                    <label class="check-task">
+                                                                                            <input type="checkbox" class="case" name="case" value="2"/>
+                                                                                            <span class="cr">
+                                                                                                <i class="cr-icon feather icon-check f-w-600 txt-default"></i>
+                                                                                            </span>
+                                                                                        </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="d-inline-block align-middle">
+                                                                                <img src="<?php echo base_url(); ?>assets/themf/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                                <div class="d-inline-block">
+                                                                                    <h6>Jenifer Vintage</h6>
+                                                                                    <p class="text-muted m-b-0">Web Designer</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>Mashable</td>
+                                                                        <td>March, 31</td>
+                                                                        <td class="text-right"><label class="label label-primary">high</label></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="chk-option">
+                                                                                <div class="checkbox-fade fade-in-primary">
+                                                                                    <label class="check-task">
+                                                                                            <input type="checkbox" class="case" name="case" value="3"/>
+                                                                                            <span class="cr">
+                                                                                                <i class="cr-icon feather icon-check f-w-600 txt-default"></i>
+                                                                                            </span>
+                                                                                        </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="d-inline-block align-middle">
+                                                                                <img src="<?php echo base_url(); ?>assets/themf/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                                <div class="d-inline-block">
+                                                                                    <h6>William Jem</h6>
+                                                                                    <p class="text-muted m-b-0">Developer</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>Flatable</td>
+                                                                        <td>Aug, 02</td>
+                                                                        <td class="text-right"><label class="label label-success">medium</label></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>
+                                                                            <div class="chk-option">
+                                                                                <div class="checkbox-fade fade-in-primary">
+                                                                                    <label class="check-task">
+                                                                                            <input type="checkbox" class="case" name="case" value="4"/>
+                                                                                            <span class="cr">
+                                                                                                <i class="cr-icon feather icon-check f-w-600 txt-default"></i>
+                                                                                            </span>
+                                                                                        </label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="d-inline-block align-middle">
+                                                                                <img src="<?php echo base_url(); ?>assets/themf/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                                <div class="d-inline-block">
+                                                                                    <h6>David Jones</h6>
+                                                                                    <p class="text-muted m-b-0">Developer</p>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>Guruable</td>
+                                                                        <td>Sep, 22</td>
+                                                                        <td class="text-right"><label class="label label-primary">high</label></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                            <div class="text-right m-r-20">
+                                                                <a href="#!" class=" b-b-primary text-primary">View all Projects</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                <div class="card latest-update-card">
+                                                    <div class="card-header borderless ">
+                                                        <h5>Latest Updates</h5>
+                                                        <div class="card-header-right">
+                                                            <ul class="list-unstyled card-option">
+                                                                <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                                <li><i class="feather icon-maximize full-card"></i></li>
+                                                                <li><i class="feather icon-minus minimize-card"></i></li>
+                                                                <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                                                                <li><i class="feather icon-trash close-card"></i></li>
+                                                                <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="latest-update-box">
+                                                            <div class="row p-t-20 p-b-20">
+                                                                <div class="col-auto text-right update-meta">
+                                                                    <p class="text-muted m-b-0 d-inline">4 hrs ago</p>
+                                                                    <i class="feather icon-briefcase bg-c-red update-icon"></i>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <h6>+ 5 New Products were added!</h6>
+                                                                    <p class="text-muted m-b-0">Congratulations!</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row p-t-20 p-b-20">
+                                                                <div class="col-auto text-right update-meta">
+                                                                    <p class="text-muted m-b-0 d-inline">1 day ago</p>
+                                                                    <i class="feather icon-check bg-c-green  update-icon"></i>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <h6>Database backup completed!</h6>
+                                                                    <p class="text-muted m-b-0">Download the <span> <a href="#!" target="_top" class="text-c-blue">latest backup</a> </span>.</p>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row p-t-20 p-b-20">
+                                                                <div class="col-auto text-right update-meta">
+                                                                    <p class="text-muted m-b-0 d-inline">2 day ago</p>
+                                                                    <i class="feather icon-facebook bg-facebook update-icon"></i>
+                                                                </div>
+                                                                <div class="col">
+                                                                    <h6>+1 Friend Requests</h6>
+                                                                    <p class="text-muted m-b-10">This is great, keep it up!</p>
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-hover m-b-0">
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td class="b-none">
+                                                                                        <a href="#!" class="align-middle">
+                                                                                           <img src="<?php echo base_url(); ?>assets/themf/images/avatar-2.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                                           <div class="d-inline-block">
+                                                                                               <h6>Jeny William</h6>
+                                                                                               <p class="text-muted m-b-0">Graphic Designer</p>
+                                                                                           </div>
+                                                                                       </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <tr>
+                                                                                    <td class="b-none">
+                                                                                        <a href="#!" class="align-middle">
+                                                                                            <img src="<?php echo base_url(); ?>assets/themf/images/avatar-3.jpg" alt="user image" class="img-radius img-40 align-top m-r-15">
+                                                                                            <div class="d-inline-block">
+                                                                                                <h6>John Deo</h6>
+                                                                                                <p class="text-muted m-b-0">Web Designer</p>
+                                                                                            </div>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-center">
+                                                            <a href="#!" class="b-b-primary text-primary">View all Projects</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- project and updates end -->
+                                            <!-- sale card start -->
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="card bg-c-blue total-card">
+                                                    <div class="card-block">
+                                                        <div class="text-left">
+                                                            <h4>4000</h4>
+                                                            <p class="m-0">Total Sales</p>
+                                                        </div>
+                                                        <span class="label bg-c-blue value-badges">12%</span>
+                                                    </div>
+                                                    <div id="total-value-graph-1" style="height:100px;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="card bg-c-red total-card">
+                                                    <div class="card-block">
+                                                        <div class="text-left">
+                                                            <h4>489</h4>
+                                                            <p class="m-0">Total Comment</p>
+                                                        </div>
+                                                        <span class="label bg-c-red value-badges">15%</span>
+                                                    </div>
+                                                    <div id="total-value-graph-2" style="height:100px;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="card bg-c-green total-card">
+                                                    <div class="card-block">
+                                                        <div class="text-left">
+                                                            <h4>$5782</h4>
+                                                            <p class="m-0">Income Status</p>
+                                                        </div>
+                                                        <span class="label bg-c-green value-badges">20%</span>
+                                                    </div>
+                                                    <div id="total-value-graph-3" style="height:100px;"></div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-6">
+                                                <div class="card bg-c-yellow total-card">
+                                                    <div class="card-block">
+                                                        <div class="text-left">
+                                                            <h4>378</h4>
+                                                            <p class="m-0">Total Visitors</p>
+                                                        </div>
+                                                        <span class="label bg-c-yellow value-badges">23%</span>
+                                                    </div>
+                                                    <div id="total-value-graph-4" style="height:100px;"></div>
+                                                </div>
+                                            </div>
+                                            <!-- sale card end -->
+                                            <!-- project and updates start -->
+                                            <div class="col-lg-8 col-md-12">
+                                                <div class="card table-card review-card">
+                                                    <div class="card-header borderless ">
+                                                        <h5>Customer Reviews</h5>
+                                                        <div class="card-header-right">
+                                                            <ul class="list-unstyled card-option">
+                                                                <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                                <li><i class="feather icon-maximize full-card"></i></li>
+                                                                <li><i class="feather icon-minus minimize-card"></i></li>
+                                                                <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                                                                <li><i class="feather icon-trash close-card"></i></li>
+                                                                <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="review-block">
+                                                            <div class="row">
+                                                                <div class="col-sm-auto p-r-0">
+                                                                    <img src="<?php echo base_url(); ?>assets/themf/images/avatar-2.jpg" alt="user image" class="img-radius profile-img cust-img m-b-15">
+                                                                </div>
+                                                                <div class="col">
+                                                                    <h6 class="m-b-15">John Deo <span class="float-right f-13 text-muted"> a week ago</span></h6>
+                                                                    <a href="#!"><i class="feather icon-star-on f-18 text-c-yellow"></i></a>
+                                                                    <a href="#!"><i class="feather icon-star-on f-18 text-c-yellow"></i></a>
+                                                                    <a href="#!"><i class="feather icon-star-on f-18 text-c-yellow"></i></a>
+                                                                    <a href="#!"><i class="feather icon-star f-18 text-default"></i></a>
+                                                                    <a href="#!"><i class="feather icon-star f-18 text-default"></i></a>
+                                                                    <p class="m-t-15 m-b-15 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                                                                        galley of type and scrambled it to make a type specimen book.</p>
+                                                                    <a href="#!" class="m-r-30"><i class="feather icon-thumbs-up m-r-15"></i>Helpful?</a>
+                                                                    <a href="#!"><i class="feather icon-heart-on text-c-red m-r-15"></i></a>
+                                                                    <a href="#!"><i class="feather icon-edit"></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-auto p-r-0">
+                                                                    <img src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="user image" class="img-radius profile-img cust-img m-b-15">
+                                                                </div>
+                                                                <div class="col">
+                                                                    <h6 class="m-b-15">Allina D’croze <span class="float-right f-13 text-muted"> a week ago</span></h6>
+                                                                    <a href="#!"><i class="feather icon-star-on f-18 text-c-yellow"></i></a>
+                                                                    <a href="#!"><i class="feather icon-star f-18 text-default"></i></a>
+                                                                    <a href="#!"><i class="feather icon-star f-18 text-default"></i></a>
+                                                                    <a href="#!"><i class="feather icon-star f-18 text-default"></i></a>
+                                                                    <a href="#!"><i class="feather icon-star f-18 text-default"></i></a>
+                                                                    <p class="m-t-15 m-b-15 text-muted">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a
+                                                                        galley of type and scrambled it to make a type specimen book.</p>
+                                                                    <a href="#!" class="m-r-30"><i class="feather icon-thumbs-up m-r-15"></i>Helpful?</a>
+                                                                    <a href="#!"><i class="feather icon-heart-on text-c-red m-r-15"></i></a>
+                                                                    <a href="#!"><i class="feather icon-edit"></i></a>
+                                                                    <blockquote class="blockquote m-t-15 m-b-0">
+                                                                        <h6>Allina D’croze</h6>
+                                                                        <p class="m-b-0 text-muted">Lorem Ipsum is simply dummy text of the industry.</p>
+                                                                    </blockquote>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-right  m-r-20">
+                                                            <a href="#!" class="b-b-primary text-primary">View all Customer Reviews</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="card">
+                                                            <div class="card-header borderless">
+                                                                <div class="card-header-left">
+                                                                    <h5>Power</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-block-big card-power">
+                                                                <h2>2789<span class="text-muted m-l-5 f-14">kw</span></h2>
+                                                                <div id="power-card-chart1" style="height:75px"></div>
+                                                                <div class="row">
+                                                                    <div class="col col-auto">
+                                                                        <div class="map-area">
+                                                                            <h6 class="m-0">2876 <span> kw</span></h6>
+                                                                            <p class="text-muted m-0">month</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col col-auto">
+                                                                        <div class="map-area">
+                                                                            <h6 class="m-0">234 <span> kw</span></h6>
+                                                                            <p class="text-muted m-0">Today</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <div class="card">
+                                                            <div class="card-header borderless">
+                                                                <div class="card-header-left">
+                                                                    <h5>Water</h5>
+                                                                </div>
+                                                            </div>
+                                                            <div class="card-block-big card-power">
+                                                                <h2>7.3<span class="text-muted m-l-10 f-14">m3</span></h2>
+                                                                <div id="power-card-chart2" style="height:75px"></div>
+                                                                <div class="row">
+                                                                    <div class="col col-auto">
+                                                                        <div class="map-area">
+                                                                            <h6 class="m-0">4.5 <span> m3</span></h6>
+                                                                            <p class="text-muted m-0">month</p>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col col-auto">
+                                                                        <div class="map-area">
+                                                                            <h6 class="m-0">0.5 <span> m3</span></h6>
+
+                                                                            <p class="text-muted m-0">Today</p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="card chat-card">
+                                                    <div class="card-header borderless ">
+                                                        <h5>Chat</h5>
+                                                        <div class="card-header-right">
+                                                            <ul class="list-unstyled card-option">
+                                                                <li class="first-opt"><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                                <li><i class="feather icon-maximize full-card"></i></li>
+                                                                <li><i class="feather icon-minus minimize-card"></i></li>
+                                                                <li><i class="feather icon-refresh-cw reload-card"></i></li>
+                                                                <li><i class="feather icon-trash close-card"></i></li>
+                                                                <li><i class="feather icon-chevron-left open-card-option"></i></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-block">
+                                                        <div class="row m-b-20 received-chat">
+                                                            <div class="col-auto p-r-0">
+                                                                <img src="<?php echo base_url(); ?>assets/themf/images/avatar-2.jpg" alt="user image" class="img-radius img-40">
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="msg">
+                                                                    <p class="m-b-0">Nice to meet you!</p>
+                                                                </div>
+                                                                <p class="text-muted m-b-0"><i class="feather icon-clock m-r-10"></i>10:20am</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row m-b-20 send-chat">
+                                                            <div class="col">
+                                                                <div class="msg">
+                                                                    <p class="m-b-0">Nice to meet you!</p>
+                                                                </div>
+                                                                <p class="text-muted m-b-0"><i class="feather icon-clock m-r-10"></i>10:20am</p>
+                                                            </div>
+                                                            <div class="col-auto p-l-0">
+                                                                <img src="<?php echo base_url(); ?>assets/themf/images/avatar-3.jpg" alt="user image" class="img-radius img-40">
+                                                            </div>
+                                                        </div>
+                                                        <div class="row m-b-20 received-chat">
+                                                            <div class="col-auto p-r-0">
+                                                                <img src="<?php echo base_url(); ?>assets/themf/images/avatar-2.jpg" alt="user image" class="img-radius img-40">
+                                                            </div>
+                                                            <div class="col">
+                                                                <div class="msg">
+                                                                    <p class="m-b-0">Nice to meet you!</p>
+                                                                    <img src="<?php echo base_url(); ?>assets/themf/images/mega-menu/01.jpg" alt="">
+                                                                    <img src="<?php echo base_url(); ?>assets/themf/images/mega-menu/03.jpg" alt="">
+                                                                </div>
+                                                                <p class="text-muted m-b-0"><i class="feather icon-clock m-r-10"></i>10:20am</p>
+                                                            </div>
+                                                        </div>
+                                                        <div class="right-icon-control">
+                                                            <form class="form-material">
+                                                                <div class="form-group form-primary">
+                                                                    <input type="text" name="footer-email" class="form-control" required="">
+                                                                    <span class="form-bar"></span>
+                                                                    <label class="float-label">Add Task</label>
+                                                                </div>
+                                                            </form>
+                                                            <div class="form-icon ">
+                                                                <button class="btn btn-success btn-icon waves-effect waves-light">
+                                                                    <i class="feather icon-message-circle"></i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="card user-card2">
+                                                    <div class="card-block text-center">
+                                                        <h6 class="m-b-15">Project Risk</h6>
+                                                        <div class="risk-rate">
+                                                            <span><b>5</b></span>
+                                                        </div>
+                                                        <h6 class="m-b-10 m-t-10">Balanced</h6>
+                                                        <a href="#!" class="text-c-green b-b-success">Change Your Risk</a>
+                                                        <div class="row justify-content-center m-t-15 b-t-default m-l-0 m-r-0">
+                                                            <div class="col m-t-15 b-r-default">
+                                                                <h6 class="text-muted">Nr</h6>
+                                                                <h6>AWS 2455</h6>
+                                                            </div>
+                                                            <div class="col m-t-15">
+                                                                <h6 class="text-muted">Created</h6>
+                                                                <h6>30th Sep</h6>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <button class="btn btn-success btn-block p-t-15 p-b-15">Download Overall Report</button>
+                                                </div>
+                                            </div>
+                                            <!-- project and updates end -->
                                         </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sequi fuga odio quibusdam. Iure expedita, incidunt unde quis nam! Quod, quisquam. Officia quam qui adipisci quas consequuntur nostrum sequi. Consequuntur, commodi.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="timeline-inverted">
-                                    <div class="timeline-badge success"><i class="fa fa-graduation-cap"></i>
-                                    </div>
-                                    <div class="timeline-panel">
-                                        <div class="timeline-heading">
-                                            <h4 class="timeline-title">Lorem ipsum dolor</h4>
-                                        </div>
-                                        <div class="timeline-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt obcaecati, quaerat tempore officia voluptas debitis consectetur culpa amet, accusamus dolorum fugiat, animi dicta aperiam, enim incidunt quisquam maxime neque eaque.</p>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                </div>
-                <!-- /.col-lg-8 -->
-                <div class="col-lg-4">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <div class="list-group">
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small"><em>12 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small"><em>27 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small"><em>43 minutes ago</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small"><em>11:32 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-bolt fa-fw"></i> Server Crashed!
-                                    <span class="pull-right text-muted small"><em>11:13 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-warning fa-fw"></i> Server Not Responding
-                                    <span class="pull-right text-muted small"><em>10:57 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-shopping-cart fa-fw"></i> New Order Placed
-                                    <span class="pull-right text-muted small"><em>9:49 AM</em>
-                                    </span>
-                                </a>
-                                <a href="#" class="list-group-item">
-                                    <i class="fa fa-money fa-fw"></i> Payment Received
-                                    <span class="pull-right text-muted small"><em>Yesterday</em>
-                                    </span>
-                                </a>
-                            </div>
-                            <!-- /.list-group -->
-                            <a href="#" class="btn btn-default btn-block">View All Alerts</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-bar-chart-o fa-fw"></i> Donut Chart Example
-                        </div>
-                        <div class="panel-body">
-                            <div id="morris-donut-chart"></div>
-                            <a href="#" class="btn btn-default btn-block">View Details</a>
-                        </div>
-                        <!-- /.panel-body -->
-                    </div>
-                    <!-- /.panel -->
-                    <div class="chat-panel panel panel-default">
-                        <div class="panel-heading">
-                            <i class="fa fa-comments fa-fw"></i> Chat
-                            <div class="btn-group pull-right">
-                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-chevron-down"></i>
-                                </button>
-                                <ul class="dropdown-menu slidedown">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-refresh fa-fw"></i> Refresh
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-check-circle fa-fw"></i> Available
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-times fa-fw"></i> Busy
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-clock-o fa-fw"></i> Away
-                                        </a>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!-- /.panel-heading -->
-                        <div class="panel-body">
-                            <ul class="chat">
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font">Jack Sparrow</strong>
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-                                            </small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="right clearfix">
-                                    <span class="chat-img pull-right">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
-                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="left clearfix">
-                                    <span class="chat-img pull-left">
-                                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <strong class="primary-font">Jack Sparrow</strong>
-                                            <small class="pull-right text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                                <li class="right clearfix">
-                                    <span class="chat-img pull-right">
-                                        <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                                    </span>
-                                    <div class="chat-body clearfix">
-                                        <div class="header">
-                                            <small class=" text-muted">
-                                                <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
-                                            <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                                        </div>
-                                        <p>
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                                        </p>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <!-- /.panel-body -->
-                        <div class="panel-footer">
-                            <div class="input-group">
-                                <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-warning btn-sm" id="btn-chat">
-                                        Send
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                        <!-- /.panel-footer -->
-                    </div>
-                    <!-- /.panel .chat-panel -->
-                </div>
-                <!-- /.col-lg-4 -->
-            </div>
-            <!-- /.row -->
- 
+                                        <!-- [ page content ] end -->
+                                  
+                               
