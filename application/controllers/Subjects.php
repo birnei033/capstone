@@ -10,7 +10,6 @@ class Subjects extends CI_Controller {
 		$this->load->model('subjects_model');
 		$this->load->library('user_agent');
 		$this->load->helper('date');
-		include "includes/subjects_functions.php";
 	}
 
 	private function alert($message = "", $type = 'default'){
@@ -48,11 +47,7 @@ class Subjects extends CI_Controller {
 	}
 	public function addSubject(){
 		$data['subjects'] = $this->subjects_model->getAll();
-		$this->load->view('includes/head');
-		$this->load->view('includes/top-navigation');
-		$this->load->view('includes/left-navigation');
-		$this->load->view('subjects/addSubject', $data);
-		$this->load->view('includes/footer');
+		$this->view("subjects/addSubject", $data);
 	}
 
 	public function add(){

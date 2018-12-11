@@ -22,7 +22,7 @@
                                     <a href="<?php echo base_url(); ?>lessons">All Lessons</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html">Add Lesson</a>
+                                    <a href="<?php echo base_url(); ?>lesson_adding">Add Lesson</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
