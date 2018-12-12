@@ -4,3 +4,11 @@ Lessons associated with subjects
 subjects wil behave as category connected with id
 questions (quiz) associated with Lessons connected with id
 
+ja element class
+number of layouts (the numbers on right is bootstrap grid)
+ 1. 1 column 12
+ 2. 2 columns 6 6
+ 3. "" "" 3 9
+ 4. "" "" 9 3
+ 5. 3 columns 4 4 4
+ 6. "" "" 

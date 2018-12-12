@@ -38,8 +38,17 @@ class Lesson_adding extends CI_Controller {
     }
 
     public function index(){
+		// $this->load->view('includes/head');
+		// $this->load->view('includes/top-navigation');
+		// $this->load->view('includes/lesson-add-elements-side-bar');
+		// $this->load->view('lessons/lesson_adding');
+		// $this->load->view('includes/footer');
         $this->view("lessons/lesson_adding");
-    }
+	}
 
-    
+	public function test(){
+		$data['content'] = $this->input->post('lesson-content');
+		$this->view("lessons/lessontest", $data);
+	}
+	
 }

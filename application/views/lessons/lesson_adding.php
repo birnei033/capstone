@@ -1,35 +1,45 @@
-<!-- Page Content -->
-<div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row">
+
+
 
         <!-- <div class="lessons sidebar"> -->
-        <div class="col-md-12 col-lg-4">
-                            <h6 class="sub-title">Text list</h6>
-                            <ul class="basic-list">
-                                <li class="">
-                                    <h6>Heading</h6>
-                                    <p>Laborum nihil aliquam nulla praesentium illo libero
-                                        nihil at odio maxime.</p>
-                                    </li>
-                                    <li class="">
-                                        <h6>Heading</h6>
-                                        <p>Laborum nihil aliquam nulla praesentium illo libero
-                                            nihil at odio maxime.</p>
-                                        </li>
-                                        <li class="">
-                                            <h6>Heading</h6>
-                                            <p>Laborum nihil aliquam nulla praesentium illo libero
-                                                nihil at odio maxime.</p>
-                                            </li>
-                                        </ul>
-                                    </div>
-        <!-- </div> -->
-
-
-
-
-
+        <div class="">
+            <form action="lesson_adding/test" method="post">
+                <div class="card row">
+                    <div class="card-header">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <input type="text" placeholder="Lesson Title" name="lesson-title" class="form-control">
+                            </div>            
+                            <div class="col-sm-6">
+                                <select name="subject" id="" class="form-control">
+                                    <option value="">Subject 1</option>
+                                    <option value="">Subject 2</option>
+                                    <option value="">Subject 3</option>
+                                    <option value="">Subject 4</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        
+                        <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+                        <textarea name="lesson-content" id="editor" cols="30" rows="10"></textarea>
+                        <hr>
+                        <input type="submit" class="btn btn-primary" name="submit">
+                    </div>
+                </div>
+            </form>
         </div>
-    </div>
-</div>
+        <!-- <script>
+             ClassicEditor
+                .create( document.querySelector( '#editor'), {
+                    ckfinder: {
+                                uploadUrl: 'assets/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+                            },
+                            toolbar: [  'heading', '|', 'ckfinder', 'imageUpload', '|', 'bold', 'italic', '|', 'undo', 'redo' ]
+                } )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script> -->
+        <script src="<?php echo base_url() ?>assets/js/add-section.js"></script>

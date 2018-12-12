@@ -1,0 +1,8 @@
+/* hide elements */
+.fixed-button{
+    display: none;
+}
+
+.ck.ck-content.ck-editor__editable{
+    min-height: 200px;
+}

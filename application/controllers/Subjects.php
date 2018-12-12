@@ -37,15 +37,15 @@ class Subjects extends CI_Controller {
 		}
 	}
 
-	public function index()
-	{
-		$this->load->view('includes/head');
-		$this->load->view('includes/top-navigation');
-		$this->load->view('includes/left-navigation');
-		$this->load->view('subjects/subjects');
-		$this->load->view('includes/footer');
-	}
-	public function addSubject(){
+	// public function index()
+	// {
+	// 	$this->load->view('includes/head');
+	// 	$this->load->view('includes/top-navigation');
+	// 	$this->load->view('includes/left-navigation');
+	// 	$this->load->view('subjects/addsubject');
+	// 	$this->load->view('includes/footer');
+	// }
+	public function index(){
 		$data['subjects'] = $this->subjects_model->getAll();
 		$this->view("subjects/addSubject", $data);
 	}
@@ -91,5 +91,12 @@ class Subjects extends CI_Controller {
 			$updateResult = $this->subjects_model->update($data);
 			echo json_encode(array("status" => $updateResult));
 		}
+	}
+	public function test(){
+		$this->load->view('includes/head');
+		$this->load->view('includes/top-navigation');
+		$this->load->view('includes/left-navigation');
+		$this->load->view('blank');
+		$this->load->view('includes/footer');
 	}
 }
