@@ -29,7 +29,10 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/widget.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/pages.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/style.css">
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/bower_components/jquery/js/jquery.min.js"></script>
+    <!-- <script src="<?php echo base_url(); ?>assets/ckeditor/node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script> -->
+    <script src="<?php echo base_url(); ?>assets/ckeditor/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>

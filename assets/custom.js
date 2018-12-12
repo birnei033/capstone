@@ -9,3 +9,10 @@ jQuery(document).ready(function ($) {
         }
     });
 });
+
+$( function() {
+    $( "#draggablePanelList,#draggableMultiple,#draggableWithoutImg" ).sortable({
+      revert: true,
+      animation:150
+    });
+  } );
