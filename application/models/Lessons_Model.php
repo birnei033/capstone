@@ -14,6 +14,16 @@ class Lessons_Model extends CI_Controller {
         $query = $this->db->get('lessons');
 		return  $query->result();
     }
+
+    public function add($data){
+        $add = $this->db->insert('lessons', $data);
+        return $this->db->insert_id();
+    }
+
+    public function query($q){
+        $query = $this->db->query($q);
+        return $query->result();
+    }
 }
 
 ?>

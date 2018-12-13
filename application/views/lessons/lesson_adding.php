@@ -3,7 +3,7 @@
 
         <!-- <div class="lessons sidebar"> -->
         <div class="">
-            <form action="lesson_adding/test" method="post">
+            <form action="<?php  echo base_url(); ?>lessons/save" method="post">
                 <div class="card row">
                     <div class="card-header">
                         <div class="row">
@@ -11,11 +11,11 @@
                                 <input type="text" placeholder="Lesson Title" name="lesson-title" class="form-control">
                             </div>            
                             <div class="col-sm-6">
-                                <select name="subject" id="" class="form-control">
-                                    <option value="">Subject 1</option>
-                                    <option value="">Subject 2</option>
-                                    <option value="">Subject 3</option>
-                                    <option value="">Subject 4</option>
+                                <select name="lesson-subject" id="" class="form-control">
+                                    <option value="1">Subject 1</option>
+                                    <option value="2">Subject 2</option>
+                                    <option value="3">Subject 3</option>
+                                    <option value="4">Subject 4</option>
                                 </select>
                             </div>
                         </div>
@@ -24,6 +24,7 @@
                         
                         <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
                         <textarea name="lesson-content" id="editor" cols="30" rows="10"></textarea>
+                        <input type="hidden" name="save" value="save">
                         <hr>
                         <input type="submit" class="btn btn-primary" name="submit">
                     </div>

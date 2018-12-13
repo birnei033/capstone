@@ -46,6 +46,35 @@ class Lessons extends CI_Controller {
 		$this->load->view('lessons/lessons', $data);
 		$this->load->view('includes/footer');
 	}
+
+	public function add(){ // adding lessons view
+		$this->view("lessons/lesson_adding");
+	}
+
+	public function save(){
+		if($this->input->post('save') != ""){
+			$lesson_content = $this->input->post('lesson-content');
+			$lesson_title = $this->input->post('lesson-title');
+			$lesson_subject = $this->input->post('lesson-subject');
+
+			$data = array(
+				'lesson_content'=> $lesson_content,
+				'subject_id'=> $lesson_subject,
+				'lesson_title' => $lesson_title,
+				'lesson_author' => 'Bernz',
+				'date_created' => date('Y-d-m')
+			);
+			$add = $this->lessons_model->add($data);
+			$this->lesson_has_been_saved();
+		}
+	}
+	public function lesson_has_been_saved(){
+		$query = "SELECT * FROM lessons ORDER BY id DESC LIMIT 1";
+		$res['lessons'] = $this->lessons_model->query($query);
+		// var_dump($res['lessons']);
+		
+		$this->view('lessons/lesson_editing_page', $res);
+	}
 }
 
 ?>
