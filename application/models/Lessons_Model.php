@@ -24,6 +24,16 @@ class Lessons_Model extends CI_Controller {
         $query = $this->db->query($q);
         return $query->result();
     }
+
+    public function getSubjects(){
+        $query = $this->db->get('subjects');
+		return  $query->result();
+    }
+    public function edit($a){
+        $this->db->set($a);
+        $this->db->where('id', $a['id']);
+        return $this->db->update('lessons'); 
+    }
 }
 
 ?>

@@ -23,6 +23,14 @@
     <!-- modernizr js -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/bower_components/modernizr/js/modernizr.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/bower_components/modernizr/js/css-scrollbars.js"></script>
+    <!-- Select 2 js -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/bower_components/select2/js/select2.full.min.js"></script>
+    <!-- Multiselect js -->
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/bower_components/bootstrap-multiselect/js/bootstrap-multiselect.js">
+    </script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/bower_components/multiselect/js/jquery.multi-select.js"></script>
+    <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/js/jquery.quicksearch.js"></script>
+
     <!-- sweet alert modal.js intialize js -->
     <!-- sweet alert js -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/bower_components/sweetalert/js/sweetalert.min.js"></script>

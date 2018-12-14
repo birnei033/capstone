@@ -39,14 +39,32 @@
                     </li>
                 </ul>
             </li>
-            <li class=" ">
+            <li class="pcoded-hasmenu ">
+                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                    <span class="pcoded-mtext">Lessons</span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li class="">
+                        <a href="<?php echo base_url(); ?>lessons" class="waves-effect waves-dark">
+                            <span class="pcoded-mtext">List</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="<?php echo base_url(); ?>lessons/add" class="waves-effect waves-dark">
+                            <span class="pcoded-mtext">Add</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <!-- <li class=" ">
                 <a href="<?php echo base_url(); ?>lessons" class="waves-effect waves-dark">
                 <span class="pcoded-micon">
                     <i class="feather icon-menu"></i>
                 </span>
                 <span class="pcoded-mtext">Lessons</span>
             </a>
-            </li>
+            </li> -->
             <li class="">
                 <a href="<?php echo base_url(); ?>subjects" class="waves-effect waves-dark">
                 <span class="pcoded-micon">

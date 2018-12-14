@@ -18,7 +18,7 @@
                             <table class="table table-de table-hover">
                                 <thead>
                                     <tr>
-                                        <th>Lesson ID #</th>
+                                        <th style=" max-width: 24px; width: 107px;">Lesson ID #</th>
                                         <th>Lesson Title</th>
                                         <th>Author</th>
                                         <th>Subject</th>
@@ -26,15 +26,28 @@
                                 </thead>
                                 <tbody>
                                 <?php  
-                                    foreach ($lessons as $lesson) {
-                                ?>
+                                //  var_dump($data['lessons']);
+                                    // foreach ($data as $lesson) { 
+                                        for ($i=0; $i < count($data['lessons']) ; $i++) { 
+                                            # code...
+                                        // }
+                                ?>  
                                     <tr>
-                                        <td><?php echo $lesson->id; ?></td>
-                                        <td><?php echo $lesson->lesson_title; ?></td>
-                                        <td><?php echo $lesson->lesson_author; ?></td>
-                                        <td><?php echo $lesson->subject_id; ?></td>
-                                        <td><a class="update open-modal waves-effect md-trigger" data-modal="modal-2" data="update"  lesson_id="<?php echo $lesson->id; ?>" href="#">Edit</a></td>
-                                        <td><a class="delete" lesson_id="<?php echo $lesson->id; ?>" href="#">Delete</a></td>
+                                        <td><?php 
+                                        
+                                        echo $data['lessons'][$i]->id; ?></td>
+                                        <td>
+                                            <strong><?php echo $data['lessons'][$i]->lesson_title; ?></strong>
+                                            <br><small>
+                                                <a class="text-primary" href="<?php echo base_url(); ?>lessons/lesson_preview?preview=<?php echo $data['lessons'][$i]->lesson_title; ?>">Preview</a> |
+                                                <a href="<?php echo base_url(); ?>lessons/edit?edit=<?php echo $data['lessons'][$i]->lesson_title; ?>">Edit</a> |
+                                                <a class="delete text-danger" lesson_id="<?php echo $data['lessons'][$i]->id; ?>" href="#">Delete</a>
+                                            </small>
+                                        </td>
+                                        <td><?php echo $data['lessons'][$i]->lesson_author; ?></td>
+                                        <td><?php echo $data['subject'][$data['lessons'][$i]->subject_id]; ?></td>
+                                        <!-- <td><a class="update open-modal waves-effect md-trigger" data-modal="modal-2" data="update"  lesson_id="<?php echo $data['lessons'][$i]->id; ?>" href="#">Edit</a></td>
+                                        <td><a class="delete" lesson_id="<?php echo $data['lessons'][$i]->id; ?>" href="#">Delete</a></td> -->
                                     </tr>
                                     <?php  }  ?>
                                     
@@ -46,9 +59,9 @@
                     </div>
                     <!-- /.panel-body -->
                 </div>
-                <button data-modal="modal-2" data="add" class="btn btn-primary waves-effect md-trigger open-modal">
+                <!-- <button data-modal="modal-2" data="add" class="btn btn-primary waves-effect md-trigger open-modal">
                         Add Lesson
-                    </button>
+                    </button> -->
             </div>
         </div>
   

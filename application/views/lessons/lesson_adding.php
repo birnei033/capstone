@@ -8,14 +8,16 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-sm-6">
-                                <input type="text" placeholder="Lesson Title" name="lesson-title" class="form-control">
+                                <input type="text" placeholder="Lesson Title" name="lesson-title" class="form-control ">
                             </div>            
                             <div class="col-sm-6">
-                                <select name="lesson-subject" id="" class="form-control">
-                                    <option value="1">Subject 1</option>
-                                    <option value="2">Subject 2</option>
-                                    <option value="3">Subject 3</option>
-                                    <option value="4">Subject 4</option>
+                                <select name="lesson-subject" id="" class="form-control js-example-basic-hide-search">
+                                    <!-- <optgroup label="Subjects"> -->
+                                    <option value="0">Select Subject</option>
+                                    <?php foreach ($subjects as $subject) { ?>
+                                        <option value="<?php echo $subject->subject_id ?>"><?php echo $subject->subject_title; ?></option>
+                                        <?php } ?>
+                                    <!-- </optgroup> -->
                                 </select>
                             </div>
                         </div>

@@ -39,7 +39,14 @@ class Lessons extends CI_Controller {
     
     public function index()
 	{
-        $data['lessons'] = $this->lessons_model->getAll();
+		$data['data']['lessons'] = $this->lessons_model->getAll();
+		$subj = $this->lessons_model->getSubjects();
+		foreach ($subj as $s) {
+			$data['data']['subject'][$s->subject_id] = $s->subject_title;
+			// var_dump($s->subject_id);
+		}
+		// var_dump($data['data']);
+		
 		$this->load->view('includes/head');
 		$this->load->view('includes/top-navigation');
 		$this->load->view('includes/left-navigation');
@@ -48,7 +55,9 @@ class Lessons extends CI_Controller {
 	}
 
 	public function add(){ // adding lessons view
-		$this->view("lessons/lesson_adding");
+		$data['subjects'] = $this->lessons_model->getSubjects();
+		// var_dump($data);
+		$this->view("lessons/lesson_adding", $data);
 	}
 
 	public function save(){
@@ -65,15 +74,64 @@ class Lessons extends CI_Controller {
 				'date_created' => date('Y-d-m')
 			);
 			$add = $this->lessons_model->add($data);
-			$this->lesson_has_been_saved();
+			redirect('/lessons/lesson_preview?preview='.$lesson_title, 'refresh');
+			// $this->lesson_has_been_saved();
 		}
 	}
-	public function lesson_has_been_saved(){
-		$query = "SELECT * FROM lessons ORDER BY id DESC LIMIT 1";
-		$res['lessons'] = $this->lessons_model->query($query);
-		// var_dump($res['lessons']);
-		
-		$this->view('lessons/lesson_editing_page', $res);
+	public function edit(){
+		if(isset($_GET['edit']))
+		{
+			$previewQuery = $_GET['edit'];
+			$query = "SELECT * FROM lessons WHERE lesson_title = '$previewQuery'";
+			$res = $this->lessons_model->query($query);
+			foreach ($res as $content) {
+				$data['title'] = $content->lesson_title;
+				$data['content'] = $content->lesson_content;
+				$data['id'] = $content->id;
+			}
+			$subj = $this->lessons_model->getSubjects();
+			$data['subjects'] = array();
+			foreach ($subj as $s) {
+				array_push($data['subjects'], array(
+					'subject_id'=> $s->subject_id,
+					'subject_title' => $s->subject_title
+				));
+			}
+			// var_dump($data);
+			$this->view('lessons/lesson_editing_page', $data);
+		}
+	}
+
+	public function edit_submited(){
+		$lesson_content = $this->input->post('lesson-content');
+		$lesson_title = $this->input->post('lesson-title');
+		$lesson_subject = $this->input->post('lesson-subject');
+		$lesson_id = $this->input->post('lesson-id');
+		$data = array(
+			'lesson_content'=> $lesson_content,
+			'subject_id'=> $lesson_subject,
+			'lesson_title' => $lesson_title,
+			'lesson_author' => 'Bernz',
+			'id'=> $lesson_id,
+			'date_created' => date('Y-d-m')
+		);
+		$result = $this->lessons_model->edit($data);
+		redirect('/lessons/edit?edit='.$lesson_title.'&result='.$result, 'refresh');
+		// echo $result;
+	}
+
+	public function lesson_preview(){
+		if(isset($_GET['preview']))
+		{
+			$previewQuery = $_GET['preview'];
+			$query = "SELECT * FROM lessons WHERE lesson_title = '$previewQuery'";
+			$res = $this->lessons_model->query($query);
+			foreach ($res as $content) {
+				$data['preview'] = $content->lesson_content;
+			}
+			// var_dump($data);
+			$this->view('lessons/lesson_preview', $data);
+		}
 	}
 }
 

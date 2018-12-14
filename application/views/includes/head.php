@@ -23,7 +23,14 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/bower_components/sweetalert/css/sweetalert.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/icon/themify-icons/themify-icons.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/icon/icofont/css/icofont.css">
+    <!-- fontawsome -->
     <link href="<?php echo base_url(); ?>assets/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+      <!-- Select 2 css -->
+      <link rel="stylesheet" href="<?php echo base_url(); ?>assets/themf/bower_components/select2/css/select2.min.css" />
+    <!-- Multi Select css -->
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/bower_components/bootstrap-multiselect/css/bootstrap-multiselect.css" />
+    <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/bower_components/multiselect/css/multi-select.css" />
+
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/component.css">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/style.css">

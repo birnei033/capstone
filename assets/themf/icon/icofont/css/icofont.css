@@ -8,14 +8,20 @@
 
 @font-face {
     font-family: 'icofont';
-    src: url('http://ableproadmin.com/7.0/files/assets/icon/icofont/fonts/icofont.eot?v=1.0.0-beta');
-    src: url('http://ableproadmin.com/7.0/files/assets/icon/icofont/fonts/icofont.eot?v=1.0.0-beta#iefix') format('embedded-opentype'),
-    url('http://ableproadmin.com/7.0/files/assets/icon/icofont/fonts/icofont.ttf?v=1.0.0-beta') format('truetype'),
-    url('http://ableproadmin.com/7.0/files/assets/icon/icofont/fonts/icofont.woff?v=1.0.0-beta') format('woff'),
-    url('http://ableproadmin.com/7.0/files/assets/icon/icofont/fonts/icofont.svg?v=1.0.0-beta#icofont') format('svg');
+    src: url('icofont.eot');
+    src: url('icofont.eot'),
+    url('icofont.ttf'),
+    url('icofont.woff'),
+    url('icofont.svg');
     font-weight: normal;
     font-style: normal;
 }
+
+/* src: url('/assets/icon/icofont/fonts/icofont.eot?v=1.0.0-beta');
+src: url('/assets/icon/icofont/fonts/icofont.eot?v=1.0.0-beta#iefix') format('embedded-opentype'),
+url('/assets/icon/icofont/fonts/icofont.ttf?v=1.0.0-beta') format('truetype'),
+url('/assets/icon/icofont/fonts/icofont.woff?v=1.0.0-beta') format('woff'),
+url('/assets/icon/icofont/fonts/icofont.svg?v=1.0.0-beta#icofont') format('svg'); */
 
 .icofont {
     font-family: 'IcoFont' !important;
