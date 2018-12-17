@@ -88,6 +88,7 @@ class Lessons extends CI_Controller {
 				$data['title'] = $content->lesson_title;
 				$data['content'] = $content->lesson_content;
 				$data['id'] = $content->id;
+				$data['subject_id'] = $content->subject_id;
 			}
 			$subj = $this->lessons_model->getSubjects();
 			$data['subjects'] = array();

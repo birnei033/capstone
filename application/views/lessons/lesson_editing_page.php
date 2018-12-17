@@ -31,7 +31,8 @@
                                 <select name="lesson-subject" id="" class="form-control js-example-basic-hide-search">
                                     <?php
                                     foreach ($subjects as $subject) {
-                                        echo '<option value="'.$subject["subject_id"].'">'.$subject["subject_title"].'</option>';
+                                        $selected = $subject["subject_id"] == $subject_id ? "selected" : "" ;
+                                        echo '<option '.$selected.' value="'.$subject["subject_id"].'">'.$subject["subject_title"].'</option>';
                                     }
                                     
                                     ?>
