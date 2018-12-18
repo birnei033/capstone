@@ -32,7 +32,7 @@
                             </a>
                             </li>
                         </ul>
-                        <!-- <ul class="nav-right"> -->
+                        <ul class="nav-right">
                             <!-- <li class="header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
@@ -85,11 +85,11 @@
                                     </div>
                                 </div>
                             </li> -->
-                            <!-- <li class="user-profile header-notification">
+                             <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
                                         <img src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                                        <span>John Doe</span>
+                                        <span><?php echo isset($this->session->userdata['logged_in']) ? $this->session->userdata['logged_in']['name']: "Name" ?></span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
                                     <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
@@ -114,14 +114,14 @@
                                         </a>
                                         </li>
                                         <li>
-                                            <a href="auth-normal-sign-in.html">
+                                            <a href="<?php echo base_url()?>teacher/login/logout">
                                             <i class="feather icon-log-out"></i> Logout
                                         </a>
                                         </li>
                                     </ul>
-                                </div> -->
-                            <!-- </li> -->
-                        <!-- </ul> -->
+                                </div> 
+                             </li> 
+                        </ul>
                     </div>
                 </div>
             </nav>

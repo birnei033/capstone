@@ -6,12 +6,12 @@ class Lessons extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('url');
+		$this->load->helper(array('url'));
 		$this->load->model('lessons_model');
-		$this->load->library('user_agent');
-		$this->load->helper('date');
-    }
-
+		$this->load->helper('url');
+		$this->load->library(array('user_agent', 'functions', 'session'));
+	}
+	
     private function alert($message = "", $type = 'default'){
 		$alert = '<div class="alert alert-'.$type.'" id="subject-alert">';
 		$alert .= '<button type="button" class="close" data-dismiss="alert" aria-label="Close">';
@@ -25,6 +25,7 @@ class Lessons extends CI_Controller {
 	}
 	
 	private function view($view, $data = "", $single = false){
+		$this->functions->is_admin();
 		if ($single) {
 			$this->load->view('includes/head');
 			$this->load->view($view, $data);
@@ -39,6 +40,7 @@ class Lessons extends CI_Controller {
     
     public function index()
 	{
+		$this->functions->is_admin();
 		$data['data']['lessons'] = $this->lessons_model->getAll();
 		$subj = $this->lessons_model->getSubjects();
 		foreach ($subj as $s) {
@@ -52,9 +54,11 @@ class Lessons extends CI_Controller {
 		$this->load->view('includes/left-navigation');
 		$this->load->view('lessons/lessons', $data);
 		$this->load->view('includes/footer');
+
 	}
 
 	public function add(){ // adding lessons view
+		$this->functions->is_admin();
 		$data['subjects'] = $this->lessons_model->getSubjects();
 		// var_dump($data);
 		$this->view("lessons/lesson_adding", $data);
@@ -117,7 +121,7 @@ class Lessons extends CI_Controller {
 			'date_created' => date('Y-d-m')
 		);
 		$result = $this->lessons_model->edit($data);
-		redirect('/lessons/edit?edit='.$lesson_title.'&result='.$result, 'refresh');
+		redirect('teacher/lessons/edit?edit='.$lesson_title.'&result='.$result, 'refresh');
 		// echo $result;
 	}
 

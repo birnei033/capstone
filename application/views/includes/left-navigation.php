@@ -1,11 +1,10 @@
-
 <nav class="pcoded-navbar">
     <div class="pcoded-inner-navbar main-menu">
         <div class="">
-            <div class="main-menu-header">
+            <!-- <div class="main-menu-header">
                 <img class="img-menu-user img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="User-Profile-Image">
                 <div class="user-details">
-                    <p id="more-details">John Doe<i class="feather icon-chevron-down m-l-10"></i></p>
+                    <p id="more-details"><?php echo isset($this->session->userdata['loged_in']) ? $this->session->userdata['loged_in']['name']: "Name" ?><i class="feather icon-chevron-down m-l-10"></i></p>
                 </div>
             </div>
             <div class="main-menu-content">
@@ -23,7 +22,7 @@
                     </li>
                 </ul>
             </div>
-        </div>
+        </div> -->
         <div class="pcoded-navigation-label">Navigation</div>
         <ul class="pcoded-item pcoded-left-item">
             <li class="pcoded-hasmenu ">
@@ -33,7 +32,7 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="<?php echo base_url(); ?>" class="waves-effect waves-dark">
+                        <a href="<?php echo base_url(); ?>teacher/dashboard" class="waves-effect waves-dark">
                             <span class="pcoded-mtext">Default</span>
                         </a>
                     </li>
@@ -46,12 +45,12 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="<?php echo base_url(); ?>lessons" class="waves-effect waves-dark">
+                        <a href="<?php echo base_url(); ?>teacher/lessons" class="waves-effect waves-dark">
                             <span class="pcoded-mtext">List</span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?php echo base_url(); ?>lessons/add" class="waves-effect waves-dark">
+                        <a href="<?php echo base_url(); ?>teacher/lessons/add" class="waves-effect waves-dark">
                             <span class="pcoded-mtext">Add</span>
                         </a>
                     </li>
@@ -66,7 +65,7 @@
             </a>
             </li> -->
             <li class="">
-                <a href="<?php echo base_url(); ?>subjects" class="waves-effect waves-dark">
+                <a href="<?php echo base_url(); ?>teacher/subjects" class="waves-effect waves-dark">
                 <span class="pcoded-micon">
                     <i class="feather icon-menu"></i>
                 </span>

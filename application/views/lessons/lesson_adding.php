@@ -3,7 +3,7 @@
 
         <!-- <div class="lessons sidebar"> -->
         <div class="">
-            <form action="<?php  echo base_url(); ?>lessons/save" method="post">
+            <form action="<?php  echo base_url(); ?>teacher/lessons/save" method="post">
                 <div class="card row">
                     <div class="card-header">
                         <div class="row">

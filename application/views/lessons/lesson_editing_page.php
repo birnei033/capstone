@@ -7,7 +7,7 @@
 
         <!-- <div class="lessons sidebar"> -->
         <div class="">
-            <form action="<?php  echo base_url(); ?>lessons/edit_submited" method="post">
+            <form action="<?php  echo base_url(); ?>teacher/lessons/edit_submited" method="post">
                 <div class="card row">
                     <div class="card-header">
                         <div class="row">
@@ -40,7 +40,7 @@
                                 </select>
                             </div>
                             <div class="col-sm-3">
-                                    <a href="<?php echo base_url() ?>lessons/lesson_preview?preview=<?php echo $title; ?>" class="btn btn-primary">Preview</a>
+                                    <a href="<?php echo base_url() ?>teacher/lessons/lesson_preview?preview=<?php echo $title; ?>" class="btn btn-primary">Preview</a>
                             </div>
                         </div>
                     </div>

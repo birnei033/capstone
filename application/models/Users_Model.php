@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Users_Model extends CI_Controller {
+class Users_Model extends CI_Model {
     private $CI;
     public function __construct()
 	{
@@ -16,7 +16,15 @@ class Users_Model extends CI_Controller {
 
     public function getByName($name){
         $query = $this->CI->db->get_where('college_teachers', array('ct_login_name'=>$name));
-        return $query->result();
+        $teacher = array();
+        foreach ($query->result() as $q) {
+            $teacher['id'] = $q->ct_id;
+            $teacher['name'] = $q->ct_login_name;
+            $teacher['password'] = $q->ct_password;
+        }
+        return $teacher;
+        // var_dump($teacher);
+        // return $query->result();
     }
 
     public function getAll(){

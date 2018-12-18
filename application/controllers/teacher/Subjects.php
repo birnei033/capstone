@@ -6,10 +6,9 @@ class Subjects extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->helper('url');
 		$this->load->model('subjects_model');
-		$this->load->library('user_agent');
-		$this->load->helper('date');
+		$this->load->helper('url');
+		$this->load->library(array('user_agent', 'functions', 'session'));
 	}
 
 	private function alert($message = "", $type = 'default'){
@@ -37,20 +36,15 @@ class Subjects extends CI_Controller {
 		}
 	}
 
-	// public function index()
-	// {
-	// 	$this->load->view('includes/head');
-	// 	$this->load->view('includes/top-navigation');
-	// 	$this->load->view('includes/left-navigation');
-	// 	$this->load->view('subjects/addsubject');
-	// 	$this->load->view('includes/footer');
-	// }
 	public function index(){
+		$this->functions->is_admin();
+		$is_admin = $this->functions->is_admin();
 		$data['subjects'] = $this->subjects_model->getAll();
-		$this->view("subjects/addSubject", $data);
+		$this->view("addSubject", $data);
 	}
 
 	public function add(){
+		$this->is_admin();
 		$subj_name = $this->input->post('subj-name');
 		$dataType = $this->input->post('data-type');
 		if($dataType == 'ajax'){
@@ -77,10 +71,12 @@ class Subjects extends CI_Controller {
 	}
 
 	public function getById($id){
+		$this->is_admin();
 		$result = $this->subjects_model->getSubjectByID($id);
 		echo json_encode(array("subject"=>$result[0]));
 	}
 	public function update($id){
+		$this->is_admin();
 		$dataType = $this->input->post('data-type');
 		if($dataType == 'ajax'){
 			$data = array(
@@ -91,12 +87,5 @@ class Subjects extends CI_Controller {
 			$updateResult = $this->subjects_model->update($data);
 			echo json_encode(array("status" => $updateResult));
 		}
-	}
-	public function test(){
-		$this->load->view('includes/head');
-		$this->load->view('includes/top-navigation');
-		$this->load->view('includes/left-navigation');
-		$this->load->view('blank');
-		$this->load->view('includes/footer');
 	}
 }
