@@ -17,7 +17,7 @@ class Welcome extends CI_Controller {
 		$this->load->view('includes/top-navigation');
 		$this->load->view('includes/left-navigation');
 		// $this->load->view('dashboard');
-		echo "This is a landing page";
+		// echo "This is a landing page";
 		$this->load->view('includes/footer');
 	}
 }

@@ -60,6 +60,7 @@
     <script src="<?php echo base_url(); ?>assets/themf/js/vertical/vertical-layout.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/pages/dashboard/custom-dashboard.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/js/script.min.js"></script>
+    <script type="text/javascript" src="<?php echo themf(); ?>pages/advance-elements/select2-custom.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/custom.js"></script>
     
 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-90716026-1"></script>

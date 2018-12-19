@@ -80,12 +80,12 @@
             $(this).click(function (e) { 
                 e.preventDefault();
                 var id = $(this).attr('subj_id');
-                var url = "<?php echo base_url(); ?>subjects/delete/";
+                var url = "<?php echo teacher_base('subjects/delete/'); ?>";
                 var data = {
                     data_type: "ajax",
                     subj_id: $(this).attr('subj_id')
                 };
-                console.log(data);
+                console.log(data+url);
                 $.ajax({
                     url : url,
                     type: "POST",
@@ -110,13 +110,13 @@
                 var method = $(this).attr('data');
                 var url = "";
                 if (method == "add") {
-                    url = "<?php echo base_url(); ?>subjects/add/";
+                    url = "<?php echo teacher_base('subjects/add/'); ?>";
                     $('#modal-form').attr('action', url);
                     $('#modal-form #subj-name').val("");
                     $('#modal-form-update').text(method);
                 }else if(method == "update"){
                     var id = $(this).attr('subj_id');
-                    url = "<?php echo base_url(); ?>subjects/getbyid/"+id;
+                    url = "<?php echo teacher_base('subjects/getbyid/'); ?>"+id;
                     $('#modal-form').attr('action', url);
                     $('#modal-form-update').text(method);
                     $.ajax({
@@ -132,38 +132,38 @@
                         alert(textStatus+" "+errorThrown);
                     }
                 });
-                url = "<?php echo base_url(); ?>subjects/update/"+id;
+                url = "<?php echo teacher_base('subjects/update/'); ?>"+id;
                 $('#modal-form').attr('action', url);
                 }
             });
         });
-        $('#modal-form-update').click(function (e) { 
-            e.preventDefault();
-            // ajax adding data to database
-                // console.log($('#modal-form').serialize());
-                var url = $('#modal-form').attr('action'),
-                    data = $('#modal-form').serialize();
-                $.ajax({
-                    url : url,
-                    type: "POST",
-                    data: data,
-                    dataType: "JSON",
-                    success: function(data)
-                    {
-                        if (!data.status) {
-                            $('#subject-alert').html(data.alert);
-                            // console.log(data.alert);
-                            $('#subject-alert').show();
-                        }else{
-                            location.reload();// for reload a page
-                        }
-                    },
-                    error: function (jqXHR, textStatus, errorThrown)
-                    {
-                        alert('Error adding / update data');
-                    }
-                });
-        });
+        // $('#modal-form-updateq').click(function (e) { 
+        //     e.preventDefault();
+        //     // ajax adding data to database
+        //         // console.log($('#modal-form').serialize());
+        //         var url = $('#modal-form').attr('action'),
+        //             data = $('#modal-form').serialize();
+        //         $.ajax({
+        //             url : url,
+        //             type: "POST",
+        //             data: data,
+        //             dataType: "JSON",
+        //             success: function(data)
+        //             {
+        //                 if (!data.status) {
+        //                     $('#subject-alert').html(data.alert);
+        //                     // console.log(data.alert);
+        //                     $('#subject-alert').show();
+        //                 }else{
+        //                     location.reload();// for reload a page
+        //                 }
+        //             },
+        //             error: function (jqXHR, textStatus, errorThrown)
+        //             {
+        //                 alert('Error adding / update data');
+        //             }
+        //         });
+        // });
        
     });
 

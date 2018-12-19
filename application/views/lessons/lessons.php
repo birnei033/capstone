@@ -39,13 +39,13 @@
                                         <td>
                                             <strong><?php echo $data['lessons'][$i]->lesson_title; ?></strong>
                                             <br><small>
-                                                <a class="text-primary" href="<?php echo base_url(); ?>teacher/lessons/lesson_preview?preview=<?php echo $data['lessons'][$i]->lesson_title; ?>">Preview</a> |
-                                                <a href="<?php echo base_url(); ?>teacher/lessons/edit?edit=<?php echo $data['lessons'][$i]->lesson_title; ?>">Edit</a> |
+                                                <a class="text-primary" href="<?php echo teacher_base('lessons/lesson_preview'); ?>?preview=<?php echo $data['lessons'][$i]->lesson_title; ?>">Preview</a> |
+                                                <a href="<?php echo teacher_base('lessons'); ?>/edit?edit=<?php echo $data['lessons'][$i]->lesson_title; ?>">Edit</a> |
                                                 <a class="delete text-danger" lesson_id="<?php echo $data['lessons'][$i]->id; ?>" href="#">Delete</a>
                                             </small>
                                         </td>
                                         <td><?php echo $data['lessons'][$i]->lesson_author; ?></td>
-                                        <td><?php echo $data['subject'][$data['lessons'][$i]->subject_id]; ?></td>
+                                        <td><?php echo isset($data['subject'][$data['lessons'][$i]->subject_id]) ? $data['subject'][$data['lessons'][$i]->subject_id] : ""; ?></td>
                                         <!-- <td><a class="update open-modal waves-effect md-trigger" data-modal="modal-2" data="update"  lesson_id="<?php echo $data['lessons'][$i]->id; ?>" href="#">Edit</a></td>
                                         <td><a class="delete" lesson_id="<?php echo $data['lessons'][$i]->id; ?>" href="#">Delete</a></td> -->
                                     </tr>
@@ -64,24 +64,6 @@
                     </button> -->
             </div>
         </div>
-  
-        <div class="md-modal md-effect-8" id="modal-2">
-            <div class="md-content">
-                <h3>Add Subject</h4>
-                <div>
-                    <form action="#" ajax="false" id="modal-form" method="post">
-                        <div class="form-group">
-                        <div id="subject-alert">
-                        </div>
-                            <input placeholder="Lesson Title" type="text" name="subj-name" id="subj-name" class="form-control" placeholder="" aria-describedby="helpId">
-                            <input type="hidden" name="data-type" value="ajax" id="data-type">
-                        </div>
-                        <button type="button" class="btn btn-secondary waves-effect md-close">Close</button>
-                        <button type="submit" id="modal-form-update" class="btn btn-primary">Update</button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
 <script>
     jQuery(document).ready(function ($) {
@@ -89,13 +71,13 @@
             
             $(this).click(function (e) { 
                 e.preventDefault();
-                var id = $(this).attr('subj_id');
-                var url = "<?php echo base_url(); ?>lessons/delete/";
+                var id = $(this).attr('lesson_id');
+                var url = "<?php echo teacher_base('lessons/delete')?>";
                 var data = {
                     data_type: "ajax",
-                    subj_id: $(this).attr('subj_id')
+                    subj_id: $(this).attr('lesson_id')
                 };
-                console.log(data);
+                console.log(data+url);
                 $.ajax({
                     url : url,
                     type: "POST",
@@ -111,7 +93,6 @@
                     }
                 });
             });
-            
         });
 
         $('.open-modal').each(function (index, element) {

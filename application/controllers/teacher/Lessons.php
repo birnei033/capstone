@@ -138,6 +138,15 @@ class Lessons extends CI_Controller {
 			$this->view('lessons/lesson_preview', $data);
 		}
 	}
+	public function delete(){
+		$id = $this->input->post('lesson_id');
+		$dataType = $this->input->post('data_type');
+		if($dataType == "ajax"){	
+			$delete_result = $this->lessons_model->delete($id);
+			echo json_encode(array("status" => true));
+		}
+	
+	}
 }
 
 ?>

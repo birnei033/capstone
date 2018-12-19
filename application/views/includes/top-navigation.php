@@ -85,11 +85,15 @@
                                     </div>
                                 </div>
                             </li> -->
+                            <!-- <li>
+                                <?php echo teacher_base() ?>
+                            </li> -->
+                            <?php if(isset($this->session->userdata['logged_in'])) { ?>
                              <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
                                         <img src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                                        <span><?php echo isset($this->session->userdata['logged_in']) ? $this->session->userdata['logged_in']['name']: "Name" ?></span>
+                                        <span><?php echo $this->session->userdata['logged_in']['name'] ?></span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
                                     <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
@@ -114,13 +118,18 @@
                                         </a>
                                         </li>
                                         <li>
-                                            <a href="<?php echo base_url()?>teacher/login/logout">
+                                            <a href="<?php echo teacher_base('login/logout')?>">
                                             <i class="feather icon-log-out"></i> Logout
                                         </a>
                                         </li>
                                     </ul>
                                 </div> 
                              </li> 
+                            <?php }else{?>
+                            <li>
+                                <?php echo anchor('admin', 'Login', array('class'=>'btn btn-primary')) ?>
+                            </li>
+                            <?php }?>
                         </ul>
                     </div>
                 </div>

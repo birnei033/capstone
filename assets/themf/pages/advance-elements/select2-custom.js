@@ -11,7 +11,7 @@ $(document).ready(function(){
 
     // With Placeholder
     $(".js-example-placeholder-multiple").select2({
-        placeholder: "Select Your Name"
+        placeholder: "Select Program"
     });
 
     //Limited Numbers

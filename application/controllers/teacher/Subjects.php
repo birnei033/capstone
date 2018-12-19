@@ -40,11 +40,11 @@ class Subjects extends CI_Controller {
 		$this->functions->is_admin();
 		$is_admin = $this->functions->is_admin();
 		$data['subjects'] = $this->subjects_model->getAll();
-		$this->view("addSubject", $data);
+		$this->view("subjects/addSubject", $data);
 	}
 
 	public function add(){
-		$this->is_admin();
+		$this->functions->is_admin();
 		$subj_name = $this->input->post('subj-name');
 		$dataType = $this->input->post('data-type');
 		if($dataType == 'ajax'){
@@ -56,7 +56,8 @@ class Subjects extends CI_Controller {
 					'create_on' => date('Y-d-m')
 				);
 				$add = $this->subjects_model->add($data);
-				echo json_encode(array("status" => TRUE));
+				// echo json_encode(array("status" => $add));
+				redirect(teacher_base('subjects'), 'refresh');
 			}
 		}
 	}
@@ -71,12 +72,12 @@ class Subjects extends CI_Controller {
 	}
 
 	public function getById($id){
-		$this->is_admin();
+		$this->functions->is_admin();
 		$result = $this->subjects_model->getSubjectByID($id);
 		echo json_encode(array("subject"=>$result[0]));
 	}
 	public function update($id){
-		$this->is_admin();
+		$this->functions->is_admin();
 		$dataType = $this->input->post('data-type');
 		if($dataType == 'ajax'){
 			$data = array(
@@ -85,7 +86,8 @@ class Subjects extends CI_Controller {
 				'updated_on'=>date('Y-d-m')
 			);
 			$updateResult = $this->subjects_model->update($data);
-			echo json_encode(array("status" => $updateResult));
+			// echo json_encode(array("status" => $updateResult));
+			redirect(teacher_base('subjects'));
 		}
 	}
 }

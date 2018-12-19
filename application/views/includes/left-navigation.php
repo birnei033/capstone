@@ -32,7 +32,7 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="<?php echo base_url(); ?>teacher/dashboard" class="waves-effect waves-dark">
+                        <a href="<?php echo teacher_base('dashboard'); ?>" class="waves-effect waves-dark">
                             <span class="pcoded-mtext">Default</span>
                         </a>
                     </li>
@@ -45,12 +45,12 @@
                 </a>
                 <ul class="pcoded-submenu">
                     <li class="">
-                        <a href="<?php echo base_url(); ?>teacher/lessons" class="waves-effect waves-dark">
+                        <a href="<?php echo teacher_base('lessons'); ?>" class="waves-effect waves-dark">
                             <span class="pcoded-mtext">List</span>
                         </a>
                     </li>
                     <li class="">
-                        <a href="<?php echo base_url(); ?>teacher/lessons/add" class="waves-effect waves-dark">
+                        <a href="<?php echo teacher_base('lessons/add'); ?>" class="waves-effect waves-dark">
                             <span class="pcoded-mtext">Add</span>
                         </a>
                     </li>
@@ -65,12 +65,30 @@
             </a>
             </li> -->
             <li class="">
-                <a href="<?php echo base_url(); ?>teacher/subjects" class="waves-effect waves-dark">
+                <a href="<?php echo teacher_base('subjects'); ?>" class="waves-effect waves-dark">
                 <span class="pcoded-micon">
                     <i class="feather icon-menu"></i>
                 </span>
                 <span class="pcoded-mtext">Subjects</span>
             </a>
+            </li>
+            <li class="pcoded-hasmenu ">
+                <a href="javascript:void(0)" class="waves-effect waves-dark">
+                    <span class="pcoded-micon"><i class="feather icon-home"></i></span>
+                    <span class="pcoded-mtext">Your Students</span>
+                </a>
+                <ul class="pcoded-submenu">
+                    <li class="">
+                        <a href="<?php echo teacher_base('your_students'); ?>" class="waves-effect waves-dark">
+                            <span class="pcoded-mtext">Student List</span>
+                        </a>
+                    </li>
+                    <li class="">
+                        <a href="<?php echo teacher_base('student_registration'); ?>" class="waves-effect waves-dark">
+                            <span class="pcoded-mtext">Add Your Student</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>

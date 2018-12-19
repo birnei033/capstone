@@ -32,7 +32,7 @@ class Subjects_Model extends CI_Model {
     public function update($data){
         $a = array(
             'subject_title'=> $data["subject_title"],
-			'update_on'=>$data['update_on']
+			'update_on'=>$data['updated_on']
         );
         $this->db->set($a);
         $this->db->where('subject_id', $data['subject_id']);
