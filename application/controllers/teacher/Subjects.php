@@ -38,9 +38,23 @@ class Subjects extends CI_Controller {
 
 	public function index(){
 		$this->functions->is_admin();
-		$is_admin = $this->functions->is_admin();
 		$data['subjects'] = $this->subjects_model->getAll();
 		$this->view("subjects/addSubject", $data);
+	}
+
+	public function ajax_get_subject(){
+		$subjects = $this->subjects_model->ajax_getAllSubjects();
+		$data = array();
+		foreach ($subjects as $subject) {
+			$temp['subject_id'] = $subject->subject_id;
+			$temp['subject_title'] = $subject->subject_title;
+			$temp['number_of_lessons'] = $subject->number_of_lessons;
+			$temp['tools'] = '<a class="update open-modal btn btn-primary waves-effect waves-light ml-2 p-1" data="update" data-modal="modal-2" subj_id="'.$subject->subject_id.'" href="#">Edit</a>
+								<a class="delete btn btn-danger waves-effect waves-light ml-2 p-1" subj_id="'.$subject->subject_id.'" href="#">Delete</a>';
+			$data[] = $temp;
+		}
+		$out['data'] = $data;
+		echo json_encode($out); 
 	}
 
 	public function add(){

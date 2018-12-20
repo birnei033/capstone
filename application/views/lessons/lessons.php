@@ -9,8 +9,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        Lesson List
-                        
+                        Lesson List                      
                     </div>
                     <!-- /.panel-heading -->
                     <div class="card-block">
@@ -30,9 +29,6 @@
                     </div>
                     <!-- /.panel-body -->
                 </div>
-                <!-- <button data-modal="modal-2" data="add" class="btn btn-primary waves-effect md-trigger open-modal">
-                        Add Lesson
-                    </button> -->
             </div>
         </div>
 

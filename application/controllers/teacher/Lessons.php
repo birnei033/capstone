@@ -68,7 +68,7 @@ class Lessons extends CI_Controller {
 			$sub['lesson_title'] = $lesson->lesson_title;
 			$sub['lesson_author'] = $lesson->lesson_author;
 			$sub['subject'] = $subj[$lesson->subject_id];
-			$sub['tool'] = '<a class="btn btn-primary waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons/lesson_preview').'?preview=.'.$lesson->lesson_title.'">Preview</a>'
+			$sub['tool'] = '<a class="btn btn-primary waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons/lesson_preview').'?preview='.$lesson->lesson_title.'">Preview</a>'
 			.'<a class="btn btn-inverse waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons').'/edit?edit='.$lesson->lesson_title.'">Edit</a>'
 			.'<a class="delete btn btn-danger waves-effect waves-light ml-2 p-1" lesson_id="'.$lesson->id.'" href="#">Delete</a>';
 			$data[] = $sub;
@@ -154,6 +154,7 @@ class Lessons extends CI_Controller {
 			$previewQuery = $_GET['preview'];
 			$query = "SELECT * FROM lessons WHERE lesson_title = '$previewQuery'";
 			$res = $this->lessons_model->query($query);
+			$data = array();
 			foreach ($res as $content) {
 				$data['preview'] = $content->lesson_content;
 			}

@@ -20,9 +20,7 @@ jQuery(document).ready(function ($) {
     // $.get("your_students/ajax_get", function(data, status){
     //    console.log(data);
     //   });
-    var datat = $('#alt-pg-test').DataTable({
-        // processing: true,
-        // serverSide: true,
+    var students_table = $('#alt-pg-test').DataTable({
         ajax: {
             url: "your_students/ajax_get",
             type: "post",
@@ -39,9 +37,7 @@ jQuery(document).ready(function ($) {
         responsive: true
     });
 
-    var lessonst = $('#alt-pg-lessons').DataTable({
-        // processing: true,
-        // serverSide: true,
+    var lessons_table = $('#alt-pg-lessons').DataTable({
         ajax: {
             url: "lessons/ajax_get_lessons/ajax_get",
             type: "post",
@@ -52,6 +48,21 @@ jQuery(document).ready(function ($) {
             { "data": "lesson_author" },
             { "data": "subject" },
             { "data": "tool" }   
+        ],
+        pagingType: "full_numbers",
+        responsive: true
+    });
+
+    var subjects_table = $('#subjects-table').DataTable({
+        ajax: {
+            url: "subjects/ajax_get_subject",
+            type: "post",
+        },
+        columns: [
+            { "data": "subject_id" },
+            { "data": "subject_title" },
+            { "data": "number_of_lessons" },
+            { "data": "tools" }  
         ],
         pagingType: "full_numbers",
         responsive: true

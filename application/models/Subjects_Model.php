@@ -38,5 +38,14 @@ class Subjects_Model extends CI_Model {
         $this->db->where('subject_id', $data['subject_id']);
         return $this->db->update('subjects'); 
     }
+
+    public function ajax_getAllSubjects(){
+        $query = $this->db->get('subjects');
+        return  $query->result();
+        // foreach ($subjects as $subject) {
+        //     $data[$subject->subject_id] = $subject->subject_title;
+        // }
+        // return $data;
+    }
   
 }

@@ -9,4 +9,5 @@
 
 .dataTable.table td, .dataTable.table th {
     padding: 7px !important;
+    vertical-align: middle;
 }

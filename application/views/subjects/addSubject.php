@@ -10,39 +10,22 @@
                     <div class="card">
                         <div class="card-header">
                             Subject List
-                            
                         </div>
                         <!-- /.panel-heading -->
                         <div class="card-block">
-                            <div class="table-responsive">
-                                <table class="table table-de table-hover">
+                            <div class="table-responsive dt-responsive">
+                                <table id="subjects-table" class="table  table-hover nowrap" style="100%">
                                     <thead>
                                         <tr>
                                             <th>Subject ID #</th>
                                             <th>Subject Title</th>
                                             <th>Number of Lessons</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                    <?php  
-                                        foreach ($subjects as $subject) {
-                                    ?>
-                                        <tr>
-                                            <td><?php echo $subject->subject_id; ?></td>
-                                            <td><?php echo $subject->subject_title; ?></td>
-                                            <td><?php echo $subject->number_of_lessons; ?></td>
-                                            <td><a class="update open-modal waves-effect md-trigger" data="update" data-modal="modal-2" subj_id="<?php echo $subject->subject_id; ?>" href="#">Edit</a></td>
-                                            <td><a class="delete" subj_id="<?php echo $subject->subject_id; ?>" href="#">Delete</a></td>
-                                        </tr>
-                                        <?php  }  ?>
-                                    </tbody>
                                 </table>
-                                <div class="col-sm-12">
-                                </div>
-                                            </div>
-                            <!-- /.table-responsive -->
+                            </div>
                         </div>
-                        <!-- /.panel-body -->
                     </div>
                     <hr>
                     <button data-modal="modal-2" data="add" class="btn btn-primary waves-effect md-trigger open-modal">

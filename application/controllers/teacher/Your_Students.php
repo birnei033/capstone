@@ -42,9 +42,9 @@ class Your_Students extends CI_Controller {
         $datas = json_encode($data);
         // echo $datas;
         $dataa['data'] = $data;
-        $dataa['draw'] = 20;
-        $dataa['recordsTotal']= count($students);
-        $dataa['recordsFiltered']= $students;
+        // $dataa['draw'] = 20;
+        // $dataa['recordsTotal']= count($students);
+        // $dataa['recordsFiltered']= $students;
         echo json_encode($dataa);
     }
 }
