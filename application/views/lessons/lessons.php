@@ -14,48 +14,19 @@
                     </div>
                     <!-- /.panel-heading -->
                     <div class="card-block">
-                        <div class="table-responsive">
-                            <table class="table table-de table-hover">
+                        <div class="table-responsive dt-responsive">
+                            <table id="alt-pg-lessons" class="table  table-hover nowrap" style="100%">
                                 <thead>
                                     <tr>
-                                        <th style=" max-width: 24px; width: 107px;">Lesson ID #</th>
+                                        <th>Lesson ID #</th>
                                         <th>Lesson Title</th>
                                         <th>Author</th>
                                         <th>Subject</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                <?php  
-                                //  var_dump($data['lessons']);
-                                    // foreach ($data as $lesson) { 
-                                        for ($i=0; $i < count($data['lessons']) ; $i++) { 
-                                            # code...
-                                        // }
-                                ?>  
-                                    <tr>
-                                        <td><?php 
-                                        
-                                        echo $data['lessons'][$i]->id; ?></td>
-                                        <td>
-                                            <strong><?php echo $data['lessons'][$i]->lesson_title; ?></strong>
-                                            <br><small>
-                                                <a class="text-primary" href="<?php echo teacher_base('lessons/lesson_preview'); ?>?preview=<?php echo $data['lessons'][$i]->lesson_title; ?>">Preview</a> |
-                                                <a href="<?php echo teacher_base('lessons'); ?>/edit?edit=<?php echo $data['lessons'][$i]->lesson_title; ?>">Edit</a> |
-                                                <a class="delete text-danger" lesson_id="<?php echo $data['lessons'][$i]->id; ?>" href="#">Delete</a>
-                                            </small>
-                                        </td>
-                                        <td><?php echo $data['lessons'][$i]->lesson_author; ?></td>
-                                        <td><?php echo isset($data['subject'][$data['lessons'][$i]->subject_id]) ? $data['subject'][$data['lessons'][$i]->subject_id] : ""; ?></td>
-                                        <!-- <td><a class="update open-modal waves-effect md-trigger" data-modal="modal-2" data="update"  lesson_id="<?php echo $data['lessons'][$i]->id; ?>" href="#">Edit</a></td>
-                                        <td><a class="delete" lesson_id="<?php echo $data['lessons'][$i]->id; ?>" href="#">Delete</a></td> -->
-                                    </tr>
-                                    <?php  }  ?>
-                                    
-                                </tbody>
                             </table>
-                           
                         </div>
-                        <!-- /.table-responsive -->
                     </div>
                     <!-- /.panel-body -->
                 </div>

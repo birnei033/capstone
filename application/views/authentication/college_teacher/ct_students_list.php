@@ -3,22 +3,62 @@
             $('#page-title').text('Your Students');
         });
     </script>
- 
+  
                         <!-- <h1 class="page-header">Lessons</h1> -->
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
-                    <div class="card-header">
-                      
-                        
+                <div class="card-header">
+                        <button class="btn btn-primary  waves-effect md-trigger" data-modal="modal-add-student">Add Your Student</button>
                     </div>
-                    <!-- /.panel-heading -->
+                    <!-- MODAL - ADD - STUDENT -->
+                    <div class="md-modal md-effect-1" id="modal-add-student">
+                        <div class="md-content">
+                            <div class="card p-0">
+                                <div class="card-header">
+                                    <h5>Default Password is "changeme"</h5>
+                                    <span>They have to change it on first login.</span>
+                                    <!--<span>Add class of <code>.form-control</code> with <code>&lt;input&gt;</code> tag</span>-->
+                                </div>
+                                <div class="card-block">
+                                    <form class="" action="<?php echo teacher_base('student_registration/add') ?>" method="post">
+                                        <div class="form-group form-default ">
+                                            <select name="s-program" class="select-programss form-control col-sm-12" >
+                                            <?php
+                                                foreach ($programs as $key => $val) {
+                                                echo '<option value="'.$key.'">'.$val.'</option>';
+                                                }
+                                            ?>
+                                            </select>
+                                        </div>
+                                        <div class="form-group form-default ">
+                                            <input type="text" name="s-login-name" class="form-control" placeholder="Enter Student's Login Name" required="">
+                                            <!-- <span class="form-bar"></span>
+                                            <label class="float-label">Students' Login Name</label> -->
+                                        </div>
+                                        <div class="form-group form-default ">
+                                            <input type="text" name="s-school-id" class="form-control" placeholder="Enter Student's School ID" required="">
+                                            <!-- <span class="form-bar"></span>
+                                            <label class="float-label">Student's School ID</label> -->
+                                        </div>
+                                        <div class="form-group  ">
+                                            <input type="text" name="s-full-name" class="form-control" placeholder="Enter Student's Full Name" required="">
+                                            <!-- <span class="form-bar"></span>
+                                            <label class="float-label">Student's Full Name</label> -->
+                                        </div>
+                                        <button type="submit" id="" class="btn btn-primary">Add</button>
+                                        <button type="button" class="btn btn-danger waves-effect md-close">Close</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="card-block">
-                        <div class="table-responsive">
-                            <table class="table table-de table-hover">
+                        <div class="table-responsive dt-responsive">
+                            <table id="alt-pg-test" class="table  table-hover nowrap" style="100%">
                                 <thead>
                                     <tr>
-                                        <th style=" max-width: 24px; width: 107px;">Student ID #</th>
+                                        <th>Student ID #</th>
                                         <th>School ID</th>
                                         <th>Login Name</th>
                                         <th>Student Full Name</th>
@@ -26,30 +66,9 @@
                                         <th>Password Reset</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                <?php 
-                                    foreach ($students as $student) { ?>
-                                        <tr>
-                                            <td><?php echo $student->student_id ?></td>
-                                            <td><?php echo $student->school_id ?></td>
-                                            <td><?php echo $student->student_login_name ?></td>
-                                            <td><?php echo $student->student_full_name ?></td>
-                                            <td><?php echo $programs[$student->student_program] ?></td>
-                                            <td><a class="btn btn-danger" href="<?php echo teacher_base('your_student/password_reset/').$student->student_id ?>">Reset</a></td>
-                                        </tr>
-                                   <?php }
-                                ?>
-                                    
-                                </tbody>
                             </table>
-                           
-                        </div>
-                        <!-- /.table-responsive -->
+                        </div>  
                     </div>
-                    <!-- /.panel-body -->
                 </div>
-                <!-- <button data-modal="modal-2" data="add" class="btn btn-primary waves-effect md-trigger open-modal">
-                        Add Lesson
-                    </button> -->
             </div>
         </div>

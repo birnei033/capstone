@@ -27,7 +27,17 @@ class Lessons_Model extends CI_Model {
 
     public function getSubjects(){
         $query = $this->db->get('subjects');
-		return  $query->result();
+        return  $query->result();
+    
+    }
+    public function getSubjectsArray(){
+        $query = $this->db->get('subjects');
+        $res =  $query->result();
+        $data = array();
+        foreach ($res as $value) {
+            $data[$value->subject_id] = $value->subject_title;
+        }
+        return $data;
     }
     public function edit($a){
         $this->db->set($a);

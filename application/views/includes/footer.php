@@ -43,8 +43,22 @@
     <script src="<?php echo base_url(); ?>assets/themf/js/jquery.mCustomScrollbar.concat.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
     <!-- jquery sortable js -->
-    <script type="text/javascript" src="../files/bower_components/Sortable/js/Sortable.js"></script>
-    <script type="text/javascript" src="../files/assets/pages/sortable-custom.js"></script>
+    <script type="text/javascript" src="<?php echo themf(); ?>bower_components/Sortable/js/Sortable.js"></script>
+    <script type="text/javascript" src="<?php echo themf(); ?>assets/pages/sortable-custom.js"></script>
+
+    <!-- data-table js -->
+    <script src="<?php echo themf(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo themf(); ?>bower_components/datatables.net-buttons/js/dataTables.buttons.min.js"></script>
+    <script src="<?php echo themf(); ?>pages/data-table/js/jszip.min.js"></script>
+    <script src="<?php echo themf(); ?>pages/data-table/js/pdfmake.min.js"></script>
+    <script src="<?php echo themf(); ?>pages/data-table/js/vfs_fonts.js"></script>
+    <script src="<?php echo themf(); ?>bower_components/datatables.net-buttons/js/buttons.print.min.js"></script>
+    <script src="<?php echo themf(); ?>bower_components/datatables.net-buttons/js/buttons.html5.min.js"></script>
+    <script src="<?php echo themf(); ?>bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="<?php echo themf(); ?>bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+    <script src="<?php echo themf(); ?>bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+
 
     <!-- Float Chart js -->
     <script src="<?php echo base_url(); ?>assets/themf/pages/chart/float/jquery.flot.js"></script>

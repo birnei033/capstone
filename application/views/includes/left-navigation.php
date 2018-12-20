@@ -56,14 +56,6 @@
                     </li>
                 </ul>
             </li>
-            <!-- <li class=" ">
-                <a href="<?php echo base_url(); ?>lessons" class="waves-effect waves-dark">
-                <span class="pcoded-micon">
-                    <i class="feather icon-menu"></i>
-                </span>
-                <span class="pcoded-mtext">Lessons</span>
-            </a>
-            </li> -->
             <li class="">
                 <a href="<?php echo teacher_base('subjects'); ?>" class="waves-effect waves-dark">
                 <span class="pcoded-micon">
@@ -72,23 +64,13 @@
                 <span class="pcoded-mtext">Subjects</span>
             </a>
             </li>
-            <li class="pcoded-hasmenu ">
-                <a href="javascript:void(0)" class="waves-effect waves-dark">
-                    <span class="pcoded-micon"><i class="feather icon-home"></i></span>
-                    <span class="pcoded-mtext">Your Students</span>
-                </a>
-                <ul class="pcoded-submenu">
-                    <li class="">
-                        <a href="<?php echo teacher_base('your_students'); ?>" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">Student List</span>
-                        </a>
-                    </li>
-                    <li class="">
-                        <a href="<?php echo teacher_base('student_registration'); ?>" class="waves-effect waves-dark">
-                            <span class="pcoded-mtext">Add Your Student</span>
-                        </a>
-                    </li>
-                </ul>
+            <li class="">
+                <a href="<?php echo teacher_base('your_students'); ?>" class="waves-effect waves-dark">
+                <span class="pcoded-micon">
+                    <i class="feather icon-menu"></i>
+                </span>
+                <span class="pcoded-mtext">Your Students</span>
+            </a>
             </li>
         </ul>
     </div>

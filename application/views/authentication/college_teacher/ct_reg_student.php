@@ -6,7 +6,7 @@
  
                         <!-- <h1 class="page-header">Lessons</h1> -->
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-md-12 col-lg-5">
             <div class="card">
                 <div class="card-header">
                     <h5>Default Password is "changeme"</h5>
@@ -26,7 +26,14 @@
                             <label class="float-label">Student's School ID</label> -->
                         </div>
                         <div class="form-group form-default ">
-                        <select class="js-example-placeholder-multiple col-sm-12" multiple="multiple">
+                        <!-- <select class="js-example-placeholder-multiple col-sm-12" multiple="multiple">
+                        <?php
+                            foreach ($programs as $key => $val) {
+                            echo '<option value="'.$key.'">'.$val.'</option>';
+                            }
+                        ?>
+                        </select> -->
+                        <select class="js-example-basic-single js-example-responsive col-sm-12" style="width:100%">
                         <?php
                             foreach ($programs as $key => $val) {
                             echo '<option value="'.$key.'">'.$val.'</option>';

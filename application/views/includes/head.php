@@ -30,8 +30,12 @@
     <!-- Multi Select css -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/bower_components/bootstrap-multiselect/css/bootstrap-multiselect.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/bower_components/multiselect/css/multi-select.css" />
-
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/component.css">
+      <!-- Data Table Css -->
+    <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>bower_components/datatables.net-bs4/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>/pages/data-table/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
+
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/widget.css">

@@ -41,20 +41,43 @@ class Lessons extends CI_Controller {
     public function index()
 	{
 		$this->functions->is_admin();
-		$data['data']['lessons'] = $this->lessons_model->getAll();
-		$subj = $this->lessons_model->getSubjects();
-		foreach ($subj as $s) {
-			$data['data']['subject'][$s->subject_id] = $s->subject_title;
-			// var_dump($s->subject_id);
-		}
+		// $data['data']['lessons'] = $this->lessons_model->getAll();
+		// $subj = $this->lessons_model->getSubjects();
+		// var_dump($subj);
+		// foreach ($subj as $s) {
+		// 	$data['data']['subject'][$s->subject_id] = $s->subject_title;
+		// 	// var_dump($s->subject_id);
+		// }
 		// var_dump($data['data']);
 		
 		$this->load->view('includes/head');
 		$this->load->view('includes/top-navigation');
 		$this->load->view('includes/left-navigation');
-		$this->load->view('lessons/lessons', $data);
+		$this->load->view('lessons/lessons');
 		$this->load->view('includes/footer');
 
+	}
+
+	public function ajax_get_lessons(){
+		$lessons = $this->lessons_model->getAll();
+		$subj = $this->lessons_model->getSubjectsArray();
+		$data = array();
+		
+		foreach ($lessons as $lesson) {
+			$sub['id'] = $lesson->id;
+			$sub['lesson_title'] = $lesson->lesson_title;
+			$sub['lesson_author'] = $lesson->lesson_author;
+			$sub['subject'] = $subj[$lesson->subject_id];
+			$sub['tool'] = '<a class="btn btn-primary waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons/lesson_preview').'?preview=.'.$lesson->lesson_title.'">Preview</a>'
+			.'<a class="btn btn-inverse waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons').'/edit?edit='.$lesson->lesson_title.'">Edit</a>'
+			.'<a class="delete btn btn-danger waves-effect waves-light ml-2 p-1" lesson_id="'.$lesson->id.'" href="#">Delete</a>';
+			$data[] = $sub;
+		}
+		$dataa['data'] = $data;
+        // $dataa['draw'] = 20;
+        // $dataa['recordsTotal']= count($lessons);
+        // $dataa['recordsFiltered']= $students;
+        echo json_encode($dataa);
 	}
 
 	public function add(){ // adding lessons view
