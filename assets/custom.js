@@ -1,3 +1,4 @@
+var subjects_table, lessons_table;
 jQuery(document).ready(function ($) {
     var url = window.location.href;
     $('nav ul.pcoded-item li  a').each(function (index, element) {
@@ -37,7 +38,7 @@ jQuery(document).ready(function ($) {
         responsive: true
     });
 
-    var lessons_table = $('#alt-pg-lessons').DataTable({
+    lessons_table = $('#alt-pg-lessons').DataTable({
         ajax: {
             url: "lessons/ajax_get_lessons/ajax_get",
             type: "post",
@@ -53,7 +54,7 @@ jQuery(document).ready(function ($) {
         responsive: true
     });
 
-    var subjects_table = $('#subjects-table').DataTable({
+     subjects_table = $('#subjects-table').DataTable({
         ajax: {
             url: "subjects/ajax_get_subject",
             type: "post",
@@ -67,7 +68,184 @@ jQuery(document).ready(function ($) {
         pagingType: "full_numbers",
         responsive: true
     });
+
 });
+
+// SWEET ALERTS
+function delete_subject(id, url, subjc_name){
+    swal({
+        title: "Are you sure?",
+        text: "You are about to delete "+subjc_name+"!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+      })
+      .then((willDeleted) => {
+        if (willDeleted) {
+            var data = {
+                data_type: "ajax",
+                subj_id: id
+            };
+            console.log(data);
+            $.ajax({
+                url : url+"delete",
+                type: "POST",
+                data: data,
+                dataType: "JSON",
+                success: function(data)
+                {
+                    console.log("true");
+                    swal("Poof! "+subjc_name+" file has been deleted!", {
+                        icon: "success",
+                    });
+                    subjects_table.ajax.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    console.log("false");
+                    swal(textStatus+" "+errorThrown);
+                }
+            });
+         
+        }
+      });
+}
+
+// MODALS
+function update_subject(id, url){
+    $.ajax({
+        url : url+"getbyid/"+id,
+        type: "POST",
+        dataType: "JSON",
+        success: function(data)
+        {
+            console.log(data.subject.subject_title);
+            swal("", {
+                content: {
+                    element: "input",
+                    attributes: {
+                      placeholder: "Type your password",
+                      type: "text",
+                      value: data.subject.subject_title,
+                      name: "subj-name"
+                    },
+                },
+                buttons: true
+              })
+              .then((value) => {
+                  if (value != "" && value != null) {
+                    renameSubject(id, url, value);
+                  }
+              });
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            alert(textStatus+" "+errorThrown);
+        }
+    });
+}
+function renameSubject(id, url, value){
+    var data = {
+        subj_name : value,
+        data_type: "ajax"
+      };
+      console.log(data);
+    $.ajax({
+        url : url+"update/"+id,
+        type: "POST",
+        data: data,
+        dataType: "JSON",
+        success: function(data)
+        {
+            console.log(data);
+            swal("Updated!", {
+                icon: "success",
+            });
+            subjects_table.ajax.reload();
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            console.log("false");
+            swal(textStatus+" "+errorThrown);
+        }
+    });
+}
+
+function addSubject(url){
+    swal("Input the title of your subject.", {
+        content: {
+            element: "input",
+            attributes: {
+            //   placeholder: "SubjectTitle",
+              type: "text",
+            //   value: data.subject.subject_title,
+            //   name: "subj-name"
+            },
+        },
+        buttons: true
+      })
+      .then((value) => {
+          if (value != "" && value != null) {
+            var data = {
+                subj_name : value,
+                data_type: "ajax"
+              };
+              console.log(data);
+            $.ajax({
+                url : url+"subjects/add",
+                type: "POST",
+                data: data,
+                dataType: "JSON",
+                success: function(data)
+                {
+                    console.log(data);
+                    swal(value+" Successfullly Added!", {
+                        icon: "success",
+                    });
+                    subjects_table.ajax.reload();
+                },
+                error: function (jqXHR, textStatus, errorThrown)
+                {
+                    console.log("false");
+                    swal(textStatus+" "+errorThrown);
+                }
+            });
+          }
+      });
+}
+// $('.open-modal').each(function (index, element) {
+//     $(this).click(function (e) { 
+//         e.preventDefault();
+//         var method = $(this).attr('data');
+//         var url = "";
+//         if (method == "add") {
+//             url = "<?php echo teacher_base('subjects/add/'); ?>";
+//             $('#modal-form').attr('action', url);
+//             $('#modal-form #subj-name').val("");
+//             $('#modal-form-update').text(method);
+//         }else if(method == "update"){
+//             var id = $(this).attr('subj_id');
+//             url = "<?php echo teacher_base('subjects/getbyid/'); ?>"+id;
+//             $('#modal-form').attr('action', url);
+//             $('#modal-form-update').text(method);
+//             $.ajax({
+//             url : url,
+//             type: "POST",
+//             dataType: "JSON",
+//             success: function(data)
+//             {
+//                $('#modal-form #subj-name').val(data.subject.subject_title);
+//             },
+//             error: function (jqXHR, textStatus, errorThrown)
+//             {
+//                 alert(textStatus+" "+errorThrown);
+//             }
+//         });
+//         url = "<?php echo teacher_base('subjects/update/'); ?>"+id;
+//         $('#modal-form').attr('action', url);
+//         }
+//     });
+// });
 
 $( function() {
     $( "#draggablePanelList,#draggableMultiple,#draggableWithoutImg" ).sortable({

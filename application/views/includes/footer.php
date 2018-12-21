@@ -34,6 +34,7 @@
     <!-- sweet alert modal.js intialize js -->
     <!-- sweet alert js -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/bower_components/sweetalert/js/sweetalert.min.js"></script>
+    <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <!-- <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/js/modal.js"></script> -->
     <!-- modalEffects js nifty modal window effects -->
     <script src="<?php echo base_url(); ?>assets/themf/js/classie.js"></script>

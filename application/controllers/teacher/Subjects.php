@@ -49,8 +49,8 @@ class Subjects extends CI_Controller {
 			$temp['subject_id'] = $subject->subject_id;
 			$temp['subject_title'] = $subject->subject_title;
 			$temp['number_of_lessons'] = $subject->number_of_lessons;
-			$temp['tools'] = '<a class="update open-modal btn btn-primary waves-effect waves-light ml-2 p-1" data="update" data-modal="modal-2" subj_id="'.$subject->subject_id.'" href="#">Edit</a>
-								<a class="delete btn btn-danger waves-effect waves-light ml-2 p-1" subj_id="'.$subject->subject_id.'" href="#">Delete</a>';
+			$temp['tools'] = '<a onclick="update_subject('.$subject->subject_id.', \''.teacher_base("subjects/").'\')" class="btn btn-primary waves-effect waves-light ml-2 p-1" href="#">Rename</a>
+								<a onclick="delete_subject('.$subject->subject_id.', \''.teacher_base("subjects/").'\', \''.$subject->subject_title.'\')" class=" btn btn-danger waves-effect waves-light ml-2 p-1" href="#">Delete</a>';
 			$data[] = $temp;
 		}
 		$out['data'] = $data;
@@ -59,20 +59,20 @@ class Subjects extends CI_Controller {
 
 	public function add(){
 		$this->functions->is_admin();
-		$subj_name = $this->input->post('subj-name');
-		$dataType = $this->input->post('data-type');
+		$subj_name = $this->input->post('subj_name');
+		$dataType = $this->input->post('data_type');
 		if($dataType == 'ajax'){
-			if (empty($subj_name) || is_null($subj_name)) {
-				echo json_encode(array("status" => FALSE, "alert"=>$this->alert("Please Fill the Field", 'danger')));
-			}else{
+			// if (empty($subj_name) || is_null($subj_name)) {
+				// echo json_encode(array("status" => FALSE, "alert"=>$this->alert("Please Fill the Field", 'danger')));
+			// }else{
 				$data = array(
-					'subject_title' => $this->input->post('subj-name'),
+					'subject_title' => $this->input->post('subj_name'),
 					'create_on' => date('Y-d-m')
 				);
 				$add = $this->subjects_model->add($data);
-				// echo json_encode(array("status" => $add));
-				redirect(teacher_base('subjects'), 'refresh');
-			}
+				echo json_encode(array("status" => true));
+				// redirect(teacher_base('subjects'), 'refresh');
+			// }
 		}
 	}
 
@@ -88,20 +88,20 @@ class Subjects extends CI_Controller {
 	public function getById($id){
 		$this->functions->is_admin();
 		$result = $this->subjects_model->getSubjectByID($id);
-		echo json_encode(array("subject"=>$result[0]));
+		echo json_encode(array("subject"=>$result[0]));	
 	}
 	public function update($id){
 		$this->functions->is_admin();
-		$dataType = $this->input->post('data-type');
+		$dataType = $this->input->post('data_type');
 		if($dataType == 'ajax'){
 			$data = array(
-				'subject_title'=> $this->input->post('subj-name'),
+				'subject_title'=> $this->input->post('subj_name'),
 				'subject_id' => $id,
 				'updated_on'=>date('Y-d-m')
 			);
 			$updateResult = $this->subjects_model->update($data);
-			// echo json_encode(array("status" => $updateResult));
-			redirect(teacher_base('subjects'));
+			echo json_encode(array("status" => $updateResult));
+			// redirect(teacher_base('subjects'));
 		}
 	}
 }
