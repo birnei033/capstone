@@ -14,6 +14,7 @@ class Your_Students extends CI_Controller {
         $this->functions->is_admin();
         $data['students'] = $this->students_model->getAllWith($this->session->userdata['logged_in']['id']);
         $data['programs'] = $this->students_model->getAllPrograms();
+        $data['subjects'] = $this->students_model->getAllSubjectTitles();
         // var_dump($data['programs']);
         $data['ajax'] = json_encode(array("students" => $data['students'], "programs"=>$data['programs']));
         // die($data['ajax']);
@@ -24,27 +25,74 @@ class Your_Students extends CI_Controller {
     public function ajax_get(){
         $students = $this->students_model->getAllWith($this->session->userdata['logged_in']['id']);
         $programs = $this->students_model->getAllPrograms();
+        $subjects = $this->students_model->getAllSubjectTitles();
         $data = array();
-        $this->datatables->select('*')->from('college_students');
         foreach ($students as $student) {
+            $url = teacher_base("your_students/ajax_delete");
+			$delete_alert = $student->student_id. ", '".$url."', 'Are You Sure?', 'You are about to delete student # ".$student->school_id."'";
             $subarray = array();
+           
             $subarray["student_id"] = $student->student_id;
             $subarray['school_id'] = $student->school_id;
             $subarray['student_login_name'] = $student->student_login_name;
             $subarray['student_full_name'] = $student->student_full_name;
-            $subarray['student_program'] = $programs[$student->student_program];
-            $subarray['student_subjects'] = '<a class="btn btn-primary waves-effect waves-light ml-2 p-1" href="'.teacher_base('your_student/password_reset/').$student->student_id.'">Reset</a>'
-                                            .'<a class="btn btn-danger waves-effect waves-light ml-2 p-1" href="'.teacher_base('your_student/delete/').$student->student_id.'">Delete</a>'
-                                            .'<a class="btn btn-inverse waves-effect waves-light ml-2 p-1" href="'.teacher_base('your_student/update/').$student->student_id.'">Update</a>';
+            $subarray['student_subject'] = $student->student_subjects != 0 ? $subjects[$student->student_subjects] : "";
+            $subarray['student_program'] =$retVal = $student->student_program != 0 ? $programs[$student->student_program] : "" ; ;
+            $subarray['actions'] = '<button '.tooltip("Reset").' onclick="student_password_reset('.$student->student_id.', \''.teacher_base().'\')" class="btn btn-primary waves-effect waves-light ml-2 p-1" >Reset</button>'
+                                            .'<button onclick="delete_alert('.$delete_alert.')" '.tooltip("Delete").' class="btn btn-danger waves-effect waves-light ml-2 p-1" >Delete</button>'
+                                            .'<button onclick="open_update_modal('.$student->student_id.', \''.teacher_base().'\', \'#student-update-form\')"  data-modal="modal-update-student" '.tooltip("Update").' href="'.teacher_base().'"  class="student-update btn btn-inverse waves-effect waves-light ml-2 p-1" up-id="'.$student->student_id.'">Update</button>';
+                                           
             $data[] = $subarray;
         }
-        // echo $this->datatables->generate();
         $datas = json_encode($data);
-        // echo $datas;
+
         $dataa['data'] = $data;
-        // $dataa['draw'] = 20;
-        // $dataa['recordsTotal']= count($students);
-        // $dataa['recordsFiltered']= $students;
         echo json_encode($dataa);
+    }
+
+    public function ajax_delete(){
+        $id = $this->input->post('id');
+		$dataType = $this->input->post('data_type');
+		if($dataType == "ajax"){	
+			$delete_result = $this->students_model->delete($id);	
+			echo json_encode(array("status" => true));
+		}
+    }
+    public function ajax_get_students($id){
+        $result = $this->students_model->getById($id);
+        $data = array();
+        foreach ($result as $key => $value) {
+            $data[$key] = $value;
+        }
+        echo json_encode($data[0]);
+    }
+    
+    public function ajax_update_your_student($id){
+        $name = $this->input->post('name');
+		$scool_id = $this->input->post('id');
+		$fname = $this->input->post('fname');
+        $program = $this->input->post('program');
+        $subject = $this->input->post('subject');
+		$data = array(
+            'student_id' => $id,
+			'school_id'=> $scool_id,
+			'student_login_name'=>$name,
+			'student_full_name' => $fname,
+            'student_program' =>$program ,
+            'student_subjects' =>$subject,
+			'date_updated' => mdate('%Y-%m-%d')
+		);
+		$result = $this->students_model->update($data);
+		echo json_encode(array('result'=>true));
+    }
+
+    public function ajax_student_password_reset($id){
+        $data = array(
+            'student_id' => $id,
+            'student_password' => "changeme",
+			'date_updated' => mdate('%Y-%m-%d')
+        );
+        $result = $this->students_model->reset_password($data);
+		echo json_encode(array('result'=>true));
     }
 }

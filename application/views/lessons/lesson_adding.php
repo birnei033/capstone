@@ -1,5 +1,9 @@
 
-
+<script>
+        jQuery(document).ready(function ($) {
+            $('#page-title').text('Add Your Lesson');
+        });
+    </script>
 
         <!-- <div class="lessons sidebar"> -->
         <div class="">
@@ -8,6 +12,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-sm-6">
+                            <?php echo validation_errors(); ?>
                                 <input type="text" placeholder="Lesson Title" name="lesson-title" class="form-control ">
                             </div>            
                             <div class="col-sm-6">

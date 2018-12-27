@@ -2,7 +2,6 @@
  * @license Copyright (c) 2003-2018, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see https://ckeditor.com/legal/ckeditor-oss-license
  */
-const base_url ="/ignite";
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
@@ -16,7 +15,7 @@ CKEDITOR.editorConfig = function( config ) {
    config.filebrowserFlashUploadUrl = '/ignite/assets/ckeditor/kcfinder/upload.php?opener=ckeditor&type=flash';
    config.skin = 'kama';
    // config.extraPlugins = 'image2';
-   config.extraPlugins = 'embed,embedbase,notificationaggregator,notification,youtube,codesnippet,quicktable,bt_table,panelbutton,floatpanel,language';
+   config.extraPlugins = 'embedbase,notificationaggregator,notification,codesnippet,quicktable,bt_table,panelbutton,floatpanel,language';
    config.youtube_responsive = true;
    config.allowedContent = true;
    config.image_previewText = CKEDITOR.tools.repeat( ' ', 1 );

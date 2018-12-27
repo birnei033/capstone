@@ -44,7 +44,7 @@ class Lessons_Model extends CI_Model {
         $this->db->where('id', $a['id']);
         return $this->db->update('lessons'); 
     }
-    public function delete(){
+    public function delete($id){
         return $this->db->delete('lessons', array('id'=>$id));
     }
 }

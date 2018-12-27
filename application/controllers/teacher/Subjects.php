@@ -46,7 +46,7 @@ class Subjects extends CI_Controller {
 		$subjects = $this->subjects_model->ajax_getAllSubjects();
 		$data = array();
 		foreach ($subjects as $subject) {
-			$temp['subject_id'] = $subject->subject_id;
+			// $temp['subject_id'] = $subject->subject_id;
 			$temp['subject_title'] = $subject->subject_title;
 			$temp['number_of_lessons'] = $subject->number_of_lessons;
 			$temp['tools'] = '<a onclick="update_subject('.$subject->subject_id.', \''.teacher_base("subjects/").'\')" class="btn btn-primary waves-effect waves-light ml-2 p-1" href="#">Rename</a>
@@ -67,7 +67,7 @@ class Subjects extends CI_Controller {
 			// }else{
 				$data = array(
 					'subject_title' => $this->input->post('subj_name'),
-					'create_on' => date('Y-d-m')
+					'create_on' => mdate('%Y-%m-%d')
 				);
 				$add = $this->subjects_model->add($data);
 				echo json_encode(array("status" => true));
@@ -97,7 +97,7 @@ class Subjects extends CI_Controller {
 			$data = array(
 				'subject_title'=> $this->input->post('subj_name'),
 				'subject_id' => $id,
-				'updated_on'=>date('Y-d-m')
+				'updated_on'=>mdate('%Y-%m-%d')
 			);
 			$updateResult = $this->subjects_model->update($data);
 			echo json_encode(array("status" => $updateResult));

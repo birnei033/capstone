@@ -58,7 +58,16 @@
     <script src="<?php echo themf(); ?>bower_components/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
     <script src="<?php echo themf(); ?>bower_components/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
     <script src="<?php echo themf(); ?>bower_components/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+    <!-- <script src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script> -->
+    <!-- <script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script> -->
 
+<!-- Bootstrap date-time-picker js -->
+    <script type="text/javascript" src="<?php echo themf(); ?>pages/advance-elements/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="<?php echo themf(); ?>bower_components/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src=".<?php echo themf(); ?>/pages/advance-elements/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- Date-range picker js -->
+    <script type="text/javascript" src="<?php echo themf(); ?>bower_components/bootstrap-daterangepicker/js/daterangepicker.js"></script>
 
 
     <!-- Float Chart js -->

@@ -1,7 +1,35 @@
-E-learning notes
+E-learning Scope
 
-Lessons associated with subjects
-subjects wil behave as category connected with id
-questions (quiz) associated with Lessons connected with id
+User Roles
+-admin / teacher
+-student <-- NEXT STEP
 
-separated user type - teacher and student
+Teacher can:
+-add subjects
+-add lessons to their subjects
+-add quizes for a specific subjects
+-register student
+
+Student Can:
+-view the lessons they are enrolled 
+-Take the quiz / exam conducted by teacher.
+-view their standings
+
+Quizes / Exam
+-score will automatically computed except for the written quizes
+-the teacher will input the score for the written quizes
+
+Quizes / Exam Types
+-Multiple Choice
+-True or False
+-Written
+
+Each quizes or exam has time limit set by the teacher.
+
+
+NEXT STEP
+-create landing page
+-create login page for student
+-create sessions for students
+-display lessons for students according to their subject enrolled
+    make sidebar as the menu of lessons.

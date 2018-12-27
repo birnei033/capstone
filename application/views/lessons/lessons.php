@@ -9,7 +9,8 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        Lesson List                      
+                        <a href="<?php echo teacher_base() ?>lessons/add" class="btn btn-primary">Add Your Lesson</a>  
+                        <!-- <input class="form-control" id="daterange">                     -->
                     </div>
                     <!-- /.panel-heading -->
                     <div class="card-block">
@@ -17,7 +18,7 @@
                             <table id="alt-pg-lessons" class="table  table-hover nowrap" style="100%">
                                 <thead>
                                     <tr>
-                                        <th>Lesson ID #</th>
+                                        <!-- <th>Lesson ID #</th> -->
                                         <th>Lesson Title</th>
                                         <th>Author</th>
                                         <th>Subject</th>
@@ -34,6 +35,22 @@
 
 <script>
     jQuery(document).ready(function ($) {
+
+//         $('#daterange').daterangepicker({
+//             timePicker: true,
+//             singleDatePicker: true,
+//             startDate: moment().startOf('minutes'),
+//             // endDate: moment().startOf('hour').add(32, 'hour'),
+//             locale: {
+//             format: 'M/DD hh:mm A'
+//         }
+//   }).on('apply.daterangepicker', function(ev, picker){
+//     console.log(picker.startDate.format('YYYY-MM-DD'));
+//     var diff = (moment() / 1000) - (picker.endDate / 1000);
+//   console.log(Math.floor(diff));
+      
+//   });
+
         $(".delete").each(function (index, element) {
             
             $(this).click(function (e) { 

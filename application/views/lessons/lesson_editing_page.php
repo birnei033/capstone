@@ -59,7 +59,10 @@
         <script src="<?php echo base_url() ?>assets/js/add-section.js"></script>
         <script>
             jQuery(document).ready(function ($) {
+                // console.log('<?php echo preg_replace( "/\'|\r|\n/", "", $content ) ?>');
                    CKEDITOR.instances.editor.setData('<?php echo preg_replace( "/\'|\r|\n/", "", $content ) ?>');
+
+                
             });
 
            </script>

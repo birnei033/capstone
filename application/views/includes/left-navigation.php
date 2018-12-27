@@ -72,6 +72,14 @@
                 <span class="pcoded-mtext">Your Students</span>
             </a>
             </li>
+            <li class="">
+                <a href="<?php echo teacher_base('quiz'); ?>" class="waves-effect waves-dark">
+                <span class="pcoded-micon">
+                    <i class="feather icon-menu"></i>
+                </span>
+                <span class="pcoded-mtext">Your Quizes / Exams</span>
+            </a>
+            </li>
         </ul>
     </div>
 </nav>

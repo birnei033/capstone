@@ -32,5 +32,6 @@ class Student_Registration extends CI_Controller {
 		);
 		$add = $this->students_model->add($data);
 		// redirect(teacher_base('your_students'), 'refresh');
+		echo json_encode(array('result'=> true));
 	}
 }
