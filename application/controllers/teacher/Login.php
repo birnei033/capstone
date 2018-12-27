@@ -20,7 +20,7 @@ class Login extends CI_Controller {
         $this->load->view('authentication/college_teacher/ct_login');
         $this->load->view('includes/footer-auth');
 	}
-	
+
 	public function login(){
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<li class="text-danger">', '</li>');

@@ -12,12 +12,17 @@ class Welcome extends CI_Controller {
 
 	public function index()
 	{
-		// $this->functions->is_admin();
-		$this->load->view('includes/head');
-		$this->load->view('includes/top-navigation');
-		$this->load->view('includes/left-navigation');
-		// $this->load->view('dashboard');
-		// echo "This is a landing page";
-		$this->load->view('includes/footer');
+		// // $this->functions->is_admin();
+		// $this->load->view('includes/head');
+		// $this->load->view('includes/top-navigation');
+		// $this->load->view('includes/left-navigation');
+		// // $this->load->view('dashboard');
+		// // echo "This is a landing page";
+		// $this->load->view('includes/footer');
+		var_dump($this->session->student_logged_in);
+		if (isset($this->session->student_logged_in)) {
+            redirect('student/login');
+		}
+		redirect('student', 'refresh');
 	}
 }

@@ -6,13 +6,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 function teacher_base($str = ''){
     return base_url('teacher/'.$str);
 }
-
+function student_base($str = ''){
+    return base_url('student/'.$str);
+}
 function themf(){
 return base_url('assets/themf/');
 }
 
 function assets(){
     return base_url('assets/');
+}
+
+function is_admin(){
+    $CI = get_instance();
+    if (isset($CI->session->logged_in)) {
+        return true;
+    }else{
+        // redirect('', 'refresh');
+        return false;
+    }
 }
 
 function button($text = "Button", $href = "#",  $class = "", $attribute = ""){

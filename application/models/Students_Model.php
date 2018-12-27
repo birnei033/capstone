@@ -22,6 +22,26 @@ class Students_Model extends CI_Model {
         $this->db->where('student_id', $a['student_id']);
         return $this->db->update('college_students');
     }
+    public function login_auth($a){
+        // // $this->db->set($a);
+        // $this->db->get_where('student_login_name', $a['student_login_name']);
+        // $this->db->where('student_password', $a['student_password']);
+        $result = $this->db->get_where('college_students', array(
+            'student_login_name'=> $a['student_login_name'],
+            'student_password'=> $a['student_password']
+        ));
+        $data = array();
+        // var_dump(count($result->result()));
+        foreach ($result->result() as $student) {
+            $temp['student_id'] = $student->student_id;
+            $temp['school_id'] = $student->school_id;
+            $temp['student_login_name'] = $student->student_login_name;
+            $temp['student_id'] = $student->student_id;
+            $temp['student_password'] = $student->student_password;
+            $data = $temp;
+        }
+        return $data;
+    }
     public function delete($id){
         return $this->db->delete('college_students', array('student_id'=>$id));
     }
@@ -50,6 +70,11 @@ class Students_Model extends CI_Model {
         return $data;
     }
     public function reset_password($a){
+        $this->db->set($a);
+        $this->db->where('student_id', $a['student_id']);
+        return $this->db->update('college_students');
+    }
+    public function change_password($a){
         $this->db->set($a);
         $this->db->where('student_id', $a['student_id']);
         return $this->db->update('college_students');
