@@ -12,9 +12,10 @@ class Student extends CI_Controller {
     }
     
     public function index(){
-		var_dump($this->session->student_logged_in);
+		// var_dump($this->session->student_logged_in);
 		if (!isset($this->session->student_logged_in)) {
             redirect('student/login');
-        }
+		}
+			student_view('blank');
     }
 }

@@ -88,12 +88,12 @@
                             <!-- <li>
                                 <?php echo teacher_base() ?>
                             </li> -->
-                            <?php if(isset($this->session->userdata['logged_in'])) { ?>
+                            <?php if(student_session() != null) { ?>
                              <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
                                         <img src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
-                                        <span><?php echo $this->session->userdata['logged_in']['name'] ?></span>
+                                        <span><?php echo student_session() != null ? student_session('student_login_name') : "Name" ?></span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
                                     <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
@@ -127,7 +127,7 @@
                              </li> 
                             <?php }else{?>
                             <li>
-                                <?php echo anchor('admin', 'Login', array('class'=>'btn btn-primary')) ?>
+                                <?php echo anchor(student_base(), 'Login', array('class'=>'btn btn-primary')) ?>
                             </li>
                             <?php }?>
                         </ul>
