@@ -25,7 +25,7 @@ Quizes / Exam Types
 -Written
 
 Each quizes or exam has time limit set by the teacher.
-
+  
 
 NEXT STEP
 -create landing page
