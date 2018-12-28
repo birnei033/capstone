@@ -2,24 +2,36 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-function card($header = "", $block = ""){
+function card_open($header = "", $col="12"){
 
-    echo '<div class="row">
-                <div class="col-sm-12">
+    echo '<div class="col-sm-'.$col.'">
                     <div class="card">
                         <div class="card-header">'
                            .$header.
                        ' </div>
                         <!-- /.panel-heading -->
-                        <div class="card-block">
-                            <div class="table-responsive dt-responsive">'
-                             .$block.  
-                           ' </div>
-                        </div>
-                    </div>
+                        <div class="card-block">';
+                          
+
+}
+function card_close(){
+       echo           
+            '       </div>
                 </div>
             </div>';
+}
+function btn($btn){
+    $btn['onclick'] = empty($btn['onclick']) ? "" : 'onclick="'.$btn['onclick'].'"' ;
+    $btn['class'] = empty($btn['class']) ? "" : $btn['class'];
+    $btn['type'] = empty($btn['type']) ? "primary" : $btn['type'];
+    $btn['attr'] = empty($btn['attr']) ? "" : $btn['attr'];
+    $btn['text'] = empty($btn['text']) ? "" : $btn['text'];
+    $btntype = empty($btn['href']) ? "button" : "a";
+    $btn['href'] = empty($btn['href']) ? "" : 'href="'.$btn['href'].'"';
 
+    return  '<'.$btntype.' '.$btn['href'].' '.$btn['attr'].' '. $btn['onclick'].' class="'.$btn['class'].' btn btn-'.$btn['type'].' waves-effect">'
+    .$btn['text'].
+    '</'.$btntype.'>';
 }
 
 function nav_item($list, $link = "#", $icon = "feather icon-home"){

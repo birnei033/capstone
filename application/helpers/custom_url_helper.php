@@ -16,7 +16,9 @@ return base_url('assets/themf/');
 function assets(){
     return base_url('assets/');
 }
-
+function images($image){
+    return base_url('assets/images/'.$image);
+}
 function is_admin(){
     $CI = get_instance();
     if (isset($CI->session->logged_in)) {

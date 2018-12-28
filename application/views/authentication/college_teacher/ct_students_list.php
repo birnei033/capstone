@@ -4,15 +4,27 @@
         });
     </script>
   <link rel="stylesheet" type="text/css" href="<?php echo themf() ?>css/component.css">
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="card">
-                <div class="card-header">
-                        <button onclick="reset_add_student_form('#student-form')" class="btn btn-primary  waves-effect md-trigger" data-modal="modal-add-student">Add Your Student</button>
-                    </div>
-                    <!-- MODAL - ADD - STUDENT -->
-                    
-                    <div class="md-modal md-effect-1" id="modal-add-student">
+        <?php card_open(
+            ' <button onclick="reset_add_student_form(\'#student-form\')" class="btn btn-primary  waves-effect md-trigger" data-modal="modal-add-student">Add Your Student</button>'
+        ) ?>
+            <div class="table-responsive dt-responsive">
+                <table id="alt-pg-test" class="table  table-hover nowrap" style="100%">
+                    <thead>
+                        <tr>
+                            <!-- <th>Student ID #</th> -->
+                            <th>School ID</th>
+                            <th>Login Name</th>
+                            <th>Student Full Name</th>
+                            <th>Student Subject</th>
+                            <th>Program</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        <?php card_close() ?>
+        
+        <div class="md-modal md-effect-1" id="modal-add-student">
                         <div class="md-content">
                             <div class="card p-0">
                                 <div class="card-header">
@@ -57,27 +69,6 @@
                         </div>
                     </div>
                     <div class="md-overlay"></div>
-                    <div class="card-block">
-                        <div class="table-responsive dt-responsive">
-                            <table id="alt-pg-test" class="table  table-hover nowrap" style="100%">
-                                <thead>
-                                    <tr>
-                                        <!-- <th>Student ID #</th> -->
-                                        <th>School ID</th>
-                                        <th>Login Name</th>
-                                        <th>Student Full Name</th>
-                                        <th>Student Subject</th>
-                                        <th>Program</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>  
-                    </div>
-                </div>
-            </div>
-        </div>
-
          <!-- MODAL - UPDATE - STUDENT -->
                     
          <div class="md-modal md-effect-1" id="modal-update-student">

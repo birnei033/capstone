@@ -1,16 +1,10 @@
-    <script>
-        jQuery(document).ready(function ($) {
-            $('#page-title').text('Lessons Test Only');
-        });
-    </script>
+<?php page_header($title) ?>
  
                         <!-- <h1 class="page-header">Lessons</h1> -->
         <div class="row">
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        Lesson List
-                        
                     </div>
                     <!-- /.panel-heading -->
                     <div class="card-block">

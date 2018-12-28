@@ -15,7 +15,7 @@
                     'link' => teacher_base('lessons')
                 ),
                 'Add' => array(
-                'link' => teacher_base('lessons/add')
+                    'link' => teacher_base('lessons/add')
                 ),
             ),
         ));

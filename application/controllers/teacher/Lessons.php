@@ -124,7 +124,7 @@ class Lessons extends CI_Controller {
 					'date_created' => date('Y-d-m')
 				);
 				$add = $this->lessons_model->add($data);
-				redirect('/lessons/lesson_preview?preview='.$lesson_title, 'refresh');
+				redirect(teacher_base().'/lessons/lesson_preview?preview='.$lesson_title, 'refresh');
 			}else{
 				$data['subjects'] = $this->lessons_model->getSubjects();
 				$this->functions->view('lessons/lesson_adding',$data);
@@ -143,6 +143,7 @@ class Lessons extends CI_Controller {
 				$data['content'] = json_decode($content->lesson_content)->content;
 				$data['id'] = $content->id;
 				$data['subject_id'] = $content->subject_id;
+				// var_dump($content->lesson_content);
 			}
 			$subj = $this->lessons_model->getSubjects();
 			$data['subjects'] = array();
@@ -171,7 +172,7 @@ class Lessons extends CI_Controller {
 			'date_created' => date('Y-d-m')
 		);
 		$result = $this->lessons_model->edit($data);
-		redirect('teacher/lessons/edit?edit='.$lesson_title.'&result='.$result, 'refresh');
+		redirect(teacher_base().'/lessons/edit?edit='.$lesson_title.'&result='.$result, 'refresh');
 		// echo $result;
 	}
 
@@ -184,6 +185,7 @@ class Lessons extends CI_Controller {
 			$data = array();
 			foreach ($res as $content) {
 				$data['preview'] = json_decode($content->lesson_content)->content;
+				$data['title'] = $content->lesson_title;
 			}
 			// var_dump($data['preview']);
 			$this->view('lessons/lesson_preview', $data);
