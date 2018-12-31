@@ -9,9 +9,21 @@ class Lessons_Model extends CI_Model {
         $this->load->helper('date');
 		$this->load->database();
     }
-
+    public function ajax_getAllSubjects($id = ""){
+        $query = $this->db->get_where('subjects',array('added_by'=>$id));
+        $subjects =  $query->result();
+        $data = array();
+        foreach ($subjects as $subject) {
+            $data[$subject->subject_id] = $subject->subject_title;
+        }
+        return $data;
+    }
     public function getAll(){
         $query = $this->db->get('lessons');
+		return  $query->result();
+    }
+    public function getAllByAuthor($id){
+        $query = $this->db->get_where('lessons', array('lesson_author'=>$id));
 		return  $query->result();
     }
 
@@ -47,6 +59,16 @@ class Lessons_Model extends CI_Model {
     public function delete($id){
         return $this->db->delete('lessons', array('id'=>$id));
     }
+    public function update_subject($data){
+        $a = array(
+            'subject_id'=> $data["subject_id"],
+			'date_updated'=>$data['updated_on']
+        );
+        $this->db->set($a);
+        $this->db->where('subject_id', $data['id']);
+        return $this->db->update('lessons'); 
+    }
+    
 }
 
 ?>

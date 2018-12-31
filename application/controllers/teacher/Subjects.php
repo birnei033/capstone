@@ -43,8 +43,8 @@ class Subjects extends CI_Controller {
 	}
 
 	public function ajax_get_subject(){
-		$subjects = $this->subjects_model->ajax_getAllSubjects();
-		$data = array();
+		$subjects = $this->subjects_model->ajax_getAllSubjects(teacher_session('id'));
+		$data = array();	
 		foreach ($subjects as $subject) {
 			// $temp['subject_id'] = $subject->subject_id;
 			$temp['subject_title'] = $subject->subject_title;
@@ -67,6 +67,7 @@ class Subjects extends CI_Controller {
 			// }else{
 				$data = array(
 					'subject_title' => $this->input->post('subj_name'),
+					'added_by' =>teacher_session('id'),
 					'create_on' => mdate('%Y-%m-%d')
 				);
 				$add = $this->subjects_model->add($data);
@@ -84,7 +85,7 @@ class Subjects extends CI_Controller {
 			echo json_encode(array("status" => $delete_result));
 		}
 	}
-
+ 
 	public function getById($id){
 		$this->functions->is_admin();
 		$result = $this->subjects_model->getSubjectByID($id);

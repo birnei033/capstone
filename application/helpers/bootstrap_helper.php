@@ -4,8 +4,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 function card_open($header = "", $col="12"){
 
-    echo '<div class="col-sm-'.$col.'">
-                    <div class="card">
+    // echo '<div class="col-sm-'.$col.'">
+               echo '     <div class="card">
                         <div class="card-header">'
                            .$header.
                        ' </div>
@@ -17,7 +17,7 @@ function card_open($header = "", $col="12"){
 function card_close(){
        echo           
             '       </div>
-                </div>
+                
             </div>';
 }
 function btn($btn){
@@ -81,6 +81,17 @@ function nav_item($list, $link = "#", $icon = "feather icon-home"){
     }
     $out .=' </li>';
     echo $out;
+}
+
+function select($values, $name = "", $attr="", $default="", $sameKeyAndValue = false){
+    $out = '<select class="form-control" name="'.$name.'" '.$attr.'>';
+    $out .= $default != "" ? '<option value selected>'.$default.'</option>' : "" ;
+    foreach ($values as $key => $value) {
+        // $out .= '<option value="'.$key.'">'.$value.'</option>';
+        $out .= $sameKeyAndValue ? '<option value="'.str_replace(" ","",$value).'">'.$value.'</option>' : '<option value="'.$key.'">'.$value.'</option>' ;
+    }
+    $out .= '</select>';
+    return $out;
 }
 
 ?>

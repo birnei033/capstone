@@ -36,11 +36,15 @@
 <div class="pcoded-content">
     <!-- [ breadcrumb ] start -->
     <div class="page-header">
-        <div class="page-block">
+    <div class="page-block" style="    padding-bottom: 0;
+    position: relative;
+    bottom: -2px;
+    left: 14px;
+    color: #fff;">
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h4 class="m-b-10" id="page-title">Dashboard</h4>
+                        <h2 class="m-b-10" id="page-title">Dashboard</h2>
                     </div>
                     <!-- <ul class="breadcrumb">
                         <li class="breadcrumb-item">

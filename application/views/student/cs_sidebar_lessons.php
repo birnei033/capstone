@@ -1,7 +1,7 @@
 <nav class="pcoded-navbar">
     <div class="pcoded-inner-navbar main-menu">
         <div class="">
-            <div class="main-menu-header">
+            <!-- <div class="main-menu-header">
                 <img class="img-menu-user img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="User-Profile-Image">
                 <div class="user-details">
                     <p id="more-details"><?php echo student_session() != null ? student_session('student_login_name') : "Name" ?><i class="feather icon-chevron-down m-l-10"></i></p>
@@ -21,7 +21,7 @@
                     </a>
                     </li>
                 </ul>
-            </div>
+            </div> -->
         </div>
         <div class="pcoded-navigation-label">Navigation</div>
         <ul class="pcoded-item pcoded-left-item">
@@ -46,11 +46,15 @@
 <div class="pcoded-content">
     <!-- [ breadcrumb ] start -->
     <div class="page-header">
-        <div class="page-block">
+        <div class="page-block" style="    padding-bottom: 0;
+    position: relative;
+    bottom: -2px;
+    left: 14px;
+    color: #fff;">
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h4 class="m-b-10" id="page-title">Dashboard</h4>
+                        <h2 class="m-b-10" id="page-title">Dashboard</h2>
                     </div>
                     <!-- <ul class="breadcrumb">
                         <li class="breadcrumb-item">

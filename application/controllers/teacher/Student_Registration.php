@@ -21,14 +21,15 @@ class Student_Registration extends CI_Controller {
 		$s_login_name = $this->input->post('s-login-name');
 		$s_school_id = $this->input->post('s-school-id');
 		$s_full_name = $this->input->post('s-full-name');
+		$s_subject = $this->input->post('s-subject');
 		$s_program = $this->input->post('s-program');
 		$data = array(
 			'school_id' => $s_school_id,
 			'student_login_name' => $s_login_name,
 			'student_full_name' => $s_full_name,
 			'student_program' => $s_program,
-			'student_subjects' => '',
-			'added_by' => $this->session->userdata['logged_in']['id']
+			'student_subjects' => $s_subject,
+			'added_by' => teacher_session('id')
 		);
 		$add = $this->students_model->add($data);
 		// redirect(teacher_base('your_students'), 'refresh');

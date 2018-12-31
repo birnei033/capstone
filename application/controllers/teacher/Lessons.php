@@ -44,16 +44,18 @@ class Lessons extends CI_Controller {
 		// echo standard_date();
 		// echo time('-172736.1700000763');
 		$this->functions->is_admin();
+		$data['subjects'] = $this->lessons_model->ajax_getAllSubjects(teacher_session('id'));
+		// var_dump($data);
 		$this->load->view('includes/head');
 		$this->load->view('includes/top-navigation');
 		$this->load->view('includes/left-navigation');
-		$this->load->view('lessons/lessons');
+		$this->load->view('lessons/lessons',$data);
 		$this->load->view('includes/footer');
 
 	}
 
 	public function ajax_get_lessons(){
-		$lessons = $this->lessons_model->getAll();
+		$lessons = $this->lessons_model->getAllByAuthor(teacher_session('id'));
 		$subj = $this->lessons_model->getSubjectsArray();
 		$data = array();
 		
@@ -63,9 +65,15 @@ class Lessons extends CI_Controller {
 			// $sub['id'] = $lesson->id;
 			$sub['lesson_title'] = $lesson->lesson_title;
 			$sub['lesson_author'] = $lesson->lesson_author;
-			$sub['subject'] = $lesson->subject_id != 0 ? $subj[$lesson->subject_id] : button("<i class='ti-plus'></i>", 
-							teacher_base('lessons/ajax_update_subject'),
-							"btn-primary", "data-toggle=\"tooltip\" data-placement=\"top\" title=\"\" data-original-title=\"Add Subject\"");
+			$sub['subject'] =  "<div hidden>".str_replace(" ", "",!empty($subj[$lesson->subject_id]) ? $subj[$lesson->subject_id] : "")."</div>";
+            $sub['subject'] .=  !empty($subj[$lesson->subject_id]) ? $subj[$lesson->subject_id] : "";
+			// $sub['subject'] = !empty($subj[$lesson->subject_id]) ? $subj[$lesson->subject_id] : 
+			btn(array(
+				'onclick'=>"open_lesson_modal_update_subject('#modal-add-subject', '".$lesson->subject_id."')",
+				'text'=> "<i class='fa fa-plus'></i>",
+				'class'=>"p-1",
+				'attr'=> 'id="'.$lesson->id.'"'
+			));
 			$sub['tool'] = '<a '.tooltip("Preview").' class="btn btn-primary waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons/lesson_preview').'?preview='.$lesson->lesson_title.'">Preview</a>'
 			.'<a '.tooltip("Edit").' class="btn btn-inverse waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons').'/edit?edit='.$lesson->lesson_title.'">Edit</a>'
 			.'<a '.tooltip("Delete").' onclick="delete_alert('.$delete_alert.')" class="delete btn btn-danger waves-effect waves-light ml-2 p-1" lesson_id="'.$lesson->id.'" href="#delete">Delete</a>';
@@ -77,7 +85,7 @@ class Lessons extends CI_Controller {
 
 	public function add(){ // adding lessons view
 		$this->functions->is_admin();
-		$data['subjects'] = $this->lessons_model->getSubjects();
+		$data['subjects'] = $this->lessons_model->ajax_getAllSubjects(teacher_session('id'));
 		$this->view("lessons/lesson_adding", $data);
 	}
 
@@ -120,7 +128,7 @@ class Lessons extends CI_Controller {
 					'lesson_content'=> json_encode(array('content'=>$lesson_content)),
 					'subject_id'=> $lesson_subject,
 					'lesson_title' => $lesson_title,
-					'lesson_author' => 'Bernz',
+					'lesson_author' => teacher_session('id'),
 					'date_created' => date('Y-d-m')
 				);
 				$add = $this->lessons_model->add($data);
@@ -167,7 +175,7 @@ class Lessons extends CI_Controller {
 			'lesson_content'=> json_encode(array('content'=>$lesson_content)),
 			'subject_id'=> $lesson_subject,
 			'lesson_title' => $lesson_title,
-			'lesson_author' => $this->session->userdata['logged_in']['id'],
+			'lesson_author' => teacher_session('id'),
 			'id'=> $lesson_id,
 			'date_created' => date('Y-d-m')
 		);
@@ -207,6 +215,18 @@ class Lessons extends CI_Controller {
 			$delete_result = $this->lessons_model->delete($id);	
 			echo json_encode(array("status" => true));
 		}
+	}
+	public function ajax_update_subject($id){
+		$dataType = $this->input->post('dataType');
+		// if($dataType == 'ajax'){
+			$data = array(
+				'subject_id'=> $this->input->post('subject_id'),
+				'id' => $id,
+				'updated_on'=>mdate('%Y-%m-%d')
+			);
+			$updateResult = $this->lessons_model->update_subject($data);
+			echo json_encode(array("status" => $updateResult));
+		// }	
 	}
 }
 

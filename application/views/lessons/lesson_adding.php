@@ -16,14 +16,10 @@
                                 <input type="text" placeholder="Lesson Title" name="lesson-title" class="form-control ">
                             </div>            
                             <div class="col-sm-6">
-                                <select name="lesson-subject" id="" class="form-control js-example-basic-hide-search">
-                                    <!-- <optgroup label="Subjects"> -->
-                                    <option value="0">Select Subject</option>
-                                    <?php foreach ($subjects as $subject) { ?>
-                                        <option value="<?php echo $subject->subject_id ?>"><?php echo $subject->subject_title; ?></option>
-                                        <?php } ?>
+                                
+                                        <?php echo select($subjects, "lesson-subject") ?>
                                     <!-- </optgroup> -->
-                                </select>
+                                <!-- </select> -->
                             </div>
                         </div>
                     </div>

@@ -14,7 +14,7 @@ class Your_Students extends CI_Controller {
         $this->functions->is_admin();
         $data['students'] = $this->students_model->getAllWith($this->session->userdata['logged_in']['id']);
         $data['programs'] = $this->students_model->getAllPrograms();
-        $data['subjects'] = $this->students_model->getAllSubjectTitles();
+        $data['subjects'] = $this->students_model->ajax_getAllSubjects(teacher_session('id'));
         // var_dump($data['programs']);
         $data['ajax'] = json_encode(array("students" => $data['students'], "programs"=>$data['programs']));
         // die($data['ajax']);
@@ -36,9 +36,10 @@ class Your_Students extends CI_Controller {
             $subarray['school_id'] = $student->school_id;
             $subarray['student_login_name'] = $student->student_login_name;
             $subarray['student_full_name'] = $student->student_full_name;
-            $subarray['student_subject'] = $student->student_subjects != 0 ? $subjects[$student->student_subjects] : "";
+            $subarray['student_subject'] =  "<div hidden>".str_replace(" ", "",!empty($subjects[$student->student_subjects]) ? $subjects[$student->student_subjects] : "")."</div>";
+            $subarray['student_subject'] .=  !empty($subjects[$student->student_subjects]) ? $subjects[$student->student_subjects] : "";
             $subarray['student_program'] =$retVal = $student->student_program != 0 ? $programs[$student->student_program] : "" ; ;
-            $subarray['actions'] = '<button '.tooltip("Reset").' onclick="student_password_reset('.$student->student_id.', \''.teacher_base().'\')" class="btn btn-primary waves-effect waves-light ml-2 p-1" >Reset</button>'
+            $subarray['actions'] = '<button '.tooltip("Reset Password").' onclick="student_password_reset('.$student->student_id.', \''.teacher_base().'\')" class="btn btn-primary waves-effect waves-light ml-2 p-1" >Reset</button>'
                                             .'<button onclick="delete_alert('.$delete_alert.')" '.tooltip("Delete").' class="btn btn-danger waves-effect waves-light ml-2 p-1" >Delete</button>'
                                             .'<button onclick="open_update_modal('.$student->student_id.', \''.teacher_base().'\', \'#student-update-form\')"  data-modal="modal-update-student" '.tooltip("Update").' href="'.teacher_base().'"  class="student-update btn btn-inverse waves-effect waves-light ml-2 p-1" up-id="'.$student->student_id.'">Update</button>';
                                            

@@ -110,6 +110,7 @@ class Login extends CI_Controller {
     }
 
     public function logout(){
+		student_logged();
 		$this->session->sess_destroy();
 		redirect('', 'refresh');
 	}

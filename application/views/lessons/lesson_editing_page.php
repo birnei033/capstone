@@ -28,7 +28,7 @@
                                 <input type="hidden" name="lesson-id" value="<?php echo $id ?>">
                             </div>            
                             <div class="col-sm-3">
-                                <select name="lesson-subject" id="" class="form-control js-example-basic-hide-search">
+                                <select name="lesson-subject" id="" class="form-control">
                                     <?php
                                     foreach ($subjects as $subject) {
                                         $selected = $subject["subject_id"] == $subject_id ? "selected" : "" ;

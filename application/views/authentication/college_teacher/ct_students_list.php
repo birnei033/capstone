@@ -8,6 +8,10 @@
             ' <button onclick="reset_add_student_form(\'#student-form\')" class="btn btn-primary  waves-effect md-trigger" data-modal="modal-add-student">Add Your Student</button>'
         ) ?>
             <div class="table-responsive dt-responsive">
+            <div hidden id="sel">
+            </div>
+            <div hidden id="sear">
+            </div>
                 <table id="alt-pg-test" class="table  table-hover nowrap" style="100%">
                     <thead>
                         <tr>
@@ -23,7 +27,12 @@
                 </table>
             </div>
         <?php card_close() ?>
-        
+        <script>
+            // jQuery(document).ready(function ($) {
+                $('#sear').html('<input type="text" class="form-control" placeholder="Search" id="searchit">');
+                $('#sel').html('<?php echo select($subjects, "f-subject", 'class="select-subject form-control col-sm-12" id="filter-by-subject"',"",true) ?>');
+            // });
+        </script>
         <div class="md-modal md-effect-1" id="modal-add-student">
                         <div class="md-content">
                             <div class="card p-0">
@@ -33,22 +42,14 @@
                                 <div class="card-block">
                                     <form class="" id="student-form">
                                         <div class="form-group form-default ">
-                                            <select name="s-program" class="select-programss form-control col-sm-12" >
-                                            <?php
-                                                foreach ($programs as $key => $val) {
-                                                echo '<option value="'.$key.'">'.$val.'</option>';
-                                                }
+                                        <?php
+                                                echo select($programs, "s-program", 'class="select-programss form-control col-sm-12"', "Select Program");
                                             ?>
-                                            </select>
                                         </div>
                                         <div class="form-group form-default ">
-                                            <select name="s-subject" class="select-subject form-control col-sm-12" >
-                                            <?php
-                                                foreach ($subjects as $key => $val) {
-                                                echo '<option value="'.$key.'">'.$val.'</option>';
-                                                }
+                                        <?php
+                                                echo select($subjects, "s-subject", 'class="select-subject form-control col-sm-12"',"Select Subject");
                                             ?>
-                                            </select>
                                         </div>
                                         <div class="form-group form-default ">
                                             <input type="text" name="s-login-name" class="form-control" placeholder="Enter Student's Login Name" required="">
@@ -80,22 +81,14 @@
                                 <div class="card-block">
                                     <form class="" id="student-update-form">
                                         <div class="form-group form-default ">
-                                            <select name="s-program" class="select-programss form-control col-sm-12" >
                                             <?php
-                                                foreach ($programs as $key => $val) {
-                                                echo '<option value="'.$key.'">'.$val.'</option>';
-                                                }
+                                                echo select($programs, "s-program", 'class="select-programss form-control col-sm-12"');
                                             ?>
-                                            </select>
                                         </div>
                                         <div class="form-group form-default ">
-                                            <select name="s-subject" class="select-subject form-control col-sm-12" >
-                                                <?php
-                                                    foreach ($subjects as $key => $val) {
-                                                    echo '<option value="'.$key.'">'.$val.'</option>';
-                                                    }
-                                                ?>
-                                            </select>
+                                            <?php
+                                                echo select($subjects, "s-subject", 'class="select-subject form-control col-sm-12"');
+                                            ?>
                                         </div>
                                         <div class="form-group form-default ">
                                             <input type="text" name="s-login-name" class="form-control" placeholder="Enter Student's Login Name" required="">
@@ -116,3 +109,5 @@
                         </div>
                     </div>
                     <div class="md-overlay"></div>
+
+                    

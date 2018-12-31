@@ -35,7 +35,7 @@
                                             <button type="submit" class="btn btn-primary btn-md btn-block waves-effect waves-light text-center m-b-20">Change Password</button>
                                         </div>
                                         <div class="col-md-12">
-                                            <a type="button" href="<?php echo student_base() ?>" class="btn btn-danger btn-md btn-block waves-effect waves-light text-center m-b-20">Cancel</a>
+                                            <a type="button" href="<?php echo student_base() ?>" class="btn btn-danger btn-md btn-block waves-effect waves-light text-center m-b-20">Not Now</a>
                                         </div>
                                     </div>
                                     <hr>

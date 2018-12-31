@@ -23,15 +23,15 @@ function student_view($page, $data = ""){
 function student_lesson($page, $data = ""){
     $CI = get_instance();
     $CI->load->model('lessons_model');
-
-    $query = "SELECT lesson_title FROM lessons";
+    $subjid = student_session('student_subject_id');
+    $query = "SELECT lesson_title FROM lessons WHERE subject_id = $subjid";
     $result = $CI->lessons_model->query($query);
     $lessons['lessons'] = array();
     foreach ($result as $lesson) {
         $temp = $lesson->lesson_title;
         $lessons['lessons'][] = $temp;
     }
-    // var_dump($lessons);
+    // var_dump(student_session());
     $CI->load->view('includes/head');
     $CI->load->view('student/top-navigation');
     $CI->load->view('student/cs_sidebar_lessons', $lessons);
@@ -40,12 +40,19 @@ function student_lesson($page, $data = ""){
 }
 function student_session($index = ""){
     $CI = get_instance();
+    $session = !isset($CI->session->userdata['student_logged_in']) ? "" : $CI->session->userdata['student_logged_in'];
     if ($index === "") {
-        return $CI->session->userdata['student_logged_in'];
+        return $session;
     }
-    return $CI->session->userdata['student_logged_in'][$index];
+    return $session[$index];
 }
-
+function student_logged(){
+    $CI = get_instance();
+    $isloggedin = isset($CI->session->userdata['student_logged_in']) ? false : true;
+    if($isloggedin){
+        redirect(student_base('login'), 'refresh');
+    }
+}
 function page_header($text){
    echo '<script>
     jQuery(document).ready(function ($) {

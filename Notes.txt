@@ -2,16 +2,16 @@ E-learning Scope
 
 User Roles
 -admin / teacher
--student <-- NEXT STEP
+-student
 
 Teacher can:
--add subjects
--add lessons to their subjects
--add quizes for a specific subjects
--register student
+-add subjects - done
+-add lessons to their subjects - done
+-add quizes for a specific subjects - NEXT STEP
+-register student - done
 
 Student Can:
--view the lessons they are enrolled 
+-view the lessons they are enrolled - done
 -Take the quiz / exam conducted by teacher.
 -view their standings
 
@@ -28,9 +28,3 @@ Each quizes or exam has time limit set by the teacher.
     
 
 NEXT STEP
--create landing page
--create login page for student
--create sessions for students
--redirect to change password page on first login.
--display lessons for students according to their subject enrolled
-    make sidebar as the menu of lessons.

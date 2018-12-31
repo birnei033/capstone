@@ -15,7 +15,7 @@ class Subjects_Model extends CI_Model {
         $insert = $this->db->insert('subjects', $data);
         return $this->db->insert_id();
     }
-
+ 
     public function getAll(){
         $query = $this->db->get('subjects');
 		return  $query->result();
@@ -26,6 +26,7 @@ class Subjects_Model extends CI_Model {
     }
 
     public function delete($id){
+        $this->db->delete('college_students', array('student_subjects'=>$id));
         return $this->db->delete('subjects', array('subject_id'=>$id));
     }
 
@@ -39,8 +40,12 @@ class Subjects_Model extends CI_Model {
         return $this->db->update('subjects'); 
     }
 
-    public function ajax_getAllSubjects(){
-        $query = $this->db->get('subjects');
+    public function ajax_getAllSubjects($id = ""){
+        if ($id == "") {
+            $query = $this->db->get('subjects');
+        }else {
+            $query = $this->db->get_where('subjects',array('added_by'=>$id));
+        }
         return  $query->result();
         // foreach ($subjects as $subject) {
         //     $data[$subject->subject_id] = $subject->subject_title;

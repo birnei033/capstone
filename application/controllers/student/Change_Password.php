@@ -91,8 +91,8 @@ class Change_Password extends CI_Controller {
 			);
 			$result = $this->students_model->change_password($data);
 			if($result){
-
-				var_dump($this->session->student_logged_in);
+				redirect(student_base(), 'refresh');
+				// var_dump($this->session->student_logged_in);
 			}
 		}
     }
