@@ -1,11 +1,11 @@
 <nav class="navbar header-navbar pcoded-header">
                 <div class="navbar-wrapper">
-                    <div class="navbar-logo">
+                    <div style="width: 48px;" class="navbar-logo">
                         <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
                         <i class="feather icon-toggle-right"></i>
                     </a>
-                        <a href="index.html">
-                        <img class="img-fluid" src="<?php echo base_url(); ?>assets/themf/images/logo.png" alt="" />
+                        <!-- <a href="index.html">
+                        <img class="img-fluid" src="<?php echo base_url(); ?>assets/themf/images/logo.png" alt="" /> -->
                     </a>
                         <a class="mobile-options waves-effect waves-light">
                         <i class="feather icon-more-horizontal"></i>
@@ -97,7 +97,7 @@
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
                                     <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                        <li>
+                                        <!-- <li>
                                             <a href="#!">
                                             <i class="feather icon-settings"></i> Settings
                                         </a>
@@ -116,7 +116,7 @@
                                             <a href="auth-lock-screen.html">
                                             <i class="feather icon-lock"></i> Lock Screen
                                         </a>
-                                        </li>
+                                        </li> -->
                                         <li>
                                             <a href="<?php echo teacher_base('login/logout')?>">
                                             <i class="feather icon-log-out"></i> Logout

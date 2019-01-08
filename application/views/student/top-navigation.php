@@ -97,17 +97,17 @@
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
                                     <ul class="show-notification profile-notification dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                        <li>
+                                        <!-- <li>
                                             <a href="#!">
                                             <i class="feather icon-settings"></i> Settings
                                         </a>
-                                        </li>
+                                        </li> -->
                                         <li>
-                                            <a href="user-profile.html">
+                                            <a href="<?php echo student_base() ?>">
                                             <i class="feather icon-user"></i> Profile
                                         </a>
                                         </li>
-                                        <li>
+                                        <!-- <li>
                                             <a href="email-inbox.html">
                                             <i class="feather icon-mail"></i> My Messages
                                         </a>
@@ -116,9 +116,9 @@
                                             <a href="auth-lock-screen.html">
                                             <i class="feather icon-lock"></i> Lock Screen
                                         </a>
-                                        </li>
+                                        </li> -->
                                         <li>
-                                            <a href="<?php echo teacher_base('login/logout')?>">
+                                            <a href="<?php echo student_base('login/logout') ?>">
                                             <i class="feather icon-log-out"></i> Logout
                                         </a>
                                         </li>

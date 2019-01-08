@@ -19,10 +19,12 @@ class Welcome extends CI_Controller {
 		// // $this->load->view('dashboard');
 		// // echo "This is a landing page";
 		// $this->load->view('includes/footer');
-		var_dump($this->session->student_logged_in);
-		if (isset($this->session->student_logged_in)) {
-            redirect('student/login');
-		}
-		redirect('student', 'refresh');
+
+		// var_dump($this->session->student_logged_in);
+		// if (isset($this->session->student_logged_in)) {
+        //     redirect('student/login');
+		// }
+		student_logged();
+		redirect('student', 'refresh'); 
 	}
 }

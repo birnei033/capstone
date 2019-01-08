@@ -28,6 +28,9 @@ class Student_Registration extends CI_Controller {
 			'school_id'=>$s_school_id,
 			'student_subjects'=>$s_subject
 		));
+		$username = $this->students_model->get_where('college_students', array(
+			'student_login_name'=>$s_subject.'_'.$s_login_name
+		));
 		$this->form_validation->set_rules('s-login-name', 'Username', 'required');
 		$this->form_validation->set_rules('s-school-id', 'school-id', 'required');
 		$this->form_validation->set_rules('s-full-name', 'name', 'required');
@@ -55,10 +58,15 @@ class Student_Registration extends CI_Controller {
 				'icon'=>"error"
 				));
 				
+			}else if(!empty($username)){
+				echo json_encode(array(
+					'message'=> "Student login name already exist.",
+					'icon'=>"error"
+					));
 			}else{
 				$data = array(
 					'school_id' => $s_school_id,
-					'student_login_name' => $s_login_name,
+					'student_login_name' => $s_subject.'_'.$s_login_name,
 					'student_full_name' => $s_full_name,
 					'student_program' => $s_program,
 					'student_subjects' => $s_subject,

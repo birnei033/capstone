@@ -13,7 +13,7 @@ class Login extends CI_Controller {
 	
     public function index(){
 		// var_dump($this->session->logged_in);
-		if (isset($this->session->logged_in)) {
+		if (teacher_session() != null) {
             redirect('teacher/dashboard');
         }
 		$this->load->view('includes/head');
@@ -27,7 +27,9 @@ class Login extends CI_Controller {
 		$user_name = $this->input->post('ct_login_name');
 		$user_password = $this->input->post('ct_password');
 		$users = $this->users_model->getByName($user_name);
-
+		if (!isset($user_name)) {
+			redirect(teacher_base(), 'refresh');
+		}
 		// USER NAME VALIDATION
 		$this->form_validation->set_rules('ct_login_name', 'Ct_login_name', array(
 			'trim',
@@ -94,7 +96,7 @@ class Login extends CI_Controller {
 	}
 
 	public function logout(){
-		$this->session->sess_destroy();
+		$this->session->unset_userdata('logged_in');
 		redirect(base_url('admin'), 'refresh');
 	}
 

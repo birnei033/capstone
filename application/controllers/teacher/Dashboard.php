@@ -16,7 +16,7 @@ class Dashboard extends CI_Controller {
 		$this->load->view('includes/head');
 		$this->load->view('includes/top-navigation');
 		$this->load->view('includes/left-navigation');
-		$this->load->view('dashboard');
+		$this->load->view('blank');
 		// echo "This is a landing page";
 		$this->load->view('includes/footer');
 	}

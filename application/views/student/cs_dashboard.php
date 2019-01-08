@@ -5,15 +5,19 @@
                 <div class="col-sm-12">
                     
                             <div class="text-center">
-                                <img src="<?php echo base_url() ?>assets/themf/images/logo.png" alt="logo.png">
+                                <!-- <img src="<?php echo base_url() ?>assets/themf/images/logo.png" alt="logo.png"> -->
                             </div>
-                            <h4 class="text-center m-4" style="color:#fff;">
+                            <div class="auth-box card" style="max-width: --615px">
+                                <div class="card-block">
+                                <div class="text-center">
+                                    <img src="<?php echo images('hccs_logo.jpg') ?>" width="150" alt="logo.png">
+                                </div>
+                            <h4 class="text-center m-4" style="color:#000;">
                                 Welcome  <?php
                                 //   var_dump(student_session());
                                 echo student_session('student_login_name') ?>! 
                             </h4>
-                            <div class="auth-box card" style="max-width: --615px">
-                                <div class="card-block">
+                            <hr>
                                     <p><strong>ID Number: </strong><?php echo student_session('school_id') ?></p>
                                     <p><strong>Full Name: </strong><?php echo student_session('student_full_name') ?></p>
                                     <p><strong>Program: </strong><?php echo student_session('student_program') ?></p>

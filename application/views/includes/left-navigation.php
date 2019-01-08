@@ -2,9 +2,14 @@
     <div class="pcoded-inner-navbar main-menu">
         <div class="">
             <div class="main-menu-header">
-                <img class="img-menu-user img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="User-Profile-Image">
+                <!-- <img class="img-menu-user img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="User-Profile-Image"> -->
+                <div class="text-center">
+                    <img style="width: 100px;" src="<?php echo images('hccs_logo.jpg') ?>"  alt="logo.png">
+                </div>
                 <div class="user-details">
-                    <p id="more-details"><?php echo isset($this->session->userdata['logged_in']) ? $this->session->userdata['logged_in']['name']: "Name" ?><i class="feather icon-chevron-down m-l-10"></i></p>
+                    <p id=""><?php echo isset($this->session->userdata['logged_in']) ? $this->session->userdata['logged_in']['name']: "Name" ?>
+                    <!-- <i class="feather icon-chevron-down m-l-10"></i> -->
+                    </p>
                 </div>
             </div>
             <div class="main-menu-content">
@@ -44,7 +49,7 @@
             <div class="row align-items-center">
                 <div class="col-md-8">
                     <div class="page-header-title">
-                        <h2 class="m-b-10" id="page-title">Dashboard</h2>
+                        <h2 class="m-b-10" id="page-title">Teacher <?php echo teacher_session('name') ?> Dashboard</h2>
                     </div>
                     <!-- <ul class="breadcrumb">
                         <li class="breadcrumb-item">

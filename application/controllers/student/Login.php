@@ -12,10 +12,14 @@ class Login extends CI_Controller {
     }
     
     public function index(){
-        // var_dump($this->session->student_logged_in);
-		$this->load->view('includes/head');
-        $this->load->view('student/cs_login');
-        $this->load->view('includes/footer-auth');
+		// var_dump($this->session->student_logged_in); 
+		if (student_session() == null) {
+			$this->load->view('includes/head');
+			$this->load->view('student/cs_login');
+			$this->load->view('includes/footer-auth');
+		}else{
+			redirect(student_base());
+		}
     }
   
     public function login_submit(){ 
@@ -28,7 +32,9 @@ class Login extends CI_Controller {
             'student_password'=>$user_password
         );
 		$users = $this->students_model->login_auth($data);
-
+		if (!isset($user_name)) {
+			redirect(student_base(), 'refresh');
+		}
 		// USER NAME VALIDATION
 		$this->form_validation->set_rules('cs_login_name', 'cs_login_name', array(
 			'trim',
@@ -111,7 +117,7 @@ class Login extends CI_Controller {
 
     public function logout(){
 		student_logged();
-		$this->session->sess_destroy();
+		$this->session->unset_userdata('student_logged_in');
 		redirect('', 'refresh');
 	}
 }
