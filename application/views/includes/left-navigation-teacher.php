@@ -11,7 +11,7 @@
             'drop'=>true,
             'title'=>"Lessons",
             'list'=>array(
-                'List' => array(
+                'View All' => array(
                     'link' => teacher_base('lessons')
                 ),
                 'Add' => array(
@@ -30,9 +30,18 @@
             'icon'=>'feather icon-menu'
         ));
         nav_item(array(
-            'title'=>'Your Quizes / Exams',
-            'link'=>teacher_base('quiz'),
-            'icon'=>'feather icon-menu'
+            'drop'=>true,
+            'title'=>'Exercises',
+            'icon'=>'feather icon-menu',
+            'list'=>array(
+                'View All'=>array(
+                    'link'=>teacher_base('exercise/'),
+                ),
+                'Add'=>array(
+                    'link'=>teacher_base('exercise/add')
+                )
+
+            ),
         ));
     ?>
 </ul>

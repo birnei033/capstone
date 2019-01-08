@@ -9,6 +9,10 @@ class Students_Model extends CI_Model {
         $this->load->helper('date');
 		$this->load->database();                                                          
     }
+    public function get_where($table, $condition){
+        $result = $this->db->get_where($table, $condition);
+        return $result->result();
+    }
     public function add($data){
         $insert = $this->db->insert('college_students', $data);
         return $this->db->insert_id();

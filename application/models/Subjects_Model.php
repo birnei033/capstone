@@ -26,6 +26,7 @@ class Subjects_Model extends CI_Model {
     }
 
     public function delete($id){
+        $this->db->delete('lessons', array('subject_id'=>$id));
         $this->db->delete('college_students', array('student_subjects'=>$id));
         return $this->db->delete('subjects', array('subject_id'=>$id));
     }

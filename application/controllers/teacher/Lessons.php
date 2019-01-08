@@ -86,7 +86,7 @@ class Lessons extends CI_Controller {
 	public function add(){ // adding lessons view
 		$this->functions->is_admin();
 		$data['subjects'] = $this->lessons_model->ajax_getAllSubjects(teacher_session('id'));
-		$this->view("lessons/lesson_adding", $data);
+		$this->view("lessons/lesson_adding_inline", $data);
 	}
 
 	public function save(){
@@ -162,7 +162,7 @@ class Lessons extends CI_Controller {
 				));
 			}
 			// var_dump($data['content']);
-			$this->view('lessons/lesson_editing_page', $data);
+			$this->view('lessons/lesson_editing_page_inline', $data);
 		}
 	}
 

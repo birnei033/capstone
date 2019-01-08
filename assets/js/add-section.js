@@ -19,7 +19,7 @@ jQuery(document).ready(function ($) {
             tabContent.remove('txtHSpace');
             tabContent.remove('txtVSpace');
             tabContent.remove('txtAlt');
-            console.log(tabContent.get('htmlPreview').html)
+            // console.log(tabContent.get('htmlPreview').html)
             // tabContent.get('htmlPreview');
             // tabContent.get('htmlPreview').html = '<div>Preview<br><div id="cke_156_ImagePreviewLoader" class="ImagePreviewLoader" style="display:none"><div class="loading">&nbsp;</div></div><div class="ImagePreviewBox"><table><tr><td><a href="javascript:void(0)" target="_blank" onclick="return false;" id="cke_157_previewLink"><img id="cke_158_previewImage" alt="" /></a>h</td></tr></table></div></div>';
         }

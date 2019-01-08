@@ -8,7 +8,7 @@
     <?php card_open(
         btn(array(
             'onclick'=> "addSubject('".teacher_base()."')",
-            'text'=>"Addd Subject"
+            'text'=>"Add Subject"
         ))); ?>
                 <div class="table-responsive dt-responsive">
                     <table id="subjects-table" class="table  table-hover nowrap" style="100%">

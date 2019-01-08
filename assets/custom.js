@@ -278,6 +278,10 @@ function addSubject(url){
                     swal(textStatus+" "+errorThrown);
                 }
             });
+          }else{
+            swal("No subject added.", {
+                icon: 'info',
+            });
           }
       });
 }
@@ -455,11 +459,13 @@ function _action(url, form){
         dataType: "JSON",
         success: function(data)
         {
-            swal("Successfullly Added!", {
-                icon: "success",
+            swal(data.message, {
+                icon: data.icon,
             });
-            $('#modal-add-student').removeClass('md-show');
-            students_table.ajax.reload();
+            if (data.icon != "error") {
+                $('#modal-add-student').removeClass('md-show');
+                students_table.ajax.reload();   
+            }
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

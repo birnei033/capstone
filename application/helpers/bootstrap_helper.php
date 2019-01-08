@@ -2,10 +2,10 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-function card_open($header = "", $col="12"){
+function card_open($header = "", $col="12", $class=""){
 
     // echo '<div class="col-sm-'.$col.'">
-               echo '     <div class="card">
+               echo '     <div class="card '.$class.'">
                         <div class="card-header">'
                            .$header.
                        ' </div>
@@ -94,4 +94,10 @@ function select($values, $name = "", $attr="", $default="", $sameKeyAndValue = f
     return $out;
 }
 
+function btable_open(){
+
+}
+function btable_close(){
+
+}
 ?>

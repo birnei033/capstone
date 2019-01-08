@@ -62,9 +62,6 @@ class Subjects extends CI_Controller {
 		$subj_name = $this->input->post('subj_name');
 		$dataType = $this->input->post('data_type');
 		if($dataType == 'ajax'){
-			// if (empty($subj_name) || is_null($subj_name)) {
-				// echo json_encode(array("status" => FALSE, "alert"=>$this->alert("Please Fill the Field", 'danger')));
-			// }else{
 				$data = array(
 					'subject_title' => $this->input->post('subj_name'),
 					'added_by' =>teacher_session('id'),
@@ -72,8 +69,6 @@ class Subjects extends CI_Controller {
 				);
 				$add = $this->subjects_model->add($data);
 				echo json_encode(array("status" => true));
-				// redirect(teacher_base('subjects'), 'refresh');
-			// }
 		}
 	}
 
