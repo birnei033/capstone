@@ -1,11 +1,11 @@
 <nav class="navbar header-navbar pcoded-header">
                 <div class="navbar-wrapper">
-                    <div style="width: 48px;" class="navbar-logo">
-                        <a class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
+                    <div  class="navbar-logo">
+                        <a <?php echo tooltip('Hide Navigation') ?> class="mobile-menu waves-effect waves-light" id="mobile-collapse" href="#!">
                         <i class="feather icon-toggle-right"></i>
                     </a>
-                        <!-- <a href="index.html">
-                        <img class="img-fluid" src="<?php echo base_url(); ?>assets/themf/images/logo.png" alt="" /> -->
+                    <a href="<?php echo base_url() ?>">
+                        <img width="36" class="img-fluid" src="<?php echo images('hccs_logo.png'); ?>" alt="" /><span> HCCSI eLearning</span>
                     </a>
                         <a class="mobile-options waves-effect waves-light">
                         <i class="feather icon-more-horizontal"></i>
@@ -13,7 +13,7 @@
                     </div>
                     <div class="navbar-container container-fluid">
                         <ul class="nav-left">
-                            <li class="header-search">
+                            <!-- <li class="header-search">
                                 <div class="main-search morphsearch-search">
                                     <div class="input-group">
                                         <span class="input-group-prepend search-close">
@@ -25,9 +25,9 @@
 									</span>
                                     </div>
                                 </div>
-                            </li>
+                            </li> -->
                             <li>
-                                <a href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
+                                <a <?php echo tooltip('Toggle Full Screen') ?> href="#!" onclick="javascript:toggleFullScreen()" class="waves-effect waves-light">
                                 <i class="full-screen feather icon-maximize"></i>
                             </a>
                             </li>

@@ -14,7 +14,7 @@
                                     <div class="row m-b-20">
                                         <div class="col-md-12">
                                             <div class="text-center">
-                                                <img src="<?php echo images('hccs_logo.jpg') ?>" width="150" alt="logo.png">
+                                                <img src="<?php echo images('hccs_logo.png') ?>" width="150" alt="logo.png">
                                             </div>
                                             <h3 class="text-center">Teacher Sign In</h3>
                                             <ol>

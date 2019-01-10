@@ -14,4 +14,9 @@ class Common_model extends CI_Model {
         $query = $this->db->get_where($table, $query);
 		return  $query->result();
     }
+
+    public function query($q){
+        $query = $this->db->query($q);
+        return $query->result();
+    }
 }

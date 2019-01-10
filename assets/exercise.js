@@ -2,6 +2,9 @@ $(document).ready(function () {
     // swiches
     var elemsingle = document.querySelector('.js-single');
     var switchery = new Switchery(elemsingle, { color: '#4099ff', jackColor: '#fff' });
+    var mc_answers = [];
+    var tf_answers = [];
+    var written_answers = [];
     // -----------------
     $('#submit-text').click(function (e) { 
         e.preventDefault();
@@ -10,7 +13,6 @@ $(document).ready(function () {
             parent = $('#ex-elems');
             $('.text').each(function (index, element) {
                 text_count++;
-                
             });
         parent.append('<tr class="text text-'+text_count+'"><td>'+data+'</td></tr>');
         $('#set-instruction').removeClass('md-show');
@@ -21,7 +23,6 @@ $(document).ready(function () {
     $('#ex-mul-choice-submit').click(function (e) { 
         e.preventDefault();
         var ex_mc_count = 1;
-        var out = "<tr class='ex-m-choices'><td>";
         var parent = $('#ex-elems');
         var data = {
             ex_mc_question: $('#ex-mc-question').val(),
@@ -36,8 +37,12 @@ $(document).ready(function () {
             ex_mc_count++;
             
         });
+        mc_answers['m-choice-'+ex_mc_count] = data.answers[0];
+        console.log(mc_answers);
+        
+        var out = "<tr class='ex-m-choices num-"+ex_mc_count+"'><td>";
         var answers = shuffle(data.answers);
-        console.log(answers);
+        // console.log(answers);
         out += "<h5>"+ex_mc_count+". "+data.ex_mc_question+"</h5><br>";
         out += "<div class=''>"; //row open
         out +=      "<div class='col-sm-12'>";
@@ -46,25 +51,25 @@ $(document).ready(function () {
         out +=              "<div class='form-radio'>";
         out +=                       '<div class="radio radio-inline">';
         out +=                        '<label>';
-        out +=                            '<input type="radio" name="radio">';
+        out +=                            '<input value="'+answers[0]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
         out +=                            '<i class="helper"></i>'+answers[0];
         out +=                        '</label>';
         out +=                        '</div>';
         out +=                        '<div class="radio radio-inline">';
         out +=                            '<label>';
-        out +=                                '<input type="radio" name="radio">';
+        out +=                                '<input value="'+answers[1]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
         out +=                                '<i class="helper"></i>'+answers[1];
         out +=                            '</label>';
         out +=                        '</div>';
         out +=                        '<div class="radio radio-inline">';
         out +=                            '<label>';
-        out +=                                '<input type="radio" name="radio">';
+        out +=                                '<input value="'+answers[2]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
         out +=                                '<i class="helper"></i>'+answers[2];
         out +=                            '</label>';
         out +=                        '</div>';
         out +=                        '<div class="radio radio-inline">';
         out +=                            '<label>';
-        out +=                                '<input type="radio" name="radio">';
+        out +=                                '<input value="'+answers[3]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
         out +=                                '<i class="helper"></i>'+answers[3];
         out +=                            '</label>';
         out +=                        '</div>';
@@ -84,13 +89,17 @@ $(document).ready(function () {
         var ex_tf_count = 1;
         var out = "<tr class='ex-tf'><td>";
         var parent = $('#ex-elems');
+        
         var data = {
             question: $('#ex-tf-question').val(),
-            answer: $('#ex-tf-answer').val()
+            answer: $('#ex-tf-answer').prop('checked')
         }
         $('.ex-tf').each(function (index, element) {
             ex_tf_count++;
         });
+        tf_answers['tf-'+ex_tf_count] = data.answer;
+        console.log(tf_answers);
+        
         out += "<h5>"+ex_tf_count+". "+data.question+"</h5><br>";
         out += "<div class=''>"; //row open
         out +=      "<div class='col-sm-12'>";
@@ -99,13 +108,13 @@ $(document).ready(function () {
         out +=              "<div class='form-radio'>";
         out +=                       '<div class="radio radio-inline">';
         out +=                        '<label>';
-        out +=                            '<input type="radio" name="radio">';
+        out +=                            '<input value="true" type="radio" name="tf-'+ex_tf_count+'">';
         out +=                            '<i class="helper"></i>True';
         out +=                        '</label>';
         out +=                        '</div>';
         out +=                        '<div class="radio radio-inline">';
         out +=                            '<label>';
-        out +=                                '<input type="radio" name="radio">';
+        out +=                                '<input value="false" type="radio" name="tf-'+ex_tf_count+'">';
         out +=                                '<i class="helper"></i>False';
         out +=                            '</label>';
         out +=                        '</div>';

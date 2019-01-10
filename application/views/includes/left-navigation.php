@@ -3,14 +3,14 @@
         <div class="">
             <div class="main-menu-header">
                 <!-- <img class="img-menu-user img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="User-Profile-Image"> -->
-                <div class="text-center">
+                <!-- <div class="text-center">
                     <img style="width: 100px;" src="<?php echo images('hccs_logo.jpg') ?>"  alt="logo.png">
                 </div>
                 <div class="user-details">
-                    <p id=""><?php echo isset($this->session->userdata['logged_in']) ? $this->session->userdata['logged_in']['name']: "Name" ?>
+                    <p id=""><?php echo isset($this->session->userdata['logged_in']) ? $this->session->userdata['logged_in']['name']: "Name" ?> -->
                     <!-- <i class="feather icon-chevron-down m-l-10"></i> -->
-                    </p>
-                </div>
+                    <!-- </p> -->
+                <!-- </div> -->
             </div>
             <div class="main-menu-content">
                 <ul>

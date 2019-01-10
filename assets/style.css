@@ -11,3 +11,7 @@
     padding: 7px !important;
     vertical-align: middle;
 }
+
+#styleSelector .selector-toggle {
+    opacity: 0;
+}

@@ -1,13 +1,13 @@
 <nav class="pcoded-navbar">
     <div class="pcoded-inner-navbar main-menu">
         <div class="">
-            <!-- <div class="main-menu-header">
-                <img class="img-menu-user img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="User-Profile-Image">
+            <div class="main-menu-header">
+                <!-- <img class="img-menu-user img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="User-Profile-Image">
                 <div class="user-details">
                     <p id="more-details"><?php echo student_session() != null ? student_session('student_login_name') : "Name" ?><i class="feather icon-chevron-down m-l-10"></i></p>
-                </div>
+                </div> -->
             </div>
-            <div class="main-menu-content">
+            <!-- <div class="main-menu-content">
                 <ul>
                     <li class="more-details">
                         <a href="user-profile.html">
@@ -23,7 +23,7 @@
                 </ul>
             </div> -->
         </div>
-        <div class="pcoded-navigation-label">Navigation</div>
+        <div class="pcoded-navigation-label">List of Lessons</div>
         <ul class="pcoded-item pcoded-left-item">
             <?php 
             foreach ($lessons as $lesson) {
