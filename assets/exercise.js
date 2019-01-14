@@ -2,9 +2,12 @@ $(document).ready(function () {
     // swiches
     var elemsingle = document.querySelector('.js-single');
     var switchery = new Switchery(elemsingle, { color: '#4099ff', jackColor: '#fff' });
-    var mc_answers = [];
-    var tf_answers = [];
-    var written_answers = [];
+    var mc_answers = {};
+    var tf_answers = {};
+    var written_answers = {};
+    // var all_answers = {mc_answers: mc_answers, tf_answers: tf_answers, written_answers: written_answers};
+    var all_answers = {mc_answers: mc_answers, tf_answers: tf_answers, written_answers: written_answers};
+
     // -----------------
     $('#submit-text').click(function (e) { 
         e.preventDefault();
@@ -35,10 +38,12 @@ $(document).ready(function () {
         };
         $('.ex-m-choices').each(function (index, element) {
             ex_mc_count++;
-            
         });
         mc_answers['m-choice-'+ex_mc_count] = data.answers[0];
+        all_answers.mc_answers = mc_answers;
         console.log(mc_answers);
+        console.log(all_answers);
+        
         
         var out = "<tr class='ex-m-choices num-"+ex_mc_count+"'><td>";
         var answers = shuffle(data.answers);
@@ -82,6 +87,8 @@ $(document).ready(function () {
         out += "</div>" //row close
 
         parent.append(out+"</td></tr>");
+        console.log(all_answers);
+        
     });
 
     $('#ex-tf-submit').click(function (e) { 
@@ -124,6 +131,8 @@ $(document).ready(function () {
         out +=      "</div>";
         out += "</div>" //row close
         parent.append(out+"</td></tr>");
+        console.log(all_answers);
+        
     });
     
     $('#ex-written-submit').click(function (e) { 
@@ -152,6 +161,8 @@ $(document).ready(function () {
         out += "</div>" //row close
 
         parent.append(out+"</td></tr>");
+        console.log(all_answers);
+        
     });
 
     function shuffle(array) {
@@ -172,4 +183,42 @@ $(document).ready(function () {
       
         return array;
       }
+
+      $('#ex-submit').click(function (e) { 
+          e.preventDefault();
+          var url = location.pathname;
+          var data = {
+            ex_subject: $('#ex-subject').val(),
+            ex_elems: $('#ex-elems').html(),
+            exercise_title: $('#exercise-title').val(),
+            ex_submit: $('#ex-submit').val(),
+            answers: JSON.stringify(all_answers)
+          };
+          console.log(data);
+          
+          $.ajax({
+              type: "POST",
+              url: url,
+              data: data,
+              dataType: "JSON",
+              success: function (response) {
+                if (response.icon === "success") {
+                    swal('Success', response.message, {
+                        icon: response.icon,
+                    })
+                    .then((val)=>{
+                        location.reload();
+                    });
+                }else{
+                    swal("Something Went wrong!",response.message, {
+                        icon: response.icon,
+                    });
+                }
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                console.log(errorThrown);
+                
+              }
+          });
+      });
 });

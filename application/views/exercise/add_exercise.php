@@ -6,23 +6,24 @@
 <button data-modal="set-written" class="md-trigger btn btn-success m-1" type="button">Written</button>
 <?php card_close(); ?>
 <form action="" method="post">
+<!-- <form action="<?php echo teacher_base('exercise/add')?>" method="post"> -->
+
 <?php card_open('
 <div class="row">
     <div class="col-sm-6">
         <input class="form-control" placeholder="Enter Exercise Title" style="max-width: 500px;" type="text" name="exercise-title" id="exercise-title">
     </div>
     <div class="col-sm-6">
-        '.select($subjects, "ex-subject", "", "Select Subject").'
+        '.select($subjects, "ex-subject", "id='ex-subject'", "Select Subject").'
     </div>
 </div>
 ') ?>
     <div  id="questions" class="table-responsive">
         <table class="table table-hover">
-            <tbody id="ex-elems">
-            </tbody>
+            <tbody id="ex-elems"></tbody>
         </table>
     </div>
-    <input type="submit" class="btn btn-primary float-right" value="Save">
+    <input id="ex-submit" type="submit" class="btn btn-primary float-right" value="Save">
 </form>
 <?php card_close(); ?>
 
