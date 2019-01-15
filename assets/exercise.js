@@ -172,4 +172,30 @@ $(document).ready(function () {
       
         return array;
       }
+      $('#ex-submit').click(function (e) { 
+          e.preventDefault();
+          var data = {
+            ex_elem:  $('#ex-elems').html(),
+            ex_title: $('#ex-title').val(),
+            ex_subject: $('#ex-subject').val(),
+            save: $(this).val()
+          }
+          var url = location.pathname;
+          console.log(data);
+          console.log(url);
+          
+          $.ajax({
+              url: url,
+              type: "POST",
+              data: data,
+              dataType: "JSON",
+              success: function (data) {
+                  console.log(data);
+              },
+              error: function(jqXHR, textStatus, errorThrown){
+                console.log(errorThrown);
+                
+              }
+          });
+      });
 });

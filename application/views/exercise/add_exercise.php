@@ -9,10 +9,10 @@
 <?php card_open('
 <div class="row">
     <div class="col-sm-6">
-        <input class="form-control" placeholder="Enter Exercise Title" style="max-width: 500px;" type="text" name="exercise-title" id="exercise-title">
+        <input id="ex-title" class="form-control" placeholder="Enter Exercise Title" style="max-width: 500px;" type="text" name="exercise-title" id="exercise-title">
     </div>
     <div class="col-sm-6">
-        '.select($subjects, "ex-subject", "", "Select Subject").'
+        '.select($subjects, "ex-subject", "id='ex-subject'", "Select Subject").'
     </div>
 </div>
 ') ?>
@@ -22,7 +22,7 @@
             </tbody>
         </table>
     </div>
-    <input type="submit" class="btn btn-primary float-right" value="Save">
+    <input type="submit" id="ex-submit" class="btn btn-primary float-right" value="Save">
 </form>
 <?php card_close(); ?>
 
