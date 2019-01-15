@@ -42,7 +42,7 @@ function nav_item($list, $link = "#", $icon = "feather icon-home"){
         $list['link'] = empty($list['link']) ? "#" : $list['link'];
         $list['icon'] = empty($list['icon']) ? "feather icon-home" : $list['icon'];
         if ($list['drop'] == false) {
-            $out .= '<li class="">';
+            $out .= '<li class="" '.tooltip($list['title'], 'right').'>';
             $out .=     '<a href="'.$list['link'].'" class="waves-effect waves-dark">';
             $out .=        '<span class="pcoded-micon">';
             $out .=            '<i class="'.$list['icon'].'"></i>';
@@ -51,7 +51,7 @@ function nav_item($list, $link = "#", $icon = "feather icon-home"){
             $out .=    '</a>';
         }else{
             $list['list'] = empty($list['list']) ? array() : $list['list'];
-            $out .='<li class="pcoded-hasmenu ">';
+            $out .='<li '.tooltip($list['title'], 'right').' class="pcoded-hasmenu ">';
             $out .=     '<a href="javascript:void(0)" class="waves-effect waves-dark">';
             $out .=         '<span class="pcoded-micon"><i class="'.$list['icon'].'"></i></span>';
             $out .=         '<span class="pcoded-mtext">'.$list['title'].'</span>';
@@ -60,7 +60,7 @@ function nav_item($list, $link = "#", $icon = "feather icon-home"){
             foreach ($list['list'] as $key => $li) {
                 $li['title'] = empty($li['title']) ? "title" : $li['title'];
                 $li['link'] = empty($li['link']) ? "#" : $li['link'];
-                $out .=        '<li class="">';
+                $out .=        '<li>';
                 $out .=            '<a href="'.$li['link'].'" class="waves-effect waves-dark">';
                 $out .=                '<span class="pcoded-mtext">'.$key.'</span>';
                 $out .=            '</a>';
@@ -71,7 +71,7 @@ function nav_item($list, $link = "#", $icon = "feather icon-home"){
         }
         
     }else{
-        $out .= '<li>';
+        $out .= '<li '.tooltip($list, 'right').'>';
         $out .=     '<a href="'.$link.'" class="waves-effect waves-dark">';
         $out .=        '<span class="pcoded-micon">';
         $out .=            '<i class="'.$icon.'"></i>';

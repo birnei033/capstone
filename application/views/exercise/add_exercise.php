@@ -6,6 +6,8 @@
 <button data-modal="set-written" class="md-trigger btn btn-success m-1" type="button">Written</button>
 <?php card_close(); ?>
 <form action="" method="post">
+<!-- <form action="<?php echo teacher_base('exercise/add')?>" method="post"> -->
+
 <?php card_open('
 <div class="row">
     <div class="col-sm-6">
@@ -18,11 +20,10 @@
 ') ?>
     <div  id="questions" class="table-responsive">
         <table class="table table-hover">
-            <tbody id="ex-elems">
-            </tbody>
+            <tbody id="ex-elems"></tbody>
         </table>
     </div>
-    <input type="submit" id="ex-submit" class="btn btn-primary float-right" value="Save">
+    <input id="ex-submit" type="submit" class="btn btn-primary float-right" value="Save">
 </form>
 <?php card_close(); ?>
 
@@ -40,4 +41,7 @@ include "modals/set_true_false.php";
     // Turn off automatic editor creation first.
     // CKEDITOR.disableAutoInline = true;
     // CKEDITOR.inline( 'ex-mc-question' );
+        // swiches
+    var elemsingle = document.querySelector('.js-single');
+    var switchery = new Switchery(elemsingle, { color: '#4099ff', jackColor: '#fff' });
 </script>
