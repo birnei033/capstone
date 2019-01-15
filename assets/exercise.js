@@ -1,7 +1,5 @@
 $(document).ready(function () {
-    // swiches
-    var elemsingle = document.querySelector('.js-single');
-    var switchery = new Switchery(elemsingle, { color: '#4099ff', jackColor: '#fff' });
+
     var mc_answers = {};
     var tf_answers = {};
     var written_answers = {};
@@ -39,7 +37,7 @@ $(document).ready(function () {
         $('.ex-m-choices').each(function (index, element) {
             ex_mc_count++;
         });
-        mc_answers['m-choice-'+ex_mc_count] = data.answers[0];
+        mc_answers['mchoice-'+ex_mc_count] = data.answers[0];
         all_answers.mc_answers = mc_answers;
         console.log(mc_answers);
         console.log(all_answers);
@@ -154,7 +152,7 @@ $(document).ready(function () {
         out +=          "<div class='row'>";
         out +=                '<div style="width:100%" class="form-group form-default ">';
         out +=                '<label for="ex-written-question-answer">Your Answer</label>';
-        out +=                '<textarea  class="form-control" name="ex-written-question-answer" id="ex-written-question-answer"></textarea>';
+        out +=                '<textarea  class="form-control" name="ex-written-question-answer-'+ex_written_count+'" id="ex-written-question-answer"></textarea>';
         out +=            '</div>';
         out +=          "</div>";
         out +=      "</div>";
@@ -221,4 +219,65 @@ $(document).ready(function () {
               }
           });
       });
+
+      $('#ex_submit').click(function (e) { 
+         e.preventDefault();
+         var data = {};
+         var temp = {};
+         console.log("CHOICES");
+         $('.ex-m-choices').each(function (index, element) {
+             var n = index+1;
+             $('[name="m-choice-'+(index+1)+'"]').each(function (index, element) {
+                 var chosen = $(this).prop('checked'); 
+                 if (chosen) {
+                     console.log($(this).val());
+                     temp["mchoice-"+n] = $(this).val();
+                    }
+                });
+                console.log(temp);
+                //  data.m_choice_answer = twmp;
+            });
+        data.mc_answers = JSON.stringify(temp);
+        temp = {};
+         console.log("TRUE OR FALSE");
+         $('.ex-tf').each(function (index, element) {
+            var n = index+1;
+            $('[name="tf-'+(index+1)+'"]').each(function (index, element) {
+                var chosen = $(this).prop('checked'); 
+                if (chosen) {
+                    console.log($(this).val());
+                    temp["tf-"+n] = $(this).val();
+                }
+            });
+         });
+        data.tf_answers = JSON.stringify(temp);
+        data.ex_submit = "submit";
+        data.ex_id = $('#ex_submit').attr('ex-id');
+        temp = {};
+        
+        console.log("WRITTEN");
+        $('.ex-written').each(function (index, element) {
+            var n = index+1;
+            $('[name="ex-written-question-answer-'+(index+1)+'"]').each(function (index, element) {
+                    console.log($(this).val());
+                    temp[n] = ($(this).val());
+                });
+            });
+            data.written_answers =temp;
+         console.log(data);
+         var url = location.pathname;
+        //  PASS DATA
+         $.ajax({
+             url: url,
+             type: "POST",
+             data: data,
+             dataType: "JSON",
+             success: function (response) {
+                 console.log(response);
+             },
+             error: function(jqXHR, textStatus, errorThrown){
+                console.log(textStatus);
+              }
+         });
+        });
 });

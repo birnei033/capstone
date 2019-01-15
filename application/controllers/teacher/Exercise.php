@@ -13,8 +13,47 @@ class Exercise extends CI_Controller {
     }
     public function index()
     {
-        view('exercise/exercise_list');
+        if (isset($_GET['preview'])) {
+            $this->exercise_preview($_GET['preview']);
+        }else if(!empty($this->input->post('ex_submit'))){
+            $this->exercise_submit();
+        }else{
+            view('exercise/exercise_list');
+        }
     }
+    
+    private function exercise_preview($id){
+        $query_result['preview'] = $this->common_model->get_where('exercises', array(
+            'id'=>$id
+        ));
+        view('exercise/preview_exercise', $query_result);
+    }
+   
+    private function exercise_submit(){
+        $ex_id = $this->input->post('ex_id');
+        $mc_answers = json_decode($this->input->post('mc_answers'));
+        $tf_answers = json_decode($this->input->post('tf_answers'));
+        $written_answers = $this->input->post('written_answers');
+        $score = 0;
+        $query_result = $this->common_model->get_where('exercises', array(
+            'id'=>$ex_id
+        ));
+        $true_mc_answers = array();
+        $true_answers = json_decode($query_result[0]->ex_answers);
+        foreach ($true_answers->mc_answers as $key => $value) {
+            $true_mc_answers[$key] = $value;
+        }
+        // COMPARE BOTH ANSWERS
+        foreach ($mc_answers as $key => $answers) {
+            // multiple choice
+            if ($true_mc_answers[$key] === $answers) {
+                $score++;
+            }
+        }
+
+        echo json_encode(array('data'=>$true_answers, 'score'=>$score));
+    }
+
     public function ajax_get_exercise_data(){
         $this_user_id = teacher_session('id');
         $exercises = $this->common_model->get_where('exercises', 'teacher_id = '. $this_user_id);
@@ -29,7 +68,6 @@ class Exercise extends CI_Controller {
         $data = array();
         $all_teacher = $teacher_temp;
         $subjects = $subject_temp;
-        // var_dump($all_teacher);
         foreach ($exercises as $exercise) {
             $temp = array();
             $temp['ex_name'] = $exercise->ex_name;
@@ -38,9 +76,6 @@ class Exercise extends CI_Controller {
             $temp['date_created'] = $exercise->date_added;
             $temp['tool'] = '<button onclick="" '.tooltip("Delete").' class="btn btn-danger waves-effect waves-light ml-2 p-1" >Delete</button>'
                                             .'<button onclick="" '.tooltip("Update").' href=""  class="student-update btn btn-inverse waves-effect waves-light ml-2 p-1" >Update</button>';
-                       
-           
-            
             $data[] = $temp;
         }
         $datas = json_encode($data);
@@ -88,7 +123,7 @@ class Exercise extends CI_Controller {
             "date_added"=>$date_added,
         );
      
-        $query = "SELECT * FROM exercises WHERE ex_name = '$title'";
+        $query = "SELECT * FROM exercises WHERE ex_name = '$title' AND teacher_id = ".teacher_session('id');
         $get_title = $this->common_model->query($query);
         $titletemp = "";
         $title_exist = false;
@@ -133,52 +168,17 @@ class Exercise extends CI_Controller {
     }
 
     public function test(){
-        $this->load->library('form_validation');
-        $title = $this->input->post('exercise-title');
-        $subject_id = $this->input->post('ex-subject');
-        $teacher_id = teacher_session('id');
-        $ex_questions="df";
-        $ex_answers="fgd";
-        $date_added=mdate('%Y-%m-%d');
-        $data = array(
-            "ex_name"=> $this->input->post('exercise-title'),
-            "subject_id"=>$subject_id,
-            "teacher_id"=>$teacher_id,
-            "ex_questions"=>$ex_questions,
-            "ex_answers"=>$ex_answers,
-            "date_added"=>$date_added,
-        );
-        $query = "SELECT * FROM exercises WHERE ex_name LIKE '$title'";
-        $get_title = $this->common_model->query($query);
-        $titletemp = "";
-        $title_exist = false;
-        foreach ($get_title as $thetitle) {
-            $titletemp = $thetitle->ex_name;
-        }
-        if (!empty($titletemp)) {
-            $title_exist = true;
-        }else{
-            $errors = "Duplicate Title";
-            $title_exist = false;
-        }
-
-        $this->form_validation->set_rules('exercise-title', 'Title', array(
-            'required',
-            'min_length[6]|',
+        
+        $query_result = $this->common_model->get_where('exercises', array(
+            'id'=>14
         ));
-        $this->form_validation->set_rules('subject_id', 'Subject', array(
-            'required'
-        ));
-        $this->form_validation->set_rules('ex_questions', 'questions', array(
-            'required'
-        ));
-        if ($this->form_validation->run() == TRUE)
-        {
-            $result_id = $this->common_model->insert('exercises', $data);
-            echo json_encode(array('message'=> '"'.$title.'" added successfuly.', 'icon'=>'success','test'=>$result_id));
-        }else{
-            echo json_encode(array('message'=> 'All Fields are required.', 'icon'=>'warning'));
+        $true_mc_answers = array();
+        $true_answers = json_decode($query_result[0]->ex_answers);
+        foreach ($true_answers->mc_answers as $key => $value) {
+            $true_mc_answers[$key] = $value;
         }
-}
+        // echo json_encode(array('data'=>$true_answers));
+        var_dump($true_mc_answers);
+    }
 
 }

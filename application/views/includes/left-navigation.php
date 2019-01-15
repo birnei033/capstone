@@ -47,7 +47,7 @@
     left: 14px;
     color: #fff;">
             <div class="row align-items-center">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="page-header-title">
                         <h2 class="m-b-10" id="page-title">Teacher <?php echo teacher_session('name') ?> Dashboard</h2>
                     </div>

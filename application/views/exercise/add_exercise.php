@@ -41,4 +41,7 @@ include "modals/set_true_false.php";
     // Turn off automatic editor creation first.
     // CKEDITOR.disableAutoInline = true;
     // CKEDITOR.inline( 'ex-mc-question' );
+        // swiches
+    var elemsingle = document.querySelector('.js-single');
+    var switchery = new Switchery(elemsingle, { color: '#4099ff', jackColor: '#fff' });
 </script>

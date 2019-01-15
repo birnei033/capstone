@@ -12,7 +12,7 @@
                 <tr>
                     <!-- <th>Student ID #</th> -->
                     <th>Title</th>
-                    <th>Subjct</th>
+                    <th>Subject</th>
                     <th>Author</th>
                     <th>Date Created</th>
                     <!-- <th>Program</th> -->
@@ -29,7 +29,7 @@ var ex_list;
 $(document).ready(function () {
     ex_list = $('#ex-list').DataTable({
         initComplete: function(settings, json) {
-            // $('[data-toggle="tooltip"]').tooltip();
+            $('[data-toggle="tooltip"]').tooltip();
             // var elem = $('#sel').html();
             // var sear = $('#sear').html();
             // $('#sel').remove(); $('#sear').remove();
@@ -47,7 +47,7 @@ $(document).ready(function () {
             //     ex_list.search($('#ex-filter-by-subject option:selected').val()+' '+$(this).val()).draw();
             // });
         },
-        dom: '<"row"<"#ex-search-box.col-sm-6" ><"#ex-select-subject.col-sm-6" >>t<"row"<"col-sm-6"i><"col-sm-6"p>>',
+        // dom: '<"row"<"#ex-search-box.col-sm-6" ><"#ex-select-subject.col-sm-6" >>t<"row"<"col-sm-6"i><"col-sm-6"p>>',
         ajax: {
             url: location.pathname+"ajax_get_exercise_data",
             type: "post",

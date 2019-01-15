@@ -53,10 +53,10 @@ function student_logged(){
         redirect(student_base('login'), 'refresh');
     }
 }
-function page_header($text){
+function page_header($text, $class = ""){
    echo '<script>
     jQuery(document).ready(function ($) {
-        $(\'#page-title\').text(\''.$text.'\');
+        $(\'#page-title\').text(\''.$text.'\').addClass(\''.$class.'\');
     });
 </script>';
 }

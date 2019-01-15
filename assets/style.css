@@ -2,7 +2,7 @@
 .fixed-button{
     display: none;
 }
-
+/* ------------------------- */
 .ck.ck-content.ck-editor__editable{
     min-height: 200px;
 }
@@ -14,4 +14,12 @@
 
 #styleSelector .selector-toggle {
     opacity: 0;
+}
+
+.borderless td, .borderless th {
+    border: none;
+}
+.card.exercise{
+    max-width: 800px;
+    margin: auto;
 }
