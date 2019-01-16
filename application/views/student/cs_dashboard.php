@@ -30,7 +30,7 @@
                                     <p><strong>Subject: </strong><?php echo student_session('student_subject') ?></p>
                                     <p><strong>Instructor: </strong><?php echo student_session('instructor') ?></p>
                                     <?php
-                                    if (count($exercises) != 0) {
+                                    if (count($lessons) != 0) {
                                     echo btn(array(
                                         'text'=> "Start Lesson <span class=\"badge\">".count($lessons)."</span>",
                                         'class'=>'p-1',

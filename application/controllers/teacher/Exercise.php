@@ -85,10 +85,10 @@ class Exercise extends CI_Controller {
             'date_exercise_taken'=>d()
         );
 
-        $query_result_id = $this->common_model->insert('finished_exercises', $insert_data);
+        // $query_result_id = $this->common_model->insert('finished_exercises', $insert_data);
 
         echo json_encode(array(
-            'data'=>$your_answers, 
+            'data'=>$true_answers, 
             'score'=>$score, 
             'total'=>$total,
             'percent'=>$score_percent,
