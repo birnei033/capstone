@@ -31,6 +31,7 @@ class Exercise extends CI_Controller {
    
     private function exercise_submit(){
         $ex_id = $this->input->post('ex_id');
+        $subject_id = $this->input->post('subject_id');
         $mc_answers = json_decode($this->input->post('mc_answers'));
         $tf_answers = json_decode($this->input->post('tf_answers'));
         $written_answers = $this->input->post('written_answers');
@@ -71,12 +72,26 @@ class Exercise extends CI_Controller {
                 $score++;
             }
         }
+        $score_percent = floor($score/$total*100);
+        $insert_data = array(
+            'ex_id' => $ex_id,
+            'subject_id' => $subject_id,
+            'cs_id' => student_session('student_id'),
+            'ct_id' => student_session('instructor_id'),
+            'ex_score' => $score,
+            'ex_total_item' => $total,
+            'ex_cs_answers' => json_encode(array('cs_answer'=>$your_answers, 'correct_answers'=>$true_answers)),
+            'ex_score_percent' => $score_percent,
+            'date_exercise_taken'=>d()
+        );
+
+        $query_result_id = $this->common_model->insert('finished_exercises', $insert_data);
 
         echo json_encode(array(
             'data'=>$your_answers, 
             'score'=>$score, 
             'total'=>$total,
-            'percent'=>floor($score/$total*100),
+            'percent'=>$score_percent,
             'message'=>"You have finished the quiz",
             'icon'=>"success"
         ));
@@ -206,8 +221,8 @@ class Exercise extends CI_Controller {
             $true_mc_answers[$key] = $value;
         }
         // echo json_encode(array('data'=>$true_answers));
-        var_dump($true_answers);
-        var_dump(count($true_answers));
+        var_dump(student_session());
+        // var_dump(count($true_answers));
     }
 
 }

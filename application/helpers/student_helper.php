@@ -38,6 +38,14 @@ function student_lesson($page, $data = ""){
     $CI->load->view($page, $data);
     $CI->load->view('includes/footer');
 }
+function student_exercise_view($page, $data = ""){
+    $CI = get_instance();
+    $CI->load->view('includes/head');
+    $CI->load->view('student/top-navigation');
+    $CI->load->view('student/cs_no_sidebar');
+    $CI->load->view($page, $data);
+    $CI->load->view('student/footer');
+}
 function student_session($index = ""){
     $CI = get_instance();
     $session = !isset($CI->session->userdata['student_logged_in']) ? "" : $CI->session->userdata['student_logged_in'];

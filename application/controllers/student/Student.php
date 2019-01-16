@@ -12,25 +12,26 @@ class Student extends CI_Controller {
     }
     
     public function index(){
-		// var_dump($this->session->student_logged_in);
+
 		student_logged();
-		$query = "SELECT lesson_title FROM lessons";
+		$query = "SELECT lesson_title FROM lessons WHERE subject_id = ".student_session('student_subject_id');
 		$result = $this->lessons_model->query($query);
 		$data['lessons'] = array();
 		foreach ($result as $lesson) {
 			$temp = $lesson->lesson_title;
 			$data['lessons'][] = $temp;
 		}
-		if (!isset($this->session->student_logged_in)) {
-            // redirect('student/login');
-		}
-			// student_view('cs_dashboard', array(
-			// 	'main'=>$data,
-			// 	'sidebar'=>$data
-			// ));
-			
+		$data['answered'] = $this->db->get_where('finished_exercises', array(
+			'cs_id'=>student_session('student_id')
+		))->result();
+		// var_dump($data['answered']);
+		$exercises = $this->db->get_where('exercises', array(
+			'subject_id'=>student_session('student_subject_id')
+		));
+		$data['exercises'] = $exercises->result();
+
 		$this->load->view('includes/head');
-        $this->load->view('student/cs_dashboard');
+        $this->load->view('student/cs_dashboard',$data);
         $this->load->view('includes/footer-auth');
 	}
 	public function lesson(){

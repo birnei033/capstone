@@ -254,6 +254,7 @@ $(document).ready(function () {
         data.tf_answers = JSON.stringify(temp);
         data.ex_submit = "submit";
         data.ex_id = $('#ex_submit').attr('ex-id');
+        data.subject_id = $('#ex_submit').attr('sub-id');
         temp = {};
         
         console.log("WRITTEN");

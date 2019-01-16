@@ -3,9 +3,14 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    
                             <div class="text-center">
-                                <!-- <img src="<?php echo base_url() ?>assets/themf/images/logo.png" alt="logo.png"> -->
+                            <?php echo btn(array(
+                                        'text'=> "logout",
+                                        'class'=>'p-1',
+                                        'type'=>'link',
+                                        'href'=>student_base('login/logout')
+                                    )) ?>
+
                             </div>
                             <div class="auth-box card" style="max-width: --615px">
                                 <div class="card-block">
@@ -17,30 +22,30 @@
                                 //   var_dump(student_session());
                                 echo student_session('student_login_name') ?>! 
                             </h4>
+                           
                             <hr>
                                     <p><strong>ID Number: </strong><?php echo student_session('school_id') ?></p>
                                     <p><strong>Full Name: </strong><?php echo student_session('student_full_name') ?></p>
                                     <p><strong>Program: </strong><?php echo student_session('student_program') ?></p>
                                     <p><strong>Subject: </strong><?php echo student_session('student_subject') ?></p>
                                     <p><strong>Instructor: </strong><?php echo student_session('instructor') ?></p>
-                                    <p><strong>Status: </strong></p>
-                                    <?php echo btn(array(
-                                        'text'=> "Start Lesson",
+                                    <?php
+                                    if (count($exercises) != 0) {
+                                    echo btn(array(
+                                        'text'=> "Start Lesson <span class=\"badge\">".count($lessons)."</span>",
                                         'class'=>'p-1',
                                         'href'=>student_base('student/lesson')
-                                    )) ?>
+                                    ));
+                                    }
+                                    ?>
+                                    <?php if (count($exercises) != 0) { ?>
+                                    <button data-modal="modal-exercises-list" class="md-trigger p-1  btn btn-danger">Exercises <span id="ex-count" class="badge"><?php echo count($exercises) ?></span></button>
+                                    <?php } ?>
                                 </div>
                             </div>
-                            <div class="auth-box " style="max-width: --615px">
-                                <div class="card-block">
-                                    <?php echo btn(array(
-                                        'text'=> "logout",
-                                        'class'=>'p-1 float-right',
-                                        'href'=>student_base('login/logout')
-                                    )) ?>
-                                    
-                                </div>
-                            </div>
+                          
+                                    <?php include "modals/cs_exercises_list.php"; ?>
+                               
                         
                         <!-- end of form -->
                 </div>

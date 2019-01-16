@@ -59,6 +59,7 @@ class Students_Model extends CI_Model {
             $temp['student_subject'] = $subs[$student->student_subjects];
             $temp['student_subject_id'] = $student->student_subjects;
             $temp['instructor'] = $ins[$student->added_by];
+            $temp['instructor_id'] = $student->added_by;
             $data = $temp;
         }
         return $data;

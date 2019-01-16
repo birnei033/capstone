@@ -93,7 +93,9 @@ function select($values, $name = "", $attr="", $default="", $sameKeyAndValue = f
     $out .= '</select>';
     return $out;
 }
-
+function d($format = '%Y-%m-%d'){
+    return mdate($format);
+}
 function btable_open(){
 
 }
