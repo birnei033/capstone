@@ -2,7 +2,7 @@
 <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>bower_components/stroll/css/stroll.css">
 <?php card_open("Select element below.") ?>
 <button data-modal="set-time" class="md-trigger btn btn-dark m-1" type="button">Set Time</button>
-<button data-modal="set-instruction" class="md-trigger waves-effect btn btn-secondary m-1" type="button">Text</button>
+<!-- <button data-modal="set-instruction" class="md-trigger waves-effect btn btn-secondary m-1" type="button">Text</button> -->
 <button data-modal="set-mul-choice"  class="md-trigger btn btn-success m-1" type="button">Multiple Choice</button>
 <button data-modal="set-true-false" class="md-trigger btn btn-success m-1" type="button">True or False</button>
 <button data-modal="set-written" class="md-trigger btn btn-success m-1" type="button">Written</button>
@@ -25,8 +25,30 @@
         <div id="timer-wrapper" class="text-center mb-4">
         
         </div>
-        <table class="table table-hover">
-            <tbody id="ex-elems"></tbody>
+        <table class="table ">
+            <tbody id="ex-elems" >
+                <tr>
+                    <td class="p-0">
+                        <table class="table table-hover">
+                            <tbody id="ex-elems-m-choice"></tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="p-0">
+                        <table class="table table-hover">
+                            <tbody id="ex-elems-tf"></tbody>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="p-0">
+                        <table class="table table-hover">
+                            <tbody id="ex-elems-written"></tbody>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
   <style>
@@ -41,7 +63,7 @@
 include "modals/set_instruction.php";
 include "modals/set_mul_choice_1.php";
 include "modals/set_time.php";
-include "modals/set_written.php";
+include "modals/set_written.1.php";
 include "modals/set_true_false.1.php";
 
 ?>
@@ -53,8 +75,8 @@ include "modals/set_true_false.1.php";
     // CKEDITOR.inline( 'ex-mc-question' );
         // swiches
         $(document).ready(function () {
-            var elemsingle = document.querySelector('.js-single');
-            var switchery = new Switchery(elemsingle, { color: '#4099ff', jackColor: '#fff' });
+            // var elemsingle = document.querySelector('.js-single');
+            // var switchery = new Switchery(elemsingle, { color: '#4099ff', jackColor: '#fff' });
         });
 </script>
 

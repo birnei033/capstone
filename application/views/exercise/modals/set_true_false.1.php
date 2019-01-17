@@ -16,6 +16,9 @@
             </div>
             <form method="post">
                 <div class="card-block accordion-block color-accordion-block cards mb-5"  style="min-height: 550px">
+                    <div id="editor1" class="p-2 mb-2" contenteditable="true" style="border: 1px solid #eee">
+                        <h4>Ckick here to add an instruction.</h4>
+                    </div>
                     <div class="color-accordion " id="color-accordion" >
                         
                     </div>
@@ -59,28 +62,22 @@
             accordion +=                    '<label for="ex-tf-question">Question</label>';
             accordion +=                    '<textarea class="form-control" rows="3" name="ex-tf-question" id="ex-tf-question"></textarea>';
             accordion +=                 '</div>';
-            accordion += "<form>";
-            accordion +=              "<div class='form-radio'>";
+            accordion +=                "<form>";
+            accordion +=                    "<div class='form-radio'>";
             accordion +=                       '<div class="radio radio-inline">';
             accordion +=                        '<label>';
-            accordion +=                            '<input value="true" id="ex-tf-answer" type="radio">';
+            accordion +=                            '<input value="true" name="ex-tf-answer" id="ex-tf-answer" type="radio">';
             accordion +=                            '<i class="helper"></i>True';
             accordion +=                        '</label>';
             accordion +=                        '</div>';
             accordion +=                        '<div class="radio radio-inline">';
             accordion +=                            '<label>';
-            accordion +=                                '<input value="false" id="ex-tf-answer" type="radio">';
+            accordion +=                                '<input value="false" id="ex-tf-answer" name="ex-tf-answer" type="radio">';
             accordion +=                                '<i class="helper"></i>False';
             accordion +=                            '</label>';
             accordion +=                        '</div>';
-            accordion +=              "</div>";
-            accordion += "</form>";
-            // accordion +=                '<div class="form-group form-default">';
-            // accordion +=                    '<span class="d-block m-b-2" style="margin-bottom: 8px;">Select Correct Answer</span>';
-            // accordion +=                    '<span>False</span>';
-            // accordion +=                    '<input type="checkbox" id="ex-tf-answer" checked class="js-single"  />';
-            // accordion +=                     '<span>True</span>';
-            // accordion +=                '</div> ';
+            accordion +=                     "</div>";
+            accordion +=                "</form>";
             accordion +=            '</div>';
             $('#set-true-false #color-accordion').append(accordion);
         });

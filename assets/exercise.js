@@ -23,8 +23,9 @@ $(document).ready(function () {
 
     $('#ex-mul-choice-submit').click(function (e) { 
         e.preventDefault();
-        var parent = $('#ex-elems');
-        var append_elem = "";
+        var parent = $('#ex-elems-m-choice');
+        var instruction = $('#set-mul-choice #editor1').html();
+        var append_elem = "<tr><td>"+instruction+"</td></tr>";
         $('#set-mul-choice .accordion-desc').each(function (index, element) {
             var ex_mc_count = index+1;
             var data = {
@@ -97,14 +98,20 @@ $(document).ready(function () {
 
     $('#ex-tf-submit').click(function (e) { 
         e.preventDefault();
-        var parent = $('#ex-elems');
-        var append_elem = "";
+        var parent = $('#ex-elems-tf');
+        var instruction = $('#set-true-false #editor1').html();
+        var append_elem = "<tr><td>"+instruction+"</td></tr>";
         $('#set-true-false .accordion-desc').each(function (index, element) {
             var ex_tf_count = index+1;
-            
+            var answer = "";
+            $(this).children('form').children('.form-radio').children('.radio').children('label').children('#ex-tf-answer').each(function (index, element) {
+                if ($(this).prop('checked')) {
+                    answer = $(this).val();
+                }
+            });
             var data = {
                 question: $(this).children().children('#ex-tf-question').val(),
-                answer: $(this).children().children('#ex-tf-answer').prop('checked')
+                answer: answer
             }
             // $('.ex-tf').each(function (index, element) {
                 //     ex_tf_count++;
@@ -147,33 +154,34 @@ $(document).ready(function () {
     
     $('#ex-written-submit').click(function (e) { 
         e.preventDefault();
-        var ex_written_count = 1;
-        var out = "<tr class='ex-written'><td>";
-        var parent = $('#ex-elems');
-        var data = {
-            question: $('#ex-written-question').val(),
-            answer: $('#ex-tf-answer').val()
-        }
-        $('.ex-written').each(function (index, element) {
-            ex_written_count++;
-        });
-        
-        out += "<h5>"+ex_written_count+". "+data.question+"</h5><br>";
-        out += "<div class=''>"; //row open
-        out +=      "<div class='col-sm-12'>";
-        out +=          "<div class='row'>";
-        out +=                '<div style="width:100%" class="form-group form-default ">';
-        out +=                '<label for="ex-written-question-answer">Your Answer</label>';
-        out +=                '<textarea  class="form-control" name="ex-written-question-answer-'+ex_written_count+'" id="ex-written-question-answer"></textarea>';
-        out +=            '</div>';
-        out +=          "</div>";
-        out +=      "</div>";
-        out += "</div>" //row close
-
-        parent.append(out+"</td></tr>");
+        var parent = $('#ex-elems-written');
+        var instruction = $('#set-written #editor1').html();
+        var append_elem = "<tr><td>"+instruction+"</td></tr>";
+        $('#set-written .accordion-desc').each(function (index, element) {
+            var ex_written_count = index+1;
+            var data = {
+                question: $(this).children().children('#ex-written-question').val(),
+                answer: $(this).children().children('#ex-tf-answer').val()
+            }
+            
+            var out = "<tr class='ex-written'><td>";
+            out += "<h5>"+ex_written_count+". "+data.question+"</h5><br>";
+            out += "<div class=''>"; //row open
+            out +=      "<div class='col-sm-12'>";
+            out +=          "<div class='row'>";
+            out +=                '<div style="width:100%" class="form-group form-default ">';
+            out +=                '<label for="ex-written-question-answer">Your Answer</label>';
+            out +=                '<textarea  class="form-control" name="ex-written-question-answer-'+ex_written_count+'" id="ex-written-question-answer"></textarea>';
+            out +=            '</div>';
+            out +=          "</div>";
+            out +=      "</div>";
+            out += "</div>" //row close
+            out += "</td></tr>"
+            append_elem += out;
+            // console.log(all_answers);
+        });   
+        parent.append(append_elem);
         $('#set-written').removeClass('md-show');
-        // console.log(all_answers);
-        
     });
 
     $('#ex-set-time-submit').click(function (e) { 
