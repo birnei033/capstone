@@ -3,7 +3,7 @@
                         <!-- <h1 class="page-header">Lessons</h1> -->
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">
+                <div class="card card-center">
                     <div class="card-header">
                     </div>
                     <!-- /.panel-heading -->
@@ -11,10 +11,10 @@
                         <?php echo $preview; ?>
                     </div>
                     <!-- /.panel-body -->
-                </div>
                 <button data-modal="modal-2" data="add" class="btn btn-primary waves-effect md-trigger open-modal">
                         Add Lesson
-                    </button>
+                </button>
+                </div>
             </div>
         </div>
   

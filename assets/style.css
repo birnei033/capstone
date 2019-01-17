@@ -23,3 +23,21 @@
     max-width: 800px;
     margin: auto;
 }
+
+.card.card-center{
+    max-width: 900px;
+    margin: auto;
+}
+
+#clock-icon{
+    background-repeat: no-repeat;
+    width: 57px;
+    display: inline-block;
+    height: 38px;
+    background-size: contain;
+    position: relative;
+    bottom: -7px;
+}
+.accordion-msg{
+    background-color: #dcdedc42;;
+}

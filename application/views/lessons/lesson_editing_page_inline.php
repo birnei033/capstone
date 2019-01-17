@@ -8,7 +8,7 @@
         <!-- <div class="lessons sidebar"> -->
         <div class="">
             <form action="<?php  echo base_url(); ?>teacher/lessons/edit_submited" method="post">
-                <div class="card row">
+                <div class="card card-center ">
                     <div class="card-header">
                         <div class="row">
                         <?php if (isset($_GET['result'])) {
@@ -27,7 +27,7 @@
                                 <input type="text" placeholder="Lesson Title" value="<?php echo $title ?>" name="lesson-title" class="form-control">
                                 <input type="hidden" name="lesson-id" value="<?php echo $id ?>">
                             </div>            
-                            <div class="col-sm-3">
+                            <div class="col-sm-6">
                                 <select name="lesson-subject" id="" class="form-control">
                                     <?php
                                     foreach ($subjects as $subject) {
@@ -39,9 +39,9 @@
                                     
                                 </select>
                             </div>
-                            <div class="col-sm-3">
-                                    <a href="<?php echo base_url() ?>teacher/lessons/lesson_preview?preview=<?php echo $title; ?>" class="btn btn-primary">Preview</a>
-                            </div>
+                            <!-- <div class="col-sm-3">
+                                    <a href="<?php echo base_url() ?>teacher/lessons/lesson_preview?preview=<?php echo $title; ?>" class="btn btn-primary ">Preview</a>
+                            </div> -->
                         </div>
                     </div>
                     <div class="card-block">
@@ -53,7 +53,7 @@
                         </div> -->
                         <input type="hidden" name="save" value="save">
                         <hr>
-                        <input type="submit" class="btn btn-primary" name="submit">
+                        <input type="submit" class="btn btn-primary float-right" name="submit">
                     </div>
                 </div>
             </form>

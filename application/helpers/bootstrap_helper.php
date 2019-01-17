@@ -2,10 +2,10 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-function card_open($header = "", $col="12", $class=""){
+function card_open($header = "", $col="12", $class="", $attr=""){
 
     // echo '<div class="col-sm-'.$col.'">
-               echo '     <div class="card '.$class.'">
+               echo '     <div class="card '.$class.'" '.$attr.'>
                         <div class="card-header">'
                            .$header.
                        ' </div>

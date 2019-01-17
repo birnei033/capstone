@@ -11,8 +11,8 @@
                         <input id="ex-set-time" class="form-control" type="number">
                     </div>
                     <div class="btns text-right">
-                    <button class="btn btn-primary" type="button">Insert</button>
-                        <button type="button" class="btn btn-danger waves-effect md-close">Close</button>
+                    <button class="btn btn-primary" id="ex-set-time-submit" type="button">Set</button>
+                    <button type="button" class="btn btn-danger waves-effect md-close">Cancel</button>
                     </div>
                 </form>
             </div>

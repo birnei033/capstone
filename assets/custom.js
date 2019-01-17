@@ -1,5 +1,8 @@
 var subjects_table, lessons_table, students_table;
-
+// $("#pcoded" ).pcodedmenu();
+// var headerbg = "theme1";                //  header color                theme1 / theme2 / theme3 / theme4 / theme5 / theme6
+// var menucaption = "theme1";             //  menu caption color          theme1 / theme2 / theme3 / theme4 / theme5 / theme6 / theme7 / theme8 / theme9
+// var bgpattern = "theme1";
 jQuery(document).ready(function ($) {
     var url = window.location.href;
     $('nav ul.pcoded-item li  a').each(function (index, element) {

@@ -118,7 +118,8 @@ class Exercise extends CI_Controller {
             $temp['author'] = $all_teacher[$exercise->teacher_id];
             $temp['date_created'] = $exercise->date_added;
             $temp['tool'] = '<button onclick="" '.tooltip("Delete").' class="btn btn-danger waves-effect waves-light ml-2 p-1" >Delete</button>'
-                                            .'<button onclick="" '.tooltip("Update").' href=""  class="student-update btn btn-inverse waves-effect waves-light ml-2 p-1" >Update</button>';
+                                            .'<button onclick="" '.tooltip("Update").' href=""  class="student-update btn btn-inverse waves-effect waves-light ml-2 p-1" >Update</button>'
+                                            .'<a '.tooltip("View").' href="'.teacher_base('exercise?preview=').$exercise->id.'" target="blank"  class="student-update btn btn-primary waves-effect waves-light ml-2 p-1" >View</a>';
             $data[] = $temp;
         }
         $datas = json_encode($data);

@@ -23,114 +23,126 @@ $(document).ready(function () {
 
     $('#ex-mul-choice-submit').click(function (e) { 
         e.preventDefault();
-        var ex_mc_count = 1;
         var parent = $('#ex-elems');
-        var data = {
-            ex_mc_question: $('#ex-mc-question').val(),
-            answers: [
-                $('#ex-mc-correct-anwser').val(), 
-                $('#ex-mc-wrong1').val(), 
-                $('#ex-mc-wrong2').val(), 
-                $('#ex-mc-wrong3').val()
-            ]
-        };
-        $('.ex-m-choices').each(function (index, element) {
-            ex_mc_count++;
+        var append_elem = "";
+        $('#set-mul-choice .accordion-desc').each(function (index, element) {
+            var ex_mc_count = index+1;
+            var data = {
+                ex_mc_question: $(this).children().children('#ex-mc-question').val(),
+                answers: [
+                    $(this).children().children('.ex-mc-correct-anwsers').val(), 
+                    $(this).children().children('.ex-mc-wrong1').val(), 
+                    $(this).children().children('.ex-mc-wrong2').val(), 
+                    $(this).children().children('.ex-mc-wrong3').val()
+                ]
+            };
+            // $('.ex-m-choices').each(function (index, element) {
+            //     ex_mc_count++;
+            // });
+            mc_answers['mchoice-'+ex_mc_count] = data.answers[0];
+            all_answers.mc_answers = mc_answers;
+            console.log(mc_answers);
+            
+            
+            var out = "<tr class='ex-m-choices num-"+ex_mc_count+"'><td>";
+            var answers = shuffle(data.answers);
+            console.log(answers);
+            out += "<h5>"+ex_mc_count+". "+data.ex_mc_question+"</h5><br>";
+            out += "<div class=''>"; //row open
+            out +=      "<div class='col-sm-12'>";
+            out +=          "<div class='row'>";
+            out += "<form>";
+            out +=              "<div class='form-radio'>";
+            out +=                       '<div class="radio radio-inline">';
+            out +=                        '<label>';
+            out +=                            '<input value="'+answers[0]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
+            out +=                            '<i class="helper"></i>'+answers[0];
+            out +=                        '</label>';
+            out +=                        '</div>';
+            out +=                        '<div class="radio radio-inline">';
+            out +=                            '<label>';
+            out +=                                '<input value="'+answers[1]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
+            out +=                                '<i class="helper"></i>'+answers[1];
+            out +=                            '</label>';
+            out +=                        '</div>';
+            out +=                        '<div class="radio radio-inline">';
+            out +=                            '<label>';
+            out +=                                '<input value="'+answers[2]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
+            out +=                                '<i class="helper"></i>'+answers[2];
+            out +=                            '</label>';
+            out +=                        '</div>';
+            out +=                        '<div class="radio radio-inline">';
+            out +=                            '<label>';
+            out +=                                '<input value="'+answers[3]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
+            out +=                                '<i class="helper"></i>'+answers[3];
+            out +=                            '</label>';
+            out +=                        '</div>';
+            out +=              "</div>";
+            out += "</form>";
+            out +=              "<div class='col-sm-6'>";
+            out +=              "</div>";
+            out +=          "</div>";
+            out +=      "</div>";
+            out += "</div>" //row close
+            out += "</td></tr>";
+            console.log(all_answers);
+            append_elem += out;
         });
-        mc_answers['mchoice-'+ex_mc_count] = data.answers[0];
-        all_answers.mc_answers = mc_answers;
-        console.log(mc_answers);
+        parent.html(append_elem);
+        $('#set-mul-choice').removeClass('md-show');
         console.log(all_answers);
-        
-        
-        var out = "<tr class='ex-m-choices num-"+ex_mc_count+"'><td>";
-        var answers = shuffle(data.answers);
-        // console.log(answers);
-        out += "<h5>"+ex_mc_count+". "+data.ex_mc_question+"</h5><br>";
-        out += "<div class=''>"; //row open
-        out +=      "<div class='col-sm-12'>";
-        out +=          "<div class='row'>";
-        out += "<form>";
-        out +=              "<div class='form-radio'>";
-        out +=                       '<div class="radio radio-inline">';
-        out +=                        '<label>';
-        out +=                            '<input value="'+answers[0]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
-        out +=                            '<i class="helper"></i>'+answers[0];
-        out +=                        '</label>';
-        out +=                        '</div>';
-        out +=                        '<div class="radio radio-inline">';
-        out +=                            '<label>';
-        out +=                                '<input value="'+answers[1]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
-        out +=                                '<i class="helper"></i>'+answers[1];
-        out +=                            '</label>';
-        out +=                        '</div>';
-        out +=                        '<div class="radio radio-inline">';
-        out +=                            '<label>';
-        out +=                                '<input value="'+answers[2]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
-        out +=                                '<i class="helper"></i>'+answers[2];
-        out +=                            '</label>';
-        out +=                        '</div>';
-        out +=                        '<div class="radio radio-inline">';
-        out +=                            '<label>';
-        out +=                                '<input value="'+answers[3]+'" type="radio" name="m-choice-'+ex_mc_count+'">';
-        out +=                                '<i class="helper"></i>'+answers[3];
-        out +=                            '</label>';
-        out +=                        '</div>';
-        out +=              "</div>";
-        out += "</form>";
-        out +=              "<div class='col-sm-6'>";
-        out +=              "</div>";
-        out +=          "</div>";
-        out +=      "</div>";
-        out += "</div>" //row close
 
-        parent.append(out+"</td></tr>");
-        console.log(all_answers);
         
     });
 
     $('#ex-tf-submit').click(function (e) { 
         e.preventDefault();
-        var ex_tf_count = 1;
-        var out = "<tr class='ex-tf'><td>";
         var parent = $('#ex-elems');
-        
-        var data = {
-            question: $('#ex-tf-question').val(),
-            answer: $('#ex-tf-answer').prop('checked')
-        }
-        $('.ex-tf').each(function (index, element) {
-            ex_tf_count++;
+        var append_elem = "";
+        $('#set-true-false .accordion-desc').each(function (index, element) {
+            var ex_tf_count = index+1;
+            
+            var data = {
+                question: $(this).children().children('#ex-tf-question').val(),
+                answer: $(this).children().children('#ex-tf-answer').prop('checked')
+            }
+            // $('.ex-tf').each(function (index, element) {
+                //     ex_tf_count++;
+                // });
+                tf_answers['tf-'+ex_tf_count] = data.answer;
+                console.log(tf_answers);
+                
+            var out = "<tr class='ex-tf'><td>";
+            out += "<h5>"+ex_tf_count+". "+data.question+"</h5><br>";
+            out += "<div class=''>"; //row open
+            out +=      "<div class='col-sm-12'>";
+            out +=          "<div class='row'>";
+            out += "<form>";
+            out +=              "<div class='form-radio'>";
+            out +=                       '<div class="radio radio-inline">';
+            out +=                        '<label>';
+            out +=                            '<input value="true" type="radio" name="tf-'+ex_tf_count+'">';
+            out +=                            '<i class="helper"></i>True';
+            out +=                        '</label>';
+            out +=                        '</div>';
+            out +=                        '<div class="radio radio-inline">';
+            out +=                            '<label>';
+            out +=                                '<input value="false" type="radio" name="tf-'+ex_tf_count+'">';
+            out +=                                '<i class="helper"></i>False';
+            out +=                            '</label>';
+            out +=                        '</div>';
+            out +=              "</div>";
+            out += "</form>";
+            out +=          "</div>";
+            out +=      "</div>";
+            out += "</div>" //row close
+            out += "</td></tr>";
+            append_elem += out;
+            // console.log(all_answers);
         });
-        tf_answers['tf-'+ex_tf_count] = data.answer;
-        console.log(tf_answers);
-        
-        out += "<h5>"+ex_tf_count+". "+data.question+"</h5><br>";
-        out += "<div class=''>"; //row open
-        out +=      "<div class='col-sm-12'>";
-        out +=          "<div class='row'>";
-        out += "<form>";
-        out +=              "<div class='form-radio'>";
-        out +=                       '<div class="radio radio-inline">';
-        out +=                        '<label>';
-        out +=                            '<input value="true" type="radio" name="tf-'+ex_tf_count+'">';
-        out +=                            '<i class="helper"></i>True';
-        out +=                        '</label>';
-        out +=                        '</div>';
-        out +=                        '<div class="radio radio-inline">';
-        out +=                            '<label>';
-        out +=                                '<input value="false" type="radio" name="tf-'+ex_tf_count+'">';
-        out +=                                '<i class="helper"></i>False';
-        out +=                            '</label>';
-        out +=                        '</div>';
-        out +=              "</div>";
-        out += "</form>";
-        out +=          "</div>";
-        out +=      "</div>";
-        out += "</div>" //row close
-        parent.append(out+"</td></tr>");
-        console.log(all_answers);
-        
+        parent.html(append_elem);
+        $('#set-true-false').removeClass('md-show');
+            
     });
     
     $('#ex-written-submit').click(function (e) { 
@@ -159,10 +171,28 @@ $(document).ready(function () {
         out += "</div>" //row close
 
         parent.append(out+"</td></tr>");
-        console.log(all_answers);
+        $('#set-written').removeClass('md-show');
+        // console.log(all_answers);
         
     });
 
+    $('#ex-set-time-submit').click(function (e) { 
+        e.preventDefault();
+        var time = $('#ex-set-time').val();
+        var out =   '<div id="timer"><span id="clock-icon"></span>';
+        out +=          '<span>Time: </span><span id="time">'+time+'</time> minutes';
+        out +=      '</div>';
+
+        if (time < 1 || time == "") {
+            swal('Oops!', "Time must be greater than 0 minute.", {
+                icon: "info",
+            });
+        }else{
+            $('#timer-wrapper').html(out);
+            $('#set-time').removeClass('md-show');
+        }
+    });
+    
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
       
@@ -181,6 +211,7 @@ $(document).ready(function () {
       
         return array;
       }
+
 
       $('#ex-submit').click(function (e) { 
           e.preventDefault();

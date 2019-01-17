@@ -8,7 +8,7 @@
         <!-- <div class="lessons sidebar"> -->
         <div class="">
             <form action="<?php  echo base_url(); ?>teacher/lessons/save" method="post">
-                <div class="card row">
+                <div class="card row" style="max-width: 900px; margin:auto">
                     <div class="card-header">
                         <div class="row">
                             <div class="col-sm-6">
