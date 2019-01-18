@@ -5,7 +5,7 @@
                 <h4>Set Time</h4>
             </div>
             <div class="card-block">
-                <form method="post">
+                <!-- <form method="post"> -->
                     <div class="form-group">
                         <label for="ex-set-time">Set time in minutes</label>
                         <input id="ex-set-time" class="form-control" type="number">
@@ -14,7 +14,7 @@
                     <button class="btn btn-primary" id="ex-set-time-submit" type="button">Set</button>
                     <button type="button" class="btn btn-danger waves-effect md-close">Cancel</button>
                     </div>
-                </form>
+                <!-- </form> -->
             </div>
         </div>
     </div>

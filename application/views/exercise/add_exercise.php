@@ -25,6 +25,11 @@
         <div id="timer-wrapper" class="text-center mb-4">
         
         </div>
+        <style>
+        #clock-icon{
+            background-image: url(<?php echo images('alarm-clock.png') ?>);
+        }
+  </style>
         <table class="table ">
             <tbody id="ex-elems" >
                 <tr>
@@ -51,11 +56,7 @@
             </tbody>
         </table>
     </div>
-  <style>
-        #clock-icon{
-            background-image: url(<?php echo images('alarm-clock.png') ?>);
-        }
-  </style>
+ 
 </form>
 <?php card_close(); ?>
 

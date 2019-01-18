@@ -14,11 +14,24 @@ class Take_Exercise extends CI_Controller {
     public function index(){
         if (!empty($this->input->post('ex_submit'))) {
             $this->exercise_submit();
+        }else if(!empty($this->input->post('ex_initial'))){
+            $this->initial_start();
         }else{
             $ex_id = $this->input->get('ex_id');
             $ex_subject_id = $this->input->get('subject');
             $this->take_exercise_view($ex_id);
         }
+    }
+    private function initial_start(){
+        $ex_id = $this->input->post('ex_id');
+        $subject_id = $this->input->post('subject_id');
+        $insert_data = array(
+            'ex_id' => $ex_id,
+            'subject_id' => $subject_id,
+            'cs_id' => student_session('student_id'),
+            'ct_id' => student_session('instructor_id'),
+        );
+        $query_result_id = $this->common_model->insert('finished_exercises', $insert_data);        
     }
     private function take_exercise_view($id){
         $query_result['preview'] = $this->common_model->get_where('exercises', array(
@@ -71,8 +84,8 @@ class Take_Exercise extends CI_Controller {
         }
         foreach ($tf_answers as $key => $answers) {
             // true or false
-            $tempx = $answers == "true" ? 1 : 0 ;
-            if ($true_tf_answers[$key] == $tempx) {
+            // $tempx = $answers == "true" ? 1 : 0 ;
+            if ($true_tf_answers[$key] === $answers) {
                 $score++;
             }
         }
@@ -89,10 +102,10 @@ class Take_Exercise extends CI_Controller {
             'date_exercise_taken'=>d()
         );
 
-        $query_result_id = $this->common_model->insert('finished_exercises', $insert_data);
+        // $query_result_id = $this->common_model->update('finished_exercises', $insert_data);
 
         echo json_encode(array(
-            'data'=>$your_answers, 
+            'data'=>$true_tf_answers, 
             'score'=>$score, 
             'total'=>$total,
             'percent'=>$score_percent,

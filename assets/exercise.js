@@ -161,8 +161,10 @@ $(document).ready(function () {
             var ex_written_count = index+1;
             var data = {
                 question: $(this).children().children('#ex-written-question').val(),
-                answer: $(this).children().children('#ex-tf-answer').val()
+                points: $(this).children().children('#ex-written-question-points').val(),
+                
             }
+            written_answers['written-'+ex_written_count] = data;
             
             var out = "<tr class='ex-written'><td>";
             out += "<h5>"+ex_written_count+". "+data.question+"</h5><br>";
@@ -170,7 +172,7 @@ $(document).ready(function () {
             out +=      "<div class='col-sm-12'>";
             out +=          "<div class='row'>";
             out +=                '<div style="width:100%" class="form-group form-default ">';
-            out +=                '<label for="ex-written-question-answer">Your Answer</label>';
+            out +=                '<label for="ex-written-question-answer">Your Answer ('+data.points+') points</label>';
             out +=                '<textarea  class="form-control" name="ex-written-question-answer-'+ex_written_count+'" id="ex-written-question-answer"></textarea>';
             out +=            '</div>';
             out +=          "</div>";
@@ -178,17 +180,17 @@ $(document).ready(function () {
             out += "</div>" //row close
             out += "</td></tr>"
             append_elem += out;
-            // console.log(all_answers);
         });   
-        parent.append(append_elem);
+        parent.html(append_elem);
         $('#set-written').removeClass('md-show');
+        console.log(all_answers);
     });
 
     $('#ex-set-time-submit').click(function (e) { 
         e.preventDefault();
         var time = $('#ex-set-time').val();
         var out =   '<div id="timer"><span id="clock-icon"></span>';
-        out +=          '<span>Time: </span><span id="time">'+time+'</time> minutes';
+        out +=          '<span>Time: </span><span id="time">'+time+'</span> minutes';
         out +=      '</div>';
 
         if (time < 1 || time == "") {
@@ -226,12 +228,13 @@ $(document).ready(function () {
           var url = location.pathname;
           var data = {
             ex_subject: $('#ex-subject').val(),
-            ex_elems: $('#ex-elems').html(),
+            ex_elems: $('#questions').html(),
+            ex_time: $('#time').text(),
             exercise_title: $('#ex-title').val(),
             ex_submit: $('#ex-submit').val(),
             answers: JSON.stringify(all_answers)
           };
-          console.log(data);
+        //   console.log(data);
           
           $.ajax({
               type: "POST",
@@ -239,12 +242,14 @@ $(document).ready(function () {
               data: data,
               dataType: "JSON",
               success: function (response) {
-                if (response.icon === "success") {
+                  
+                  if (response.icon === "success") {
+                    console.log(response.test);
                     swal('Success', response.message, {
                         icon: response.icon,
                     })
                     .then((val)=>{
-                        location.reload();
+                        // location.reload();
                     });
                 }else{
                     swal("Something Went wrong!",response.message, {
@@ -318,6 +323,8 @@ $(document).ready(function () {
                  swal(response.message,
                     'You got '+response.score+' out of '+response.total+'\n'+response.percent+"%", {
                     icon: response.icon,
+                }).then((val)=>{
+                    location.href = "/ignite/student";
                 });
              },
              error: function(jqXHR, textStatus, errorThrown){
@@ -325,4 +332,74 @@ $(document).ready(function () {
               }
          });
         });
+
+        function start_exam(){
+
+            var time_in_minutes = $('.card.exercise #time').text();
+            // var time_in_minutes = 1;
+            var current_time = Date.parse(new Date());
+            var deadline = new Date(current_time + time_in_minutes*60*1000);
+    
+    
+            function time_remaining(endtime){
+                var t = Date.parse(endtime) - Date.parse(new Date());
+                var seconds = Math.floor( (t/1000) % 60 );
+                var minutes = Math.floor( (t/1000/60) % 60 );
+                var hours = Math.floor( (t/(1000*60*60)) % 24 );
+                var days = Math.floor( t/(1000*60*60*24) );
+                return {'total':t, 'days':days, 'hours':hours, 'minutes':minutes, 'seconds':seconds};
+            }
+            function run_clock(id,endtime){
+                var clock =  $(id);
+                function update_clock(){
+                    var t = time_remaining(endtime);
+                    clock.html(t.minutes+':'+t.seconds);
+                    if(t.total<=0){
+                         clearInterval(timeinterval); 
+                         
+                         swal('Time is up!',{
+                             icon: 'info'
+                         }).then((val)=>{
+                             $('.card.exercise #ex_submit').trigger('click');
+                             
+                         });
+                    }
+                }
+                update_clock(); // run function once at first to avoid delay
+                var timeinterval = setInterval(update_clock,1000);
+            }
+            run_clock('.card.exercise #time',deadline);
+        }
+
+        var content = $('.card.exercise #ex-elems').html();
+        $('.card.exercise #ex-elems').html("");
+        swal("Click Start to begin.",{
+            icon: 'success',
+            buttons:['Cancel', 'Start']
+        }).then((val)=>{
+            if (val == 1) {
+                $('.card.exercise #ex-elems').html(content);
+                var url = location.pathname;
+                var data ={
+                    ex_initial = "submit",
+                }
+                //  PASS DATA
+                $.ajax({
+                    url: url,
+                    type: "POST",
+                    data: data,
+                    dataType: "JSON",
+                    success: function (response) {
+                        start_exam();
+                         console.log(response);
+                     },
+                     error: function(jqXHR, textStatus, errorThrown){
+                        console.log(textStatus);
+                      }
+                 });
+            }else{
+                location.href = "/ignite/student";
+            }
+        });
+        
 });

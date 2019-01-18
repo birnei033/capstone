@@ -49,6 +49,8 @@
             accordion +=                '<div class="form-group form-default ">';
             accordion +=                    '<label for="ex-written-question">Question/Instruction</label>';
             accordion +=                    '<textarea class="form-control" name="ex-written-question" id="ex-written-question"></textarea>';
+            accordion +=                    '<label style="" for="ex-written-question">Points</label>';
+            accordion +=                    '<input style="max-width: 98px; " type="number" class="form-control d-inline-block ml-3 mt-3" name="ex-written-question-points" id="ex-written-question-points" />';
             accordion +=                '</div>';
             accordion +=            '</div>';
             $('#set-written #color-accordion').append(accordion);

@@ -67,8 +67,8 @@ class Exercise extends CI_Controller {
         }
         foreach ($tf_answers as $key => $answers) {
             // true or false
-            $tempx = $answers == "true" ? 1 : 0 ;
-            if ($true_tf_answers[$key] == $tempx) {
+            // $tempx = $answers == "true" ? 1 : 0 ;
+            if ($true_tf_answers[$key] == $answers) {
                 $score++;
             }
         }
@@ -155,6 +155,7 @@ class Exercise extends CI_Controller {
         $subject_id = $this->input->post('ex_subject');
         $teacher_id = teacher_session('id');
         $ex_questions=$this->input->post('ex_elems');
+        $ex_time=$this->input->post('ex_time');
         $ex_answers=$this->input->post('answers');
         $date_added=mdate('%Y-%m-%d');
         $errors = "";
@@ -163,6 +164,7 @@ class Exercise extends CI_Controller {
             "subject_id"=>$subject_id,
             "teacher_id"=>$teacher_id,
             "ex_questions"=>$ex_questions,
+            'ex_time'=> $ex_time,
             "ex_answers"=>$ex_answers,
             "date_added"=>$date_added,
         );
@@ -187,7 +189,7 @@ class Exercise extends CI_Controller {
         if (empty($subject_id)) {
             $errors .= "\nSelect one subject";
         }
-        if ($ex_questions == "") {
+        if (empty((array)json_decode($ex_answers)->mc_answers || (array)json_decode($ex_answers)->tf_answers || (array)json_decode($ex_answers)->written_answers )) {
             $errors .= "\nYou do not have content yet.";
         }else{
             $has_content = true;
