@@ -28,4 +28,15 @@ class Common_model extends CI_Model {
         $add = $this->db->insert($table, $data);
         return $this->db->insert_id();
     }
+    public function update($table, $where, $data = ""){
+        $this->db->set($data);
+        if (is_array($where)) {
+            foreach ($where as $key => $value) {
+                $this->db->where($key, $value);
+            }
+        }else{
+            $this->db->where($where);
+        }
+        return $this->db->update($table);
+    }
 }

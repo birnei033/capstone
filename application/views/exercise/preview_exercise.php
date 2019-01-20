@@ -7,7 +7,7 @@
             <?php echo $preview[0]->ex_questions ?>
         </tbody>
         </table>
-        <button id="ex_submit" sub-id="<?php echo $preview[0]->subject_id ?>" ex-id="<?php echo $preview[0]->id ?>" type="submit" name="ex_submit" value="submit" class="btn btn-primary float-right">Submit</button>
+        <!-- <button id="ex_submit" sub-id="<?php echo $preview[0]->subject_id ?>" ex-id="<?php echo $preview[0]->id ?>" type="submit" name="ex_submit" value="submit" class="btn btn-primary float-right">Submit</button> -->
 </form>
 </div>
 

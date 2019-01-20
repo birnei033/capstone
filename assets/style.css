@@ -1,3 +1,13 @@
+.pcoded-main-container ul {
+    padding-left: 43px;
+    list-style-type: initial;
+}
+.pcoded[theme-layout="vertical"][vertical-nav-type="expanded"] .pcoded-navbar .pcoded-mtext{
+    position: unset !important;
+    display: inline-flex;
+    max-width: 159px;
+}
+
 /* hide elements */
 .fixed-button{
     display: none;

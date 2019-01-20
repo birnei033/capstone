@@ -47,9 +47,9 @@
     left: 14px;
     color: #fff;">
             <div class="row align-items-center">
-                <div class="col-md-12">
+                <div class="col-md-12 text-center">
                     <div class="page-header-title">
-                        <h2 class="m-b-10" id="page-title">Teacher <?php echo teacher_session('name') ?> Dashboard</h2>
+                        <h4 class="m-b-10" id="page-title">Teacher <?php echo teacher_session('name') ?> Dashboard</h4>
                     </div>
                     <!-- <ul class="breadcrumb">
                         <li class="breadcrumb-item">

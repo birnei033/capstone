@@ -28,7 +28,7 @@
     <div class="page-header">
         <div class="page-block">
             <div class="row align-items-center">
-                <div class="col-md-8">
+                <div class="col-md-12 text-center">
                     <div class="page-header-title">
                         <h4 class="m-b-10" id="page-title">Dashboard</h4>
                     </div>

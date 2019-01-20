@@ -141,9 +141,9 @@ class Lessons extends CI_Controller {
 		
 	} 
 	public function edit(){
-		if(isset($_GET['edit']))
+		if($this->input->get('edit'))
 		{
-			$previewQuery = $_GET['edit'];
+			$previewQuery = $this->input->get('edit');
 			$query = "SELECT * FROM lessons WHERE lesson_title = '$previewQuery'";
 			$res = $this->lessons_model->query($query);
 			foreach ($res as $content) {
@@ -153,7 +153,7 @@ class Lessons extends CI_Controller {
 				$data['subject_id'] = $content->subject_id;
 				// var_dump($content->lesson_content);
 			}
-			$subj = $this->lessons_model->getSubjects();
+			$subj = $this->db->get_where('subjects', array('added_by'=>teacher_session('id')))->result();
 			$data['subjects'] = array();
 			foreach ($subj as $s) {
 				array_push($data['subjects'], array(
@@ -168,7 +168,7 @@ class Lessons extends CI_Controller {
 
 	public function edit_submited(){
 		$lesson_content = $this->input->post('lesson-content');
-		$lesson_title = $this->input->post('lesson-title');
+		$lesson_title = str_replace("  "," ",$this->input->post('lesson-title'));
 		$lesson_subject = $this->input->post('lesson-subject');
 		$lesson_id = $this->input->post('lesson-id');
 		$data = array(
@@ -180,7 +180,10 @@ class Lessons extends CI_Controller {
 			'date_created' => date('Y-d-m')
 		);
 		$result = $this->lessons_model->edit($data);
-		redirect(teacher_base().'/lessons/edit?edit='.$lesson_title.'&result='.$result, 'refresh');
+		$get_title = $this->db->get_where('lessons', array(
+			'id'=>$lesson_id
+		))->result();
+		redirect(teacher_base().'lessons/edit?edit='.$get_title[0]->lesson_title.'&result='.$result);
 		// echo $result;
 	}
 

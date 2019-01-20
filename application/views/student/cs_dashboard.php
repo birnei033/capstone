@@ -45,6 +45,7 @@
                             </div>
                           
                                     <?php include "modals/cs_exercises_list.php"; ?>
+                                    <div class="md-overlay"></div>
                                
                         
                         <!-- end of form -->
