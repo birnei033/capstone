@@ -14,14 +14,25 @@ class Exercise extends CI_Controller {
     public function index()
     {
         if (isset($_GET['preview'])) {
+            teacher_logged();
             $this->exercise_preview($_GET['preview']);
         }else if(!empty($this->input->post('ex_submit'))){
             $this->exercise_submit();
+        }else if($this->input->post('delete')){
+            $id = $this->input->post('id');
+            $this->json_delete_exercise($id);
         }else{
+            teacher_logged();
             view('exercise/exercise_list');
         }
     }
-    
+    private function json_delete_exercise($id){
+        $exercise_deleted = $this->common_model->delete('exercises', array('id'=>$id));
+        $finished_exercise_deleted = $this->common_model->delete('finished_exercises', array('ex_id'=>$id));
+        echo json_encode(array(
+            'deleted'=>$exercise_deleted
+        ));
+    }
     private function exercise_preview($id){
         $query_result['preview'] = $this->common_model->get_where('exercises', array(
             'id'=>$id
@@ -117,8 +128,8 @@ class Exercise extends CI_Controller {
             $temp['subject_id'] = $subjects[$exercise->subject_id];
             $temp['author'] = $all_teacher[$exercise->teacher_id];
             $temp['date_created'] = $exercise->date_added;
-            $temp['tool'] = '<button onclick="" '.tooltip("Delete").' class="btn btn-danger waves-effect waves-light ml-2 p-1" >Delete</button>'
-                                            .'<button onclick="" '.tooltip("Update").' href=""  class="student-update btn btn-inverse waves-effect waves-light ml-2 p-1" >Update</button>'
+            $temp['tool'] = '<button  '.tooltip("Delete").' delete_exercise="'.$exercise->id.'"  class="btn delete_exercise  btn-danger waves-effect waves-light ml-2 p-1" >Delete</button>'
+                                            // .'<button onclick="" '.tooltip("Update").' href=""  class="student-update btn btn-inverse waves-effect waves-light ml-2 p-1" >Update</button>'
                                             .'<a '.tooltip("View").' href="'.teacher_base('exercise?preview=').$exercise->id.'" target="blank"  class="student-update btn btn-primary waves-effect waves-light ml-2 p-1" >View</a>';
             $data[] = $temp;
         }
@@ -128,6 +139,7 @@ class Exercise extends CI_Controller {
     }
     public function add($submit = 0)
     {
+        teacher_logged();
         if (!empty($this->input->post('ex_submit'))) {
             $this->submit_exercise();
         }else{

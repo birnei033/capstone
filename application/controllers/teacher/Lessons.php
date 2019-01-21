@@ -43,7 +43,7 @@ class Lessons extends CI_Controller {
 		// $time = time();
 		// echo standard_date();
 		// echo time('-172736.1700000763');
-		$this->functions->is_admin();
+		teacher_logged();
 		$data['subjects'] = $this->lessons_model->ajax_getAllSubjects(teacher_session('id'));
 		// var_dump($data);
 		$this->load->view('includes/head');
@@ -84,7 +84,7 @@ class Lessons extends CI_Controller {
 	}
 
 	public function add(){ // adding lessons view
-		$this->functions->is_admin();
+		teacher_logged();
 		$data['subjects'] = $this->lessons_model->ajax_getAllSubjects(teacher_session('id'));
 		$this->view("lessons/lesson_adding_inline", $data);
 	}
@@ -141,6 +141,7 @@ class Lessons extends CI_Controller {
 		
 	} 
 	public function edit(){
+		teacher_logged();
 		if($this->input->get('edit'))
 		{
 			$previewQuery = $this->input->get('edit');
@@ -188,6 +189,7 @@ class Lessons extends CI_Controller {
 	}
 
 	public function lesson_preview(){
+		teacher_logged();
 		if(isset($_GET['preview']))
 		{
 			$previewQuery = $_GET['preview'];

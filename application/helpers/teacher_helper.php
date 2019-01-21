@@ -15,7 +15,7 @@ function teacher_logged(){
     $CI = get_instance();
     $isloggedin = isset($CI->session->userdata['logged_in']) ? false : true;
     if($isloggedin){
-        redirect(student_base('login'), 'refresh');
+        redirect('admin', 'refresh');
     }
 }
 ?>

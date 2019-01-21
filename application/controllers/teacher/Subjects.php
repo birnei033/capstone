@@ -37,7 +37,7 @@ class Subjects extends CI_Controller {
 	}
 
 	public function index(){
-		$this->functions->is_admin();
+		teacher_logged();
 		$data['subjects'] = $this->subjects_model->getAll();
 		$this->view("subjects/addSubject", $data);
 	}

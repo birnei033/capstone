@@ -39,4 +39,8 @@ class Common_model extends CI_Model {
         }
         return $this->db->update($table);
     }
+
+    public function delete($table, $where){
+        return $this->db->delete($table, $where);
+    }
 }

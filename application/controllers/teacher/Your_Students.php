@@ -11,7 +11,7 @@ class Your_Students extends CI_Controller {
 		$this->load->library(array('user_agent', 'functions', 'session'));
     }
     public function index(){
-        $this->functions->is_admin();
+        teacher_logged();
         $data['students'] = $this->students_model->getAllWith($this->session->userdata['logged_in']['id']);
         $data['programs'] = $this->students_model->getAllPrograms();
         $data['subjects'] = $this->students_model->ajax_getAllSubjects(teacher_session('id'));
