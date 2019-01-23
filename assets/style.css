@@ -113,3 +113,11 @@
     color: #fff;
     background: #11c788;
 }
+
+.table td{
+    white-space: normal;
+}
+
+.table h5{
+    line-height: 1.7em !important;
+}

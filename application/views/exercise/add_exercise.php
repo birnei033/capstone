@@ -30,6 +30,7 @@
             background-image: url(<?php echo images('alarm-clock.png') ?>);
         }
   </style>
+  <div class="table-responsive">
         <table class="table ">
             <tbody id="ex-elems" >
                 <tr>
@@ -55,6 +56,7 @@
                 </tr>
             </tbody>
         </table>
+  </div>
     </div>
  
 </form>
