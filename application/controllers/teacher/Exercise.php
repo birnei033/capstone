@@ -7,7 +7,7 @@ class Exercise extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper('url');
-		$this->load->model('common_model', null, "cm");
+		$this->load->model('Common_Model', null, "cm");
 		$this->load->helper(array('date','exercise'));
 		$this->load->library(array('user_agent', 'functions', 'session'));
     }
@@ -27,14 +27,14 @@ class Exercise extends CI_Controller {
         }
     }
     private function json_delete_exercise($id){
-        $exercise_deleted = $this->common_model->delete('exercises', array('id'=>$id));
-        $finished_exercise_deleted = $this->common_model->delete('finished_exercises', array('ex_id'=>$id));
+        $exercise_deleted = $this->Common_Model->delete('exercises', array('id'=>$id));
+        $finished_exercise_deleted = $this->Common_Model->delete('finished_exercises', array('ex_id'=>$id));
         echo json_encode(array(
             'deleted'=>$exercise_deleted
         ));
     }
     private function exercise_preview($id){
-        $query_result['preview'] = $this->common_model->get_where('exercises', array(
+        $query_result['preview'] = $this->Common_Model->get_where('exercises', array(
             'id'=>$id
         ));
         view('exercise/preview_exercise', $query_result);
@@ -53,7 +53,7 @@ class Exercise extends CI_Controller {
         );
         $score = 0;
         $total = 0;
-        $query_result = $this->common_model->get_where('exercises', array(
+        $query_result = $this->Common_Model->get_where('exercises', array(
             'id'=>$ex_id
         ));
         // true answers
@@ -96,7 +96,7 @@ class Exercise extends CI_Controller {
             'date_exercise_taken'=>d()
         );
 
-        // $query_result_id = $this->common_model->insert('finished_exercises', $insert_data);
+        // $query_result_id = $this->Common_Model->insert('finished_exercises', $insert_data);
 
         echo json_encode(array(
             'data'=>$true_answers, 
@@ -110,9 +110,9 @@ class Exercise extends CI_Controller {
 
     public function ajax_get_exercise_data(){
         $this_user_id = teacher_session('id');
-        $exercises = $this->common_model->get_where('exercises', 'teacher_id = '. $this_user_id);
-        $teachers = $this->common_model->get('college_teachers');
-        $subject_query_result = $this->common_model->get('subjects');
+        $exercises = $this->Common_Model->get_where('exercises', 'teacher_id = '. $this_user_id);
+        $teachers = $this->Common_Model->get('college_teachers');
+        $subject_query_result = $this->Common_Model->get('subjects');
         foreach ($teachers as $teacher) {
             $teacher_temp[$teacher->ct_id] = $teacher->ct_login_name;
         }
@@ -143,7 +143,7 @@ class Exercise extends CI_Controller {
         if (!empty($this->input->post('ex_submit'))) {
             $this->submit_exercise();
         }else{
-            $query_results = $this->common_model->query('
+            $query_results = $this->Common_Model->query('
             SELECT subjects.subject_id, subjects.subject_title FROM subjects 
             INNER JOIN college_teachers ON subjects.added_by=college_teachers.ct_id 
             WHERE subjects.added_by= '.teacher_session('id').'
@@ -182,7 +182,7 @@ class Exercise extends CI_Controller {
         );
      
         $query = "SELECT * FROM exercises WHERE ex_name = '$title' AND teacher_id = ".teacher_session('id');
-        $get_title = $this->common_model->query($query);
+        $get_title = $this->Common_Model->query($query);
         $titletemp = "";
         $title_exist = false;
         $has_content = false;
@@ -218,7 +218,7 @@ class Exercise extends CI_Controller {
         // ));
         if ($this->form_validation->run() == TRUE && $title_exist === true && $has_content === true)
         {
-            $result_id = $this->common_model->insert('exercises', $data);
+            $result_id = $this->Common_Model->insert('exercises', $data);
             echo json_encode(array('message'=> '"'.$title.'" added successfuly.', 'icon'=>'success','test'=>$result_id));
         }else{
             echo json_encode(array('message'=> $errors, 'icon'=>'warning'));
@@ -227,7 +227,7 @@ class Exercise extends CI_Controller {
 
     public function test(){
         
-        $query_result = $this->common_model->get_where('exercises', array(
+        $query_result = $this->Common_Model->get_where('exercises', array(
             'id'=>15
         ));
         $true_mc_answers = array();

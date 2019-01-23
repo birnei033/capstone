@@ -6,15 +6,15 @@ class Your_Students extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('students_model');
+		$this->load->model('Students_Model');
 		$this->load->helper('url');
 		$this->load->library(array('user_agent', 'functions', 'session'));
     }
     public function index(){
         teacher_logged();
-        $data['students'] = $this->students_model->getAllWith($this->session->userdata['logged_in']['id']);
-        $data['programs'] = $this->students_model->getAllPrograms();
-        $data['subjects'] = $this->students_model->ajax_getAllSubjects(teacher_session('id'));
+        $data['students'] = $this->Students_Model->getAllWith($this->session->userdata['logged_in']['id']);
+        $data['programs'] = $this->Students_Model->getAllPrograms();
+        $data['subjects'] = $this->Students_Model->ajax_getAllSubjects(teacher_session('id'));
         // var_dump($data['programs']);
         $data['ajax'] = json_encode(array("students" => $data['students'], "programs"=>$data['programs']));
         // die($data['ajax']);
@@ -23,9 +23,9 @@ class Your_Students extends CI_Controller {
     }
 
     public function ajax_get(){
-        $students = $this->students_model->getAllWith($this->session->userdata['logged_in']['id']);
-        $programs = $this->students_model->getAllPrograms();
-        $subjects = $this->students_model->getAllSubjectTitles();
+        $students = $this->Students_Model->getAllWith($this->session->userdata['logged_in']['id']);
+        $programs = $this->Students_Model->getAllPrograms();
+        $subjects = $this->Students_Model->getAllSubjectTitles();
         $data = array();
         foreach ($students as $student) {
             $url = teacher_base("your_students/ajax_delete");
@@ -55,12 +55,12 @@ class Your_Students extends CI_Controller {
         $id = $this->input->post('id');
 		$dataType = $this->input->post('data_type');
 		if($dataType == "ajax"){	
-			$delete_result = $this->students_model->delete($id);	
+			$delete_result = $this->Students_Model->delete($id);	
 			echo json_encode(array("status" => true));
 		}
     }
     public function ajax_get_students($id){
-        $result = $this->students_model->getById($id);
+        $result = $this->Students_Model->getById($id);
         $data = array();
         foreach ($result as $key => $value) {
             $data[$key] = $value;
@@ -83,7 +83,7 @@ class Your_Students extends CI_Controller {
             'student_subjects' =>$subject,
 			'date_updated' => mdate('%Y-%m-%d')
 		);
-		$result = $this->students_model->update($data);
+		$result = $this->Students_Model->update($data);
 		echo json_encode(array('result'=>true));
     }
 
@@ -93,7 +93,7 @@ class Your_Students extends CI_Controller {
             'student_password' => "changeme",
 			'date_updated' => mdate('%Y-%m-%d')
         );
-        $result = $this->students_model->reset_password($data);
+        $result = $this->Students_Model->reset_password($data);
 		echo json_encode(array('result'=>true));
     }
 }

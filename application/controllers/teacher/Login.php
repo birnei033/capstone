@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('url', 'form', 'date'));
-		$this->load->model('users_model');
+		$this->load->model('Users_Model');
 		$this->load->library(array('user_agent', 'functions', 'session', 'form_validation'));
     }
 	
@@ -26,7 +26,7 @@ class Login extends CI_Controller {
 		$this->form_validation->set_error_delimiters('<li class="text-danger">', '</li>');
 		$user_name = $this->input->post('ct_login_name');
 		$user_password = $this->input->post('ct_password');
-		$users = $this->users_model->getByName($user_name);
+		$users = $this->Users_Model->getByName($user_name);
 		if (!isset($user_name)) {
 			redirect(teacher_base(), 'refresh');
 		}
@@ -36,7 +36,7 @@ class Login extends CI_Controller {
 			'required',
 			array('check_user',
 				function($val){
-					$user = $this->users_model->getByName($val);
+					$user = $this->Users_Model->getByName($val);
 					if (!empty($user)) {
 						if($user['name'] === $val){
 							return true;
@@ -64,7 +64,7 @@ class Login extends CI_Controller {
 					'password_check',
 					function($val){
 						$user_name = $this->input->post('ct_login_name');
-						$user = $this->users_model->getByName($user_name);
+						$user = $this->Users_Model->getByName($user_name);
 						if (!empty($user)) {
 							if($user['password'] === $val){
 								return true;

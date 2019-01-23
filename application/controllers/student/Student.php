@@ -7,7 +7,7 @@ class Student extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('url'));
-		$this->load->model('lessons_model');
+		$this->load->model('Lessons_Model');
 		$this->load->library(array('user_agent', 'functions', 'session', 'form_validation'));
     }
     
@@ -15,7 +15,7 @@ class Student extends CI_Controller {
 
 		student_logged();
 		$query = "SELECT lesson_title FROM lessons WHERE subject_id = ".student_session('student_subject_id');
-		$result = $this->lessons_model->query($query);
+		$result = $this->Lessons_Model->query($query);
 		$data['lessons'] = array();
 		foreach ($result as $lesson) {
 			$temp = $lesson->lesson_title;
@@ -39,7 +39,7 @@ class Student extends CI_Controller {
 		$title = !isset($_GET['lesson']) ? "" : $_GET['lesson'] ;
 		if (isset($_GET['lesson'])) {
 			$query = "SELECT lesson_title, lesson_content FROM lessons WHERE lesson_title LIKE '$title'";
-			$result = $this->lessons_model->query($query);
+			$result = $this->Lessons_Model->query($query);
 			$data['lessons'] = "";	
 			
 			foreach ($result as $lesson) {

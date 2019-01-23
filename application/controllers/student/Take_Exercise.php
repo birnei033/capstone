@@ -8,7 +8,7 @@ class Take_Exercise extends CI_Controller {
 		parent::__construct();
         $this->load->helper(array('url'));
         $this->load->helper(array('date','exercise'));
-		$this->load->model('common_model');
+		$this->load->model('Common_Model');
 		$this->load->library(array('user_agent', 'functions', 'session', 'form_validation'));
     }
     public function index(){
@@ -19,7 +19,7 @@ class Take_Exercise extends CI_Controller {
             $this->initial_start();
         }else{
             $ex_id = $this->input->get('ex_id');
-            $get_finished_ex = $this->common_model->get_where('finished_exercises', array(
+            $get_finished_ex = $this->Common_Model->get_where('finished_exercises', array(
                 'ex_id'=>$ex_id,
                 'cs_id'=>student_session('student_id')
             ));
@@ -40,13 +40,13 @@ class Take_Exercise extends CI_Controller {
             'cs_id' => student_session('student_id'),
             'ct_id' => student_session('instructor_id'),
         );
-        $query_result_id = $this->common_model->insert('finished_exercises', $insert_data);
+        $query_result_id = $this->Common_Model->insert('finished_exercises', $insert_data);
         echo json_encode(array(
             'result'=>$insert_data
         ));        
     }
     private function take_exercise_view($id){
-        $query_result['preview'] = $this->common_model->get_where('exercises', array(
+        $query_result['preview'] = $this->Common_Model->get_where('exercises', array(
             'id'=>$id,
             'subject_id'=>student_session('student_subject_id')
         ));
@@ -71,7 +71,7 @@ class Take_Exercise extends CI_Controller {
         );
         $score = 0;
         $total = 0;
-        $query_result = $this->common_model->get_where('exercises', array(
+        $query_result = $this->Common_Model->get_where('exercises', array(
             'id'=>$ex_id
         ));
         // true answers
@@ -114,7 +114,7 @@ class Take_Exercise extends CI_Controller {
             'date_exercise_taken'=>d()
         );
 
-        $query_result_id = $this->common_model->update('finished_exercises', 
+        $query_result_id = $this->Common_Model->update('finished_exercises', 
         array(
             'ex_id'=>$ex_id,
             'subject_id'=>$subject_id,

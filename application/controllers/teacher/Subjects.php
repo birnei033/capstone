@@ -6,7 +6,7 @@ class Subjects extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('subjects_model');
+		$this->load->model('Subjects_Model');
 		$this->load->helper('url');
 		$this->load->library(array('user_agent', 'functions', 'session'));
 	}
@@ -38,12 +38,12 @@ class Subjects extends CI_Controller {
 
 	public function index(){
 		teacher_logged();
-		$data['subjects'] = $this->subjects_model->getAll();
+		$data['subjects'] = $this->Subjects_Model->getAll();
 		$this->view("subjects/addSubject", $data);
 	}
 
 	public function ajax_get_subject(){
-		$subjects = $this->subjects_model->ajax_getAllSubjects(teacher_session('id'));
+		$subjects = $this->Subjects_Model->ajax_getAllSubjects(teacher_session('id'));
 		$data = array();	
 		foreach ($subjects as $subject) {
 			// $temp['subject_id'] = $subject->subject_id;
@@ -67,7 +67,7 @@ class Subjects extends CI_Controller {
 					'added_by' =>teacher_session('id'),
 					'create_on' => mdate('%Y-%m-%d')
 				);
-				$add = $this->subjects_model->add($data);
+				$add = $this->Subjects_Model->add($data);
 				echo json_encode(array("status" => true));
 		}
 	}
@@ -76,14 +76,14 @@ class Subjects extends CI_Controller {
 		$id = $this->input->post('subj_id');
 		$dataType = $this->input->post('data_type');
 		if($dataType == "ajax"){	
-			$delete_result = $this->subjects_model->delete($id);
+			$delete_result = $this->Subjects_Model->delete($id);
 			echo json_encode(array("status" => $delete_result));
 		}
 	}
  
 	public function getById($id){
 		$this->functions->is_admin();
-		$result = $this->subjects_model->getSubjectByID($id);
+		$result = $this->Subjects_Model->getSubjectByID($id);
 		echo json_encode(array("subject"=>$result[0]));	
 	}
 	public function update($id){
@@ -95,7 +95,7 @@ class Subjects extends CI_Controller {
 				'subject_id' => $id,
 				'updated_on'=>mdate('%Y-%m-%d')
 			);
-			$updateResult = $this->subjects_model->update($data);
+			$updateResult = $this->Subjects_Model->update($data);
 			echo json_encode(array("status" => $updateResult));
 			// redirect(teacher_base('subjects'));
 		}

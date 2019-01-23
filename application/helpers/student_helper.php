@@ -22,10 +22,10 @@ function student_view($page, $data = ""){
 }
 function student_lesson($page, $data = ""){
     $CI = get_instance();
-    $CI->load->model('lessons_model');
+    $CI->load->model('Lessons_Model');
     $subjid = student_session('student_subject_id');
     $query = "SELECT lesson_title FROM lessons WHERE subject_id = $subjid";
-    $result = $CI->lessons_model->query($query);
+    $result = $CI->Lessons_Model->query($query);
     $lessons['lessons'] = array();
     foreach ($result as $lesson) {
         $temp = $lesson->lesson_title;

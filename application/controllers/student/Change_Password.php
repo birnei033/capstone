@@ -7,7 +7,7 @@ class Change_Password extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('url'));
-		$this->load->model('students_model');
+		$this->load->model('Students_Model');
 		$this->load->library(array('user_agent', 'functions', 'session', 'form_validation'));
     }
     
@@ -55,7 +55,7 @@ class Change_Password extends CI_Controller {
         //                     'student_login_name'=> $user_name,
         //                     'student_password'=>$user_password
         //                 );
-        //                 $user = $this->students_model->login_auth($data);
+        //                 $user = $this->Students_Model->login_auth($data);
 		// 				if (!empty($user)) {
 		// 					if($user['student_password'] === $val){
 		// 						return true;
@@ -89,7 +89,7 @@ class Change_Password extends CI_Controller {
 				'student_password' => $user_password,
 				'date_updated' => mdate('%Y-%m-%d')
 			);
-			$result = $this->students_model->change_password($data);
+			$result = $this->Students_Model->change_password($data);
 			if($result){
 				redirect(student_base(), 'refresh');
 				// var_dump($this->session->student_logged_in);

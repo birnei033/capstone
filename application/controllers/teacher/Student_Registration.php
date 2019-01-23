@@ -6,14 +6,14 @@ class Student_Registration extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('students_model');
+		$this->load->model('Students_Model');
 		$this->load->helper('url');
 		$this->load->library(array('user_agent', 'functions', 'session'));
     }
 
     public function index(){
 		$this->functions->is_admin();
-		$data['programs'] = $this->students_model->getAllPrograms();
+		$data['programs'] = $this->Students_Model->getAllPrograms();
         $this->functions->view('authentication/college_teacher/ct_reg_student', $data);
 	}
 	public function add(){
@@ -24,11 +24,11 @@ class Student_Registration extends CI_Controller {
 		$s_full_name = $this->input->post('s-full-name');
 		$s_subject = $this->input->post('s-subject');
 		$s_program = $this->input->post('s-program');
-		$res = $this->students_model->get_where('college_students', array(
+		$res = $this->Students_Model->get_where('college_students', array(
 			'school_id'=>$s_school_id,
 			'student_subjects'=>$s_subject
 		));
-		$username = $this->students_model->get_where('college_students', array(
+		$username = $this->Students_Model->get_where('college_students', array(
 			'student_login_name'=>$s_subject.'_'.$s_login_name
 		));
 		$this->form_validation->set_rules('s-login-name', 'Username', 'required');
@@ -46,7 +46,7 @@ class Student_Registration extends CI_Controller {
 		else
 		{	
 			if (!empty($res)) {
-				$subj = $this->students_model->get_where('subjects', array(
+				$subj = $this->Students_Model->get_where('subjects', array(
 					'subject_id'=>$s_subject,
 				));
 				$subj_title = "";
@@ -72,7 +72,7 @@ class Student_Registration extends CI_Controller {
 					'student_subjects' => $s_subject,
 					'added_by' => teacher_session('id')
 				);
-				$add = $this->students_model->add($data);
+				$add = $this->Students_Model->add($data);
 				echo json_encode(array(
 					'message'=> "Student added successfully.",
 					'icon'=>"success"

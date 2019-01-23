@@ -7,7 +7,7 @@ class Lessons extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('url'));
-		$this->load->model('lessons_model');
+		$this->load->model('Lessons_Model');
 		$this->load->library(array('user_agent', 'functions', 'session', 'form_validation'));
 	}
 	
@@ -44,7 +44,7 @@ class Lessons extends CI_Controller {
 		// echo standard_date();
 		// echo time('-172736.1700000763');
 		teacher_logged();
-		$data['subjects'] = $this->lessons_model->ajax_getAllSubjects(teacher_session('id'));
+		$data['subjects'] = $this->Lessons_Model->ajax_getAllSubjects(teacher_session('id'));
 		// var_dump($data);
 		$this->load->view('includes/head');
 		$this->load->view('includes/top-navigation');
@@ -55,8 +55,8 @@ class Lessons extends CI_Controller {
 	}
 
 	public function ajax_get_lessons(){
-		$lessons = $this->lessons_model->getAllByAuthor(teacher_session('id'));
-		$subj = $this->lessons_model->getSubjectsArray();
+		$lessons = $this->Lessons_Model->getAllByAuthor(teacher_session('id'));
+		$subj = $this->Lessons_Model->getSubjectsArray();
 		$data = array();
 		
 		foreach ($lessons as $lesson) {
@@ -85,7 +85,7 @@ class Lessons extends CI_Controller {
 
 	public function add(){ // adding lessons view
 		teacher_logged();
-		$data['subjects'] = $this->lessons_model->ajax_getAllSubjects(teacher_session('id'));
+		$data['subjects'] = $this->Lessons_Model->ajax_getAllSubjects(teacher_session('id'));
 		$this->view("lessons/lesson_adding_inline", $data);
 	}
 
@@ -104,7 +104,7 @@ class Lessons extends CI_Controller {
 					function($val){
 						$lesson = $this->input->post('lesson-title');
 						$q = "SELECT lesson_title FROM lessons WHERE lesson_title LIKE '$lesson'";
-						$result = $this->lessons_model->query($q);
+						$result = $this->Lessons_Model->query($q);
 						$title = "";
 						foreach ($result as $thetitle) {
 							$title = $thetitle->lesson_title;
@@ -131,10 +131,10 @@ class Lessons extends CI_Controller {
 					'lesson_author' => teacher_session('id'),
 					'date_created' => date('Y-d-m')
 				);
-				$add = $this->lessons_model->add($data);
+				$add = $this->Lessons_Model->add($data);
 				redirect(teacher_base().'/lessons/lesson_preview?preview='.$lesson_title, 'refresh');
 			}else{
-				$data['subjects'] = $this->lessons_model->getSubjects();
+				$data['subjects'] = $this->Lessons_Model->getSubjects();
 				$this->functions->view('lessons/lesson_adding',$data);
 			}
 		}
@@ -146,7 +146,7 @@ class Lessons extends CI_Controller {
 		{
 			$previewQuery = $this->input->get('edit');
 			$query = "SELECT * FROM lessons WHERE lesson_title = '$previewQuery'";
-			$res = $this->lessons_model->query($query);
+			$res = $this->Lessons_Model->query($query);
 			foreach ($res as $content) {
 				$data['title'] = $content->lesson_title;
 				$data['content'] = json_decode($content->lesson_content)->content;
@@ -180,7 +180,7 @@ class Lessons extends CI_Controller {
 			'id'=> $lesson_id,
 			'date_created' => date('Y-d-m')
 		);
-		$result = $this->lessons_model->edit($data);
+		$result = $this->Lessons_Model->edit($data);
 		$get_title = $this->db->get_where('lessons', array(
 			'id'=>$lesson_id
 		))->result();
@@ -194,7 +194,7 @@ class Lessons extends CI_Controller {
 		{
 			$previewQuery = $_GET['preview'];
 			$query = "SELECT * FROM lessons WHERE lesson_title = '$previewQuery'";
-			$res = $this->lessons_model->query($query);
+			$res = $this->Lessons_Model->query($query);
 			$data = array();
 			foreach ($res as $content) {
 				$data['preview'] = json_decode($content->lesson_content)->content;
@@ -208,7 +208,7 @@ class Lessons extends CI_Controller {
 		$id = $this->input->post('lesson_id');
 		$dataType = $this->input->post('data_type');
 		if($dataType == "ajax"){	
-			$delete_result = $this->lessons_model->delete($id);
+			$delete_result = $this->Lessons_Model->delete($id);
 			echo json_encode(array("status" => true));
 		}
 	
@@ -217,7 +217,7 @@ class Lessons extends CI_Controller {
 		$id = $this->input->post('id');
 		$dataType = $this->input->post('data_type');
 		if($dataType == "ajax"){	
-			$delete_result = $this->lessons_model->delete($id);	
+			$delete_result = $this->Lessons_Model->delete($id);	
 			echo json_encode(array("status" => true));
 		}
 	}
@@ -229,7 +229,7 @@ class Lessons extends CI_Controller {
 				'id' => $id,
 				'updated_on'=>mdate('%Y-%m-%d')
 			);
-			$updateResult = $this->lessons_model->update_subject($data);
+			$updateResult = $this->Lessons_Model->update_subject($data);
 			echo json_encode(array("status" => $updateResult));
 		// }	
 	}

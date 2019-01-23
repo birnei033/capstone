@@ -7,7 +7,7 @@ class Lesson_adding extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper('url');
-		$this->load->model('lessons_model');
+		$this->load->model('Lessons_Model');
 		$this->load->helper('date');
 		$this->load->library(array('user_agent', 'functions', 'session'));
 	}

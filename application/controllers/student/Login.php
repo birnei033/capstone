@@ -7,7 +7,7 @@ class Login extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->helper(array('url'));
-		$this->load->model('students_model');
+		$this->load->model('Students_Model');
 		$this->load->library(array('user_agent', 'functions', 'session', 'form_validation'));
     }
     
@@ -31,7 +31,7 @@ class Login extends CI_Controller {
             'student_login_name'=> $user_name,
             'student_password'=>$user_password
         );
-		$users = $this->students_model->login_auth($data);
+		$users = $this->Students_Model->login_auth($data);
 		if (!isset($user_name)) {
 			redirect(student_base(), 'refresh');
 		}
@@ -47,7 +47,7 @@ class Login extends CI_Controller {
                         'student_login_name'=> $user_name,
                         'student_password'=>$user_password
                     );
-                    $user = $this->students_model->login_auth($data);
+                    $user = $this->Students_Model->login_auth($data);
 					if (!empty($user)) {
 						if($user['student_login_name'] === $val){
 							return true;
@@ -80,7 +80,7 @@ class Login extends CI_Controller {
                             'student_login_name'=> $user_name,
                             'student_password'=>$user_password
                         );
-                        $user = $this->students_model->login_auth($data);
+                        $user = $this->Students_Model->login_auth($data);
 						if (!empty($user)) {
 							if($user['student_password'] === $val){
 								return true;
