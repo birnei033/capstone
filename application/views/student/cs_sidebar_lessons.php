@@ -31,7 +31,7 @@
                 nav_item(array(
                     'title'=>$lesson,
                     'link'=>student_base('student/lesson?lesson='.$lesson),
-                    'icon'=>"fa fa-arrow-right"
+                    'icon'=>"ti-angle-double-right"
                 ));
             }
             

@@ -46,7 +46,7 @@ $(document).ready(function () {
             //     e.preventDefault();
             //     ex_list.search($('#ex-filter-by-subject option:selected').val()+' '+$(this).val()).draw();
             // });
-            onload();
+            // onload();
         },
         // dom: '<"row"<"#ex-search-box.col-sm-6" ><"#ex-select-subject.col-sm-6" >>t<"row"<"col-sm-6"i><"col-sm-6"p>>',
         ajax: {
@@ -96,29 +96,9 @@ $(document).ready(function () {
             
         });
     }
+    setInterval(function(){
+        onload();
+    },1000);
 
-    // function delete_exercise(id){
-    //     var url = location.pathname;
-    //     var data = {
-    //         id: id
-    //     };
-    //     swal('An exercise will be deleted!',{
-    //         icon: 'warning',
-    //         buttons: ['Cancel', 'Proceed']
-    //     }).then((val)=>{
-    //         if (val) {
-    //             console.log("Deleted");
-    //         }
-    //     });
-    //     // $.ajax({
-    //     //     type: "POST",
-    //     //     url: url,
-    //     //     data: data,
-    //     //     dataType: "dataType",
-    //     //     success: function (response) {
-                
-    //     //     }
-    //     // });
-    // }
 });
 </script>

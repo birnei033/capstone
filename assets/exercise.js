@@ -312,7 +312,7 @@ $(document).ready(function () {
                   
                   if (response.icon === "success") {
                     console.log(response.test);
-                    swal('Success', response.message, {
+                    swal('Success, you have commented the location.reload for test', response.message, {
                         icon: response.icon,
                     })
                     .then((val)=>{
