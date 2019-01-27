@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 function card_open($header = "", $col="12", $class="", $attr=""){
 
-    // echo '<div class="col-sm-'.$col.'">
+    echo '<div class="col-sm-'.$col.'">';
                echo '     <div class="card '.$class.'" '.$attr.'>
                         <div class="card-header">'
                            .$header.
@@ -17,7 +17,7 @@ function card_open($header = "", $col="12", $class="", $attr=""){
 function card_close(){
        echo           
             '       </div>
-                
+                </div>
             </div>';
 }
 function btn($btn){

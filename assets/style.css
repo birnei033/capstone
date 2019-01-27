@@ -122,3 +122,6 @@
 .table h5{
     line-height: 1.7em !important;
 }
+#notification a:hover {
+    background: inherit !important;
+}

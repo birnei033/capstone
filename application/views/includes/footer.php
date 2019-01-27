@@ -76,6 +76,10 @@
     <script src="<?php echo base_url(); ?>assets/themf/pages/chart/float/curvedLines.js"></script>
     <script src="<?php echo base_url(); ?>assets/themf/chart/float/jquery.flot.tooltip.min.js"></script>
     <!-- amchart js -->
+    <!-- list-scroll js -->
+    <script src="<?php echo themf(); ?>bower_components/stroll/js/stroll.js"></script>
+    <script type="text/javascript" src="<?php echo themf(); ?>pages/list-scroll/list-custom.js"></script>
+
     <script src="<?php echo base_url(); ?>assets/themf/pages/widget/amchart/amcharts.js"></script>
     <script src="<?php echo base_url(); ?>assets/themf/pages/widget/amchart/serial.js"></script>
     <script src="<?php echo base_url(); ?>assets/themf/pages/widget/amchart/light.js"></script>

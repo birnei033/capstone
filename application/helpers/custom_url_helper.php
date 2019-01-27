@@ -13,6 +13,10 @@ function themf(){
 return base_url('assets/themf/');
 }
 
+function api_base(){
+    return base_url('api/');
+}
+
 function assets(){
     return base_url('assets/');
 }

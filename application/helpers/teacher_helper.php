@@ -18,4 +18,13 @@ function teacher_logged(){
         redirect('admin', 'refresh');
     }
 }
+
+function teacher_view($url, $data = ""){
+    $CI = get_instance();
+    $CI->load->view('includes/head');
+    $CI->load->view('includes/top-navigation');
+    $CI->load->view('includes/left-navigation');
+    $CI->load->view($url, $data);
+    $CI->load->view('includes/footer');
+}
 ?>

@@ -97,7 +97,7 @@ class Lessons extends CI_Controller {
 
 			$this->form_validation->set_error_delimiters('<li class="text-danger">', '</li>');
 
-			$this->form_validation->set_rules('lesson-content', 'Lesson-content', array(
+			$this->form_validation->set_rules('lesson-title', 'Lesson Title', array(
 				'trim',
 				'required',
 				array('check_lesson_title',

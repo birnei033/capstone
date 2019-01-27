@@ -38,6 +38,10 @@
     <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>/pages/data-table/css/buttons.dataTables.min.css">
     <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>bower_components/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css">
 
+   <!-- list css -->
+   <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>pages/list-scroll/list.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>bower_components/stroll/css/stroll.css">
+
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/widget.css">

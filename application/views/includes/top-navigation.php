@@ -1,3 +1,4 @@
+
 <nav class="navbar header-navbar pcoded-header">
                 <div class="navbar-wrapper">
                     <div  class="navbar-logo">
@@ -33,38 +34,16 @@
                             </li>
                         </ul>
                         <ul class="nav-right">
-                            <!-- <li class="header-notification">
+                            <li class="header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="feather icon-bell"></i>
-                                        <span class="badge bg-c-red">5</span>
+                                        <span id="bandge-notif-count" class="badge bg-c-red">5</span>
                                     </div>
-                                    <ul class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
-                                        <li>
-                                            <h6>Notifications</h6>
-                                            <label class="label label-danger">New</label>
-                                        </li>
-                                        <li>
-                                            <div class="media">
-                                                <img class="img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="Generic placeholder image">
-                                                <div class="media-body">
-                                                    <h5 class="notification-user">John Doe</h5>
-                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                    <span class="notification-time">30 minutes ago</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="media">
-                                                <img class="img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-3.jpg" alt="Generic placeholder image">
-                                                <div class="media-body">
-                                                    <h5 class="notification-user">Joseph William</h5>
-                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
-                                                    <span class="notification-time">30 minutes ago</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
+                                    <ul id="notification" style="max-height: 388px; overflow-x: auto;" class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                        
+                                        
+                                        <!-- <li>
                                             <div class="media">
                                                 <img class="img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="Generic placeholder image">
                                                 <div class="media-body">
@@ -73,11 +52,54 @@
                                                     <span class="notification-time">30 minutes ago</span>
                                                 </div>
                                             </div>
-                                        </li>
+                                        </li> -->
                                     </ul>
+                                    <script>
+                                        $(document).ready(function () {
+                                            function update_notif(){
+                                                var o = '';
+                                                o  += '<li>';
+                                                o  += '<h6>Notifications</h6>';
+                                                o  += '<label class="label label-danger">New</label>';
+                                                o  += '</li>';
+                                                $('#notification').html(o);
+                                                $.ajax({
+                                                    type: "GET",
+                                                    url: '<?php echo api_base() ?>/teacher/ajax_finished_exercises/exercise_answers/<?php echo teacher_session("id"); ?>/?checked=0',
+                                                    // data: "data",
+                                                    dataType: "JSON",
+                                                    success: function (response) {
+                                                        var answers = response.ex_cs_answers;
+                                                        $('#bandge-notif-count').html(answers.length);
+                                                        // console.log(answers);
+                                                        for (let i = 0; i < answers.length; i++) {
+                                                            var subject = answers[i].student_subject;
+                                                            var cs_name = answers[i].student_name;
+                                                            var ex_name = answers[i].ex_name;
+                                                            var cs_id = answers[i].cs_id;
+                                                            var ex_id = answers[i].ex_id;
+                                                            var message = answers[i].student_name+" has finished the quiz/exam ("+ex_name+").";
+                                                            var out = '<li><a href="<?php echo teacher_base(); ?>?action=view quiz result&cs_id='+cs_id+'&ex_id='+ex_id+'">';
+                                                            out += '<div class="media">';
+                                                            // out += '<img class="img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" alt="Generic placeholder image">';
+                                                            out += '<div class="media-body">';
+                                                            out += '<h5 class="notification-user"><strong>['+subject+'] '+cs_name+'</strong></h5>';
+                                                            out += '<p class="notification-msg">'+message+'</p>';
+                                                            out += '</div>';
+                                                            out += '</div>';
+                                                            out += '</a></li>';
+                                                        $('#notification').append(out);
+                                                        }
+                                                    }
+                                                });
+                                            }
+                                            update_notif()
+                                            setInterval(function(){update_notif()}, 30000);
+                                            });
+                                    </script>
                                 </div>
                             </li>
-                            <li class="header-notification">
+                            <!-- <li class="header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="displayChatbox dropdown-toggle" data-toggle="dropdown">
                                         <i class="feather icon-message-square"></i>
@@ -85,14 +107,12 @@
                                     </div>
                                 </div>
                             </li> -->
-                            <!-- <li>
-                                <?php echo teacher_base() ?>
-                            </li> -->
+                           
                             <?php if(isset($this->session->userdata['logged_in'])) { ?>
                              <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                                        <!-- <img src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image"> -->
                                         <span><?php echo $this->session->userdata['logged_in']['name'] ?></span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
@@ -146,7 +166,7 @@
                                 <a class="back_friendlist">
                                 <i class="feather icon-x"></i>
                             </a>
-                                <!-- <div class="right-icon-control">
+                                <div class="right-icon-control">
                                     <form class="form-material">
                                         <div class="form-group form-primary">
                                             <input type="text" name="footer-email" class="form-control" id="search-friends" required="">
@@ -156,9 +176,9 @@
                                         </label>
                                         </div>
                                     </form>
-                                </div> -->
+                                </div>
                             </div>
-                            <!-- <div class="main-friend-list">
+                            <div class="main-friend-list">
                                 <div class="media userlist-box waves-effect waves-light" data-id="1" data-status="online" data-username="Josephin Doe">
                                     <a class="media-left" href="#!">
                                     <img class="media-object img-radius img-radius" src="<?php echo base_url(); ?>assets/themf/images/avatar-3.jpg" alt="Generic placeholder image ">
@@ -204,7 +224,7 @@
                                         <div class="f-13 chat-header">Suzen<small class="d-block text-muted">15 min ago</small></div>
                                     </div>
                                 </div>
-                            </div> -->
+                            </div>
                         </div>
                     </div>
                 </div>
