@@ -74,9 +74,9 @@ class Lessons extends CI_Controller {
 				'class'=>"p-1",
 				'attr'=> 'id="'.$lesson->id.'"'
 			));
-			$sub['tool'] = '<a '.tooltip("Preview").' class="btn btn-primary waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons/lesson_preview').'?preview='.$lesson->lesson_title.'">Preview</a>'
-			.'<a '.tooltip("Edit").' class="btn btn-inverse waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons').'/edit?edit='.$lesson->lesson_title.'">Edit</a>'
-			.'<a '.tooltip("Delete").' onclick="delete_alert('.$delete_alert.')" class="delete btn btn-danger waves-effect waves-light ml-2 p-1" lesson_id="'.$lesson->id.'" href="#delete">Delete</a>';
+			$sub['tool'] = '<a '.tooltip("Preview").' style="font-size:21px; vertical-align:middle; " class="text-c-green waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons/lesson_preview').'?preview='.$lesson->lesson_title.'"><i class="ti-eye"></i></a>'
+			.'<a '.tooltip("Edit").' style="font-size:21px; vertical-align:middle; " class="text-c-inverse waves-effect waves-light ml-2 p-1" href="'.teacher_base('lessons').'/edit?edit='.$lesson->lesson_title.'"><i class="ti-pencil-alt"></i></a>'
+			.'<a '.tooltip("Delete").' onclick="delete_alert('.$delete_alert.')" style="font-size:21px; vertical-align:middle; " class="text-danger waves-effect waves-light ml-2 p-1" lesson_id="'.$lesson->id.'" href="#delete"><i class="ti-trash"></i></a>';
 			$data[] = $sub;
 		}
 		$dataa['data'] = $data;

@@ -40,7 +40,7 @@
                                         <i class="feather icon-bell"></i>
                                         <span id="bandge-notif-count" class="badge bg-c-red">5</span>
                                     </div>
-                                    <ul id="notification" style="max-height: 388px; overflow-x: auto;" class="show-notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
+                                    <ul id="notification" style="max-height: 388px; overflow-x: auto;" class="show-notification notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                         
                                         
                                         <!-- <li>
@@ -62,7 +62,7 @@
                                                 o  += '<h6>Notifications</h6>';
                                                 o  += '<label class="label label-danger">New</label>';
                                                 o  += '</li>';
-                                                $('#notification').html(o);
+                                                $('.notification').html(o);
                                                 $.ajax({
                                                     type: "GET",
                                                     url: '<?php echo api_base() ?>/teacher/ajax_finished_exercises/exercise_answers/<?php echo teacher_session("id"); ?>/?checked=0',
@@ -88,7 +88,7 @@
                                                             out += '</div>';
                                                             out += '</div>';
                                                             out += '</a></li>';
-                                                        $('#notification').append(out);
+                                                        $('.notification').append(out);
                                                         }
                                                     }
                                                 });

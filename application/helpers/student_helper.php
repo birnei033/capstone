@@ -64,7 +64,7 @@ function student_logged(){
 function page_header($text, $class = ""){
    echo '<script>
     jQuery(document).ready(function ($) {
-        $(\'#page-title\').text(\''.$text.'\').addClass(\''.$class.'\');
+        $(\'#page-title\').html(\''.$text.'\').addClass(\''.$class.'\');
     });
 </script>';
 }

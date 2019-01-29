@@ -128,9 +128,9 @@ class Exercise extends CI_Controller {
             $temp['subject_id'] = $subjects[$exercise->subject_id];
             $temp['author'] = $all_teacher[$exercise->teacher_id];
             $temp['date_created'] = $exercise->date_added;
-            $temp['tool'] = '<button  '.tooltip("Delete").' delete_exercise="'.$exercise->id.'"  class="btn delete_exercise  btn-danger waves-effect waves-light ml-2 p-1" >Delete</button>'
+            $temp['tool'] = '<a href="#delete"  '.tooltip("Delete").' delete_exercise="'.$exercise->id.'"  style="font-size:21px; vertical-align:middle; " class="delete_exercise text-danger waves-effect waves-light ml-2 p-1" ><i class="ti-trash"></i></a>'
                                             // .'<button onclick="" '.tooltip("Update").' href=""  class="student-update btn btn-inverse waves-effect waves-light ml-2 p-1" >Update</button>'
-                                            .'<a '.tooltip("View").' href="'.teacher_base('exercise?preview=').$exercise->id.'" target="blank"  class="student-update btn btn-primary waves-effect waves-light ml-2 p-1" >View</a>';
+                                            .'<a '.tooltip("View").' href="'.teacher_base('exercise?preview=').$exercise->id.'" target="blank" style="font-size:21px; vertical-align:middle; " class="text-c-green student-update  waves-effect waves-light ml-2 p-1" ><i class="ti-eye"></i></a>';
             $data[] = $temp;
         }
         $datas = json_encode($data);

@@ -39,9 +39,9 @@ class Your_Students extends CI_Controller {
             $subarray['student_subject'] =  "<div hidden>".str_replace(" ", "",!empty($subjects[$student->student_subjects]) ? $subjects[$student->student_subjects] : "")."</div>";
             $subarray['student_subject'] .=  !empty($subjects[$student->student_subjects]) ? $subjects[$student->student_subjects] : "";
             $subarray['student_program'] =$retVal = $student->student_program != 0 ? $programs[$student->student_program] : "" ; ;
-            $subarray['actions'] = '<button '.tooltip("Reset Password").' onclick="student_password_reset('.$student->student_id.', \''.teacher_base().'\')" class="btn btn-primary waves-effect waves-light ml-2 p-1" >Reset</button>'
-                                            .'<button onclick="delete_alert('.$delete_alert.')" '.tooltip("Delete").' class="btn btn-danger waves-effect waves-light ml-2 p-1" >Delete</button>'
-                                            .'<button onclick="open_update_modal('.$student->student_id.', \''.teacher_base().'\', \'#student-update-form\')"  data-modal="modal-update-student" '.tooltip("Update").' href="'.teacher_base().'"  class="student-update btn btn-inverse waves-effect waves-light ml-2 p-1" up-id="'.$student->student_id.'">Update</button>';
+            $subarray['actions'] = '<a href="#reset" '.tooltip("Reset Password").' onclick="student_password_reset('.$student->student_id.', \''.teacher_base().'\')" style="font-size:21px; vertical-align:middle; " class="text-c-green waves-effect waves-light ml-2 p-1" ><i class="ti-back-right"></i></a>'
+                                            .'<a href="#delete" onclick="delete_alert('.$delete_alert.')" '.tooltip("Delete").' style="font-size:21px; vertical-align:middle; " class="text-c-inverse waves-effect waves-light ml-2 p-1" ><i class="ti-trash"></i></a>'
+                                            .'<a onclick="open_update_modal('.$student->student_id.', \''.teacher_base().'\', \'#student-update-form\')"  data-modal="modal-update-student" '.tooltip("Update").' href="#edit" style="font-size:21px; vertical-align:middle; " class=" text-danger student-update  waves-effect waves-light ml-2 p-1" up-id="'.$student->student_id.'"><i class="ti-pencil-alt"></i></a>';
                                            
             $data[] = $subarray;
         }

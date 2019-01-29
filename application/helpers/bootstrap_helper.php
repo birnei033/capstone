@@ -5,19 +5,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 function card_open($header = "", $col="12", $class="", $attr=""){
 
     echo '<div class="col-sm-'.$col.'">';
-               echo '     <div class="card '.$class.'" '.$attr.'>
-                        <div class="card-header">'
-                           .$header.
-                       ' </div>
-                        <!-- /.panel-heading -->
-                        <div class="card-block">';
-                          
-
+               echo '     <div class="card '.$class.'" '.$attr.'>';
+               if ($header != "") {
+                echo '   <div class="card-header">'
+                      .$header.
+                  ' </div>
+                  <!-- /.panel-heading -->';
+                   
+               }
+                echo '<div class="card-block">';
 }
-function card_close(){
+function card_close($footer = "", $class=""){
        echo           
-            '       </div>
-                </div>
+            '       </div>';
+            if ($footer != "") {
+                echo '<div class="card-footer '.$class.'">';
+                echo $footer;
+                echo '</div>';
+            }
+             echo    '</div>
             </div>';
 }
 function btn($btn){

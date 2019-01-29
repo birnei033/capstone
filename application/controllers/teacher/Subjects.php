@@ -46,11 +46,12 @@ class Subjects extends CI_Controller {
 		$subjects = $this->Subjects_Model->ajax_getAllSubjects(teacher_session('id'));
 		$data = array();	
 		foreach ($subjects as $subject) {
+			$lesson_count = $this->db->query('SELECT COUNT(subject_id) AS \'lesson\' FROM lessons WHERE subject_id = '.$subject->subject_id )->result()[0]->lesson;
 			// $temp['subject_id'] = $subject->subject_id;
 			$temp['subject_title'] = $subject->subject_title;
-			$temp['number_of_lessons'] = $subject->number_of_lessons;
-			$temp['tools'] = '<a onclick="update_subject('.$subject->subject_id.', \''.teacher_base("subjects/").'\')" class="btn btn-primary waves-effect waves-light ml-2 p-1" href="#">Rename</a>
-								<a onclick="delete_subject('.$subject->subject_id.', \''.teacher_base("subjects/").'\', \''.$subject->subject_title.'\')" class=" btn btn-danger waves-effect waves-light ml-2 p-1" href="#">Delete</a>';
+			$temp['number_of_lessons'] = $lesson_count;
+			$temp['tools'] = '<a '.tooltip("Rename").' onclick="update_subject('.$subject->subject_id.', \''.teacher_base("subjects/").'\')" style="font-size:21px; vertical-align:middle; " class="text-c-inverse waves-effect waves-light ml-2 p-1" href="#"><i class="ti-pencil-alt"></i></a>
+								<a '.tooltip("Delete").' onclick="delete_subject('.$subject->subject_id.', \''.teacher_base("subjects/").'\', \''.$subject->subject_title.'\')" style="font-size:21px; vertical-align:middle; " class="text-danger waves-effect waves-light ml-2 p-1" href="#"><i class="ti-trash"></i></a>';
 			$data[] = $temp;
 		}
 		$out['data'] = $data;
@@ -61,14 +62,21 @@ class Subjects extends CI_Controller {
 		$this->functions->is_admin();
 		$subj_name = $this->input->post('subj_name');
 		$dataType = $this->input->post('data_type');
+		$subject_exist = $this->db->get_where('subjects', array(
+			'subject_title'=>$subj_name
+		))->result();
 		if($dataType == 'ajax'){
+			if (!empty($subject_exist)) {
+				echo json_encode(array("status" => false, 'title_existed'=>1));
+			}else{
 				$data = array(
 					'subject_title' => $this->input->post('subj_name'),
 					'added_by' =>teacher_session('id'),
 					'create_on' => mdate('%Y-%m-%d')
 				);
 				$add = $this->Subjects_Model->add($data);
-				echo json_encode(array("status" => true));
+				echo json_encode(array("status" => true, 'title_existed'=>0));
+			}
 		}
 	}
 

@@ -84,7 +84,7 @@ jQuery(document).ready(function ($) {
         columns: [
             // { "data": "id" },
             { "data": "lesson_title" },
-            { "data": "lesson_author" },
+            // { "data": "lesson_author" },
             { "data": "subject" },
             { "data": "tool" }   
         ],
@@ -93,6 +93,9 @@ jQuery(document).ready(function ($) {
     });
 
      subjects_table = $('#subjects-table').DataTable({
+        initComplete: function(settings, json) {
+            $('[data-toggle="tooltip"]').tooltip();
+        },
         ajax: {
             url: "subjects/ajax_get_subject",
             type: "post",
@@ -270,9 +273,17 @@ function addSubject(url){
                 dataType: "JSON",
                 success: function(data)
                 {
+                    var message = "", icon = "";
                     // console.log(data);
-                    swal(value+" Successfullly Added!", {
-                        icon: "success",
+                    if (data.title_existed == 0) {
+                        message = "successfullly Added!";
+                        icon = "success";
+                    }else{
+                        message = "title already exist.";
+                        icon = "error";
+                    }
+                    swal(value+" "+message, {
+                        icon: icon,
                     });
                     subjects_table.ajax.reload();
                 },
