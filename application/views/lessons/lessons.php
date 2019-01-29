@@ -18,7 +18,7 @@
                 <tr>
                     <!-- <th>Lesson ID #</th> -->
                     <th>Lesson Title</th>
-                    <th>Author</th>
+                    <!-- <th>Author</th> -->
                     <th>Subject</th>
                     <th></th>
                 </tr>

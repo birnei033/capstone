@@ -28,7 +28,7 @@
                 </ul>
             </div>
         </div>
-        <div class="pcoded-navigation-label">Navigation</div>
+        <!-- <div class="pcoded-navigation-label">Navigation</div> -->
         <?php if (is_admin()) {  
             include "left-navigation-teacher.php";
              } ?>

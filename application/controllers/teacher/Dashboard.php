@@ -17,11 +17,19 @@ class Dashboard extends CI_Controller {
 		if ($action == 'view quiz result') {
 			$this->view_quiz_result();
 		}else{
+			$number_of_lessons = $this->db->query('SELECT COUNT(lesson_author) AS \'lessons\' FROM lessons WHERE lesson_author = '.teacher_session('id') )->result()[0]->lessons;
+			$number_of_subjects = $this->db->query('SELECT COUNT(added_by) AS \'subjects\' FROM subjects WHERE added_by = '.teacher_session('id') )->result()[0]->subjects;
+			$number_of_students = $this->db->query('SELECT COUNT(added_by) AS \'students\' FROM college_students WHERE added_by = '.teacher_session('id') )->result()[0]->students;
+			$number_of_exercises = $this->db->query('SELECT COUNT(teacher_id) AS \'exercises\' FROM exercises WHERE teacher_id = '.teacher_session('id') )->result()[0]->exercises;
+			$data['lessons'] = $number_of_lessons;
+			$data['subjects'] = $number_of_subjects;
+			$data['students'] = $number_of_students;
+			$data['exercises'] = $number_of_exercises;
 			$this->functions->is_admin();
 			$this->load->view('includes/head');
 			$this->load->view('includes/top-navigation');
 			$this->load->view('includes/left-navigation');
-			$this->load->view('blank');
+			$this->load->view('teacher_dashboard', $data);
 			// echo "This is a landing page";
 			$this->load->view('includes/footer');
 		}
