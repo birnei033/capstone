@@ -5,7 +5,7 @@
     </script>
   <link rel="stylesheet" type="text/css" href="<?php echo themf() ?>css/component.css">
         <?php card_open(
-            ' <button onclick="reset_add_student_form(\'#student-form\')" class="btn btn-primary  waves-effect md-trigger" data-modal="modal-add-student">Add Your Student</button>'
+            
         ) ?>
             <div class="table-responsive dt-responsive">
             <div hidden id="sel">
@@ -26,7 +26,7 @@
                     </thead>
                 </table>
             </div>
-        <?php card_close() ?>
+        <?php card_close(' <button onclick="reset_add_student_form(\'#student-form\')" class="btn btn-inverse btn-outline-inverse  waves-effect md-trigger" data-modal="modal-add-student"><i class="ti-plus"></i> Add Your Student</button>') ?>
         <script>
             // jQuery(document).ready(function ($) {
                 $('#sear').html('<input type="text" class="form-control" placeholder="Search" id="searchit">');

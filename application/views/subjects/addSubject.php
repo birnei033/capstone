@@ -5,11 +5,7 @@
             $('#page-title').text('Subjects');
         });
     </script>
-    <?php card_open(
-        btn(array(
-            'onclick'=> "addSubject('".teacher_base()."')",
-            'text'=>"Add Subject"
-        ))); ?>
+    <?php card_open(); ?>
                 <div class="table-responsive dt-responsive">
                     <table id="subjects-table" class="table  table-hover nowrap" style="100%">
                         <thead>
@@ -22,4 +18,8 @@
                         </thead>
                     </table>
                 </div>
-    <?php card_close(); ?>
+    <?php card_close(btn(array(
+            'onclick'=> "addSubject('".teacher_base()."')",
+            'text'=>'<i class="ti-plus"></i> Add Subject',
+            'type'=>"inverse btn-outline-inverse \" ".tooltip("Add a Lesson")
+        ))); ?>

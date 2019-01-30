@@ -167,6 +167,7 @@ class Exercise extends CI_Controller {
         $subject_id = $this->input->post('ex_subject');
         $teacher_id = teacher_session('id');
         $ex_questions=$this->input->post('ex_elems');
+        $ex_schedule = $this->input->post('ex_schedule');
         $ex_time=$this->input->post('ex_time');
         $ex_answers=$this->input->post('answers');
         $date_added=mdate('%Y-%m-%d');
@@ -179,6 +180,7 @@ class Exercise extends CI_Controller {
             'ex_time'=> $ex_time,
             "ex_answers"=>$ex_answers,
             "date_added"=>$date_added,
+            "ex_schedule"=>$ex_schedule,
         );
      
         $query = "SELECT * FROM exercises WHERE ex_name = '$title' AND teacher_id = ".teacher_session('id');

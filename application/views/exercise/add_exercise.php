@@ -1,11 +1,11 @@
 <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>pages/list-scroll/list.css">
 <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>bower_components/stroll/css/stroll.css">
-<?php card_open("Select element below.") ?>
-<button data-modal="set-time" class="md-trigger btn btn-dark m-1" type="button">Set Time</button>
-<!-- <button data-modal="set-instruction" class="md-trigger waves-effect btn btn-secondary m-1" type="button">Text</button> -->
-<button data-modal="set-mul-choice"  class="md-trigger btn btn-success m-1" type="button">Multiple Choice</button>
-<button data-modal="set-true-false" class="md-trigger btn btn-success m-1" type="button">True or False</button>
-<button data-modal="set-written" class="md-trigger btn btn-success m-1" type="button">Written</button>
+<?php card_open() ?>
+<button <?php echo tooltip('Set count down time') ?> data-modal="set-time" class="md-trigger btn btn-dark m-1" type="button">Set Time</button>
+<button <?php echo tooltip('Schedule this exercise by setting date and time') ?> data-modal="set-date-time" class="md-trigger waves-effect btn btn-secondary m-1" type="button">Set Date and Time</button>
+<button <?php echo tooltip('Insert multiple choice questions') ?> data-modal="set-mul-choice"  class="md-trigger btn btn-success m-1" type="button">Multiple Choice</button>
+<button <?php echo tooltip('Insert true or false questions') ?>  data-modal="set-true-false" class="md-trigger btn btn-success m-1" type="button">True or False</button>
+<button <?php echo tooltip('Insert written questions') ?> data-modal="set-written" class="md-trigger btn btn-success m-1" type="button">Written</button>
 <input id="ex-submit" type="submit" class="btn btn-primary float-right" value="Save">
 <?php card_close(); ?>
 <form action="" method="post">
@@ -68,7 +68,7 @@ include "modals/set_mul_choice_1.php";
 include "modals/set_time.php";
 include "modals/set_written.1.php";
 include "modals/set_true_false.1.php";
-
+include "modals/set_date_time.php"
 ?>
 <div class="md-overlay"></div>
 

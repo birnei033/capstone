@@ -3,6 +3,8 @@ $(document).ready(function () {
     var mc_answers = {};
     var tf_answers = {};
     var written_answers = {};
+    var start_date = "0";
+    var end_date = "0";
     // var all_answers = {mc_answers: mc_answers, tf_answers: tf_answers, written_answers: written_answers};
     var all_answers = {mc_answers: mc_answers, tf_answers: tf_answers, written_answers: written_answers};
 
@@ -269,6 +271,19 @@ $(document).ready(function () {
             $('#set-time').removeClass('md-show');
         }
     });
+
+    $('#ex-set-date-time-submit').click(function (e) { 
+        e.preventDefault();
+        var start = $('#set-date-time #start-date-time').val();
+        var end = $('#set-date-time #end-date-time').val();
+        if (start != "" && end != "") {
+            start_date = start ;
+            end_date = end ;
+            $('#set-date-time').removeClass('md-show');
+            swal("Schedule has been added.",{icon: "success"});
+        }
+        
+    });
     
     function shuffle(array) {
         var currentIndex = array.length, temporaryValue, randomIndex;
@@ -299,9 +314,10 @@ $(document).ready(function () {
             ex_time: $('#time').text(),
             exercise_title: $('#ex-title').val(),
             ex_submit: $('#ex-submit').val(),
-            answers: JSON.stringify(all_answers)
+            answers: JSON.stringify(all_answers),
+            ex_schedule: JSON.stringify({start_date: start_date, end_date: end_date})
           };
-        //   console.log(data);
+          console.log(data);
           
           $.ajax({
               type: "POST",
@@ -312,11 +328,11 @@ $(document).ready(function () {
                   
                   if (response.icon === "success") {
                     console.log(response.test);
-                    swal('Success, you have commented the location.reload for test', response.message, {
+                    swal('Success', response.message, {
                         icon: response.icon,
                     })
                     .then((val)=>{
-                        // location.reload();
+                        location.reload();
                     });
                 }else{
                     swal("Something Went wrong!",response.message, {
@@ -399,76 +415,5 @@ $(document).ready(function () {
               }
          });
         });
-
-        // function start_exam(){
-
-        //     var time_in_minutes = $('.card.exercise #time').text();
-        //     // var time_in_minutes = 1;
-        //     var current_time = Date.parse(new Date());
-        //     var deadline = new Date(current_time + time_in_minutes*60*1000);
-    
-    
-        //     function time_remaining(endtime){
-        //         var t = Date.parse(endtime) - Date.parse(new Date());
-        //         var seconds = Math.floor( (t/1000) % 60 );
-        //         var minutes = Math.floor( (t/1000/60) % 60 );
-        //         var hours = Math.floor( (t/(1000*60*60)) % 24 );
-        //         var days = Math.floor( t/(1000*60*60*24) );
-        //         return {'total':t, 'days':days, 'hours':hours, 'minutes':minutes, 'seconds':seconds};
-        //     }
-        //     function run_clock(id,endtime){
-        //         var clock =  $(id);
-        //         function update_clock(){
-        //             var t = time_remaining(endtime);
-        //             clock.html(t.minutes+':'+t.seconds);
-        //             if(t.total<=0){
-        //                  clearInterval(timeinterval); 
-                         
-        //                  swal('Time is up!',{
-        //                      icon: 'info'
-        //                  }).then((val)=>{
-        //                      $('.card.exercise #ex_submit').trigger('click');
-                             
-        //                  });
-        //             }
-        //         }
-        //         update_clock(); // run function once at first to avoid delay
-        //         var timeinterval = setInterval(update_clock,1000);
-        //     }
-        //     run_clock('.card.exercise #time',deadline);
-        // }
-
-        // var content = $('.card.exercise #ex-elems').html();
-        // $('.card.exercise #ex-elems').html("");
-        // swal("Click Start to begin.",{
-        //     icon: 'success',
-        //     buttons:['Cancel', 'Start']
-        // }).then((val)=>{
-        //     if (val == 1) {
-        //         $('.card.exercise #ex-elems').html(content);
-        //         var url = location.pathname;
-        //         var data ={
-        //             ex_initial: "submit",
-        //             ex_id: $('#ex_submit').attr('ex-id'),
-        //             subject_id: $('#ex_submit').attr('sub-id')
-        //         }
-        //         //  PASS DATA
-        //         $.ajax({
-        //             url: url,
-        //             type: "POST",
-        //             data: data,
-        //             dataType: "JSON",
-        //             success: function (response) {
-        //                 start_exam();
-        //                  console.log(response);
-        //              },
-        //              error: function(jqXHR, textStatus, errorThrown){
-        //                 console.log(textStatus);
-        //               }
-        //          });
-        //     }else{
-        //         location.href = "/ignite/student";
-        //     }
-        // });
         
 });

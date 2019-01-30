@@ -30,8 +30,10 @@
                         <!-- <div id="lesson-editor" contenteditable="true">
                             <h4>Ckick here to insert content.</h4>
                         </div> -->
+                       
+                    </div>
+                    <div class="card-footer">
                         <input type="hidden" name="save" value="save">
-                        <hr>
                         <input type="submit" class="btn btn-primary" name="submit">
                     </div>
                 </div>

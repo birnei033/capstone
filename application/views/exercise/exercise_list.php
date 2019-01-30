@@ -21,7 +21,11 @@
             </thead>
         </table>
     </div>
-<?php card_close() ?>
+<?php card_close(btn(array(
+            'href'=> teacher_base("exercise/add"),
+            'text'=>'<i class="ti-plus"></i> Add Subject',
+            'type'=>"inverse btn-outline-inverse \" ".tooltip("Add a Lesson")
+        ))) ?>
 
 <script>
 

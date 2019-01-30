@@ -3,14 +3,9 @@
         <div class="card p-0">
             <div class="card-header">
                 <div class="row">
-                    <div class="col-sm-6">
-                        <h4>Written</h4>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="btns text-right">
-                            <button id="ex-written-submit" class="btn btn-primary" type="button">Insert</button>
-                            <button type="button" class="btn btn-danger waves-effect md-close">Close</button>
-                        </div>
+                    <div class="col-sm-12">
+                        <h5>Written</h5>
+                        <a class=" float-right md-close" style="cursor:pointer;" ><i class="ti-close"></i></a>
                     </div>
                 </div>
             </div>
@@ -22,8 +17,16 @@
                     <div class="color-accordion " id="color-accordion" >
                         
                     </div>
-                    <div class="btns text-right mb-4">
-                        <button id="ex-tf-add-a-question" class="btn btn-primary" type="button">Add a Question</button>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <button id="ex-tf-add-a-question" class="btn btn-success btn-outline-success" type="button">Add a Question</button>
+                        </div>
+                        <div class="col-sm-6 text-right">
+                            <button id="ex-written-submit" class="btn btn-inverse btn-outline-inverse" type="button">Insert</button>
+                            <!-- <button type="button" class="btn btn-danger waves-effect md-close">Close</button> -->
+                        </div>
                     </div>
                 </div>
             </form>

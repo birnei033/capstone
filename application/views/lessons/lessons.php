@@ -8,10 +8,7 @@
             <div  id="lessonsear">
             </div>
     <?php 
-    card_open(btn(array(
-        'text'=>'Add Your Lesson',
-        'href'=> teacher_base('lessons/add')
-    ))); ?>
+    card_open(); ?>
     <div class="table-responsive dt-responsive">
         <table id="alt-pg-lessons" class="table  table-hover nowrap" style="100%">
             <thead>
@@ -32,7 +29,12 @@
                 $('#lessonsel').html('<?php echo select($subjects, "f-subject", 'class="select-subject form-control col-sm-12" id="lesson-filter-by-subject"',"",true) ?>');
             });
         </script>
-    <?php card_close(); ?>
+    <?php card_close(btn(array(
+        'text'=>'<i class="ti-plus"></i> Add New LEsson',
+        'href'=> teacher_base('lessons/add'),
+        'type'=>"inverse btn-outline-inverse \" ".tooltip("Add a Lesson")
+    ))); ?>
+
         <!-- ADD SUBJECT IF NOT SET  -->
         <div class="md-modal md-effect-1" id="modal-add-subject">
             <div class="md-content">
