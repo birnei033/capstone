@@ -396,6 +396,8 @@ $(document).ready(function () {
          console.log(data);
          var url = location.pathname;
         //  PASS DATA
+        console.log(data);
+        
          $.ajax({
              url: url,
              type: "POST",
