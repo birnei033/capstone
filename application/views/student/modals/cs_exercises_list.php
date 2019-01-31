@@ -6,16 +6,21 @@
     <div class="md-content">
         <div class="card p-0">
             <div class="card-header">
-                <h4>You have <?php echo count($exercises) ?> available Exercises</h4>
+                <!-- <h4>You have available Exercises </h4>  -->
+                <a class=" float-right md-close" style="cursor:pointer;"><i class="ti-close"></i></a>
             </div>
             <div class="card-block">
-                <ul class="scroll-list cards" style="padding: 0;">
+                <ul class="basic-list cards" style="padding:0;">
                 <?php
                 $count = 0;
+                
+                rsort($exercises);
+                // var_dump($asc_exercises);
                     foreach ($exercises as $exercise) {
                         $r = false;
                         $score = 0;
                         $total = 0;
+                        $date_array = date_array(json_decode($exercise->ex_schedule)->start_date);
                        foreach ($answered as $answer) {
                             if ($answer->ex_id == $exercise->id) {
                             $r=true;
@@ -23,14 +28,22 @@
                             $total = $answer->ex_total_item;
                             }
                        }
+                       $day =  $date_array['day'] == "0" ? "No" : $date_array['day'];
+                       $year = $date_array['year'] == "0" ? "" : $date_array['year'];
                        if ($r) {
                         // if ($answer->ex_id == $exercise->id) {
-                            echo "<li style='padding: 12px 20px'>".$exercise->ex_name.
+                            echo "<li style='padding: 7px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>"
+                            .$date_array['str_month']." ".
+                            $day.", ". 
+                            $year." @ ".$date_array['hour'].$date_array['minute']."Hour/s</strong></small>".
                              "<span class='float-right'><strong>Score:</strong> ".$score."/".$total.
-                            "</span></li>";    
+                            "</span></li></p>";    
                         // }
                        }else{
-                            echo "<li style='padding: 12px 20px'>".$exercise->ex_name.
+                            echo "<li style='padding: 7px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>".
+                            $date_array['str_month']." ".
+                            $day.", ". 
+                            $year." @ ".$date_array['hour'].$date_array['minute']."Hour/s</strong></small>".
                             btn(array(
                                 'text'=> "Start Exercise",
                                 'class'=>'p-1 float-right',
@@ -50,7 +63,6 @@
                 </ul>
                 <div class="btns text-right">
                     <!-- <button class="btn btn-primary" id="submit-text" type="button">Insert</button> -->
-                    <button type="button" class="btn btn-danger waves-effect md-close">Close</button>
                 </div>
             </div>
         </div>

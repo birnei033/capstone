@@ -271,16 +271,55 @@ $(document).ready(function () {
             $('#set-time').removeClass('md-show');
         }
     });
-
     $('#ex-set-date-time-submit').click(function (e) { 
         e.preventDefault();
+        var message = "",
+        icon = "error";
         var start = $('#set-date-time #start-date-time').val();
         var end = $('#set-date-time #end-date-time').val();
         if (start != "" && end != "") {
-            start_date = start ;
-            end_date = end ;
-            $('#set-date-time').removeClass('md-show');
-            swal("Schedule has been added.",{icon: "success"});
+                data = {
+                    start: start,
+                    end: end
+                };
+                $.ajax({
+                    type: 'POST',
+                    url: location.origin+'/ignite/ajax/help/date_string_to_array/',
+                    data: data,
+                    dataType: "JSON",
+                    success: function (res) {
+                        console.log(res);   
+                        
+                        if (res.start.year <= res.end.year) {
+                            if (res.start.day <= res.end.day) {
+                                if (res.start.hour <= res.end.hour) {
+                                    if (res.start.minute < res.end.minute) {
+                                        start_date = start ;
+                                        end_date = end ;
+                                        $('#set-date-time').removeClass('md-show');
+                                        icon = "success";
+                                        message = "This exercise has been scheduled on "+res.start.str_month+" "+res.start.day+", "+res.start.year+"\n@"+res.start.hour+""+res.start.minute+"Hours.";
+                                        swal(message,{icon: icon});
+                                    }else{
+                                        message = "Starting date must be greater than end date.";
+                                        swal(message,{icon: icon});
+                                    }
+                                }else{
+                                    message = "Starting date must be greater than end date.";
+                                    swal(message,{icon: icon});
+                                }
+                            }else{
+                                message = "Starting date must be greater than end date.";
+                                swal(message,{icon: icon});
+                            }
+                        }else{
+                            message = "Starting date must be greater than end date.";
+                            swal(message,{icon: icon});
+                        }
+                    }
+                });
+                // swal(message,{icon: icon});
+            
         }
         
     });
