@@ -75,7 +75,7 @@ $(document).ready(function () {
                 });
             }
             
-        console.log(start_date);
+        // console.log(start_date);
         var now = new Date();
         var millisTill10 = new Date(start_date.year, start_date.month -1, start_date.day, start_date.hour, start_date.minute, 0, 0) - now;
         if (millisTill10 < 0) {
@@ -97,36 +97,38 @@ $(document).ready(function () {
         
 
         // end date time
-        var end = new Date();
-        var end_time = new Date(end_date.year, end_date.month -1, end_date.day, end_date.hour, end_date.minute, 0, 0) - end;
-        if (end_time < 0) {
-            swal('I am sorry, you are too late. ',
-            {
-                icon: "error"
-            }).then((val)=>{
-                var data ={
-                    ex_initial: "submit",
-                    ex_id: $('#ex_submit').attr('ex-id'),
-                    subject_id: $('#ex_submit').attr('sub-id'),
-                }
-                var url = location.pathname; 
-                //  PASS DATA
-                $.ajax({
-                    url: url,
-                    type: "POST",
-                    data: data,
-                    dataType: "JSON",
-                    success: function (response) {
-                         location.href = "/ignite/student";
-                        },
-                        error: function(jqXHR, textStatus, errorThrown){
-                        
-                        }
-                 });
-                });
-            end_time += 86400000; 
+        if (end_date.year != 0) {
+            var end = new Date();
+            var end_time = new Date(end_date.year, end_date.month -1, end_date.day, end_date.hour, end_date.minute, 0, 0) - end;
+            if (end_time < 0) {
+                swal('I am sorry, you are too late. ',
+                {
+                    icon: "error"
+                }).then((val)=>{
+                    var data ={
+                        ex_initial: "submit",
+                        ex_id: $('#ex_submit').attr('ex-id'),
+                        subject_id: $('#ex_submit').attr('sub-id'),
+                    }
+                    var url = location.pathname; 
+                    //  PASS DATA
+                    $.ajax({
+                        url: url,
+                        type: "POST",
+                        data: data,
+                        dataType: "JSON",
+                        success: function (response) {
+                             location.href = "/ignite/student";
+                            },
+                            error: function(jqXHR, textStatus, errorThrown){
+                            
+                            }
+                     });
+                    });
+                end_time += 86400000; 
+            }
+            setTimeout(function(){
+            }, end_time);
         }
-        setTimeout(function(){
-        }, end_time);
         
 });

@@ -88,20 +88,24 @@ class Take_Exercise extends CI_Controller {
             $total++;
         }
         // COMPARE BOTH ANSWERS
-        foreach ($mc_answers as $key => $answers) {
-            // multiple choice
-            if ($true_mc_answers[$key] === $answers) {
-                $score++;
+        if (!empty($mc_answers)) {
+            foreach ($mc_answers as $key => $answers) {
+                // multiple choice
+                if ($true_mc_answers[$key] === $answers) {
+                    $score++;
+                }
             }
         }
-        foreach ($tf_answers as $key => $answers) {
-            // true or false
-            // $tempx = $answers == "true" ? 1 : 0 ;
-            if ($true_tf_answers[$key] === $answers) {
-                $score++;
+        if (!empty($tf_answers)) {
+            foreach ($tf_answers as $key => $answers) {
+                // true or false
+                // $tempx = $answers == "true" ? 1 : 0 ;
+                if ($true_tf_answers[$key] === $answers) {
+                    $score++;
+                }
             }
         }
-        $score_percent = floor($score/$total*100);
+        $score_percent = $score == 0 ? 0 : floor($score/$total*100);
         $insert_data = array(
             'ex_id' => $ex_id,
             'subject_id' => $subject_id,

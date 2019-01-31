@@ -54,6 +54,8 @@
             accordion +=                    '<textarea class="form-control" name="ex-written-question" id="ex-written-question"></textarea>';
             accordion +=                    '<label style="" for="ex-written-question">Points</label>';
             accordion +=                    '<input style="max-width: 98px; " type="number" class="form-control d-inline-block ml-3 mt-3" name="ex-written-question-points" id="ex-written-question-points" />';
+            accordion +=                    '<hr><label style="" for="ex-written-question-keywords">Keywords (separated by comma)<br><small>If on of this keywords is present on the student\'s answer, points will be added.</small></label>';
+            accordion +=                    '<textarea class="form-control" name="ex-written-question-keywords" id="ex-written-question-keywords"></textarea>';
             accordion +=                '</div>';
             accordion +=            '</div>';
             $('#set-written #color-accordion').append(accordion);

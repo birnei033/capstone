@@ -212,17 +212,22 @@ $(document).ready(function () {
             goodtogo = 0;
             var ex_written_count = index+1;
             var question = $(this).children().children('#ex-written-question').val();
+            var keywords = $(this).children().children('#ex-written-question-keywords').val();
             var points = $(this).children().children('#ex-written-question-points').val();
             if (question == "") {
                 errors = "Provide the question.\n";
             }
             if (points == "") {
-                errors += "Provide the points.";
+                errors += "Provide the points.\n";
+            }
+            if (keywords == "") {
+                errors += "Provide the keywords.";
             }
             if (points != "" && question != "") {
                 var data = {
                     question: question,
                     points: points,
+                    keywords: keywords,
                     
                 }
                 written_answers['written-'+ex_written_count] = data;
