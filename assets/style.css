@@ -1,3 +1,36 @@
+@font-face{
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: normal;
+    src: url('fonts/GothamBook.woff');
+    src: url('fonts/Gotham-Book.ttf');
+}
+
+/* @font-face{
+    font-family: 'Gotham';
+    font-style: normal;
+    font-weight: bold;
+    src: local('Gotham Book'), url('fonts/GothamBook.woff') format('woff');
+    src: url('fonts/Gotham-Bold.ttf');
+} */
+
+@font-face{
+    font-family: 'Gravity';
+    font-style: normal;
+    font-weight: normal;
+    src: url('fonts/Gravity-Book.ttf');
+}
+
+body{
+    font-family: Gotham;
+}
+select{
+    font-family: Gotham;
+}
+h2{
+    font-weight: 100;
+}
+
 .pcoded-main-container ul {
     padding-left: 43px;
     list-style-type: initial;
