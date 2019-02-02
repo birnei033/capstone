@@ -60,7 +60,7 @@
                                                 var o = '';
                                                 o  += '<li>';
                                                 o  += '<h6>Notifications</h6>';
-                                                o  += '<label class="label label-danger">New</label>';
+                                                // o  += '<label class="label label-danger">New</label>';
                                                 o  += '</li>';
                                                 $('.notification').html(o);
                                                 $.ajax({

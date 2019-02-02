@@ -29,7 +29,7 @@ Each quizes or exam has time limit set by the teacher.
 
 NEXT STEP
 -(fixed) have to fix exercise sumbit issue of blank object. Suggested that make a default value for multiple choice for it causes the conflict or error.
-- (you're here)written exercise check. Suggested that just search for a specific word on the answer to make it automatically checked.
--I am thinking of putting an exam report on teacher dashboard.
+- (done!)written exercise check. Suggested that just search for a specific word on the answer to make it automatically checked.
+- (done) I am thinking of putting an exam report on teacher dashboard.
 -On "your students" table - add column with view exercises button with a count text, to show the exercises the student has done. Link to a page with all the information.
 -Make all delete to trash bin that can be retrieved. Permenently deleted in a set of time and by pressing a delete button on trash bin page or modal.

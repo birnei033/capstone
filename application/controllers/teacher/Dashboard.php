@@ -13,6 +13,7 @@ class Dashboard extends CI_Controller {
 
 	public function index()
 	{
+		teacher_logged();
 		$action = $this->input->get('action');
 		if ($action == 'view quiz result') {
 			$this->view_quiz_result();
@@ -40,6 +41,12 @@ class Dashboard extends CI_Controller {
 		$ex_id = $this->input->get('ex_id');
 		$student = $this->Common_Model->query('SELECT student_full_name FROM college_students 
 		WHERE student_id = '.$cs_id);
+		$update = $this->Common_Model->update('finished_exercises', array(
+			'ex_id'=>$ex_id,
+			'cs_id'=>$cs_id,
+		), array(
+			'is_checked'=>1
+		));
 		$data['get'] = array(
 			'ex_id'=>$ex_id,
 			'cs_id'=>$cs_id,
