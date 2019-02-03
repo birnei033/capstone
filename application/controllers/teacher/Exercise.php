@@ -227,19 +227,31 @@ class Exercise extends CI_Controller {
         }
     }
 
-    public function test(){
-        
-        $query_result = $this->Common_Model->get_where('exercises', array(
-            'id'=>15
+    public function Report(){
+        teacher_logged();
+        $data = array();
+        $result = $this->Common_Model->join('subjects', array(
+            array(
+                'table'=>'exercises',
+                'on'=>'subjects.subject_id = exercises.subject_id'
+            ),
+            array(
+                'table'=>'finished_exercises',
+                'on'=>'finished_exercises.ex_id = exercises.id'
+            ),
+            array(
+                'table'=>'college_students',
+                'on'=>'college_students.student_id = finished_exercises.cs_id'
+            ),
+        ), "subjects.added_by = ".teacher_session('id'));
+        // var_dump($data['results']);
+        rsort($result);
+        $data['results'] = $result;
+        $data['subjects'] = $this->Common_Model->get_where('subjects', array(
+            'added_by'=>teacher_session('id')
         ));
-        $true_mc_answers = array();
-        $true_answers = json_decode($query_result[0]->ex_answers);
-        foreach ($true_answers->mc_answers as $key => $value) {
-            $true_mc_answers[$key] = $value;
-        }
-        // echo json_encode(array('data'=>$true_answers));
-        var_dump(student_session());
-        // var_dump(count($true_answers));
+        // var_dump($data['subjects']);
+        teacher_view('exercise/report', $data);
     }
 
 }

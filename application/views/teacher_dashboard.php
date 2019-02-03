@@ -21,7 +21,8 @@
     <?php card_close(btn(array(
         'text'=>'<i class="ti-arrow-right"></i>',
         'href'=>teacher_base()."lessons",
-        'type'=>"danger \" ".tooltip('Go to Lessons'),
+        'type'=>"danger \" ".tooltip("Go to lessons"),
+        'class'=>'text-c-black'
     ))."|<a href='".teacher_base('lessons/add')."' ".tooltip("Add a Lesson")." class='btn btn-danger'><i class='fa fa-plus'></i></a>", "bg-c-red text-center text-white"); ?>
 
     <?php card_open("","6 col-xl-4",""   ) ?>
@@ -77,13 +78,13 @@
     <?php card_close(btn(array(
         'text'=>'<i class="ti-arrow-right"></i>',
         'href'=>teacher_base()."exercise/",
-        'type'=>"inverse \" ".tooltip('Go to Exercises'),
+        'type'=>"inverse \" ".tooltip("Go to Exercises"),
         'class'=>'text-c-black'
-    ))."|<a href='".teacher_base('exercise/add')."' ".tooltip("Add an Exercise")." class='btn btn-inverse'><i class='fa fa-plus'></i></a>|".
-    btn(array(
-        'text'=>'<i class="ti-blackboard"></i>',
-        'href'=>teacher_base()."exercises_report/",
-        'type'=>"inverse \" ".tooltip('View report'),
+    ))."|<a href='".teacher_base('exercise/add')."' ".tooltip("Add an Exercise")." class='btn btn-inverse'><i class='fa fa-plus'></i></a>"
+    ."|".btn(array(
+        'text'=>'<i class="ti-archive"></i>',
+        'href'=>teacher_base()."exercise/report",
+        'type'=>"inverse \" ".tooltip("View report"),
         'class'=>'text-c-black'
     )), "bg-inverse text-center"); ?>
 

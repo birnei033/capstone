@@ -20,17 +20,17 @@ class Common_model extends CI_Model {
         return  $query->result();
     }
 
-    public function join($table, $joins=array(), $where =""){
-        $this->db->select('*');
-        $this->db->from($table);
-        foreach ($joins as $join) {
-            // var_dump($join);
-            $this->db->join($join['table'], $join['where'], 'INNER');
-        }
-        // $this->db->where($where);
-        $query = $this->db->get();
-        return $query->result();
-    }
+    // public function join($table, $joins=array(), $where =""){
+    //     $this->db->select('*');
+    //     $this->db->from($table);
+    //     foreach ($joins as $join) {
+    //         // var_dump($join);
+    //         $this->db->join($join['table'], $join['where'], 'INNER');
+    //     }
+    //     // $this->db->where($where);
+    //     $query = $this->db->get();
+    //     return $query->result();
+    // }
 
     public function query($q){
         $query = $this->db->query($q);
@@ -54,5 +54,18 @@ class Common_model extends CI_Model {
 
     public function delete($table, $where){
         return $this->db->delete($table, $where);
+    }
+
+    public function join($table, $joins = array(), $where = "", $column = "*"){
+        $this->db->select($column);
+        $this->db->from($table);
+        foreach ($joins as $join) {
+            $this->db->join(empty($join['table']) ? "" : $join['table'], empty($join['on']) ? "" : $join['on'], "INNER");
+        }
+        if ($where != "") {
+            $this->db->where($where);
+        }
+        $query = $this->db->get();
+        return $query->result();
     }
 }

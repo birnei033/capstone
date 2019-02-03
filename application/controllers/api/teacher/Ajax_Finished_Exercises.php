@@ -14,12 +14,22 @@ class Ajax_Finished_Exercises extends CI_Controller {
     public function index(){ 
 			$cs_id = $this->input->get('cs_id');
 			$ex_id = $this->input->get('ex_id');
+			$checked = $this->input->Get('checked');
+			if ($checked) {
 			$all =	$this->Common_Model->query('SELECT * FROM finished_exercises
 			INNER JOIN subjects ON subjects.subject_id = finished_exercises.subject_id
 			INNER JOIN college_students ON finished_exercises.cs_id = college_students.student_id
 			INNER JOIN exercises ON finished_exercises.ex_id = exercises.id
-			WHERE cs_id = '.$cs_id.' AND ex_id = '.$ex_id
+			WHERE cs_id = '.$cs_id.' AND ex_id = '.$ex_id.' AND is_checked = '.$checked
 			);
+			}else{ 
+				$all =	$this->Common_Model->query('SELECT * FROM finished_exercises
+				INNER JOIN subjects ON subjects.subject_id = finished_exercises.subject_id
+				INNER JOIN college_students ON finished_exercises.cs_id = college_students.student_id
+				INNER JOIN exercises ON finished_exercises.ex_id = exercises.id
+				WHERE cs_id = '.$cs_id.' AND ex_id = '.$ex_id
+				);
+			}
 			$mc_answer = array();
 			$tf_answers = array();
 			$written_answers = array();
