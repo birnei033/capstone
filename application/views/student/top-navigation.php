@@ -92,7 +92,7 @@
                              <li class="user-profile header-notification">
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
+                                        <!-- <img src="<?php echo base_url(); ?>assets/themf/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image"> -->
                                         <span><?php echo student_session() != null ? student_session('student_login_name') : "Name" ?></span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>

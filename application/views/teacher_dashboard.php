@@ -1,4 +1,4 @@
-<?php echo page_header("<strong>Hi there ".teacher_session('name')."! What do you want to do today?</strong>") ?>
+<?php echo page_header("Hi there ".teacher_session('name')."! What do you want to do today?") ?>
 <!-- <div class="row">
     <?php card_open("","12","bg-c-green text-white") ?>
     <h4>Hi there <?php echo teacher_session('name')?>! What do you want to do today?</h4>
@@ -19,10 +19,9 @@
             </div>
         </div>
     <?php card_close(btn(array(
-        'text'=>'<i class="ti-book"></i>Go to Lessons',
+        'text'=>'<i class="ti-arrow-right"></i>',
         'href'=>teacher_base()."lessons",
-        'type'=>"danger",
-        'class'=>'text-c-black'
+        'type'=>"danger \" ".tooltip('Go to Lessons'),
     ))."|<a href='".teacher_base('lessons/add')."' ".tooltip("Add a Lesson")." class='btn btn-danger'><i class='fa fa-plus'></i></a>", "bg-c-red text-center text-white"); ?>
 
     <?php card_open("","6 col-xl-4",""   ) ?>
@@ -38,9 +37,9 @@
             </div>
         </div>
     <?php card_close(btn(array(
-        'text'=>'<i class="ti-archive"></i>Go to Subjects',
+        'text'=>'<i class="ti-arrow-right"></i>',
         'href'=>teacher_base()."your_students",
-        'type'=>"warning",
+        'type'=>"warning \" ".tooltip('Go to Subjects'),
         'class'=>'text-c-black'
     )), "bg-c-yellow text-center"); ?>
 
@@ -57,9 +56,9 @@
             </div>
         </div>    
     <?php card_close(btn(array(
-        'text'=>'<i class="ti-write"></i>Go to Students',
+        'text'=>'<i class="ti-arrow-right"></i>',
         'href'=>teacher_base()."your_students",
-        'type'=>"outline-primary btn-primary",
+        'type'=>"outline-primary btn-primary \" ".tooltip('Go to Students'),
         'class'=>'bg-green'
     )), "bg-c-green text-center"); ?>
 
@@ -76,11 +75,17 @@
             </div>
         </div>    
     <?php card_close(btn(array(
-        'text'=>'<i class="ti-write"></i>Go to Exercises',
+        'text'=>'<i class="ti-arrow-right"></i>',
         'href'=>teacher_base()."exercise/",
-        'type'=>"inverse",
+        'type'=>"inverse \" ".tooltip('Go to Exercises'),
         'class'=>'text-c-black'
-    ))."|<a href='".teacher_base('exercise/add')."' ".tooltip("Add an Exercise")." class='btn btn-inverse'><i class='fa fa-plus'></i></a>", "bg-inverse text-center"); ?>
+    ))."|<a href='".teacher_base('exercise/add')."' ".tooltip("Add an Exercise")." class='btn btn-inverse'><i class='fa fa-plus'></i></a>|".
+    btn(array(
+        'text'=>'<i class="ti-blackboard"></i>',
+        'href'=>teacher_base()."exercises_report/",
+        'type'=>"inverse \" ".tooltip('View report'),
+        'class'=>'text-c-black'
+    )), "bg-inverse text-center"); ?>
 
 <?php card_open("","12 col-xl-8",""   ) ?>
     <div class="row">

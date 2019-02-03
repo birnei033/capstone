@@ -9,7 +9,7 @@
                 <!-- <h4>You have available Exercises </h4>  -->
                 <a class=" float-right md-close" style="cursor:pointer;"><i class="ti-close"></i></a>
             </div>
-            <div class="card-block">
+            <div class="card-block pr-1 pl-2">
                 <ul class="basic-list cards" style="padding:0;">
                 <?php
                 $count = 0;
@@ -32,7 +32,7 @@
                        $year = $date_array['year'] == "0" ? "" : $date_array['year'];
                        if ($r) {
                         // if ($answer->ex_id == $exercise->id) {
-                            echo "<li style='padding: 7px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>"
+                            echo "<li style='padding: 7px 17px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>"
                             .$date_array['str_month']." ".
                             $day.", ". 
                             $year." @ ".$date_array['hour'].$date_array['minute']."Hour/s</strong></small>".
@@ -40,7 +40,7 @@
                             "</span></li></p>";    
                         // }
                        }else{
-                            echo "<li style='padding: 7px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>".
+                            echo "<li style='padding: 7px 17px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>".
                             $date_array['str_month']." ".
                             $day.", ". 
                             $year." @ ".$date_array['hour'].$date_array['minute']."Hour/s</strong></small>".

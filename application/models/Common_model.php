@@ -20,6 +20,18 @@ class Common_model extends CI_Model {
         return  $query->result();
     }
 
+    public function join($table, $joins=array(), $where =""){
+        $this->db->select('*');
+        $this->db->from($table);
+        foreach ($joins as $join) {
+            // var_dump($join);
+            $this->db->join($join['table'], $join['where'], 'INNER');
+        }
+        // $this->db->where($where);
+        $query = $this->db->get();
+        return $query->result();
+    }
+
     public function query($q){
         $query = $this->db->query($q);
         return $query->result();

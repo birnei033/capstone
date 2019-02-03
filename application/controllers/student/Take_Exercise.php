@@ -75,8 +75,13 @@ class Take_Exercise extends CI_Controller {
             'id'=>$ex_id
         ));
         // true answers
-        $true_mc_answers = array();
         $true_answers = json_decode($query_result[0]->ex_answers);
+        $true_writtens = array();
+        foreach ($true_answers->written_answers as $key => $value) {
+            $true_writtens[$key] = $value;
+            $total = $total + $true_writtens[$key]->points;
+        }
+        $true_mc_answers = array();
         // $total += count($true_answers->mc_answers);
         foreach ($true_answers->mc_answers as $key => $value) {
             $true_mc_answers[$key] = $value;
@@ -87,6 +92,7 @@ class Take_Exercise extends CI_Controller {
             $true_tf_answers[$key] = $value;
             $total++;
         }
+        
         // COMPARE BOTH ANSWERS
         if (!empty($mc_answers)) {
             foreach ($mc_answers as $key => $answers) {
@@ -99,10 +105,32 @@ class Take_Exercise extends CI_Controller {
         if (!empty($tf_answers)) {
             foreach ($tf_answers as $key => $answers) {
                 // true or false
-                // $tempx = $answers == "true" ? 1 : 0 ;
                 if ($true_tf_answers[$key] === $answers) {
                     $score++;
                 }
+            }
+        }
+        if (!empty($written_answers)) {
+            foreach ((array)$written_answers as $key => $value) {
+                $isKeywodPresent = false;
+                $points = $true_writtens['written-'.$key]->points;
+                $questions = $true_writtens['written-'.$key]->question;
+                $keywords = explode(',',strtolower($true_writtens['written-'.$key]->keywords));
+                foreach ($keywords as $keyword) {
+                    if (gettype($isKeywodPresent) === 'boolean')  {
+                        $isKeywodPresent = stripos( strtolower($value), $keyword );
+                    }
+                }
+                if (gettype($isKeywodPresent) === 'integer')  {
+                    $score = $score + $points;
+                }
+                // echo json_encode(array(
+                //     'test'=>gettype($isKeywodPresent),
+                //     'res'=>$isKeywodPresent,
+                //     'keywords'=>$keywords,
+                //     'answers'=>$written_answers,
+                //     'score'=> $score
+                // ));
             }
         }
         $score_percent = $score == 0 ? 0 : floor($score/$total*100);
@@ -130,8 +158,9 @@ class Take_Exercise extends CI_Controller {
             'score'=>$score, 
             'total'=>$total,
             'percent'=>$score_percent,
-            'message'=>"You have finished the quiz",
-            'icon'=>"success"
+            'message'=>"You have finished the exercise",
+            'icon'=>"success",
+            'test'=>$true_answers
         ));
     }
 }
