@@ -1,8 +1,5 @@
-    <script>
-        jQuery(document).ready(function ($) {
-            $('#page-title').text('Lessons');
-        });
-    </script>
+
+    <?php hide_header() ?>
     <div  id="lessonsel">
             </div>
             <div  id="lessonsear">

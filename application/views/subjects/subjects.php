@@ -1,4 +1,4 @@
-
+<?php hide_header() ?>
         <!-- Page Content -->
         <div id="page-wrapper">
             <div class="container-fluid">

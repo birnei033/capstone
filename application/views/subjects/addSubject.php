@@ -1,4 +1,4 @@
-
+<?php hide_header() ?>
         <!-- Page Content -->
         <script>
         jQuery(document).ready(function ($) {

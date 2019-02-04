@@ -21,14 +21,32 @@ class Exercise extends CI_Controller {
         }else if($this->input->post('delete')){
             $id = $this->input->post('id');
             $this->json_delete_exercise($id);
+        }else if($this->input->post('undo')){
+            $this->exercise_trashed_undo($this->input->post('id'));
         }else{
             teacher_logged();
-            view('exercise/exercise_list');
+            $this_user_id = teacher_session('id');
+            $data['trashed'] = $this->Common_Model->get_where('exercises', 'teacher_id = '. $this_user_id.' AND trashed = 1');
+            teacher_view('exercise/exercise_list', $data);
         }
     }
+    private function exercise_trashed_undo($id){
+        $exercise_undo = $this->Common_Model->update('exercises', array('id'=>$id), array('trashed'=>0));
+        $finished_exercise_deleted = $this->Common_Model->update('finished_exercises', array('ex_id'=>$id), array('trashed'=>0));
+        echo json_encode(array(
+            'undo'=>$exercise_undo
+        ));
+    }
+
+    public function get_trashed_exerceercises(){
+        $this_user_id = teacher_session('id');
+        $data = $this->Common_Model->get_where('exercises', 'teacher_id = '. $this_user_id.' AND trashed = 1');
+        echo json_encode(array('trashed'=>$data));
+    }
+
     private function json_delete_exercise($id){
-        $exercise_deleted = $this->Common_Model->delete('exercises', array('id'=>$id));
-        $finished_exercise_deleted = $this->Common_Model->delete('finished_exercises', array('ex_id'=>$id));
+        $exercise_deleted = $this->Common_Model->update('exercises', array('id'=>$id), array('trashed'=>1));
+        $finished_exercise_deleted = $this->Common_Model->update('finished_exercises', array('ex_id'=>$id), array('trashed'=>1));
         echo json_encode(array(
             'deleted'=>$exercise_deleted
         ));
@@ -110,7 +128,7 @@ class Exercise extends CI_Controller {
 
     public function ajax_get_exercise_data(){
         $this_user_id = teacher_session('id');
-        $exercises = $this->Common_Model->get_where('exercises', 'teacher_id = '. $this_user_id);
+        $exercises = $this->Common_Model->get_where('exercises', 'teacher_id = '. $this_user_id.' AND trashed = 0');
         $teachers = $this->Common_Model->get('college_teachers');
         $subject_query_result = $this->Common_Model->get('subjects');
         foreach ($teachers as $teacher) {
@@ -128,7 +146,7 @@ class Exercise extends CI_Controller {
             $temp['subject_id'] = $subjects[$exercise->subject_id];
             $temp['author'] = $all_teacher[$exercise->teacher_id];
             $temp['date_created'] = $exercise->date_added;
-            $temp['tool'] = '<a href="#delete"  '.tooltip("Delete").' delete_exercise="'.$exercise->id.'"  style="font-size:21px; vertical-align:middle; " class="delete_exercise text-danger waves-effect waves-light ml-2 p-1" ><i class="ti-trash"></i></a>'
+            $temp['tool'] = '<a href="#delete"  '.tooltip("Trash").' delete_exercise="'.$exercise->id.'"  style="font-size:21px; vertical-align:middle; " class="delete_exercise text-danger waves-effect waves-light ml-2 p-1" ><i class="ti-trash"></i></a>'
                                             // .'<button onclick="" '.tooltip("Update").' href=""  class="student-update btn btn-inverse waves-effect waves-light ml-2 p-1" >Update</button>'
                                             .'<a '.tooltip("View").' href="'.teacher_base('exercise?preview=').$exercise->id.'" target="blank" style="font-size:21px; vertical-align:middle; " class="text-c-green student-update  waves-effect waves-light ml-2 p-1" ><i class="ti-eye"></i></a>';
             $data[] = $temp;

@@ -45,7 +45,7 @@
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/themf/bower_components/jquery-slimscroll/js/jquery.slimscroll.js"></script>
     <!-- jquery sortable js -->
     <script type="text/javascript" src="<?php echo themf(); ?>bower_components/Sortable/js/Sortable.js"></script>
-    <script type="text/javascript" src="<?php echo themf(); ?>assets/pages/sortable-custom.js"></script>
+    <script type="text/javascript" src="<?php echo themf(); ?>pages/sortable-custom.js"></script>
 
     <!-- data-table js -->
     <script src="<?php echo themf(); ?>bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -74,7 +74,7 @@
     <script src="<?php echo base_url(); ?>assets/themf/pages/chart/float/jquery.flot.js"></script>
     <script src="<?php echo base_url(); ?>assets/themf/pages/chart/float/jquery.flot.categories.js"></script>
     <script src="<?php echo base_url(); ?>assets/themf/pages/chart/float/curvedLines.js"></script>
-    <script src="<?php echo base_url(); ?>assets/themf/chart/float/jquery.flot.tooltip.min.js"></script>
+    <script src="<?php echo base_url(); ?>assets/themf/pages/chart/float/jquery.flot.tooltip.min.js"></script>
     <!-- amchart js -->
     <!-- list-scroll js -->
     <script src="<?php echo themf(); ?>bower_components/stroll/js/stroll.js"></script>
@@ -91,13 +91,13 @@
     <script type="text/javascript" src="<?php echo themf(); ?>pages/advance-elements/select2-custom.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/custom.js"></script>
     
-	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-90716026-1"></script>
-	<script>
+	<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-90716026-1"></script> -->
+	<!-- <script>
 	  window.dataLayer = window.dataLayer || [];
 	  function gtag(){dataLayer.push(arguments);}
 	  gtag('js', new Date());
 	  gtag('config', 'UA-90716026-1');
-	</script>
+	</script> -->
 
 </body>
 </html>

@@ -45,7 +45,7 @@
 <!-- [ navigation menu ] end -->
 <div class="pcoded-content">
     <!-- [ breadcrumb ] start -->
-    <div class="page-header">
+    <div class="page-header" style="display:none">
         <div class="page-block" style="    padding-bottom: 0;
     position: relative;
     bottom: -2px;

@@ -1,5 +1,6 @@
 <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>pages/list-scroll/list.css">
 <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>bower_components/stroll/css/stroll.css">
+<?php hide_header() ?>
 <?php card_open() ?>
 <button <?php echo tooltip('Set count down time') ?> data-modal="set-time" class="md-trigger btn btn-dark m-1" type="button">Set Time</button>
 <button <?php echo tooltip('Schedule this exercise by setting date and time') ?> data-modal="set-date-time" class="md-trigger waves-effect btn btn-secondary m-1" type="button">Set Date and Time</button>

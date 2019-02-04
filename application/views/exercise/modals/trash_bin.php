@@ -1,0 +1,87 @@
+<div class="md-modal md-effect-1" style="z-index:1001" id="trash-bin">
+    <div class="md-content">
+        <div class="card p-0">
+            <div class="card-header">
+                <h5>Trash bin</h5>
+                <a class=" float-right md-close" style="cursor:pointer;" ><i class="ti-close"></i></a>
+            </div>
+            <div class="card-block">
+            <div class="table-responsive">
+                <table id="trashed" class="table table-hover">
+                    <!-- <thead>
+                        <th>Title</th> -->
+                        <!-- <th></th> -->
+                    <!-- </thead> -->
+                    <tbody id="trashed-item">
+                    <?php
+                        foreach ($trashed as $item) { ?>
+                            <tr>
+                                <td class="p-1">
+                                    <?php echo $item->ex_name ?>
+                                    <button  <?php echo tooltip('Delete permanently') ?> id="delete-permanent" class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>
+                                    <button onclick="load_trashed($(this))" <?php echo tooltip('Undo') ?> lesson_id="<?php echo $item->id ?>"  class=" undo btn btn-inverse btn-outline-inverse float-right mr-1 p-1"><i class="ti-trash"></i></button>
+                                </td>
+                                <!-- <td></td> -->
+                            </tr>
+                        
+                       <?php }
+
+                    ?>
+                    </tbody>
+                </table>
+            </div>
+            </div>
+            <div class="card-footer bg-danger text-right">
+                    <!-- <button class="btn btn-success btn-outline-success" id="ex-set-date-time-submit" type="button">Set</button> -->
+                    <!-- <button type="button" class="btn btn-danger btn-outline-danger waves-effect md-close">Cancel</button> -->
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+            });
+        function load_trashed(elem){
+         
+            var data = {
+                    'undo': 'undo',
+                    'id': elem.attr('lesson_id')
+            };
+            $.ajax({
+                type: "POST",
+                url: location.pathname,
+                data: data,
+                dataType: "JSON",
+                success: function (response) {
+                    console.log(response);
+                    if (response.undo == true) {
+                        ex_list.ajax.reload();
+                        swal('',{icon: 'success'});
+                        $.ajax({
+                            type: "GET",
+                            url: location.pathname+"get_trashed_exerceercises",
+                            // data: "data",
+                            dataType: "JSON",
+                            success: function (response) {
+                                // console.log(response.trashed);
+                                $('#trashed-item').html("");
+                                response.trashed.forEach(e => {
+                                    console.log(e);
+                                    var out = "";
+                                    out  += '<tr>';
+                                    out  += '<td class="p-1">';
+                                    out  +=    e.ex_name;
+                                    out  +=    '<button  <?php echo tooltip("Delete permanently") ?> id="delete-permanent" class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>';
+                                    out  +=    '<button onclick="load_trashed($(this))" <?php echo tooltip("Undo") ?> lesson_id="'+e.id+'" id="undo" class="btn btn-inverse btn-outline-inverse float-right mr-1 p-1"><i class="ti-trash"></i></button>';
+                                    out  += '</td>';
+                                    out  += '</tr>';
+                                    $('#trashed-item').append(out);
+                                    $('[data-toggle="tooltip"]').tooltip(); 
+                                });
+                            }
+                        });
+                    }
+                }
+            });
+        }
+            </script>

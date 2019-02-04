@@ -4,7 +4,7 @@
             $('#page-title').text('Add Your Lesson');
         });
     </script>
-
+<?php hide_header() ?>
         <!-- <div class="lessons sidebar"> -->
         <div class="">
             <form action="<?php  echo base_url(); ?>teacher/lessons/save" method="post">

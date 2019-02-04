@@ -4,7 +4,7 @@
             $('#page-title').text('<?php echo  $title ?>');
         });
     </script>
-
+ <?php hide_header() ?>
         <!-- <div class="lessons sidebar"> -->
         <div class="">
             <form action="<?php  echo base_url(); ?>teacher/lessons/edit_submited" method="post">

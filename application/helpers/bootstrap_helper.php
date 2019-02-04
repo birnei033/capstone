@@ -102,10 +102,14 @@ function select($values, $name = "", $attr="", $default="", $sameKeyAndValue = f
 function d($format = '%Y-%m-%d'){
     return mdate($format);
 }
-function btable_open(){
-
+function hide_header(){
+    echo '<style>
+    
+        .page-header{
+            display:none;
+        }
+   
+    </style>';
 }
-function btable_close(){
 
-}
 ?>

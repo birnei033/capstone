@@ -2,7 +2,9 @@
         jQuery(document).ready(function ($) {
             $('#page-title').text('Your Students');
         });
+        
     </script>
+     <?php hide_header() ?>
   <link rel="stylesheet" type="text/css" href="<?php echo themf() ?>css/component.css">
         <?php card_open(
             
@@ -60,11 +62,13 @@
                                         <div class="form-group  ">
                                             <input type="text" name="s-full-name" class="form-control" placeholder="Enter Student's Full Name" required="">
                                         </div>
-                                        <div class="btns text-right">
-                                            <button type="button" method onclick="_action('<?php echo teacher_base() ?>', '#student-form')" id="student-submit" class="btn btn-primary">Save</button>
-                                            <button type="button" class="btn btn-danger waves-effect md-close">Close</button>
-                                        </div>                 
                                     </form>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="btns text-right">
+                                        <button type="button" method onclick="_action('<?php echo teacher_base() ?>', '#student-form')" id="student-submit" class="btn btn-primary">Save</button>
+                                        <button type="button" class="btn btn-danger waves-effect md-close">Close</button>
+                                    </div>                 
                                 </div>
                             </div>
                         </div>

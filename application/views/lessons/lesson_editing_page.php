@@ -4,6 +4,7 @@
             $('#page-title').text('<?php echo  $title ?>');
         });
     </script>
+   
 
         <!-- <div class="lessons sidebar"> -->
         <div class="">

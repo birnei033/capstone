@@ -2,6 +2,7 @@
 <?php card_open(
             // ' <button onclick="reset_add_student_form(\'#student-form\')" class="btn btn-primary  waves-effect md-trigger" data-modal="modal-add-student">Add Your Student</button>'
         ) ?>
+         <?php hide_header() ?>
     <div class="table-responsive dt-responsive">
     <div hidden id="sel">
     </div>
@@ -25,10 +26,16 @@
             'href'=> teacher_base("exercise/add"),
             'text'=>'<i class="ti-plus"></i> Add Subject',
             'type'=>"inverse btn-outline-inverse \" ".tooltip("Add a Lesson")
+        )).btn(array(
+            // 'href'=> "#",
+            'text'=>'<i class="ti-trash"></i> Trash Bin',
+            'type'=>"danger btn-outline-danger \" id='view-trash-bin' ".tooltip("View Trashed")." data-modal='trash-bin' type='button'",
+            'class'=>'float-right md-trigger',
         ))) ?>
 
+<?php include "modals/trash_bin.php"; ?>
+<div class="md-overlay"></div>
 <script>
-
 var ex_list;
 $(document).ready(function () {
     ex_list = $('#ex-list').DataTable({
@@ -51,6 +58,7 @@ $(document).ready(function () {
         responsive: true
     });
     function onload(){
+        
         $('.delete_exercise').each(function (index, element) {
             var id = $(this).attr('delete_exercise');
                 var url = location.pathname;
@@ -61,7 +69,7 @@ $(document).ready(function () {
             $(this).click(function (e) { 
                 e.preventDefault();
                 // console.log(index);
-                swal('An exercise will be deleted!',{
+                swal('An exercise will be trashed!',{
                     icon: 'warning',
                     buttons: ['Cancel', 'Proceed']
                 }).then((val)=>{
@@ -72,8 +80,31 @@ $(document).ready(function () {
                             data: data,
                             dataType: "JSON",
                             success: function (response) {
-                                console.log(response);
+                                // console.log(response);
                                 ex_list.ajax.reload();
+                                $.ajax({
+                                    type: "GET",
+                                    url: location.pathname+"get_trashed_exerceercises",
+                                    // data: "data",
+                                    dataType: "JSON",
+                                    success: function (response) {
+                                        // console.log(response.trashed);
+                                        $('#trashed-item').html("");
+                                        response.trashed.forEach(e => {
+                                            console.log(e);
+                                            var out = "";
+                                            out  += '<tr>';
+                                            out  += '<td class="p-1">';
+                                            out  +=    e.ex_name;
+                                            out  +=    '<button  <?php echo tooltip("Delete permanently") ?> id="delete-permanent" class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>';
+                                            out  +=    '<button onclick="load_trashed($(this))" <?php echo tooltip("Undo") ?> lesson_id="'+e.id+'" id="undo" class="btn btn-inverse btn-outline-inverse float-right mr-1 p-1"><i class="ti-trash"></i></button>';
+                                            out  += '</td>';
+                                            out  += '</tr>';
+                                            $('#trashed-item').append(out);
+                                            $('[data-toggle="tooltip"]').tooltip();
+                                        });
+                                    }
+                                });
                             }
                         });
                     }
@@ -83,6 +114,7 @@ $(document).ready(function () {
             
         });
     }
+
     setInterval(function(){
         onload();
     },1000);
