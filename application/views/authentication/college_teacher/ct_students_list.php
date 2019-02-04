@@ -28,7 +28,9 @@
                     </thead>
                 </table>
             </div>
-        <?php card_close(' <button onclick="reset_add_student_form(\'#student-form\')" class="btn btn-inverse btn-outline-inverse  waves-effect md-trigger" data-modal="modal-add-student"><i class="ti-plus"></i> Add Your Student</button>') ?>
+        <?php card_close(' <button onclick="reset_add_student_form(\'#student-form\')" class="btn btn-inverse btn-outline-inverse  waves-effect md-trigger" data-modal="modal-add-student"><i class="ti-plus"></i> Add Your Student</button>'.
+            '<button class="btn btn-danger btn-outline-danger float-right"><i class="ti-trash"></i>Trashed<span id="badge-trash-count" class="badge badge-lg">0</span></button>'
+        ) ?>
         <script>
             // jQuery(document).ready(function ($) {
                 $('#sear').html('<input type="text" class="form-control" placeholder="Search" id="searchit">');

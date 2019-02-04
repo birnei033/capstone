@@ -18,6 +18,8 @@ jQuery(document).ready(function ($) {
     students_table = $('#alt-pg-test').DataTable({
         initComplete: function(settings, json) {
             $('[data-toggle="tooltip"]').tooltip(); 
+            console.log(json);
+            $('#badge-trash-count').text(json.trashed.length);
             var elem = $('#sel').html();
             var sear = $('#sear').html();
             $('#sel').remove(); $('#sear').remove();

@@ -304,7 +304,7 @@ $(document).ready(function () {
                                             end_date = end ;
                                             $('#set-date-time').removeClass('md-show');
                                             icon = "success";
-                                            message = "This exercise has been scheduled on "+res.start.str_month+" "+res.start.day+", "+res.start.year+"\n@"+res.start.hour+""+res.start.minute+"Hours.";
+                                            message = "This exercise has been scheduled on "+res.start.str_month+" "+res.start.day+", "+res.start.year+"\n@"+res.start.hour_format+".";
                                             swal(message,{icon: icon});
                                         }else{
                                             message = "Starting date must be greater than end date.";

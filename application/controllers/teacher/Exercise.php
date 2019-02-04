@@ -34,14 +34,19 @@ class Exercise extends CI_Controller {
         $exercise_undo = $this->Common_Model->update('exercises', array('id'=>$id), array('trashed'=>0));
         $finished_exercise_deleted = $this->Common_Model->update('finished_exercises', array('ex_id'=>$id), array('trashed'=>0));
         echo json_encode(array(
-            'undo'=>$exercise_undo
+            'undo'=>$exercise_undo,
+            
         ));
     }
 
     public function get_trashed_exerceercises(){
         $this_user_id = teacher_session('id');
         $data = $this->Common_Model->get_where('exercises', 'teacher_id = '. $this_user_id.' AND trashed = 1');
-        echo json_encode(array('trashed'=>$data));
+        // $count = $this->Common_Model->get_where('exercises', 'teacher_id = '. $this_user_id.' AND trashed = 1', 1);
+        echo json_encode(array(
+            'trashed'=>$data,
+            // 'count'=>$count
+        ));
     }
 
     private function json_delete_exercise($id){
@@ -130,6 +135,7 @@ class Exercise extends CI_Controller {
         $this_user_id = teacher_session('id');
         $exercises = $this->Common_Model->get_where('exercises', 'teacher_id = '. $this_user_id.' AND trashed = 0');
         $teachers = $this->Common_Model->get('college_teachers');
+        // $trash_count = $this->Common_Model->query("SELECT COUNT()")
         $subject_query_result = $this->Common_Model->get('subjects');
         foreach ($teachers as $teacher) {
             $teacher_temp[$teacher->ct_id] = $teacher->ct_login_name;
@@ -175,7 +181,7 @@ class Exercise extends CI_Controller {
             if ($submit) {
             
             }else{
-                view('exercise/add_exercise', $data);
+                teacher_view('exercise/add_exercise', $data);
             }
         }
     }

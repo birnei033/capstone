@@ -30,12 +30,13 @@
                        }
                        $day =  $date_array['day'] == "0" ? "No" : $date_array['day'];
                        $year = $date_array['year'] == "0" ? "" : $date_array['year'];
+                       $hour = $date_array['day'] == "0" ? "" : " @ ".$date_array['hour_format'];
                        if ($r) {
                         // if ($answer->ex_id == $exercise->id) {
                             echo "<li style='padding: 7px 17px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>"
                             .$date_array['str_month']." ".
                             $day.", ". 
-                            $year." @ ".$date_array['hour'].$date_array['minute']."Hour/s</strong></small>".
+                            $year." ".$hour."</strong></small>".
                              "<span class='float-right'><strong>Score:</strong> ".$score."/".$total.
                             "</span></li></p>";    
                         // }
@@ -43,7 +44,7 @@
                             echo "<li style='padding: 7px 17px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>".
                             $date_array['str_month']." ".
                             $day.", ". 
-                            $year." @ ".$date_array['hour'].$date_array['minute']."Hour/s</strong></small>".
+                            $year." ".$hour."</strong></small>".
                             btn(array(
                                 'text'=> "Start Exercise",
                                 'class'=>'p-1 float-right',
@@ -64,6 +65,9 @@
                 <div class="btns text-right">
                     <!-- <button class="btn btn-primary" id="submit-text" type="button">Insert</button> -->
                 </div>
+            </div>
+            <div class="card-footer bg-c-green">
+             
             </div>
         </div>
     </div>

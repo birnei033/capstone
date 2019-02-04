@@ -72,7 +72,17 @@ class Students_Model extends CI_Model {
         return $query->result();
     }
     public function getAllWith($id){
-        $query = $this->db->get_where('college_students', array('added_by'=>$id));
+        $query = $this->db->get_where('college_students', array(
+            'added_by'=>$id,
+            'trashed'=>0
+        ));
+        return $query->result();
+    }
+    public function get_trashed_count($id){
+        $query = $this->db->get_where('college_students', array(
+            'added_by'=>$id,
+            'trashed'=>1
+        ));
         return $query->result();
     }
     public function ajax_getAllSubjects($id = ""){
@@ -109,6 +119,13 @@ class Students_Model extends CI_Model {
     public function change_password($a){
         $this->db->set($a);
         $this->db->where('student_id', $a['student_id']);
+        return $this->db->update('college_students');
+    }
+    public function trash($a){
+        $this->db->set(array(
+            'trashed'=>1
+        ));
+        $this->db->where('student_id', $a);
         return $this->db->update('college_students');
     }
 }

@@ -26,12 +26,13 @@ class Your_Students extends CI_Controller {
         $students = $this->Students_Model->getAllWith($this->session->userdata['logged_in']['id']);
         $programs = $this->Students_Model->getAllPrograms();
         $subjects = $this->Students_Model->getAllSubjectTitles();
+        $trashed_count = $this->Students_Model->get_trashed_count($this->session->userdata['logged_in']['id']);
         $data = array();
         foreach ($students as $student) {
-            $url = teacher_base("your_students/ajax_delete");
+            $url = teacher_base("your_students/ajax_trash");
 			$delete_alert = $student->student_id. ", '".$url."', 'Are You Sure?', 'You are about to delete student # ".$student->school_id."'";
             $subarray = array();
-           
+            
             $subarray["student_id"] = $student->student_id;
             $subarray['school_id'] = $student->school_id;
             $subarray['student_login_name'] = $student->student_login_name;
@@ -40,7 +41,7 @@ class Your_Students extends CI_Controller {
             $subarray['student_subject'] .=  !empty($subjects[$student->student_subjects]) ? $subjects[$student->student_subjects] : "";
             $subarray['student_program'] =$retVal = $student->student_program != 0 ? $programs[$student->student_program] : "" ; ;
             $subarray['actions'] = '<a href="#reset" '.tooltip("Reset Password").' onclick="student_password_reset('.$student->student_id.', \''.teacher_base().'\')" style="font-size:21px; vertical-align:middle; " class="text-c-green waves-effect waves-light ml-2 p-1" ><i class="ti-back-right"></i></a>'
-                                            .'<a href="#delete" onclick="delete_alert('.$delete_alert.')" '.tooltip("Delete").' style="font-size:21px; vertical-align:middle; " class="text-c-inverse waves-effect waves-light ml-2 p-1" ><i class="ti-trash"></i></a>'
+                                            .'<a href="#delete" onclick="delete_alert('.$delete_alert.')" '.tooltip("Trash").' style="font-size:21px; vertical-align:middle; " class="text-c-inverse waves-effect waves-light ml-2 p-1" ><i class="ti-trash"></i></a>'
                                             .'<a onclick="open_update_modal('.$student->student_id.', \''.teacher_base().'\', \'#student-update-form\')"  data-modal="modal-update-student" '.tooltip("Update").' href="#edit" style="font-size:21px; vertical-align:middle; " class=" text-danger student-update  waves-effect waves-light ml-2 p-1" up-id="'.$student->student_id.'"><i class="ti-pencil-alt"></i></a>';
                                            
             $data[] = $subarray;
@@ -48,9 +49,17 @@ class Your_Students extends CI_Controller {
         $datas = json_encode($data);
 
         $dataa['data'] = $data;
+        $dataa['trashed'] = $trashed_count;
         echo json_encode($dataa);
     }
-
+    public function ajax_trash(){
+        $id = $this->input->post('id');
+		$dataType = $this->input->post('data_type');
+		if($dataType == "ajax"){	
+			$delete_result = $this->Students_Model->trash($id);	
+			echo json_encode(array("status" => true));
+		}
+    }
     public function ajax_delete(){
         $id = $this->input->post('id');
 		$dataType = $this->input->post('data_type');

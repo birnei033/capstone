@@ -87,7 +87,7 @@ $(document).ready(function () {
             millisTill10 += 86400000; 
         }else{
             console.log("running pa");
-            swal('It\'s not time yet! Please come back and be ready on '+start_date.month+"/"+start_date.day+"/"+start_date.year+" - "+start_date.hour+""+start_date.minute+" hour/s",
+            swal('It\'s not time yet! Please come back and be ready on '+start_date.month+"/"+start_date.day+"/"+start_date.year+" - "+start_date.hour_format+".",
             {
                 icon: "info"
             }).then((val)=>{
