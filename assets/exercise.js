@@ -5,9 +5,10 @@ $(document).ready(function () {
     var written_answers = {};
     var mc_ajax_questions = {};
     var tf_ajax_questions = {};
+    var written_ajax_questions = {};
     var start_date = "0";
     var end_date = "0";
-    var all_questions = {mc_ajax_questions: mc_ajax_questions, tf_ajax_questions: tf_ajax_questions};
+    var all_questions = {mc_ajax_questions: mc_ajax_questions, tf_ajax_questions: tf_ajax_questions, written_ajax_questions: written_ajax_questions};
     var all_answers = {mc_answers: mc_answers, tf_answers: tf_answers, written_answers: written_answers};
 
     // -----------------
@@ -233,6 +234,7 @@ $(document).ready(function () {
                     keywords: keywords,
                     
                 }
+                written_ajax_questions[ex_written_count] = data.question;
                 written_answers['written-'+ex_written_count] = data;
                 
                 var out = "<tr class='ex-written'><td>";

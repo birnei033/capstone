@@ -32,15 +32,15 @@
                                     </div>
                                     <div class="row m-t-25 text-left">
                                         <div class="col-12">
-                                            <div class="checkbox-fade fade-in-primary d-">
+                                            <!-- <div class="checkbox-fade fade-in-primary d-">
                                                 <label>
                                                     <input type="checkbox" value="">
                                                     <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                                                     <span class="text-inverse">Remember me</span>
                                                 </label>
-                                            </div>
-                                            <div class="forgot-phone text-right float-right">
-                                                <a href="auth-reset-password.html" class="text-right f-w-600"> Forgot Password?</a>
+                                            </div> -->
+                                            <div class="forgot-phone text-center">
+                                                <a href="#iforgotmypassword" <?php echo tooltip("Please contact your instructor/teacher for your password.") ?> class="text-right f-w-600"> Forgot Password?</a>
                                             </div>
                                         </div>
                                     </div>

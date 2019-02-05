@@ -45,11 +45,13 @@
             $score = 0;
             $total = 0;
             $date_array = date_array(json_decode($exercise->ex_schedule)->start_date);
+            // var_dump($answered);
             foreach ($answered as $answer) {
                 if ($answer->ex_id == $exercise->id) {
                 $r=true;
                 $score = $answer->ex_score;
                 $total = $answer->ex_total_item;
+                $id = $answer->id;
                 }
             }
             $day =  $date_array['day'] == "0" ? "No" : $date_array['day'];
@@ -57,7 +59,7 @@
             $hour = $date_array['day'] == "0" ? "" : " @ ".$date_array['hour_format'];
             if ($r) {
                 // if ($answer->ex_id == $exercise->id) {
-                    echo "<li class='pl-0 p-1' style='padding: 7px 17px'><p class='d-inline-block' style='color:#000'><a onclick='open_exercise_review_modal(\"".api_base()."student/ajax_finished_exercise/?id=". $answer->id."\")'  href='#'>".$exercise->ex_name."</a></p>".
+                    echo "<li class='pl-0 p-1' style='padding: 7px 17px'><p class='d-inline-block' style='color:#000'><a onclick='open_exercise_review_modal(\"".api_base()."student/ajax_finished_exercise/?id=". $id."\")'  href='#'>".$exercise->ex_name."</a></p>".
                      "<p class='float-right'><strong>Score:</strong> ".$score."/".$total.
                     "</p></li>";    
                 // }
@@ -84,8 +86,49 @@ include "modals/cs_exercise_review.php";
         dataType: "JSON",
         success: function(data)
         {
+            // console.log(Object.values(data.data));
             console.log(data);
+            var out = "";
+            $('#exercise-preview-table').html("Loading data...");
+            $.each(data.data, function (i, e) {
+                console.log(e);
+                if (i == "mc_choice") {
+                    out += "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Multiple Choice</li>";
+                    $.each(e.answer, function (a_i, a_e) { 
+                        console.log(e.question[a_i]); 
+                             out += "<li class='pl-0 p-1 b-0' style='padding: 7px 17px;'>";
+                             out += "<p class='p-0'>"+a_i+". "+e.question[a_i]+"</p>";
+                             out += "<p class='p-0'><small><strong>Your answer: </strong>"+e.answer[a_i]+"</small> <br> <small><strong>Correct answer: </strong>"+e.correct[a_i]+"</small></p>";
+                             out += "</li>";
+                    });
+                }
+                if (i == "tf_choice") {
+                    out += "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>True or False</li>";
+                    $.each(e.answer, function (a_i, a_e) { 
+                        console.log(e.question[a_i]); 
+                        out += "<li class='pl-0 p-1 ' style='padding: 7px 17px;'>";
+                        out += "<p class='p-0'>"+a_i+". "+e.question[a_i]+"</p>";
+                        out += "<p class='p-0'><small><strong>Your answer: </strong>"+e.answer[a_i]+"</small> <br> <small><strong>Correct answer: </strong>"+e.correct[a_i]+"</small></p>";
+                        out += "</li>";
+                    });
+                }
+
+                if (i == "written") {
+                    out += "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Written</li>";
+                    $.each(e.answer, function (a_i, a_e) { 
+                        console.log(e.question[a_i]); 
+                        out += "<li class='pl-0 p-1 ' style='padding: 7px 17px; '>";
+                        out += "<p class='p-0'>"+a_i+". "+e.question[a_i]+"</p>";
+                        out += "<p class='p-0'><small>Your answer:<br>"+e.answer[a_i]+"</small></p>";
+                        out += "</li>";
+                    });
+                }
+                 
+            });
+            // {
+            // });
             
+            $('#exercise-preview-table').html(out);
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

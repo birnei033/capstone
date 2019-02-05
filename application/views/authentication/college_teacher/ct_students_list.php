@@ -21,7 +21,7 @@
                             <th>School ID</th>
                             <th>Login Name</th>
                             <th>Student Full Name</th>
-                            <th>Student Subject</th>
+                            <th>Password</th>
                             <th>Program</th>
                             <th></th>
                         </tr>

@@ -7,7 +7,7 @@ function card_open($header = "", $col="12", $class="", $attr="", $card_block_cla
     echo '<div class="col-sm-'.$col.'">';
                echo '     <div class="card '.$class.'" '.$attr.'>';
                if ($header != "") {
-                echo '   <div class="card-header">'
+                echo '   <div class="card-header '.$card_block_class.'">'
                       .$header.
                   ' </div>
                   <!-- /.panel-heading -->';

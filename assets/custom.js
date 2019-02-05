@@ -335,7 +335,7 @@ $( function() {
                     swal("Password Reset Successfully!", {
                         icon: "success",
                     });
-                    subjects_table.ajax.reload();
+                    students_table.ajax.reload();
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
