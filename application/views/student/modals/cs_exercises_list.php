@@ -5,17 +5,16 @@
 <div class="md-modal md-effect-1" id="modal-exercises-list">
     <div class="md-content">
         <div class="card p-0">
-            <div class="card-header">
-                <!-- <h4>You have available Exercises </h4>  -->
-                <a class=" float-right md-close" style="cursor:pointer;"><i class="ti-close"></i></a>
+            <div class="card-header p-1 pl-4 pr-4">
+                <p class="d-inline-block p-0">You have <strong class="d-inline-block text-success" id="ex-count-head"></strong> available Exercise/s</p> 
+                <a class=" float-right md-close pt-1" style="cursor:pointer;"><i class="ti-close"></i></a>
             </div>
             <div class="card-block pr-1 pl-2">
                 <ul class="basic-list cards" style="padding:0;">
                 <?php
                 $count = 0;
                 
-                rsort($exercises);
-                // var_dump($asc_exercises);
+                    rsort($exercises);
                     foreach ($exercises as $exercise) {
                         $r = false;
                         $score = 0;
@@ -33,12 +32,12 @@
                        $hour = $date_array['day'] == "0" ? "" : " @ ".$date_array['hour_format'];
                        if ($r) {
                         // if ($answer->ex_id == $exercise->id) {
-                            echo "<li style='padding: 7px 17px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>"
-                            .$date_array['str_month']." ".
-                            $day.", ". 
-                            $year." ".$hour."</strong></small>".
-                             "<span class='float-right'><strong>Score:</strong> ".$score."/".$total.
-                            "</span></li></p>";    
+                            // echo "<li style='padding: 7px 17px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>"
+                            // .$date_array['str_month']." ".
+                            // $day.", ". 
+                            // $year." ".$hour."</strong></small>".
+                            //  "<span class='float-right'><strong>Score:</strong> ".$score."/".$total.
+                            // "</span></li></p>";    
                         // }
                        }else{
                             echo "<li style='padding: 7px 17px'><h5 style='color:#000'>".$exercise->ex_name."</h5><small class=''>Scheduled: <strong>".
@@ -54,11 +53,19 @@
                             "</li>";
                             $count++;
                        } 
+                    //    $count = $count == 0 ? "no" : $count;
                     }
                 ?>
                 <script>
                     $(document).ready(function () {
-                        $('#ex-count').text("<?php echo $count ?>");
+                        var count = "<?php echo $count ?>";
+                        if (count == 0) {
+                            $('#ex-count').hide();
+                        }
+                        $('#ex-count, #ex-count-head').text("<?php echo $count ?>");
+                        // $('#ex-count-head').html("<?php echo $count ?>");
+                        // console.log("<?php echo $count ?>");
+                        
                     });
                 </script>
                 </ul>

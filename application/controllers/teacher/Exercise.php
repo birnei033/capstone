@@ -181,7 +181,7 @@ class Exercise extends CI_Controller {
             if ($submit) {
             
             }else{
-                teacher_view('exercise/add_exercise', $data);
+                view('exercise/add_exercise', $data);
             }
         }
     }
@@ -190,6 +190,7 @@ class Exercise extends CI_Controller {
         $title = $this->input->post('exercise_title');
         $subject_id = $this->input->post('ex_subject');
         $teacher_id = teacher_session('id');
+        $all_questions = $this->input->post('all_questions');
         $ex_questions=$this->input->post('ex_elems');
         $ex_schedule = $this->input->post('ex_schedule');
         $ex_time=$this->input->post('ex_time');
@@ -202,6 +203,7 @@ class Exercise extends CI_Controller {
             "teacher_id"=>$teacher_id,
             "ex_questions"=>$ex_questions,
             'ex_time'=> $ex_time,
+            'ajax_questions'=>$all_questions,
             "ex_answers"=>$ex_answers,
             "date_added"=>$date_added,
             "ex_schedule"=>$ex_schedule,

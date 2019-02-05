@@ -118,7 +118,7 @@ class Take_Exercise extends CI_Controller {
                 $keywords = explode(',',strtolower($true_writtens['written-'.$key]->keywords));
                 foreach ($keywords as $keyword) {
                     if (gettype($isKeywodPresent) === 'boolean')  {
-                        $isKeywodPresent = stripos( strtolower($value), $keyword );
+                        $isKeywodPresent = stripos( strtolower(html_escape($value)), $keyword );
                     }
                 }
                 if (gettype($isKeywodPresent) === 'integer')  {

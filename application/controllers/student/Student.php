@@ -31,8 +31,10 @@ class Student extends CI_Controller {
 		$data['exercises'] = $exercises->result();
 
 		$this->load->view('includes/head');
-        $this->load->view('student/cs_dashboard',$data);
-        $this->load->view('includes/footer-auth');
+		$this->load->view('student/top-navigation');
+		$this->load->view('student/cs_sidebar_dashboard');
+        $this->load->view('student/cs_dashboardv2',$data);
+        $this->load->view('student/footer');
 	}
 	public function lesson(){
 		student_logged();

@@ -7,7 +7,7 @@ jQuery(document).ready(function ($) {
     $('nav ul.pcoded-item li  a').each(function (index, element) {
         // console.log(this.pathname);
         
-        if (this.href == url) {
+        if (this.href.replace(/\/|#.*$/g,"") == url.replace(/\/|#.*$/g,"")) {
             $(this).parent().addClass('active');
             if ($(this).parent().parent().parent().hasClass('pcoded-hasmenu')) {
                 $(this).parent().parent().parent().addClass('active pcoded-trigger');

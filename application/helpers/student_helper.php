@@ -44,7 +44,7 @@ function student_exercise_view($page, $data = ""){
     $CI->load->view('student/top-navigation');
     $CI->load->view('student/cs_no_sidebar');
     $CI->load->view($page, $data);
-    $CI->load->view('student/footer');
+    $CI->load->view('student/footer_exercise');
 }
 function student_session($index = ""){
     $CI = get_instance();

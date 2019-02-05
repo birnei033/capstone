@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-function card_open($header = "", $col="12", $class="", $attr=""){
+function card_open($header = "", $col="12", $class="", $attr="", $card_block_class = ""){
 
     echo '<div class="col-sm-'.$col.'">';
                echo '     <div class="card '.$class.'" '.$attr.'>';
@@ -13,7 +13,7 @@ function card_open($header = "", $col="12", $class="", $attr=""){
                   <!-- /.panel-heading -->';
                    
                }
-                echo '<div class="card-block">';
+                echo '<div class="card-block '.$card_block_class.'">';
 }
 function card_close($footer = "", $class=""){
        echo           

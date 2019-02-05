@@ -3,9 +3,11 @@ $(document).ready(function () {
     var mc_answers = {};
     var tf_answers = {};
     var written_answers = {};
+    var mc_ajax_questions = {};
+    var tf_ajax_questions = {};
     var start_date = "0";
     var end_date = "0";
-    // var all_answers = {mc_answers: mc_answers, tf_answers: tf_answers, written_answers: written_answers};
+    var all_questions = {mc_ajax_questions: mc_ajax_questions, tf_ajax_questions: tf_ajax_questions};
     var all_answers = {mc_answers: mc_answers, tf_answers: tf_answers, written_answers: written_answers};
 
     // -----------------
@@ -59,7 +61,7 @@ $(document).ready(function () {
                     ex_mc_question: question,
                     answers: [ correct, wrong1,wrong2, wrong3]
                 };
-    
+                mc_ajax_questions[ex_mc_count] = data.ex_mc_question;
                 mc_answers['mchoice-'+ex_mc_count] = data.answers[0];
                 all_answers.mc_answers = mc_answers;
                 console.log(mc_answers);
@@ -157,6 +159,7 @@ $(document).ready(function () {
                 // $('.ex-tf').each(function (index, element) {
                     //     ex_tf_count++;
                     // });
+                    tf_ajax_questions[ex_tf_count] = data.question;
                     tf_answers['tf-'+ex_tf_count] = data.answer;
                     console.log(tf_answers);
                     
@@ -368,6 +371,8 @@ $(document).ready(function () {
 
       $('#ex-submit').click(function (e) { 
           e.preventDefault();
+          console.log(all_questions);
+          
           var url = location.pathname;
           var data = {
             ex_subject: $('#ex-subject').val(),
@@ -376,6 +381,7 @@ $(document).ready(function () {
             exercise_title: $('#ex-title').val(),
             ex_submit: $('#ex-submit').val(),
             answers: JSON.stringify(all_answers),
+            all_questions: JSON.stringify(all_questions),
             ex_schedule: JSON.stringify({start_date: start_date, end_date: end_date})
           };
           console.log(data);
