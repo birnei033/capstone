@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 04, 2019 at 07:02 AM
+-- Generation Time: Feb 06, 2019 at 06:39 AM
 -- Server version: 10.1.26-MariaDB
 -- PHP Version: 7.1.9
 
@@ -38,22 +38,23 @@ CREATE TABLE `college_students` (
   `student_subjects` varchar(255) NOT NULL,
   `added_by` varchar(255) NOT NULL,
   `date_added` date NOT NULL,
-  `date_updated` date NOT NULL
+  `date_updated` date NOT NULL,
+  `trashed` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `college_students`
 --
 
-INSERT INTO `college_students` (`student_id`, `school_id`, `student_login_name`, `student_full_name`, `student_password`, `student_program`, `student_subjects`, `added_by`, `date_added`, `date_updated`) VALUES
-(1, '1052', '44_bernz', 'Bernie Santos A. Cabase', 'password', '1', '44', '2', '0000-00-00', '2019-01-18'),
-(2, '1052', '45_bernz', 'Bernie Santos A. Cabase', 'changeme', '1', '45', '2', '0000-00-00', '0000-00-00'),
-(3, '1052', '46_bernz', 'Bernie Santos A. Cabase', 'password', '1', '46', '2', '0000-00-00', '2019-01-23'),
-(4, '1052', '47_bernz', 'Bernie Santos A. Cabase', 'password', '1', '47', '2', '0000-00-00', '2019-02-04'),
-(5, '1052', '48_bernz', 'Bernie Santos A. Cabase', 'password', '2', '48', '1', '0000-00-00', '2019-01-18'),
-(6, '1057', '48_Cloe', 'Cloe Balatbalat', 'password', '1', '48', '1', '0000-00-00', '2019-01-26'),
-(7, '1450', '49_mira', 'Mira Cruz', 'password', '1', '49', '2', '0000-00-00', '2019-01-28'),
-(8, '1052', '49_bernz', 'Bernie Santos A. Cabase', 'changeme', '1', '49', '2', '0000-00-00', '0000-00-00');
+INSERT INTO `college_students` (`student_id`, `school_id`, `student_login_name`, `student_full_name`, `student_password`, `student_program`, `student_subjects`, `added_by`, `date_added`, `date_updated`, `trashed`) VALUES
+(1, '1052', '44_bernz', 'Bernie Santos A. Cabase', 'password', '1', '44', '2', '0000-00-00', '2019-01-18', 0),
+(2, '1052', '45_bernz', 'Bernie Santos A. Cabase', 'changeme', '1', '45', '2', '0000-00-00', '0000-00-00', 0),
+(3, '1052', '46_bernz', 'Bernie Santos A. Cabase', 'password', '1', '46', '2', '0000-00-00', '2019-01-23', 0),
+(4, '1052', '47_bernz', 'Bernie Santos A. Cabase', 'password', '1', '47', '2', '0000-00-00', '2019-02-04', 0),
+(5, '1052', '48_bernz', 'Bernie Santos A. Cabase', 'password', '2', '48', '1', '0000-00-00', '2019-01-18', 0),
+(6, '1057', '48_Cloe', 'Cloe Balatbalat', 'password', '1', '48', '1', '0000-00-00', '2019-01-26', 0),
+(7, '1450', '49_mira', 'Mira Cruz', 'password', '1', '49', '2', '0000-00-00', '2019-01-28', 0),
+(8, '1052', '49_bernz', 'Bernie Santos A. Cabase', 'changeme', '1', '49', '2', '0000-00-00', '0000-00-00', 0);
 
 -- --------------------------------------------------------
 
@@ -98,18 +99,11 @@ CREATE TABLE `exercises` (
   `ex_time` int(11) NOT NULL DEFAULT '0',
   `ex_schedule` varchar(120) NOT NULL DEFAULT '0',
   `ex_answers` text NOT NULL,
+  `ajax_questions` text NOT NULL,
   `date_added` date NOT NULL,
   `date_updated` int(11) NOT NULL,
   `trashed` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `exercises`
---
-
-INSERT INTO `exercises` (`id`, `ex_name`, `subject_id`, `teacher_id`, `ex_type_id`, `ex_questions`, `ex_time`, `ex_schedule`, `ex_answers`, `date_added`, `date_updated`, `trashed`) VALUES
-(20, 'wriiten testing', 48, 1, 0, '\n        <div id=\"timer-wrapper\" class=\"text-center mb-4\">\n        \n        </div>\n        <style>\n        #clock-icon{\n            background-image: url(http://localhost/ignite/assets/images/alarm-clock.png);\n        }\n  </style>\n  <div class=\"table-responsive\">\n        <table class=\"table \">\n            <tbody id=\"ex-elems\">\n                <tr>\n                    <td class=\"p-0\">\n                        <table class=\"table table-hover\">\n                            <tbody id=\"ex-elems-m-choice\"></tbody>\n                        </table>\n                    </td>\n                </tr>\n                <tr>\n                    <td class=\"p-0\">\n                        <table class=\"table table-hover\">\n                            <tbody id=\"ex-elems-tf\"></tbody>\n                        </table>\n                    </td>\n                </tr>\n                <tr>\n                    <td class=\"p-0\">\n                        <table class=\"table table-hover\">\n                            <tbody id=\"ex-elems-written\"><tr><td><h4>Ckick here to add an instruction.</h4></td></tr><tr class=\"ex-written\"><td><h5>1. dfgdfgfd</h5><br><div class=\"\"><div class=\"col-sm-12\"><div class=\"row\"><div style=\"width:100%\" class=\"form-group form-default \"><label for=\"ex-written-question-answer\">Your Answer (30) points</label><textarea class=\"form-control\" name=\"ex-written-question-answer-1\" id=\"ex-written-question-answer\"></textarea></div></div></div></div></td></tr></tbody>\n                        </table>\n                    </td>\n                </tr>\n            </tbody>\n        </table>\n  </div>\n    ', 0, '{\"start_date\":\"0\",\"end_date\":\"0\"}', '{\"mc_answers\":{},\"tf_answers\":{},\"written_answers\":{\"written-1\":{\"question\":\"dfgdfgfd\",\"points\":\"30\",\"keywords\":\"bernie,cabase\"}}}', '2019-02-01', 0, 1),
-(21, 'test123', 48, 1, 0, '\n        <div id=\"timer-wrapper\" class=\"text-center mb-4\"><div id=\"timer\"><span id=\"clock-icon\"></span><span>Time: </span><span id=\"time\">15</span> minutes</div></div>\n        <style>\n        #clock-icon{\n            background-image: url(http://localhost/ignite/assets/images/alarm-clock.png);\n        }\n  </style>\n  <div class=\"table-responsive\">\n        <table class=\"table \">\n            <tbody id=\"ex-elems\">\n                <tr>\n                    <td class=\"p-0\">\n                        <table class=\"table table-hover\">\n                            <tbody id=\"ex-elems-m-choice\"><tr><td><h4>Ckick here to add an instruction.</h4></td></tr><tr class=\"ex-m-choices num-1\"><td><h5>1. test</h5><br><div class=\"\"><div class=\"col-sm-12\"><div class=\"row\"><form><div class=\"form-radio\"><div class=\"radio radio-inline\"><label><input value=\"4\" type=\"radio\" name=\"m-choice-1\"><i class=\"helper\"></i>4</label></div><div class=\"radio radio-inline\"><label><input value=\"3\" type=\"radio\" name=\"m-choice-1\"><i class=\"helper\"></i>3</label></div><div class=\"radio radio-inline\"><label><input value=\"1\" type=\"radio\" name=\"m-choice-1\"><i class=\"helper\"></i>1</label></div><div class=\"radio radio-inline\"><label><input value=\"2\" type=\"radio\" name=\"m-choice-1\"><i class=\"helper\"></i>2</label></div></div></form><div class=\"col-sm-6\"></div></div></div></div></td></tr></tbody>\n                        </table>\n                    </td>\n                </tr>\n                <tr>\n                    <td class=\"p-0\">\n                        <table class=\"table table-hover\">\n                            <tbody id=\"ex-elems-tf\"></tbody>\n                        </table>\n                    </td>\n                </tr>\n                <tr>\n                    <td class=\"p-0\">\n                        <table class=\"table table-hover\">\n                            <tbody id=\"ex-elems-written\"><tr><td><h4>Ckick here to add an instruction.</h4></td></tr><tr class=\"ex-written\"><td><h5>1. test123</h5><br><div class=\"\"><div class=\"col-sm-12\"><div class=\"row\"><div style=\"width:100%\" class=\"form-group form-default \"><label for=\"ex-written-question-answer\">Your Answer (30) points</label><textarea class=\"form-control\" name=\"ex-written-question-answer-1\" id=\"ex-written-question-answer\"></textarea></div></div></div></div></td></tr></tbody>\n                        </table>\n                    </td>\n                </tr>\n            </tbody>\n        </table>\n  </div>\n    ', 15, '{\"start_date\":\"2019-02-04T21:30\",\"end_date\":\"2019-02-04T21:45\"}', '{\"mc_answers\":{\"mchoice-1\":\"1\"},\"tf_answers\":{},\"written_answers\":{\"written-1\":{\"question\":\"test123\",\"points\":\"30\",\"keywords\":\"1,2,3,4,5\"}}}', '2019-02-04', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -132,13 +126,6 @@ CREATE TABLE `finished_exercises` (
   `date_exercise_taken` date NOT NULL,
   `trashed` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `finished_exercises`
---
-
-INSERT INTO `finished_exercises` (`id`, `ex_id`, `subject_id`, `cs_id`, `ct_id`, `ex_score`, `ex_total_item`, `ex_score_percent`, `ex_cs_answers`, `is_checked`, `date_checked`, `date_exercise_taken`, `trashed`) VALUES
-(47, 20, 48, 5, 1, 30, 30, 100, '{\"cs_answer\":{\"mc_answers\":{},\"tf_answers\":{},\"written_answers\":{\"1\":\"bernie\"}},\"correct_answers\":{\"mc_answers\":{},\"tf_answers\":{},\"written_answers\":{\"written-1\":{\"question\":\"dfgdfgfd\",\"points\":\"30\",\"keywords\":\"bernie,cabase\"}}}}', 1, '', '2019-02-04', 1);
 
 -- --------------------------------------------------------
 
@@ -289,13 +276,13 @@ ALTER TABLE `college_teachers`
 -- AUTO_INCREMENT for table `exercises`
 --
 ALTER TABLE `exercises`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `finished_exercises`
 --
 ALTER TABLE `finished_exercises`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
 
 --
 -- AUTO_INCREMENT for table `lessons`

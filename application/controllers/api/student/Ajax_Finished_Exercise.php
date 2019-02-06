@@ -74,7 +74,8 @@ class Ajax_Finished_Exercise extends CI_Controller {
 			foreach ($written_question as $key => $value) {
 				$data['written']['question'][$count5] = $value;
 				$count5++;
-			}$count6 = 1;
+			}
+			$count6 = 1;
 			foreach ($written_answer as $key => $value) {
 				$data['written']['answer'][$count6] = $value;
 				$count6++;

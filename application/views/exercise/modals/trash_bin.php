@@ -18,7 +18,7 @@
                             <tr>
                                 <td class="p-1">
                                     <?php echo $item->ex_name ?>
-                                    <button  <?php echo tooltip('Delete permanently') ?> id="delete-permanent" class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>
+                                    <button  <?php echo tooltip('Delete permanently') ?> id="delete-permanent" lesson_id="<?php echo $item->id ?>"  onclick="delete_permanently($(this))" class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>
                                     <button onclick="load_trashed($(this))" <?php echo tooltip('Recover') ?> lesson_id="<?php echo $item->id ?>"  class=" undo btn btn-inverse btn-outline-inverse float-right mr-1 p-1"><i class="ti-control-backward"></i></button>
                                 </td>
                                 <!-- <td></td> -->
@@ -72,7 +72,7 @@
                                     out  += '<tr>';
                                     out  += '<td class="p-1">';
                                     out  +=    e.ex_name;
-                                    out  +=    '<button  <?php echo tooltip("Delete permanently") ?> id="delete-permanent" class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>';
+                                    out  +=    '<button  <?php echo tooltip("Delete permanently") ?> lesson_id="'+e.id+'" onclick="delete_permanently($(this))"  class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>';
                                     out  +=    '<button onclick="load_trashed($(this))" <?php echo tooltip("Recover") ?> lesson_id="'+e.id+'" id="undo" class="btn btn-inverse btn-outline-inverse float-right mr-1 p-1"><i class="ti-control-backward"></i></button>';
                                     out  += '</td>';
                                     out  += '</tr>';
@@ -83,6 +83,50 @@
                             }
                         });
                     }
+                }
+            });
+        }
+        function delete_permanently(elem){
+            var data = {
+                    'delete_permanent': 'delete_permanent',
+                    'id': elem.attr('lesson_id')
+            };
+            $.ajax({
+                type: "POST",
+                url: location.pathname,
+                data: data,
+                dataType: "JSON",
+                success: function (response) {
+                    console.log(response);
+                    swal('OK',{
+                        icon: 'success'
+                    }).then((val)=>{
+                        $.ajax({
+                            type: "GET",
+                            url: location.pathname+"get_trashed_exerceercises",
+                            // data: "data",
+                            dataType: "JSON",
+                            success: function (response) {
+                                console.log(response);
+                                var l = response.trashed.length;
+                                $('#trashed-item').html("");
+                                response.trashed.forEach(e => {
+                                    console.log(e);
+                                    var out = "";
+                                    out  += '<tr>';
+                                    out  += '<td class="p-1">';
+                                    out  +=    e.ex_name;
+                                    out  +=    '<button  <?php echo tooltip("Delete permanently") ?> lesson_id="'+e.id+'" onclick="delete_permanently($(this))"  class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>';
+                                    out  +=    '<button onclick="load_trashed($(this))" <?php echo tooltip("Recover") ?> lesson_id="'+e.id+'" id="undo" class="btn btn-inverse btn-outline-inverse float-right mr-1 p-1"><i class="ti-control-backward"></i></button>';
+                                    out  += '</td>';
+                                    out  += '</tr>';
+                                    $('#trashed-item').append(out);
+                                    $('[data-toggle="tooltip"]').tooltip(); 
+                                });
+                                $('#badge-trash-count').text(l);
+                            }
+                        });
+                    });
                 }
             });
         }

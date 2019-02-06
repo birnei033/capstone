@@ -100,7 +100,7 @@ $(document).ready(function () {
                                             out  += '<tr>';
                                             out  += '<td class="p-1">';
                                             out  +=    e.ex_name;
-                                            out  +=    '<button  <?php echo tooltip("Delete permanently") ?> id="delete-permanent" class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>';
+                                            out  +=    '<button  <?php echo tooltip("Delete permanently") ?> lesson_id="'+e.id+'" onclick="delete_permanently($(this))"  class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>';
                                             out  +=    '<button onclick="load_trashed($(this))" <?php echo tooltip("Recover") ?> lesson_id="'+e.id+'" id="undo" class="btn btn-inverse btn-outline-inverse float-right mr-1 p-1"><i class="ti-control-backward"></i></button>';
                                             out  += '</td>';
                                             out  += '</tr>';

@@ -91,9 +91,10 @@ include "modals/cs_exercise_review.php";
             var out = "";
             $('#exercise-preview-table').html("Loading data...");
             $.each(data.data, function (i, e) {
-                console.log(e);
+                console.log(e.answer);
                 if (i == "mc_choice") {
-                    out += "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Multiple Choice</li>";
+                    
+                    out += e.answer.length != 0 ? "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Multiple Choice</li>" : "";
                     $.each(e.answer, function (a_i, a_e) { 
                         console.log(e.question[a_i]); 
                              out += "<li class='pl-0 p-1 b-0' style='padding: 7px 17px;'>";
@@ -103,7 +104,7 @@ include "modals/cs_exercise_review.php";
                     });
                 }
                 if (i == "tf_choice") {
-                    out += "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>True or False</li>";
+                    out += e.answer.length != 0 ? "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>True or False</li>": "";
                     $.each(e.answer, function (a_i, a_e) { 
                         console.log(e.question[a_i]); 
                         out += "<li class='pl-0 p-1 ' style='padding: 7px 17px;'>";
@@ -114,7 +115,7 @@ include "modals/cs_exercise_review.php";
                 }
 
                 if (i == "written") {
-                    out += "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Written</li>";
+                    out +=  e.answer.length != 0 ? "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Written</li>": "";
                     $.each(e.answer, function (a_i, a_e) { 
                         console.log(e.question[a_i]); 
                         out += "<li class='pl-0 p-1 ' style='padding: 7px 17px; '>";
@@ -133,7 +134,7 @@ include "modals/cs_exercise_review.php";
         error: function (jqXHR, textStatus, errorThrown)
         {
             // console.log("false");
-            swal(textStatus+" "+errorThrown);
+            // swal(textStatus+" "+errorThrown);
         }
     });
     $('#exercise-review').addClass('md-show');
@@ -142,6 +143,7 @@ $(document).ready(function () {
     $('.md-close').click(function (e) { 
         e.preventDefault();
         $('#exercise-review').removeClass('md-show');
+        $('#exercise-preview-table').html("");
     });
 });
 </script>

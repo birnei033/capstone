@@ -23,6 +23,8 @@ class Exercise extends CI_Controller {
             $this->json_delete_exercise($id);
         }else if($this->input->post('undo')){
             $this->exercise_trashed_undo($this->input->post('id'));
+        }else if($this->input->post('delete_permanent')){
+            $this->delete_permanently($this->input->post('id'));
         }else{
             teacher_logged();
             $this_user_id = teacher_session('id');
@@ -48,13 +50,21 @@ class Exercise extends CI_Controller {
             // 'count'=>$count
         ));
     }
-
-    private function json_delete_exercise($id){
-        $exercise_deleted = $this->Common_Model->update('exercises', array('id'=>$id), array('trashed'=>1));
-        $finished_exercise_deleted = $this->Common_Model->update('finished_exercises', array('ex_id'=>$id), array('trashed'=>1));
+    private function delete_permanently($id){
+        $exercise_deleted = $this->Common_Model->delete('exercises', array('id'=>$id));
+        $finished_exercise_deleted = $this->Common_Model->delete('finished_exercises', array('ex_id'=>$id));
         echo json_encode(array(
             'deleted'=>$exercise_deleted
         ));
+    }
+    private function json_delete_exercise($id){
+        
+            $exercise_deleted = $this->Common_Model->update('exercises', array('id'=>$id), array('trashed'=>1));
+            $finished_exercise_deleted = $this->Common_Model->update('finished_exercises', array('ex_id'=>$id), array('trashed'=>1));
+            echo json_encode(array(
+                'deleted'=>$exercise_deleted
+            ));
+        
     }
     private function exercise_preview($id){
         $query_result['preview'] = $this->Common_Model->get_where('exercises', array(
