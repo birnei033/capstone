@@ -1,7 +1,7 @@
 <?php page_header("Welcome to your dashboard, ".student_session('student_login_name').".") ?>
 
 <div class="row">
-    <?php card_open("","6 col-xl-4"); ?>
+    <?php card_open("","12 col-xl-4"); ?>
     <p><strong>ID Number: </strong><?php echo student_session('school_id') ?></p>
     <p><strong>Full Name: </strong><?php echo student_session('student_full_name') ?></p>
     <p><strong>Program: </strong><?php echo student_session('student_program') ?></p>
@@ -94,20 +94,20 @@ include "modals/cs_exercise_review.php";
                 console.log(e.answer);
                 if (i == "mc_choice") {
                     
-                    out += e.answer.length != 0 ? "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Multiple Choice</li>" : "";
+                    out += e.answer.length != 0 ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Multiple Choice</li>" : "";
                     $.each(e.answer, function (a_i, a_e) { 
                         console.log(e.question[a_i]); 
-                             out += "<li class='pl-0 p-1 b-0' style='padding: 7px 17px;'>";
+                             out += "<li class='list-group-item m-0' style='padding: 7px 17px;'>";
                              out += "<p class='p-0'>"+a_i+". "+e.question[a_i]+"</p>";
                              out += "<p class='p-0'><small><strong>Your answer: </strong>"+e.answer[a_i]+"</small> <br> <small><strong>Correct answer: </strong>"+e.correct[a_i]+"</small></p>";
                              out += "</li>";
                     });
                 }
                 if (i == "tf_choice") {
-                    out += e.answer.length != 0 ? "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>True or False</li>": "";
+                    out += e.answer.length != 0 ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>True or False</li>": "";
                     $.each(e.answer, function (a_i, a_e) { 
                         console.log(e.question[a_i]); 
-                        out += "<li class='pl-0 p-1 ' style='padding: 7px 17px;'>";
+                        out += "<li class='list-group-item m-0' style='padding: 7px 17px;'>";
                         out += "<p class='p-0'>"+a_i+". "+e.question[a_i]+"</p>";
                         out += "<p class='p-0'><small><strong>Your answer: </strong>"+e.answer[a_i]+"</small> <br> <small><strong>Correct answer: </strong>"+e.correct[a_i]+"</small></p>";
                         out += "</li>";
@@ -115,12 +115,13 @@ include "modals/cs_exercise_review.php";
                 }
 
                 if (i == "written") {
-                    out +=  e.answer.length != 0 ? "<li class='pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Written</li>": "";
+                    out +=  e.answer.length != 0 ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Written</li>": "";
                     $.each(e.answer, function (a_i, a_e) { 
                         console.log(e.question[a_i]); 
-                        out += "<li class='pl-0 p-1 ' style='padding: 7px 17px; '>";
+                        out += "<li class='list-group-item m-0 ' style='padding: 7px 17px; '>";
                         out += "<p class='p-0'>"+a_i+". "+e.question[a_i]+"</p>";
-                        out += "<p class='p-0'><small>Your answer:<br>"+e.answer[a_i]+"</small></p>";
+                        var answer = e.answer[a_i] != "" ? e.answer[a_i] : "No Answer"
+                        out += "<p class='p-0'><small>Your answer:<br>"+answer+"</small></p>";
                         out += "</li>";
                     });
                 }
@@ -128,7 +129,7 @@ include "modals/cs_exercise_review.php";
             });
             // {
             // });
-            
+            out += "<li></li>";
             $('#exercise-preview-table').html(out);
         },
         error: function (jqXHR, textStatus, errorThrown)

@@ -34,25 +34,30 @@ class Ajax_Finished_Exercises extends CI_Controller {
 			$tf_answers = array();
 			$written_answers = array();
 			$test = array();
-			$answers = json_decode($all[0]->ex_cs_answers);
-			$answerss = json_decode($all[0]->ex_cs_answers);
-			// $correct_answers = json_decode($all[0]->correct_answers);
-		 foreach ($answerss as $value) {
-			 $temp['mc_answer']['cs_answer'] = $answerss->cs_answer->mc_answers;
-			 $temp['mc_answer']['correct_answer'] = $answerss->correct_answers->mc_answers;
-			 $temp['tf_answers']['cs_answer'] = $answerss->cs_answer->tf_answers;
-			 $temp['tf_answers']['correct_answer'] = $answerss->correct_answers->tf_answers;
-			 $temp['written_answers']['cs_answer'] = $answerss->cs_answer->written_answers;
-			 $temp['written_answers']['correct_answer'] = $answerss->correct_answers->written_answers;
-			 $test[] = $temp;
-		 }
-			foreach ($answers->cs_answer->mc_answers as $key => $value) {
-				$temp[''] = $value;
-				$mc_answer[] = $temp;
+			if ($all[0]->ex_cs_answers != "") {
+				$answerss = json_decode($all[0]->ex_cs_answers);
+				foreach ($answerss as $value) {
+					$temp['mc_answer']['cs_answer'] = $answerss->cs_answer->mc_answers;
+					$temp['mc_answer']['correct_answer'] = $answerss->correct_answers->mc_answers;
+					$temp['tf_answers']['cs_answer'] = $answerss->cs_answer->tf_answers;
+					$temp['tf_answers']['correct_answer'] = $answerss->correct_answers->tf_answers;
+					$temp['written_answers']['cs_answer'] = $answerss->cs_answer->written_answers;
+					$temp['written_answers']['correct_answer'] = $answerss->correct_answers->written_answers;
+					$test[] = $temp;
+				}
+				
 			}
-			foreach ($answers->cs_answer->tf_answers as $key => $value) {
-				$temp = $value;
-				$tf_answers[] = $temp;
+			// $correct_answers = json_decode($all[0]->correct_answers);
+			if ($all[0]->ex_cs_answers != "") {
+				$answers = json_decode($all[0]->ex_cs_answers);
+				foreach ($answers->cs_answer->mc_answers as $key => $value) {
+					$temp[''] = $value;
+					$mc_answer[] = $temp;
+				}
+				foreach ($answers->cs_answer->tf_answers as $key => $value) {
+					$temp = $value;
+					$tf_answers[] = $temp;
+				}
 			}
 			// foreach ($answers->cs_answer->written_answers as $key => $value) {
 			// 	$temp = $value;
