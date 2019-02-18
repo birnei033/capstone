@@ -5,9 +5,9 @@
 <div class="md-modal md-effect-1" id="modal-exercises-list">
     <div class="md-content">
         <div class="card p-0">
-            <div class="card-header p-1 pl-4 pr-4">
+            <div class="card-header p-1 pl-4 pr-2">
                 <p class="d-inline-block p-0">You have <strong class="d-inline-block text-success" id="ex-count-head"></strong> available Exercise/s</p> 
-                <a class=" float-right md-close pt-1" style="cursor:pointer;"><i class="ti-close"></i></a>
+                <a class=" float-right md-close pt-1" style="cursor:pointer;"><i class="ti-close p-1 bg-danger"></i></a>
             </div>
             <div class="card-block pr-1 pl-2">
                 <ul class="basic-list cards" style="padding:0;">

@@ -61,12 +61,20 @@ class Your_Students extends CI_Controller {
 			echo json_encode(array("status" => true));
 		}
     }
+    public function ajax_retrieve(){
+        $id = $this->input->get('id');
+		$dataType = $this->input->get('data_type');
+		if($dataType == "ajax"){	
+			$delete_result = $this->Students_Model->retrieve($id);	
+			echo json_encode(array("status" => $delete_result));
+		}
+    }
     public function ajax_delete(){
-        $id = $this->input->post('id');
-		$dataType = $this->input->post('data_type');
+        $id = $this->input->get('id');
+		$dataType = $this->input->get('data_type');
 		if($dataType == "ajax"){	
 			$delete_result = $this->Students_Model->delete($id);	
-			echo json_encode(array("status" => true));
+			echo json_encode(array("status" => $delete_result));
 		}
     }
     public function ajax_get_students($id){

@@ -34,6 +34,8 @@ class Exercise extends CI_Controller {
     }
     private function exercise_trashed_undo($id){
         $exercise_undo = $this->Common_Model->update('exercises', array('id'=>$id), array('trashed'=>0));
+        $subject_id = $this->db->get_where('exercises', array('id'=>$id))->result()[0]->subject_id;
+        $subject_undo = $this->Common_Model->update('subjects', array('subject_id'=>$subject_id), array('trashed'=>0));
         $finished_exercise_deleted = $this->Common_Model->update('finished_exercises', array('ex_id'=>$id), array('trashed'=>0));
         echo json_encode(array(
             'undo'=>$exercise_undo,

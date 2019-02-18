@@ -28,6 +28,8 @@ class Subjects_Model extends CI_Model {
     public function delete($id){
         $this->db->delete('lessons', array('subject_id'=>$id));
         $this->db->delete('college_students', array('student_subjects'=>$id));
+        $this->db->delete('lessons', array('subject_id'=>$id));
+        $this->db->delete('exercises', array('subject_id'=>$id));
         return $this->db->delete('subjects', array('subject_id'=>$id));
     }
 
@@ -41,11 +43,56 @@ class Subjects_Model extends CI_Model {
         return $this->db->update('subjects'); 
     }
 
-    public function ajax_getAllSubjects($id = ""){
+    public function trash($id){
+        $a = array(
+            'trashed'=> 1
+        );
+
+        $this->db->set($a);
+        $this->db->where('student_subjects', $id);
+        $this->db->update('college_students');
+
+        $this->db->set($a);
+        $this->db->where('subject_id', $id);
+        $this->db->update('exercises');
+
+        $this->db->set($a);
+        $this->db->where('subject_id', $id);
+        $this->db->update('lessons');
+
+        $this->db->set($a);
+        $this->db->where('subject_id', $id);
+        return $this->db->update('subjects'); 
+
+    }
+
+    public function retrieve($id){
+        $a = array(
+            'trashed'=> 0
+        );
+
+        $this->db->set($a);
+        $this->db->where('student_subjects', $id);
+        $this->db->update('college_students');
+
+        $this->db->set($a);
+        $this->db->where('subject_id', $id);
+        $this->db->update('exercises');
+
+        $this->db->set($a);
+        $this->db->where('subject_id', $id);
+        $this->db->update('lessons');
+
+        $this->db->set($a);
+        $this->db->where('subject_id', $id);
+        return $this->db->update('subjects'); 
+    }
+
+    public function ajax_getAllSubjects($id = "", $trashed = 0){
         if ($id == "") {
             $query = $this->db->get('subjects');
         }else {
-            $query = $this->db->get_where('subjects',array('added_by'=>$id));
+            $query = $this->db->get_where('subjects',array('added_by'=>$id, 'trashed'=>$trashed));
         }
         return  $query->result();
         // foreach ($subjects as $subject) {

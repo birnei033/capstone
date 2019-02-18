@@ -66,7 +66,7 @@ $(document).ready(function () {
                         dataType: "JSON",
                         success: function (response) {
                             start_exam();
-                             console.log(response);
+                            //  console.log(response);
                             },
                             error: function(jqXHR, textStatus, errorThrown){
                                 console.log(textStatus);
@@ -86,7 +86,7 @@ $(document).ready(function () {
             start_it();
             millisTill10 += 86400000; 
         }else{
-            console.log("running pa");
+            // console.log("running pa");
             swal('It\'s not time yet! Please come back and be ready on '+start_date.month+"/"+start_date.day+"/"+start_date.year+" - "+start_date.hour_format+".",
             {
                 icon: "info"

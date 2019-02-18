@@ -75,14 +75,17 @@ class Ajax_Finished_Exercise extends CI_Controller {
 				$data['written']['question'][$count5] = $value;
 				$count5++;
 			}
-			$count6 = 1;
-			foreach ($written_answer as $key => $value) {
-				$data['written']['answer'][$count6] = $value;
-				$count6++;
+			if(!empty($written_answer)){
+				$count6 = 1;
+				foreach ($written_answer as $key => $value) {
+					$data['written']['answer'][$count6] = $value;
+					$count6++;
+				}
 			}
 			echo json_encode(array(
 				'test'=>$exercise,
-				'data'=>$data
+				'data'=>$data,
+				// 'test'=>$written_question
 				// 'answers'=>$ex_cs_answers
 			));
 	}

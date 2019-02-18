@@ -45,7 +45,8 @@ class Students_Model extends CI_Model {
         }
         $result = $this->db->get_where('college_students', array(
             'student_login_name'=> $a['student_login_name'],
-            'student_password'=> $a['student_password']
+            'student_password'=> $a['student_password'],
+            'trashed'=>0,
         ));
         $data = array();
         // var_dump(count($subjects->result()));
@@ -127,5 +128,21 @@ class Students_Model extends CI_Model {
         ));
         $this->db->where('student_id', $a);
         return $this->db->update('college_students');
+    }
+    public function retrieve($a){
+        $this->db->set(array(
+            'trashed'=>0
+        ));
+        $subject_id = $this->db->get_where('college_students', array('student_id'=>$a))->result()[0]->student_subjects;
+        // $this->db->set($a);
+        $this->db->where('subject_id', (int)$subject_id);
+        $this->db->update('subjects'); 
+        
+        $this->db->set(array(
+            'trashed'=>0
+        ));
+        $this->db->where('student_id', $a);
+        return $this->db->update('college_students');
+        // return $subject_id;
     }
 }

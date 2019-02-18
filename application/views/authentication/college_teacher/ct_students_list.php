@@ -117,9 +117,10 @@
 
         <div class="md-modal md-effect-1" id="trashed_student_list">
             <div class="md-content">
-                <?php card_open('<a class=" float-right md-close" style="cursor:pointer;" ><i class="ti-close"></i></a>',"12 p-0","","","p-1 pl-3 pr-4") ?>
-
-                <?php card_close(" ", "bg-success") ?>
+                <?php card_open('<h5>Trash bin</h5><a class=" float-right md-close mt-1" style="cursor:pointer;" ><i class="ti-close bg-danger p-1"></i></a>',"12 p-0","","","p-1 pl-3 pr-4") ?>
+                    <ul id="student_trashed" class="cards card-list list-group-flush list-group p-0" style="min-height: 250px">
+                    </ul>
+                <?php card_close(" ", "bg-danger") ?>
             </div>
         </div>
         <div class="md-overlay"></div>

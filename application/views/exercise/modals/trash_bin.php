@@ -1,11 +1,11 @@
 <div class="md-modal md-effect-1" style="z-index:1001" id="trash-bin">
     <div class="md-content">
         <div class="card p-0">
-            <div class="card-header">
+            <div class="card-header p-1 pl-4 pr-2">
                 <h5>Trash bin</h5>
-                <a class=" float-right md-close" style="cursor:pointer;" ><i class="ti-close"></i></a>
+                <a class=" float-right md-close mt-1" style="cursor:pointer;" ><i class="ti-close bg-danger p-1"></i></a>
             </div>
-            <div class="card-block">
+            <div class="card-block cards" style="min-height: 250px">
             <div class="table-responsive">
                 <table id="trashed" class="table table-hover">
                     <!-- <thead>
@@ -53,7 +53,7 @@
                 data: data,
                 dataType: "JSON",
                 success: function (response) {
-                    console.log(response);
+                    // console.log(response);
                     if (response.undo == true) {
                         ex_list.ajax.reload();
                         swal('',{icon: 'success'});
@@ -63,11 +63,11 @@
                             // data: "data",
                             dataType: "JSON",
                             success: function (response) {
-                                console.log(response);
+                                // console.log(response);
                                 var l = response.trashed.length;
                                 $('#trashed-item').html("");
                                 response.trashed.forEach(e => {
-                                    console.log(e);
+                                    // console.log(e);
                                     var out = "";
                                     out  += '<tr>';
                                     out  += '<td class="p-1">';
@@ -97,7 +97,7 @@
                 data: data,
                 dataType: "JSON",
                 success: function (response) {
-                    console.log(response);
+                    // console.log(response);
                     swal('OK',{
                         icon: 'success'
                     }).then((val)=>{
@@ -107,11 +107,11 @@
                             // data: "data",
                             dataType: "JSON",
                             success: function (response) {
-                                console.log(response);
+                                // console.log(response);
                                 var l = response.trashed.length;
                                 $('#trashed-item').html("");
                                 response.trashed.forEach(e => {
-                                    console.log(e);
+                                    // console.log(e);
                                     var out = "";
                                     out  += '<tr>';
                                     out  += '<td class="p-1">';

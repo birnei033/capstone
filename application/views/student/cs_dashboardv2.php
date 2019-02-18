@@ -87,16 +87,16 @@ include "modals/cs_exercise_review.php";
         success: function(data)
         {
             // console.log(Object.values(data.data));
-            console.log(data);
+            // console.log(data);
             var out = "";
             $('#exercise-preview-table').html("Loading data...");
             $.each(data.data, function (i, e) {
-                console.log(e.answer);
+                console.log(e);
                 if (i == "mc_choice") {
                     
                     out += e.answer.length != 0 ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Multiple Choice</li>" : "";
                     $.each(e.answer, function (a_i, a_e) { 
-                        console.log(e.question[a_i]); 
+                        // console.log(e.question[a_i]); 
                              out += "<li class='list-group-item m-0' style='padding: 7px 17px;'>";
                              out += "<p class='p-0'>"+a_i+". "+e.question[a_i]+"</p>";
                              out += "<p class='p-0'><small><strong>Your answer: </strong>"+e.answer[a_i]+"</small> <br> <small><strong>Correct answer: </strong>"+e.correct[a_i]+"</small></p>";
@@ -106,7 +106,7 @@ include "modals/cs_exercise_review.php";
                 if (i == "tf_choice") {
                     out += e.answer.length != 0 ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>True or False</li>": "";
                     $.each(e.answer, function (a_i, a_e) { 
-                        console.log(e.question[a_i]); 
+                        // console.log(e.question[a_i]); 
                         out += "<li class='list-group-item m-0' style='padding: 7px 17px;'>";
                         out += "<p class='p-0'>"+a_i+". "+e.question[a_i]+"</p>";
                         out += "<p class='p-0'><small><strong>Your answer: </strong>"+e.answer[a_i]+"</small> <br> <small><strong>Correct answer: </strong>"+e.correct[a_i]+"</small></p>";
@@ -117,7 +117,7 @@ include "modals/cs_exercise_review.php";
                 if (i == "written") {
                     out +=  e.answer.length != 0 ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Written</li>": "";
                     $.each(e.answer, function (a_i, a_e) { 
-                        console.log(e.question[a_i]); 
+                        // console.log(e.question[a_i]); 
                         out += "<li class='list-group-item m-0 ' style='padding: 7px 17px; '>";
                         out += "<p class='p-0'>"+a_i+". "+e.question[a_i]+"</p>";
                         var answer = e.answer[a_i] != "" ? e.answer[a_i] : "No Answer"

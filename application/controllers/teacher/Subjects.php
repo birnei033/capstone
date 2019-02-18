@@ -44,6 +44,7 @@ class Subjects extends CI_Controller {
 
 	public function ajax_get_subject(){
 		$subjects = $this->Subjects_Model->ajax_getAllSubjects(teacher_session('id'));
+		$out['trashed'] = $this->Subjects_Model->ajax_getAllSubjects(teacher_session('id'), 1);
 		$data = array();	
 		foreach ($subjects as $subject) {
 			$lesson_count = $this->db->query('SELECT COUNT(subject_id) AS \'lesson\' FROM lessons WHERE subject_id = '.$subject->subject_id )->result()[0]->lesson;
@@ -86,6 +87,24 @@ class Subjects extends CI_Controller {
 		if($dataType == "ajax"){	
 			$delete_result = $this->Subjects_Model->delete($id);
 			echo json_encode(array("status" => $delete_result));
+		}
+	}
+
+	public function trash(){
+		$id = $this->input->post('subj_id');
+		$dataType = $this->input->post('data_type');
+		if($dataType == "ajax"){	
+			$trash_result = $this->Subjects_Model->trash($id);
+			echo json_encode(array("status" => $trash_result));
+		}
+	}
+
+	public function retrieve(){
+		$id = $this->input->post('subj_id');
+		$dataType = $this->input->post('data_type');
+		if($dataType == "ajax"){	
+			$trash_result = $this->Subjects_Model->retrieve($id);
+			echo json_encode(array("status" => $trash_result));
 		}
 	}
  

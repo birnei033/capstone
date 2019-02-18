@@ -1,5 +1,35 @@
 var subjects_table, lessons_table, students_table;
 
+function update_student_trashed(json){
+    $('#student_trashed').html("");
+    if (json.trashed.length != 0) {
+        json.trashed.forEach(e => {
+            var out = "";
+            out  += '<li class="list-group-item ">';
+            out  +=    e.student_login_name;
+            out  +=    '<button  student_id="'+e.student_id+'" onclick="student_trashed_action($(this), \'delete\')"  class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>';
+            out  +=    '<button onclick="student_trashed_action($(this))"  student_id="'+e.student_id+'" id="undo" class="btn btn-inverse btn-outline-inverse float-right mr-1 p-1"><i class="ti-control-backward"></i></button>';
+            out  += '</li>';
+            $('#student_trashed').append(out);
+        });
+    }
+}
+
+function update_subject_trashed(json){
+    $('#subject-trashed').html("");
+    $('#badge-trashed-subject-count').text(json.trashed.length);
+    if (json.trashed.length != 0) {
+        json.trashed.forEach(e => {
+            var out = "";
+            out  += '<li class="list-group-item ">';
+            out  +=    e.subject_title;
+            out  +=    '<button  trashed_id="'+e.subject_id+'" onclick="subject_trashed_action($(this), \'delete\')"  class="btn btn-danger btn-outline-danger float-right p-1"><i class="ti-trash"></i></button>';
+            out  +=    '<button onclick="subject_trashed_action($(this))"  trashed_id="'+e.subject_id+'" id="undo" class="btn btn-inverse btn-outline-inverse float-right mr-1 p-1"><i class="ti-control-backward"></i></button>';
+            out  += '</li>';
+            $('#subject-trashed').append(out);
+        });
+    }
+}
 jQuery(document).ready(function ($) {
     var url = location.href;
     // console.log(url);
@@ -17,9 +47,10 @@ jQuery(document).ready(function ($) {
     $(".select-programs").select2();
     students_table = $('#alt-pg-test').DataTable({
         initComplete: function(settings, json) {
-            $('[data-toggle="tooltip"]').tooltip(); 
-            console.log(json);
+            console.log(json.trashed);
             $('#badge-trash-count').text(json.trashed.length);
+            update_student_trashed(json);
+            $('[data-toggle="tooltip"]').tooltip(); 
             var elem = $('#sel').html();
             var sear = $('#sear').html();
             $('#sel').remove(); $('#sear').remove();
@@ -60,6 +91,8 @@ jQuery(document).ready(function ($) {
     
     lessons_table = $('#alt-pg-lessons').DataTable({
         initComplete: function(settings, json) {
+            
+            
             $('[data-toggle="tooltip"]').tooltip();
             var elem = $('#lessonsel').html();
             var sear = $('#lessonsear').html();
@@ -71,7 +104,7 @@ jQuery(document).ready(function ($) {
             $('#lesson-filter-by-subject').change(function (e) { 
                 e.preventDefault();
                 lessons_table.search($('#lesson-filter-by-subject option:selected').val()).draw();
-                console.log($('#lesson-filter-by-subject option:selected').val());
+                // console.log($('#lesson-filter-by-subject option:selected').val());
             });
             $('#lesson-searchit').on('input',function (e) { 
                 e.preventDefault();
@@ -97,6 +130,9 @@ jQuery(document).ready(function ($) {
      subjects_table = $('#subjects-table').DataTable({
         initComplete: function(settings, json) {
             $('[data-toggle="tooltip"]').tooltip();
+            // console.log(json);
+           
+            update_subject_trashed(json);
         },
         ajax: {
             url: "subjects/ajax_get_subject",
@@ -114,6 +150,118 @@ jQuery(document).ready(function ($) {
 
 });
 
+function subject_trashed_action(btn, action = 'update'){
+    var id = btn.attr('trashed_id');
+    var url = location.pathname;
+    switch (action) {
+        case 'update':
+            console.log('you want to update');
+            var data = {
+                data_type: "ajax",
+                subj_id: id
+            };
+                $.ajax({
+                    type: "POST",
+                    url : url+"/retrieve",
+                    data: data,
+                    dataType: "JSON",
+                    success: function (response) {
+                        subjects_table.ajax.reload(function(json){
+                            update_subject_trashed(json);
+                        });
+                    }
+                });
+            break;
+    case 'delete':
+    // console.log('you want to delete');
+                swal({
+                    title: "Warning!",
+                    text: "Once deleted, all students, exercises and lessons related to this subject will also be deleted!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                .then((willDeleted) => {
+                    if (willDeleted) {
+                        var data = {
+                            data_type: "ajax",
+                            subj_id: id
+                        };
+                        $.ajax({
+                            url : url+"/delete",
+                            type: "POST",
+                            data: data,
+                            dataType: "JSON",
+                            success: function(data)
+                            {
+                                swal("Success!", {
+                                    icon: "success",
+                                });
+                                subjects_table.ajax.reload(function(json){
+                                    update_subject_trashed(json);
+                                });
+                            },
+                            error: function (jqXHR, textStatus, errorThrown)
+                            {
+                                swal(textStatus+" "+errorThrown);
+                            }
+                        });
+                    
+                    }
+                });
+            break;
+        default:
+            break;
+    }
+}
+
+function student_trashed_action(btn, action = 'update'){
+    // console.log(action);
+    switch (action) {
+        case 'delete':
+        swal('Delete permanently?',{
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        }).then((result)=>{
+            if (result) {
+                $.ajax({
+                    type: "GET",
+                    url: location.pathname+'/ajax_delete/?id='+btn.attr('student_id')+'&data_type=ajax',
+                   //  data: "data",
+                    dataType: "JSON",
+                    success: function (response) {
+                        // console.log(response);
+                        students_table.ajax.reload(function(json){
+                           $('#badge-trash-count').text(json.trashed.length);
+                           update_student_trashed(json);
+                       });
+                    }
+                });
+            }
+        })
+            break;
+        case 'update':
+            $.ajax({
+                type: "GET",
+                url: location.pathname+'/ajax_retrieve/?id='+btn.attr('student_id')+'&data_type=ajax',
+               //  data: "data",
+                dataType: "JSON",
+                success: function (response) {
+                    // console.log(response);
+                    students_table.ajax.reload(function(json){
+                    //    console.log(json.trashed);
+                       $('#badge-trash-count').text(json.trashed.length);
+                       update_student_trashed(json);
+                   });
+                }
+            });
+            break;
+        default:
+            break;
+    }
+    
+}
 // SWEET ALERTS
 function delete_alert(id, url, alert_title = "Add Alert Title", alert_text = "Add Alert Text"){   
     swal({
@@ -140,7 +288,11 @@ function delete_alert(id, url, alert_title = "Add Alert Title", alert_text = "Ad
                         icon: "success",
                     });
                     lessons_table.ajax.reload();
-                    students_table.ajax.reload();
+                    students_table.ajax.reload(function(json){
+                        // console.log(json.trashed);
+                        $('#badge-trash-count').text(json.trashed.length);
+                        update_student_trashed(json);
+                    });
                     subjects_table.ajax.reload();
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -153,30 +305,32 @@ function delete_alert(id, url, alert_title = "Add Alert Title", alert_text = "Ad
 }
 
 function delete_subject(id, url, subjc_name){
-    swal({
-        title: "Are you sure?",
-        text: "Once deleted, all students related to this subject will be deleted!",
-        icon: "warning",
-        buttons: true,
-        dangerMode: true,
-      })
-      .then((willDeleted) => {
-        if (willDeleted) {
+    // swal({
+    //     // title: "Are you sure?",
+    //     text: "Once deleted, all students related to this subject will be deleted!",
+    //     icon: "warning",
+    //     buttons: true,
+    //     dangerMode: true,
+    //   })
+    //   .then((willDeleted) => {
+    //     if (willDeleted) {
             var data = {
                 data_type: "ajax",
                 subj_id: id
             };
             $.ajax({
-                url : url+"delete",
+                url : url+"trash",
                 type: "POST",
                 data: data,
                 dataType: "JSON",
                 success: function(data)
                 {
-                    swal("Poof! "+subjc_name+" file has been deleted!", {
+                    swal(subjc_name+" sent to trash!", {
                         icon: "success",
                     });
-                    subjects_table.ajax.reload();
+                    subjects_table.ajax.reload(function(json){
+                        update_subject_trashed(json);
+                    });
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
@@ -184,8 +338,8 @@ function delete_subject(id, url, subjc_name){
                 }
             });
          
-        }
-      });
+    //     }
+    //   });
 }
 
 // MODALS

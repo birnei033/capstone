@@ -65,12 +65,12 @@ $(document).ready(function () {
                 mc_ajax_questions[ex_mc_count] = data.ex_mc_question;
                 mc_answers['mchoice-'+ex_mc_count] = data.answers[0];
                 all_answers.mc_answers = mc_answers;
-                console.log(mc_answers);
+                // console.log(mc_answers);
                 
                 
                 var out = "<tr class='ex-m-choices num-"+ex_mc_count+"'><td>";
                 var answers = shuffle(data.answers);
-                console.log(answers);
+                // console.log(answers);
                 out += "<h5>"+ex_mc_count+". "+data.ex_mc_question+"</h5><br>";
                 out += "<div class=''>"; //row open
                 out +=      "<div class='col-sm-12'>";
@@ -120,7 +120,7 @@ $(document).ready(function () {
         });
         if ( isgood == 1 ) {
             $('#set-mul-choice').removeClass('md-show');
-            console.log(all_answers);
+            // console.log(all_answers);
             parent.html(append_elem);
         }
 
@@ -142,7 +142,7 @@ $(document).ready(function () {
             $(this).children('form').children('.form-radio').children('.radio').children('label').children('#ex-tf-answer').each(function (index, element) {
                 if ($(this).prop('checked')) {
                     answer = $(this).val();
-                    console.log(answer);
+                    // console.log(answer);
                     
                 }
             });
@@ -162,7 +162,7 @@ $(document).ready(function () {
                     // });
                     tf_ajax_questions[ex_tf_count] = data.question;
                     tf_answers['tf-'+ex_tf_count] = data.answer;
-                    console.log(tf_answers);
+                    // console.log(tf_answers);
                     
                 var out = "<tr class='ex-tf'><td>";
                 out += "<h5>"+ex_tf_count+". "+data.question+"</h5><br>";
@@ -261,7 +261,7 @@ $(document).ready(function () {
         if (goodtogo == 1) {
             parent.html(append_elem);
             $('#set-written').removeClass('md-show');
-            console.log(all_answers);
+            // console.log(all_answers);
         }
     });
 
@@ -298,7 +298,7 @@ $(document).ready(function () {
                     data: data,
                     dataType: "JSON",
                     success: function (res) {
-                        console.log(res);   
+                        // console.log(res);   
                         
                         if (res.start.year <= res.end.year) {
                             if (res.start.day <= res.end.day) {
@@ -373,7 +373,7 @@ $(document).ready(function () {
 
       $('#ex-submit').click(function (e) { 
           e.preventDefault();
-          console.log(all_questions);
+        //   console.log(all_questions);
           
           var url = location.pathname;
           var data = {
@@ -386,7 +386,7 @@ $(document).ready(function () {
             all_questions: JSON.stringify(all_questions),
             ex_schedule: JSON.stringify({start_date: start_date, end_date: end_date})
           };
-          console.log(data);
+        //   console.log(data);
           
           $.ajax({
               type: "POST",
@@ -396,7 +396,7 @@ $(document).ready(function () {
               success: function (response) {
                   
                   if (response.icon === "success") {
-                    console.log(response.test);
+                    // console.log(response.test);
                     swal('Success', response.message, {
                         icon: response.icon,
                     })
@@ -410,7 +410,7 @@ $(document).ready(function () {
                 }
               },
               error: function(jqXHR, textStatus, errorThrown){
-                console.log(errorThrown);
+                // console.log(errorThrown);
                 
               }
           });
@@ -420,29 +420,29 @@ $(document).ready(function () {
          e.preventDefault();
          var data = {};
          var temp = {};
-         console.log("CHOICES");
+        //  console.log("CHOICES");
          $('.ex-m-choices').each(function (index, element) {
              var n = index+1;
              $('[name="m-choice-'+(index+1)+'"]').each(function (index, element) {
                  var chosen = $(this).prop('checked'); 
                  if (chosen) {
-                     console.log($(this).val());
+                    //  console.log($(this).val());
                      temp["mchoice-"+n] = $(this).val();
                     }
                     
                 });
-                console.log(temp);
+                // console.log(temp);
                 //  data.m_choice_answer = twmp;
             });
         data.mc_answers = JSON.stringify(temp);
         temp = {};
-         console.log("TRUE OR FALSE");
+        //  console.log("TRUE OR FALSE");
          $('.ex-tf').each(function (index, element) {
             var n = index+1;
             $('[name="tf-'+(index+1)+'"]').each(function (index, element) {
                 var chosen = $(this).prop('checked'); 
                 if (chosen) {
-                    console.log($(this).val());
+                    // console.log($(this).val());
                     temp["tf-"+n] = $(this).val();
                 }
             });
@@ -453,19 +453,19 @@ $(document).ready(function () {
         data.subject_id = $('#ex_submit').attr('sub-id');
         temp = {};
         
-        console.log("WRITTEN");
+        // console.log("WRITTEN");
         $('.ex-written').each(function (index, element) {
             var n = index+1;
             $('[name="ex-written-question-answer-'+(index+1)+'"]').each(function (index, element) {
-                    console.log($(this).val());
+                    // console.log($(this).val());
                     temp[n] = ($(this).val());
                 });
             });
             data.written_answers =temp;
-         console.log(data);
+        //  console.log(data);
          var url = location.pathname;
         //  PASS DATA
-        console.log(data);
+        // console.log(data);
         
          $.ajax({
              url: url,
@@ -473,7 +473,7 @@ $(document).ready(function () {
              data: data,
              dataType: "JSON",
              success: function (response) {
-                 console.log(response);
+                //  console.log(response);
                  swal(response.message,
                     'You got '+response.score+' out of '+response.total+'\n'+response.percent+"%", {
                     icon: response.icon,
@@ -482,7 +482,7 @@ $(document).ready(function () {
                 });
              },
              error: function(jqXHR, textStatus, errorThrown){
-                console.log(textStatus);
+                // console.log(textStatus);
               }
          });
         });
