@@ -11,8 +11,9 @@
             </div>
             <form method="post">
                 <div class="card-block accordion-block color-accordion-block cards mb-5"  style="min-height: 550px">
-                    <div id="editor1" class="p-2 mb-2" contenteditable="true" style="border: 1px solid #eee">
-                        <h4>Ckick here to add an instruction.</h4>
+                    <small>Click to edit</small>
+                    <div id="editor1"  class="p-2 mb-2" contenteditable="true" style="border: 1px solid #eee">
+                        <h4>True or False.</h4>
                     </div>
                     <div class="color-accordion " id="color-accordion" >
                         

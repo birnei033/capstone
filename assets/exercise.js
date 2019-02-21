@@ -227,7 +227,7 @@ $(document).ready(function () {
             if (keywords == "") {
                 errors += "Provide the keywords.";
             }
-            if (points != "" && question != "") {
+            if (points != "" && question != "" && keywords != "") {
                 var data = {
                     question: question,
                     points: points,

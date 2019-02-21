@@ -52,7 +52,7 @@ class Subjects extends CI_Controller {
 			$temp['subject_title'] = $subject->subject_title;
 			$temp['number_of_lessons'] = $lesson_count;
 			$temp['tools'] = '<a '.tooltip("Rename").' onclick="update_subject('.$subject->subject_id.', \''.teacher_base("subjects/").'\')" style="font-size:21px; vertical-align:middle; " class="text-c-inverse waves-effect waves-light ml-2 p-1" href="#"><i class="ti-pencil-alt"></i></a>
-								<a '.tooltip("Delete").' onclick="delete_subject('.$subject->subject_id.', \''.teacher_base("subjects/").'\', \''.$subject->subject_title.'\')" style="font-size:21px; vertical-align:middle; " class="text-danger waves-effect waves-light ml-2 p-1" href="#"><i class="ti-trash"></i></a>';
+								<a '.tooltip("Trash").' onclick="delete_subject('.$subject->subject_id.', \''.teacher_base("subjects/").'\', \''.$subject->subject_title.'\')" style="font-size:21px; vertical-align:middle; " class="text-danger waves-effect waves-light ml-2 p-1" href="#"><i class="ti-trash"></i></a>';
 			$data[] = $temp;
 		}
 		$out['data'] = $data;
@@ -116,15 +116,23 @@ class Subjects extends CI_Controller {
 	public function update($id){
 		$this->functions->is_admin();
 		$dataType = $this->input->post('data_type');
+		$subject_exist = $this->db->get_where('subjects', array(
+			'subject_title'=>$this->input->post('subj_name')
+		))->result();
 		if($dataType == 'ajax'){
-			$data = array(
-				'subject_title'=> $this->input->post('subj_name'),
-				'subject_id' => $id,
-				'updated_on'=>mdate('%Y-%m-%d')
-			);
-			$updateResult = $this->Subjects_Model->update($data);
-			echo json_encode(array("status" => $updateResult));
-			// redirect(teacher_base('subjects'));
+			$updateResult = false;
+			if (empty($subject_exist)) {
+				$data = array(
+					'subject_title'=> $this->input->post('subj_name'),
+					'subject_id' => $id,
+					'updated_on'=>mdate('%Y-%m-%d')
+				);
+				$updateResult = $this->Subjects_Model->update($data);
+				echo json_encode(array("status" => $updateResult));
+				// redirect(teacher_base('subjects'));
+			}else {
+				echo json_encode(array("status" => $updateResult));
+			}
 		}
 	}
 }

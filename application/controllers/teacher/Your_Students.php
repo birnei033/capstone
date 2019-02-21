@@ -87,15 +87,15 @@ class Your_Students extends CI_Controller {
     }
     
     public function ajax_update_your_student($id){
-        $name = $this->input->post('name');
-		$scool_id = $this->input->post('id');
+        // $name = $this->input->post('name');
+		// $scool_id = $this->input->post('id');
 		$fname = $this->input->post('fname');
         $program = $this->input->post('program');
         $subject = $this->input->post('subject');
 		$data = array(
             'student_id' => $id,
-			'school_id'=> $scool_id,
-			'student_login_name'=>$name,
+			// 'school_id'=> $scool_id,
+			// 'student_login_name'=>$name,
 			'student_full_name' => $fname,
             'student_program' =>$program ,
             'student_subjects' =>$subject,

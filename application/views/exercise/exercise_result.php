@@ -40,7 +40,7 @@ page_header("Result");
                 $.each(questions, function (i, value) { 
                      if (i == 'mc_ajax_questions') {
                             console.log(value);
-                        out2 += value.length != 0 ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Multiple Choice</li>" : "";
+                        out2 += !isEmpty(value) ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Multiple Choice</li>" : "";
                          $.each(value, function (i, v) { 
                             out2 += '<li class="list-group-item">';
                             out2 += "<p>"+i+". "+v+"</p>";
@@ -56,9 +56,10 @@ page_header("Result");
                      }
 
                      if (i == 'tf_ajax_questions') {
-                           out2 += value.length != 0 ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>True or False</li>": "";
-                         $.each(value, function (i, v) { 
-                            console.log(v);
+                           out2 += !isEmpty(value) ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>True or False</li>": "";
+                           console.log(isEmpty(value));
+                           $.each(value, function (i, v) { 
+                            out2 += v == 'undefined' ? "<li>No Data.</li>":"";
                             out2 += '<li class="list-group-item">';
                             out2 += "<p>"+i+". "+v+"</p>";
                             out2 += '<div class="row">';
@@ -73,7 +74,7 @@ page_header("Result");
                      }
 
                      if (i == 'written_ajax_questions') {
-                           out2 += value.length != 0 ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Written</li>": "";
+                           out2 += !isEmpty(value) ? "<li class='list-group-item pl-0 p-1 color-success text-green' style='padding: 7px 17px'>Written</li>": "";
                          $.each(value, function (i, v) { 
                             console.log(v);
                             out2 += '<li class="list-group-item">';

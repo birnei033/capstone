@@ -220,8 +220,8 @@ class Exercise extends CI_Controller {
             "date_added"=>$date_added,
             "ex_schedule"=>$ex_schedule,
         );
-     
-        $query = "SELECT * FROM exercises WHERE ex_name = '$title' AND teacher_id = ".teacher_session('id');
+        $sub = !empty($subject_id) ? " AND subject_id=$subject_id" : "";
+        $query = "SELECT * FROM exercises WHERE ex_name = '$title' AND teacher_id = ".teacher_session('id').$sub ;
         $get_title = $this->Common_Model->query($query);
         $titletemp = "";
         $title_exist = false;
@@ -229,7 +229,7 @@ class Exercise extends CI_Controller {
         foreach ($get_title as $thetitle) {
             $titletemp = $thetitle->ex_name;
         }
-        if (empty($get_title)) {
+        if (empty($get_title && ($sub != ""))) {
             $title_exist = true;
         }else{
             $errors = "Title already exist.";

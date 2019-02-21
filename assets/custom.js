@@ -1,4 +1,11 @@
 var subjects_table, lessons_table, students_table;
+function isEmpty(obj) {
+    for(var key in obj) {
+        if(obj.hasOwnProperty(key))
+            return false;
+    }
+    return true;
+}
 
 function update_student_trashed(json){
     $('#student_trashed').html("");
@@ -386,10 +393,16 @@ function renameSubject(id, url, value){
         dataType: "JSON",
         success: function(data)
         {
-            // console.log(data);
-            swal("Updated!", {
-                icon: "success",
-            });
+            if (data.status) {
+                // console.log(data);
+                swal("Updated!", {
+                    icon: "success",
+                });
+            }else{
+                swal("Title already exist", {
+                    icon: "error",
+                });
+            }
             subjects_table.ajax.reload();
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -512,9 +525,11 @@ $( function() {
             // console.log(data);
             $('#student-submit').text("Save");
             $(form +' [name="s-login-name"]').val(data.student_login_name)
-                        .attr('placeholder', data.student_login_name);
+                        .attr('placeholder', data.student_login_name)
+                        .attr('disabled', "disabled");
             $(form +' [name="s-school-id"]').val(data.school_id)
-                        .attr('placeholder', data.school_id);
+                        .attr('placeholder', data.school_id)
+                        .attr('disabled', "disabled");
             $(form +' [name="s-full-name"]').val(data.student_full_name)
                         .attr('placeholder', data.student_full_name);
             $(form +' [name="s-subject"]').val(data.student_subjects);
@@ -534,8 +549,8 @@ function submit_updated_student(url, form){
     var id =  $('#student-submit-update').attr('student-id');
     $('#student-submit-update').attr('student-id', id);
     var data = {
-        'name': $(form +' [name="s-login-name"]').val(),
-        'id': $(form +' [name="s-school-id"]').val(),
+        // 'name': $(form +' [name="s-login-name"]').val(),
+        // 'id': $(form +' [name="s-school-id"]').val(),
         'fname': $(form +' [name="s-full-name"]').val(),
         'program': $(form +' [name="s-program"]').val(),
         'subject': $(form +' [name="s-subject"]').val(),
