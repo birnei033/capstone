@@ -59,7 +59,7 @@
             $hour = $date_array['day'] == "0" ? "" : " @ ".$date_array['hour_format'];
             if ($r) {
                 // if ($answer->ex_id == $exercise->id) {
-                    echo "<li class='pl-0 p-1' style='padding: 7px 17px'><p class='d-inline-block' style='color:#000'><a onclick='open_exercise_review_modal(\"".api_base()."student/ajax_finished_exercise/?id=". $id."\")'  href='#'>".$exercise->ex_name."</a></p>".
+                    echo "<li class='pl-0 p-1' style='padding: 7px 17px'><p class='d-inline-block' style='color:#000'><a onclick='open_exercise_review_modal(\"".api_base()."student/Ajax_Finished_Exercise/?id=". $id."\")'  href='#'>".$exercise->ex_name."</a></p>".
                      "<p class='float-right'><strong>Score:</strong> ".$score."/".$total.
                     "</p></li>";    
                 // }

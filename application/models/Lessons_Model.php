@@ -10,7 +10,7 @@ class Lessons_Model extends CI_Model {
 		$this->load->database();
     }
     public function ajax_getAllSubjects($id = ""){
-        $query = $this->db->get_where('subjects',array('added_by'=>$id));
+        $query = $this->db->get_where('subjects',array('added_by'=>$id, 'trashed'=>0));
         $subjects =  $query->result();
         $data = array();
         foreach ($subjects as $subject) {

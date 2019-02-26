@@ -38,7 +38,7 @@
                                 <div class="dropdown-primary dropdown">
                                     <div class="dropdown-toggle" data-toggle="dropdown">
                                         <i class="feather icon-bell"></i>
-                                        <span id="bandge-notif-count" class="badge bg-c-red">5</span>
+                                        <span id="bandge-notif-count" class="badge bg-c-red">0</span>
                                     </div>
                                     <ul id="notification" style="max-height: 388px; overflow-x: auto;" class="show-notification notification notification-view dropdown-menu" data-dropdown-in="fadeIn" data-dropdown-out="fadeOut">
                                         
@@ -65,7 +65,7 @@
                                                 $('.notification').html(o);
                                                 $.ajax({
                                                     type: "GET",
-                                                    url: '<?php echo api_base() ?>/teacher/ajax_finished_exercises/exercise_answers/<?php echo teacher_session("id"); ?>/?checked=0',
+                                                    url: '<?php echo api_base() ?>/teacher/Ajax_Finished_Exercises/exercise_answers/<?php echo teacher_session("id"); ?>/?checked=0',
                                                     // data: "data",
                                                     dataType: "JSON",
                                                     success: function (response) {

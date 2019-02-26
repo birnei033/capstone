@@ -80,7 +80,7 @@ jQuery(document).ready(function ($) {
         },
           dom: '<"row"<"#search-box.col-sm-6" ><"#select-subject.col-sm-6" >>t<"row"<"col-sm-6"i><"col-sm-6"p>>',
         ajax: {
-            url: "your_students/ajax_get",
+            url: "Your_Students/ajax_get",
             type: "post",
         },
         columns: [
@@ -234,7 +234,7 @@ function student_trashed_action(btn, action = 'update'){
             if (result) {
                 $.ajax({
                     type: "GET",
-                    url: location.pathname+'/ajax_delete/?id='+btn.attr('student_id')+'&data_type=ajax',
+                    url: location.pathname.replace("your_student", "Your_Student")+'/ajax_delete/?id='+btn.attr('student_id')+'&data_type=ajax',
                    //  data: "data",
                     dataType: "JSON",
                     success: function (response) {
@@ -517,7 +517,7 @@ $( function() {
  function open_update_modal(id, url, form){  
     $('#student-submit-update').attr('student-id', id);
     $.ajax({
-        url : url+"your_students/ajax_get_students/"+id,
+        url : url+"Your_Students/ajax_get_students/"+id,
         type: "POST",
         dataType: "JSON",
         success: function(data)
@@ -639,7 +639,7 @@ function _action(url, form){
     console.log(data);
     
     $.ajax({
-        url : url+"student_registration/add",
+        url : url+"Student_Registration/add",
         type: "POST",
         data: data,
         dataType: "JSON",

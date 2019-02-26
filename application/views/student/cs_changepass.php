@@ -4,10 +4,10 @@
             <div class="row">
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
-                        <form class="md-float-material form-material" action="<?php echo student_base() ?>change_password/submit" method="post">
+                        <form class="md-float-material form-material" action="<?php echo student_base() ?>Change_Password/submit" method="post">
                         <!-- <?php echo form_open('cs_login/login') ?> -->
                             <div class="text-center">
-                                <img src="<?php echo base_url() ?>assets/themf/images/logo.png" alt="logo.png">
+                            <!-- <img src="<?php echo images('hccs_logo.jpg') ?>" width="150" alt="logo.png"> -->
                             </div>
                             <div class="auth-box card">
                                 <div class="card-block">

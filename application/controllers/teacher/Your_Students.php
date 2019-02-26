@@ -18,7 +18,7 @@ class Your_Students extends CI_Controller {
         // var_dump($data['programs']);
         $data['ajax'] = json_encode(array("students" => $data['students'], "programs"=>$data['programs']));
         // die($data['ajax']);
-        $this->functions->view('authentication/college_teacher/ct_students_list', $data);
+        teacher_view('authentication/college_teacher/ct_students_list', $data);
         
     }
 
@@ -29,7 +29,7 @@ class Your_Students extends CI_Controller {
         $trashed_count = $this->Students_Model->get_trashed_count($this->session->userdata['logged_in']['id']);
         $data = array();
         foreach ($students as $student) {
-            $url = teacher_base("your_students/ajax_trash");
+            $url = teacher_base("Your_Students/ajax_trash");
 			$delete_alert = $student->student_id. ", '".$url."', 'Are You Sure?', 'You are about to delete student # ".$student->school_id."'";
             $subarray = array();
             

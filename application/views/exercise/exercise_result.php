@@ -18,7 +18,7 @@ page_header("Result");
     $(document).ready(function () {
         $.ajax({
             type: "GET",
-            url: "<?php echo api_base() ?>teacher/ajax_finished_exercises/?cs_id=<?php echo $get['cs_id'] ?>&ex_id=<?php echo $get['ex_id'] ?>",
+            url: "<?php echo api_base() ?>teacher/Ajax_Finished_Exercises/?cs_id=<?php echo $get['cs_id'] ?>&ex_id=<?php echo $get['ex_id'] ?>",
             // data: "data",
             dataType: "JSON",
             success: function (response) {
