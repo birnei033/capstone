@@ -71,8 +71,8 @@ include "modals/set_written.1.php";
 include "modals/set_true_false.1.php";
 include "modals/set_date_time.php"
 ?>
-<div class="md-overlay"></div>
-
+<!-- <div class="md-overlay"></div> -->
+<?php echo loader_modal('loader-modal', ''); ?>
 <script>
     // Turn off automatic editor creation first.
     // CKEDITOR.disableAutoInline = true;

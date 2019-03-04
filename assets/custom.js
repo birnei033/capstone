@@ -21,7 +21,25 @@ function update_student_trashed(json){
         });
     }
 }
-
+function show_loader(target){
+    // var out = '<div class="loader animation-start">';
+    // out += '<span class="circle delay-1 size-2"></span>';
+    // out += '<span class="circle delay-2 size-4"></span>';
+    // out += '<span class="circle delay-3 size-6"></span>';
+    // out += '<span class="circle delay-4 size-7"></span>';
+    // out += '<span class="circle delay-5 size-7"></span>';
+    // out += '<span class="circle delay-6 size-6"></span>';
+    // out += '<span class="circle delay-7 size-4"></span>';
+    // out += '<span class="circle delay-8 size-2"></span>';
+    // out += '</div>';
+    out = '<div class="preloader3 loader-block style="position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 1; background-color: #f5f5f5; height: 100%;">';
+    out += '<div class="circ1 loader-success"></div>';
+    out += '<div class="circ2 loader-success"></div>';
+    out += '<div class="circ3 loader-success"></div>';
+    out += '<div class="circ4 loader-success"></div>';
+    out += '</div>';
+    target.prepend(out);
+}
 function update_subject_trashed(json){
     $('#subject-trashed').html("");
     $('#badge-trashed-subject-count').text(json.trashed.length);
@@ -160,6 +178,7 @@ jQuery(document).ready(function ($) {
 function subject_trashed_action(btn, action = 'update'){
     var id = btn.attr('trashed_id');
     var url = location.pathname;
+    $('#trash-loader').show();
     switch (action) {
         case 'update':
             console.log('you want to update');
@@ -175,6 +194,7 @@ function subject_trashed_action(btn, action = 'update'){
                     success: function (response) {
                         subjects_table.ajax.reload(function(json){
                             update_subject_trashed(json);
+                            $('#trash-loader').hide();
                         });
                     }
                 });
@@ -190,6 +210,7 @@ function subject_trashed_action(btn, action = 'update'){
                 })
                 .then((willDeleted) => {
                     if (willDeleted) {
+                        $('#trash-loader').show();
                         var data = {
                             data_type: "ajax",
                             subj_id: id
@@ -206,6 +227,7 @@ function subject_trashed_action(btn, action = 'update'){
                                 });
                                 subjects_table.ajax.reload(function(json){
                                     update_subject_trashed(json);
+                                    $('#trash-loader').hide();
                                 });
                             },
                             error: function (jqXHR, textStatus, errorThrown)
@@ -226,6 +248,7 @@ function student_trashed_action(btn, action = 'update'){
     // console.log(action);
     switch (action) {
         case 'delete':
+        $('#trash-loader').show();
         swal('Delete permanently?',{
             icon: 'warning',
             buttons: true,
@@ -240,8 +263,9 @@ function student_trashed_action(btn, action = 'update'){
                     success: function (response) {
                         // console.log(response);
                         students_table.ajax.reload(function(json){
-                           $('#badge-trash-count').text(json.trashed.length);
-                           update_student_trashed(json);
+                            $('#badge-trash-count').text(json.trashed.length);
+                            update_student_trashed(json);
+                            $('#trash-loader').hide();
                        });
                     }
                 });
@@ -249,17 +273,19 @@ function student_trashed_action(btn, action = 'update'){
         })
             break;
         case 'update':
+        $('#trash-loader').show();
             $.ajax({
                 type: "GET",
-                url: location.pathname+'/ajax_retrieve/?id='+btn.attr('student_id')+'&data_type=ajax',
+                url: location.pathname.replace("your_student", "Your_Student")+'/ajax_retrieve/?id='+btn.attr('student_id')+'&data_type=ajax',
                //  data: "data",
                 dataType: "JSON",
                 success: function (response) {
                     // console.log(response);
                     students_table.ajax.reload(function(json){
-                    //    console.log(json.trashed);
-                       $('#badge-trash-count').text(json.trashed.length);
-                       update_student_trashed(json);
+                        //    console.log(json.trashed);
+                        $('#badge-trash-count').text(json.trashed.length);
+                        update_student_trashed(json);
+                        $('#trash-loader').hide();
                    });
                 }
             });
@@ -280,6 +306,7 @@ function delete_alert(id, url, alert_title = "Add Alert Title", alert_text = "Ad
       })
       .then((willDeleted) => {
         if (willDeleted) {
+            $('#loader-modal').addClass('md-show');
             var data = {
                 data_type: "ajax",
                 id: id
@@ -291,6 +318,7 @@ function delete_alert(id, url, alert_title = "Add Alert Title", alert_text = "Ad
                 dataType: "JSON",
                 success: function(data)
                 {
+                    $('#loader-modal').removeClass('md-show');
                     swal("Item has been deleted!", {
                         icon: "success",
                     });
@@ -321,6 +349,7 @@ function delete_subject(id, url, subjc_name){
     //   })
     //   .then((willDeleted) => {
     //     if (willDeleted) {
+        $('#loader-modal').addClass('md-show');
             var data = {
                 data_type: "ajax",
                 subj_id: id
@@ -337,6 +366,7 @@ function delete_subject(id, url, subjc_name){
                     });
                     subjects_table.ajax.reload(function(json){
                         update_subject_trashed(json);
+                        $('#loader-modal').removeClass('md-show');
                     });
                 },
                 error: function (jqXHR, textStatus, errorThrown)
@@ -351,12 +381,14 @@ function delete_subject(id, url, subjc_name){
 
 // MODALS
 function update_subject(id, url){
+    $('#loader-modal').addClass('md-show');
     $.ajax({
         url : url+"getbyid/"+id,
         type: "POST",
         dataType: "JSON",
         success: function(data)
         {
+            $('#loader-modal').removeClass('md-show');
             swal("", {
                 content: {
                     element: "input",
@@ -377,11 +409,13 @@ function update_subject(id, url){
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
+            $('#loader-modal').removeClass('md-show');
             alert(textStatus+" "+errorThrown);
         }
     });
 }
 function renameSubject(id, url, value){
+    $('#loader-modal').addClass('md-show');
     var data = {
         subj_name : value,
         data_type: "ajax"
@@ -393,6 +427,7 @@ function renameSubject(id, url, value){
         dataType: "JSON",
         success: function(data)
         {
+            $('#loader-modal').removeClass('md-show');
             if (data.status) {
                 // console.log(data);
                 swal("Updated!", {
@@ -408,6 +443,7 @@ function renameSubject(id, url, value){
         error: function (jqXHR, textStatus, errorThrown)
         {
             // console.log("false");
+            $('#loader-modal').removeClass('md-show');
             swal(textStatus+" "+errorThrown);
         }
     });
@@ -430,6 +466,7 @@ function addSubject(url){
       })
       .then((value) => {
           if (value != "" && value != null) {
+            $('#loader-modal').addClass('md-show');
             var data = {
                 subj_name : value,
                 data_type: "ajax"
@@ -455,14 +492,17 @@ function addSubject(url){
                         icon: icon,
                     });
                     subjects_table.ajax.reload();
+                    $('#loader-modal').removeClass('md-show');
                 },
                 error: function (jqXHR, textStatus, errorThrown)
                 {
                     // console.log("false");
+                    $('#loader-modal').removeClass('md-show');
                     swal(textStatus+" "+errorThrown);
                 }
             });
           }else{
+            $('#loader-modal').removeClass('md-show');
             swal("No subject added.", {
                 icon: 'info',
             });
@@ -516,6 +556,7 @@ $( function() {
 
  function open_update_modal(id, url, form){  
     $('#student-submit-update').attr('student-id', id);
+    $('#loader-modal').addClass('md-show');
     $.ajax({
         url : url+"Your_Students/ajax_get_students/"+id,
         type: "POST",
@@ -534,11 +575,12 @@ $( function() {
                         .attr('placeholder', data.student_full_name);
             $(form +' [name="s-subject"]').val(data.student_subjects);
             $(form +' [name="s-program"]').val(data.student_program);
-            
+            $('#loader-modal').removeClass('md-show');
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
             // console.log("false");
+            $('#loader-modal').removeClass('md-show');
             swal(textStatus+" "+errorThrown);
         }
     });
@@ -555,7 +597,7 @@ function submit_updated_student(url, form){
         'program': $(form +' [name="s-program"]').val(),
         'subject': $(form +' [name="s-subject"]').val(),
     }
-    
+    $('#trash-loader-adding').show();
     $.ajax({
         url : url+"your_students/ajax_update_your_student/"+id,
         type: "POST",
@@ -568,10 +610,12 @@ function submit_updated_student(url, form){
                 icon: "success",
             });
             students_table.ajax.reload();
+            $('#trash-loader-adding').hide();
             
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
+            $('#trash-loader-adding').hide();
             swal(textStatus+" "+errorThrown);
         }
     });
@@ -636,8 +680,8 @@ function _action(url, form){
         's-program': $(form +' [name="s-program"]').val(),
         's-subject': $(form +' [name="s-subject"]').val()
     }; 
-    console.log(data);
-    
+    // console.log(data);
+    $('#trash-loader-adding').show();
     $.ajax({
         url : url+"Student_Registration/add",
         type: "POST",
@@ -651,10 +695,12 @@ function _action(url, form){
             if (data.icon != "error") {
                 $('#modal-add-student').removeClass('md-show');
                 students_table.ajax.reload();   
+                $('#trash-loader-adding').hide();
             }
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
+            $('#trash-loader-adding').hide();
             swal(textStatus+" "+errorThrown);
         }
     });

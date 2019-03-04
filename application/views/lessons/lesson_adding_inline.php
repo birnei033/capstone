@@ -52,3 +52,4 @@
            </script>
        
         <!-- <script src="<?php echo base_url() ?>assets/js/add-section.js"></script> -->
+        <?php echo loader_modal('loader-modal', ''); ?>

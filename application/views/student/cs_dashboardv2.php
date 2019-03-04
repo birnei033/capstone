@@ -80,6 +80,7 @@ include "modals/cs_exercise_review.php";
 
 <script>
     function open_exercise_review_modal(url){  
+        $('#review-loader').show();
     $.ajax({
         url : url,
         type: "GET",
@@ -126,6 +127,7 @@ include "modals/cs_exercise_review.php";
                     });
                 }
                  
+                $('#review-loader').hide();
             });
             // {
             // });

@@ -30,7 +30,7 @@ class Your_Students extends CI_Controller {
         $data = array();
         foreach ($students as $student) {
             $url = teacher_base("Your_Students/ajax_trash");
-			$delete_alert = $student->student_id. ", '".$url."', 'Are You Sure?', 'You are about to delete student # ".$student->school_id."'";
+			$delete_alert = $student->student_id. ", '".$url."', 'Are You Sure?', 'You are about to trash student # ".$student->school_id."'";
             $subarray = array();
             
             $subarray["student_id"] = $student->student_id;
@@ -42,8 +42,8 @@ class Your_Students extends CI_Controller {
             $subarray['student_subject'] .=  $student->student_password;
             $subarray['student_program'] =$retVal = $student->student_program != 0 ? $programs[$student->student_program] : "" ; 
             $subarray['actions'] = '<a href="#reset" '.tooltip("Reset Password").' onclick="student_password_reset('.$student->student_id.', \''.teacher_base().'\')" style="font-size:21px; vertical-align:middle; " class="text-c-green waves-effect waves-light ml-2 p-1" ><i class="ti-back-right"></i></a>'
-                                            .'<a href="#delete" onclick="delete_alert('.$delete_alert.')" '.tooltip("Trash").' style="font-size:21px; vertical-align:middle; " class="text-c-inverse waves-effect waves-light ml-2 p-1" ><i class="ti-trash"></i></a>'
-                                            .'<a onclick="open_update_modal('.$student->student_id.', \''.teacher_base().'\', \'#student-update-form\')"  data-modal="modal-update-student" '.tooltip("Update").' href="#edit" style="font-size:21px; vertical-align:middle; " class=" text-danger student-update  waves-effect waves-light ml-2 p-1" up-id="'.$student->student_id.'"><i class="ti-pencil-alt"></i></a>';
+                                            .'<a href="#delete" onclick="delete_alert('.$delete_alert.')" '.tooltip("Trash").' style="font-size:21px; vertical-align:middle; " class="text-danger waves-effect waves-light ml-2 p-1" ><i class="ti-trash"></i></a>'
+                                            .'<a onclick="open_update_modal('.$student->student_id.', \''.teacher_base().'\', \'#student-update-form\')"  data-modal="modal-update-student" '.tooltip("Update").' href="#edit" style="font-size:21px; vertical-align:middle; " class=" text-inverse student-update  waves-effect waves-light ml-2 p-1" up-id="'.$student->student_id.'"><i class="ti-pencil-alt"></i></a>';
                                            
             $data[] = $subarray;
         }

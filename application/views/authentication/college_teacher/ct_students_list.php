@@ -43,7 +43,8 @@
                                 <div class="card-header">
                                     
                                 </div>
-                                <div class="card-block">
+                                <div class="card-block" style="position: relative;">
+                                <?php echo loader('trash-loader-adding', 0, 'position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 9; background-color: #f5f5f5; margin:0 ;height: 100%; pointer-event: none;'); ?>
                                     <form class="" id="student-form">
                                         <div class="form-group form-default ">
                                         <?php
@@ -75,7 +76,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="md-overlay"></div>
+                    <!-- <div class="md-overlay"></div> -->
          <!-- MODAL - UPDATE - STUDENT -->
                     
          <div class="md-modal md-effect-1" id="modal-update-student">
@@ -118,11 +119,12 @@
         <div class="md-modal md-effect-1" id="trashed_student_list">
             <div class="md-content">
                 <?php card_open('<h5>Trash bin</h5><a class=" float-right md-close mt-1" style="cursor:pointer;" ><i class="ti-close bg-danger p-1"></i></a>',"12 p-0","","","p-1 pl-3 pr-4") ?>
+                <?php echo loader('trash-loader', 0, 'position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 9; background-color: #f5f5f5; margin:0 ;height: 100%; pointer-event: none;'); ?>
                     <ul id="student_trashed" class="cards card-list list-group-flush list-group p-0" style="min-height: 250px">
                     </ul>
                 <?php card_close(" ", "bg-danger") ?>
             </div>
         </div>
-        <div class="md-overlay"></div>
+        <!-- <div class="md-overlay"></div> -->
 
-                    
+        <?php echo loader_modal('loader-modal', ''); ?>

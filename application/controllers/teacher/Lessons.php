@@ -135,7 +135,8 @@ class Lessons extends CI_Controller {
 				redirect(teacher_base().'/lessons/lesson_preview?preview='.$lesson_title, 'refresh');
 			}else{
 				$data['subjects'] = $this->Lessons_Model->getSubjects();
-				$this->functions->view('lessons/lesson_adding',$data);
+				// $this->functions->view('lessons/lesson_adding',$data);
+				redirect(teacher_base('lessons/add'));
 			}
 		}
 		

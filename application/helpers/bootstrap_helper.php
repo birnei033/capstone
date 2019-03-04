@@ -112,4 +112,30 @@ function hide_header(){
     </style>';
 }
 
+function loader( $id="", $show = 0, $style= "", $color = 'loader-success'){
+    $d = $show == 0 ? "none" : "flex" ;
+    $out = '<div id="'.$id.'" class=" preloader5 loader-block" style="display:'.$d.'; '.$style.'">';
+    $out .= '<div class="circle-5 l '.$color.'"></div>';
+    $out .= '<div class="circle-5 m '.$color.'"></div>';
+    $out .= '<div class="circle-5 r '.$color.'"></div>';
+    // $out .= '<div class="circ4 '.$color.'"></div>';
+    $out .= '</div>';
+    return $out;
+}
+
+function loader_modal($modal_id = "", $class=""){
+    $out =  '<div class="md-modal '.$class.' md-effect-1" id="'.$modal_id.'">';
+    $out .= '<div class="md-content" style="background: transparent">';
+    // $out .= '<div class="card p-0">';
+    // $out .= '<div class="card-block cards" style="position: relative;min-height: 250px">';
+    // $out .= "<h4 class='text-center text-white'>Loading...</h4>";
+    $out .= loader('trash-loader-modal', 1, "", 'bg-white');
+    // $out .= '</div>';
+    // $out .= '</div>';
+    $out .= '</div>';
+    $out .= '</div>';
+    $out .= '<div class="md-overlay"></div>';
+    return $out;
+}
+
 ?>

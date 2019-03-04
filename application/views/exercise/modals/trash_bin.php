@@ -6,6 +6,7 @@
                 <a class=" float-right md-close mt-1" style="cursor:pointer;" ><i class="ti-close bg-danger p-1"></i></a>
             </div>
             <div class="card-block cards" style="min-height: 250px">
+            <?php echo loader('trash-loader-exercise', 0, 'position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 9; background-color: #f5f5f5; margin:0 ;height: 100%; pointer-event: none;'); ?>
             <div class="table-responsive">
                 <table id="trashed" class="table table-hover">
                     <!-- <thead>
@@ -47,6 +48,7 @@
                     'undo': 'undo',
                     'id': elem.attr('lesson_id')
             };
+            $('#trash-loader-exercise').show();
             $.ajax({
                 type: "POST",
                 url: location.pathname,
@@ -56,7 +58,7 @@
                     // console.log(response);
                     if (response.undo == true) {
                         ex_list.ajax.reload();
-                        swal('',{icon: 'success'});
+                        swal('Success',{icon: 'success'});
                         $.ajax({
                             type: "GET",
                             url: location.pathname+"get_trashed_exerceercises",
@@ -80,6 +82,7 @@
                                     $('[data-toggle="tooltip"]').tooltip(); 
                                 });
                                 $('#badge-trash-count').text(l);
+                                $('#trash-loader-exercise').hide();
                             }
                         });
                     }
@@ -91,6 +94,7 @@
                     'delete_permanent': 'delete_permanent',
                     'id': elem.attr('lesson_id')
             };
+            $('#trash-loader-exercise').show();
             $.ajax({
                 type: "POST",
                 url: location.pathname,
@@ -98,7 +102,7 @@
                 dataType: "JSON",
                 success: function (response) {
                     // console.log(response);
-                    swal('OK',{
+                    swal('Sucess',{
                         icon: 'success'
                     }).then((val)=>{
                         $.ajax({
@@ -124,6 +128,7 @@
                                     $('[data-toggle="tooltip"]').tooltip(); 
                                 });
                                 $('#badge-trash-count').text(l);
+                                $('#trash-loader-exercise').hide();
                             }
                         });
                     });

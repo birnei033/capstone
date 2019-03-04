@@ -19,7 +19,7 @@
             </thead>
         </table>
     </div>
-    
+    <?php echo loader_modal('loader-modal', ''); ?>
             <script>
             jQuery(document).ready(function ($) {
                 $('#lessonsear').html('<input type="text" class="form-control" placeholder="Search" id="lesson-searchit">');
@@ -27,7 +27,7 @@
             });
         </script>
     <?php card_close(btn(array(
-        'text'=>'<i class="ti-plus"></i> Add New LEsson',
+        'text'=>'<i class="ti-plus"></i> Add New Lesson',
         'href'=> teacher_base('lessons/add'),
         'type'=>"inverse btn-outline-inverse \" ".tooltip("Add a Lesson")
     ))); ?>

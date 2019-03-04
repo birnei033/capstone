@@ -21,6 +21,11 @@
     src: url('fonts/Gravity-Book.ttf');
 }
 
+@media (max-width: 700px){
+    .card img {
+        width: 100% !important;
+    }
+}
 body{
     font-family: Gotham;
 }
@@ -30,7 +35,10 @@ select{
 h2{
     font-weight: 100;
 }
-
+.navbar-logo img{
+    margin: 0;
+    display: inline !important;
+}
 .pcoded-main-container ul {
     padding-left: 43px;
     list-style-type: initial;

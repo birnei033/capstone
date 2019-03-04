@@ -34,7 +34,8 @@
         ))) ?>
 
 <?php include "modals/trash_bin.php"; ?>
-<div class="md-overlay"></div>
+<!-- <div class="md-overlay"></div> -->
+<?php echo loader_modal('loader-modal', ''); ?>
 <script>
     var ex_list;
 $(document).ready(function () {
@@ -77,6 +78,7 @@ $(document).ready(function () {
                     buttons: ['Cancel', 'Proceed']
                 }).then((val)=>{
                     if (val == true) {
+                        $('#loader-modal').addClass('md-show');
                          $.ajax({
                             type: "POST",
                             url: url,
@@ -108,6 +110,7 @@ $(document).ready(function () {
                                             $('[data-toggle="tooltip"]').tooltip();
                                         });
                                         $('#badge-trash-count').text(l);
+                                        $('#loader-modal').removeClass('md-show');
                                     }
                                 });
                             }

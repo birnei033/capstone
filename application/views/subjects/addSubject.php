@@ -32,7 +32,9 @@
             <a class=" float-right md-close mt-1" style="cursor:pointer;" ><i class="ti-close p-1 bg-danger"></i></a>
             </div>
             <div class="card-block cards" style="min-height: 250px">
+                <?php echo loader('trash-loader', 0, 'position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 9; background-color: #f5f5f5; margin:0 ;height: 100%; pointer-event: none;'); ?>
                 <ul class="list-group list-group-flush p-0" id="subject-trashed">
+                   
                     <li class="list-group-item">Item</li>
                 </ul>
             </div>
@@ -42,3 +44,5 @@
     </div>
 </div>
 <div class="md-overlay"></div>
+
+<?php echo loader_modal('loader-modal', ''); ?>

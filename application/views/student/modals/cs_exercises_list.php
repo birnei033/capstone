@@ -9,7 +9,8 @@
                 <p class="d-inline-block p-0">You have <strong class="d-inline-block text-success" id="ex-count-head"></strong> available Exercise/s</p> 
                 <a class=" float-right md-close pt-1" style="cursor:pointer;"><i class="ti-close p-1 bg-danger"></i></a>
             </div>
-            <div class="card-block pr-1 pl-2">
+            <div class="card-block pr-1 pl-2" style="position:relative">
+            <?php echo loader('exercise-loader', 0, 'position: absolute; left: 0; right: 0; top: 0; bottom: 0; z-index: 9; background-color: #f5f5f5; margin:0 ;height: 100%; pointer-event: none;'); ?>
                 <ul class="basic-list cards" style="padding:0;">
                 <?php
                 $count = 0;
@@ -79,6 +80,7 @@
         </div>
     </div>
 </div>
+<?php echo loader_modal('loader-modal', ''); ?>
 <!-- list-scroll js -->
 <script src="<?php echo themf(); ?>bower_components/stroll/js/stroll.js"></script>
 <script type="text/javascript" src="<?php echo themf(); ?>pages/list-scroll/list-custom.js"></script>

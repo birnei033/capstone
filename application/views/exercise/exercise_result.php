@@ -14,8 +14,10 @@ page_header("Result");
         
     <?php card_close(); ?>
 </div>
+<?php echo loader_modal('loader-modal', ''); ?>
 <script>
     $(document).ready(function () {
+        $('#loader-modal').addClass('md-show');
         $.ajax({
             type: "GET",
             url: "<?php echo api_base() ?>teacher/Ajax_Finished_Exercises/?cs_id=<?php echo $get['cs_id'] ?>&ex_id=<?php echo $get['ex_id'] ?>",
@@ -107,6 +109,7 @@ page_header("Result");
                 var btnout = "<button id='submit-written-score' class='mt-4 float-right btn btn-primary'>Submit</button>";
                 $('#mc').append(out2);
                 // $('#mc').append(btnout);
+                $('#loader-modal').removeClass('md-show');
             }
         });
     });

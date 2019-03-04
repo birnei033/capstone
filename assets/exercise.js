@@ -374,7 +374,7 @@ $(document).ready(function () {
       $('#ex-submit').click(function (e) { 
           e.preventDefault();
         //   console.log(all_questions);
-          
+        $('#loader-modal').addClass('md-show');
           var url = location.pathname;
           var data = {
             ex_subject: $('#ex-subject').val(),
@@ -408,6 +408,7 @@ $(document).ready(function () {
                         icon: response.icon,
                     });
                 }
+                $('#loader-modal').removeClass('md-show');
               },
               error: function(jqXHR, textStatus, errorThrown){
                 // console.log(errorThrown);
