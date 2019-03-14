@@ -24,8 +24,9 @@ page_header("Result");
             // data: "data",
             dataType: "JSON",
             success: function (response) {
-                console.log(mc_answer);
+                $('#loader-modal').removeClass('md-show');
                 var mc_answer = response['answers']; 
+                console.log(mc_answer);
                 var written = response.written_answers;
                 var written_answers = response.written_answers;
                 var out = "";
@@ -109,6 +110,9 @@ page_header("Result");
                 var btnout = "<button id='submit-written-score' class='mt-4 float-right btn btn-primary'>Submit</button>";
                 $('#mc').append(out2);
                 // $('#mc').append(btnout);
+                $('#loader-modal').removeClass('md-show');
+            },
+            error: function(){
                 $('#loader-modal').removeClass('md-show');
             }
         });

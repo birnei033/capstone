@@ -20,10 +20,8 @@ $end_date = json_decode($preview[0]->ex_schedule)->end_date;
 </div>
 
 <?php card_close() ?>
-
+<?php echo loader_modal('exercise-loader'); ?>
 <script>
-
-        
     const start_date = JSON.parse('<?php echo json_encode(date_array($start_date)) ?>');
     const end_date = JSON.parse('<?php echo json_encode(date_array($end_date)) ?>');
 </script>

@@ -111,8 +111,21 @@ $(document).ready(function () {
                                         });
                                         $('#badge-trash-count').text(l);
                                         $('#loader-modal').removeClass('md-show');
+                                    },
+                                    error: function(jqXHR, textStatus, errorThrown){
+                                        $('#loader-modal').removeClass('md-show');
+                                        swal(errorThrown,{
+
+                                        });
                                     }
                                 });
+                            },
+                            error: function(jqXHR, textStatus, errorThrown){
+                                $('#loader-modal').removeClass('md-show');
+                                swal(errorThrown,{
+
+                                });
+                                
                             }
                         });
                     }
@@ -121,6 +134,7 @@ $(document).ready(function () {
             });
             
         });
+        
     }
 
     setInterval(function(){

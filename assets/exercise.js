@@ -294,7 +294,7 @@ $(document).ready(function () {
                 };
                 $.ajax({
                     type: 'POST',
-                    url: location.origin+'/ignite/ajax/help/date_string_to_array/',
+                    url: location.origin+'/ignite/ajax/Help/date_string_to_array/',
                     data: data,
                     dataType: "JSON",
                     success: function (res) {
@@ -418,7 +418,8 @@ $(document).ready(function () {
       });
 
       $('#ex_submit').click(function (e) { 
-         e.preventDefault();
+          e.preventDefault();
+          $('#exercise-loader').addClass('md-show');
          var data = {};
          var temp = {};
         //  console.log("CHOICES");
@@ -475,6 +476,7 @@ $(document).ready(function () {
              dataType: "JSON",
              success: function (response) {
                 //  console.log(response);
+                $('#exercise-loader').removeClass('md-show');
                  swal(response.message,
                     'You got '+response.score+' out of '+response.total+'\n'+response.percent+"%", {
                     icon: response.icon,
