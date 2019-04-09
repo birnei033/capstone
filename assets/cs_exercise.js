@@ -78,8 +78,36 @@ $(document).ready(function () {
                 });
             }
             
-        // console.log(start_date);
-        var now = new Date();
+            var xmlHttp;
+            function srvTime(){
+                try {
+                    //FF, Opera, Safari, Chrome
+                    xmlHttp = new XMLHttpRequest();
+                }
+                catch (err1) {
+                    //IE
+                    try {
+                        xmlHttp = new ActiveXObject('Msxml2.XMLHTTP');
+                    }
+                    catch (err2) {
+                        try {
+                            xmlHttp = new ActiveXObject('Microsoft.XMLHTTP');
+                        }
+                        catch (eerr3) {
+                            //AJAX not supported, use CPU time.
+                            alert("AJAX not supported");
+                        }
+                    }
+                }
+                xmlHttp.open('HEAD',window.location.href.toString(),false);
+                xmlHttp.setRequestHeader("Content-Type", "text/html");
+                xmlHttp.send('');
+                return xmlHttp.getResponseHeader("Date");
+            }
+            
+            var st = srvTime();
+            var now = new Date(st);
+        // var now = new Date();
         var millisTill10 = new Date(start_date.year, start_date.month -1, start_date.day, start_date.hour, start_date.minute, 0, 0) - now;
         if (millisTill10 < 0) {
             // alert("go now");
