@@ -13,7 +13,9 @@
     src: local('Gotham Book'), url('fonts/GothamBook.woff') format('woff');
     src: url('fonts/Gotham-Bold.ttf');
 } */
-
+#styleSelector {
+    display: none;
+}
 @font-face{
     font-family: 'Gravity';
     font-style: normal;
