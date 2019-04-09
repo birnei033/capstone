@@ -411,7 +411,11 @@ $(document).ready(function () {
                 $('#loader-modal').removeClass('md-show');
               },
               error: function(jqXHR, textStatus, errorThrown){
-                // console.log(errorThrown);
+                console.log(errorThrown);
+                $('#loader-modal').removeClass('md-show');
+                swal("Something Went wrong!",errorThrown, {
+                    icon: 'error',
+                });
                 
               }
           });

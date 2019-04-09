@@ -42,6 +42,9 @@
    <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>pages/list-scroll/list.css">
     <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>bower_components/stroll/css/stroll.css">
 
+    <!-- Offline themes css -->
+    <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>bower_components/offline/css/offline-theme-slide.css">
+    <link rel="stylesheet" type="text/css" href="<?php echo themf(); ?>bower_components/offline/css/offline-language-english.css">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/style.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/themf/css/widget.css">

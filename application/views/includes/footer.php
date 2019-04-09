@@ -69,6 +69,9 @@
     <!-- Date-range picker js -->
     <script type="text/javascript" src="<?php echo themf(); ?>bower_components/bootstrap-daterangepicker/js/daterangepicker.js"></script>
 
+    <!-- Offline js -->
+    <script type="text/javascript" src="<?php echo themf(); ?>bower_components/offline/js/offline.min.js"></script>
+    <script type="text/javascript" src="<?php echo themf(); ?>pages/offline/offline-custom.js"></script>
 
     <!-- Float Chart js -->
     <script src="<?php echo base_url(); ?>assets/themf/pages/chart/float/jquery.flot.js"></script>

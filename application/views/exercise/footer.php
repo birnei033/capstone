@@ -70,6 +70,9 @@
     <script type="text/javascript" src="<?php echo themf(); ?>bower_components/bootstrap-daterangepicker/js/daterangepicker.js"></script>
     <!-- Switch component js -->
     <script type="text/javascript" src="<?php echo themf(); ?>bower_components/switchery/js/switchery.min.js"></script>
+    <!-- Offline js -->
+    <script type="text/javascript" src="<?php echo themf(); ?>bower_components/offline/js/offline.min.js"></script>
+    <script type="text/javascript" src="<?php echo themf(); ?>pages/offline/offline-custom.js"></script>
 
     <!-- Custom js -->
     <script src="<?php echo base_url(); ?>assets/themf/js/pcoded.min.js"></script>
