@@ -26,6 +26,8 @@ $(document).ready(function () {
 
     });
 
+    
+
     $('#ex-mul-choice-submit').click(function (e) { 
         e.preventDefault();
         var parent = $('#ex-elems-m-choice');

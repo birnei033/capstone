@@ -12,12 +12,17 @@
             <form method="post">
                 <div class="row">
                     <div class="col-sm-12">
+                       
                     </div>
                 </div>
                 <div class="card-block accordion-block color-accordion-block cards mb-5"  style="min-height: 550px">
                     <small>Click to edit</small>
                     <div id="editor1" class="p-2 mb-2" contenteditable="true" style="border: 1px solid #eee">
                         <h4>Multiple Choice.</h4>
+                    </div>
+                    <div class="raw-questionairewrapper">
+                        <textarea name="raw-questionaire" id="raw-questionaire" cols="30" rows="4" class="form-control"></textarea>
+                        <button class="btn btn-primary" id="generate-questions">Generate</button>
                     </div>
                     <div class="color-accordion " id="color-accordion" >
                         
@@ -41,7 +46,7 @@
     </div>
 </div>
 
-<script>
+<script> 
     $(document).ready(function () {
         $('#ex-mul-choice-add-a-question').click(function (e) {
             var count = 1;
@@ -67,6 +72,56 @@
             accordion +=                '</div>';
             accordion +=            '</div>';
             $('#set-mul-choice #color-accordion').append(accordion);
+        });
+
+
+        $('#generate-questions').click(function (e) { 
+            e.preventDefault();
+            
+            var data = document.getElementById('raw-questionaire').value; 
+            var dataArray = data.split(/[0-9]\./gm);
+            dataArray.forEach(data => {
+                var data2 = data.split(/[a-d]\./);
+                var qqq = [];
+                var answer = "";
+                var i = 0;
+                data2.forEach((d) => {
+                    if(d.search(">>>") != -1){
+                        answer = d.replace('>>>', '').trim();
+                    }else{
+                        qqq[i] = d.trim();
+                        i++;
+                    }
+
+                });
+                if(data2 != ""){
+                    var count = 1;
+                    $('#set-mul-choice .accordion-msg').each(function (index, element) {
+                        count++;
+                    }); 
+                    var accordion =         '<a class="ui-state-active accordion-msg waves-effect waves-dark">Question '+count+'</a>';
+                        accordion +=            '<div class="accordion-desc">';
+                        accordion +=                '<div class="form-group form-default">';
+                        accordion +=                    '<label for="ex-mc-question">Question</label>';             
+                        accordion +=                    '<textarea contenteditable="true" class="form-control" rows="3" name="ex-mc-question" id="ex-mc-question">'+qqq[0]+'</textarea>';
+                        accordion +=                '</div>';
+                        accordion +=                '<div class="form-group">';
+                        accordion +=                    '<label for="ex-mc-correct-anwser">Correct Answer</label>';
+                        accordion +=                    '<input class="ex-mc-correct-anwsers form-control" value="'+answer+'" type="text">';
+                        accordion +=                '</div>';
+                        accordion +=                '<div class="form-group">';
+                        accordion +=                    '<label for="ex-mc-wrong1">Wrong Answers</label>';
+                        accordion +=                    '<input id="ex-mc-wrong1" value="'+qqq[1]+'" class="ex-mc-wrong1 form-control m-b-1" type="text">';
+                        accordion +=                    '<input id="ex-mc-wrong2" value="'+qqq[2]+'" class=" ex-mc-wrong2 form-control" type="text">';
+                        accordion +=                    '<input id="ex-mc-wrong3" value="'+qqq[3]+'" class=" ex-mc-wrong3 form-control" type="text">';
+                        accordion +=                '</div>';
+                        accordion +=            '</div>';
+                        $('#set-mul-choice #color-accordion').append(accordion);
+                }else{
+                    console.log('Please insert data');
+                }
+            });
+
         });
     });
 </script>

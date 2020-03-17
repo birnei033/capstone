@@ -30,12 +30,12 @@ CKEDITOR.editorConfig = function( config ) {
 	// not needed in the Standard(s) toolbar.
 	config.removeButtons = 'About,Subscript,Superscript';
 		   config.filebrowserUploadMethod = 'form';
-	config.filebrowserBrowseUrl = '/ignite/assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=files';
-   config.filebrowserImageBrowseUrl = '/ignite/assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=images';
-   config.filebrowserFlashBrowseUrl = '/ignite/assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=flash';
-   config.filebrowserUploadUrl = '/ignite/assets/ckeditor/kcfinder/upload.php?opener=ckeditor&type=files';
-   config.filebrowserImageUploadUrl = '/ignite/assets/ckeditor/kcfinder/upload.php?opener=ckeditor&type=images';
-   config.filebrowserFlashUploadUrl = '/ignite/assets/ckeditor/kcfinder/upload.php?opener=ckeditor&type=flash';
+	config.filebrowserBrowseUrl = '/hccs/assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=files';
+   config.filebrowserImageBrowseUrl = '/hccs/assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=images';
+   config.filebrowserFlashBrowseUrl = '/hccs/assets/ckeditor/kcfinder/browse.php?opener=ckeditor&type=flash';
+   config.filebrowserUploadUrl = '/hccs/assets/ckeditor/kcfinder/upload.php?opener=ckeditor&type=files';
+   config.filebrowserImageUploadUrl = '/hccs/assets/ckeditor/kcfinder/upload.php?opener=ckeditor&type=images';
+   config.filebrowserFlashUploadUrl = '/hccs/assets/ckeditor/kcfinder/upload.php?opener=ckeditor&type=flash';
 
 	// Set the most common block elements.
 	config.format_tags = 'p;h1;h2;h3;h4;h5;pre';

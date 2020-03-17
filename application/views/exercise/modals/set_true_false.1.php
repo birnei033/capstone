@@ -15,6 +15,10 @@
                     <div id="editor1"  class="p-2 mb-2" contenteditable="true" style="border: 1px solid #eee">
                         <h4>True or False.</h4>
                     </div>
+                    <div class="form-group">
+                        <textarea name="raw-questionaire" id="raw-questionaire-tf" cols="30" rows="4" class="form-control"></textarea>
+                        <a href="#" class="btn btn-primary" id="generate-questions-tf">Generate</a>
+                    </div>
                     <div class="color-accordion " id="color-accordion" >
                         
                     </div>
@@ -31,29 +35,11 @@
                 </div>
                 </div>
             </form>
-            <!-- <div class="card-block"> -->
-            <!-- <form method="post">
-                <div class="form-group form-default">
-                    <label for="ex-tf-question">Question</label>
-                    <textarea class="form-control" rows="3" name="ex-tf-question" id="ex-tf-question"></textarea>
-                </div>
-                <div class="form-group form-default">
-                    <span class="d-block m-b-2" style="margin-bottom: 8px;">Select Correct Answer</span>
-                    <span>False</span>
-                    <input type="checkbox" id="ex-tf-answer" checked class="js-single"  />
-                    <span>True</span>
-                </div> -->
-                <!-- <div class="btns text-right">
-                    <button class="btn btn-primary" id="ex-tf-submit" type="button">Insert</button>
-                    <button type="button" class="btn btn-danger waves-effect md-close">Close</button>
-                </div> -->
-            <!-- </form> -->
-            <!-- </div> -->
         </div>
     </div>
 </div>
 <script>
-    $(document).ready(function () {
+    jQuery(document).ready(function ($) {
         $('#set-true-false #ex-tf-add-a-question').click(function (e) {
             var count = 1;
             $('#set-true-false .accordion-msg').each(function (index, element) {
@@ -84,6 +70,54 @@
             accordion +=                "</form>";
             accordion +=            '</div>';
             $('#set-true-false #color-accordion').append(accordion);
+        });
+
+
+
+        $('#generate-questions-tf').click(function (e) { 
+            console.log('test');
+            
+                e.preventDefault();
+                var data = document.getElementById('raw-questionaire-tf').value;
+                var dataArray = data.split(/[0-9]\./gm); 
+                dataArray.forEach(data => {
+                var data2 = data.split(">>>");    
+                var qqq = data2[0].trim();
+                var answer = data2[1];
+                var i = 0;
+                if(data2[0] != ""){
+                    var count = 1;
+                    $('#set-true-false .accordion-msg').each(function (index, element) {
+                        count++;
+                    }); 
+                    var anstrue = answer.trim() == "true" ? 'checked' : '';
+                    var ansfalse = answer.trim() == "false" ? 'checked' : '';
+                    var accordion =         '<a class="ui-state-active accordion-msg waves-effect waves-dark">Question '+count+'</a>';
+                    accordion +=            '<div class="accordion-desc">';
+                    accordion +=                '<div class="form-group form-default">';
+                    accordion +=                    '<label for="ex-tf-question">Question</label>';
+                    accordion +=                    '<textarea class="form-control" rows="3" name="ex-tf-question" id="ex-tf-question">'+qqq+'</textarea>';
+                    accordion +=                 '</div>';
+                    accordion +=                "<form>";
+                    accordion +=                    "<div class='form-radio'>";
+                    accordion +=                       '<div class="radio radio-inline">';
+                    accordion +=                        '<label>';
+                    accordion +=                            '<input value="true" '+anstrue+' name="ex-tf-answer" id="ex-tf-answer" type="radio">';
+                    accordion +=                            '<i class="helper"></i>True';
+                    accordion +=                        '</label>';
+                    accordion +=                        '</div>';
+                    accordion +=                        '<div class="radio radio-inline">';
+                    accordion +=                            '<label>';
+                    accordion +=                                '<input value="false" '+ansfalse+' id="ex-tf-answer" name="ex-tf-answer" type="radio">';
+                    accordion +=                                '<i class="helper"></i>False';
+                    accordion +=                            '</label>';
+                    accordion +=                        '</div>';
+                    accordion +=                     "</div>";
+                    accordion +=                "</form>";
+                    accordion +=            '</div>';
+                    $('#set-true-false  #color-accordion').append(accordion);
+                }
+            });
         });
     });
 </script>
