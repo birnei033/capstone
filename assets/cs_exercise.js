@@ -73,7 +73,7 @@ $(document).ready(function () {
                             }
                      });
                     }else{
-                        location.href = "/ignite/student";
+                        location.href = "/hccs/student";
                     }
                 });
             }
@@ -119,7 +119,7 @@ $(document).ready(function () {
             {
                 icon: "info"
             }).then((val)=>{
-                location.href = "/ignite/student";
+                location.href = "/hccs/student";
             });
 
         }
@@ -149,7 +149,7 @@ $(document).ready(function () {
                         data: data,
                         dataType: "JSON",
                         success: function (response) {
-                             location.href = "/ignite/student";
+                             location.href = "/hccs/student";
                             },
                             error: function(jqXHR, textStatus, errorThrown){
                             

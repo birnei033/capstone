@@ -289,6 +289,7 @@ $(document).ready(function () {
         icon = "error";
         var start = $('#set-date-time #start-date-time').val();
         var end = $('#set-date-time #end-date-time').val();
+        
         if (start != "" && end != "") {
                 data = {
                     start: start,
@@ -296,55 +297,27 @@ $(document).ready(function () {
                 };
                 $.ajax({
                     type: 'POST',
-                    url: location.origin+'/ignite/ajax/Help/date_string_to_array/',
+                    url: location.origin+'/hccs/ajax/Help/date_string_to_array/',
                     data: data,
                     dataType: "JSON",
-                    success: function (res) {
-                        // console.log(res);   
-                        
-                        if (res.start.year <= res.end.year) {
-                            if (res.start.day <= res.end.day) {
-                                if (res.start.hour <= res.end.hour) {
-                                    if (res.start.hour == res.end.hour) {
-                                        if (res.start.minute < res.end.minute) {
-                                            start_date = start ;
-                                            end_date = end ;
-                                            $('#set-date-time').removeClass('md-show');
-                                            icon = "success";
-                                            message = "This exercise has been scheduled on "+res.start.str_month+" "+res.start.day+", "+res.start.year+"\n@"+res.start.hour_format+".";
-                                            swal(message,{icon: icon});
-                                        }else{
-                                            message = "Starting date must be greater than end date.";
-                                            swal(message,{icon: icon});
-                                        }
-                                    }else if(res.start.hour < res.end.hour){
-                                        // if (res.start.minute < res.end.minute) {
-                                            start_date = start ;
-                                            end_date = end ;
-                                            $('#set-date-time').removeClass('md-show');
-                                            icon = "success";
-                                            message = "This exercise has been scheduled on "+res.start.str_month+" "+res.start.day+", "+res.start.year+"\n@"+res.start.hour+""+res.start.minute+"Hours.";
-                                            swal(message,{icon: icon});
-                                        // }else{
-                                        //     message = "Starting date must be greater than end date.";
-                                        //     swal(message,{icon: icon});
-                                        // }
-                                    }else{
-                                        message = "Starting date must be greater than end date.";
-                                        swal(message,{icon: icon});
-                                    }
-                                }else{
-                                    message = "Starting date must be greater than end date.";
-                                    swal(message,{icon: icon});
-                                }
-                            }else{
-                                message = "Starting date must be greater than end date.";
-                                swal(message,{icon: icon});
-                            }
+                    success: function (res) {  
+                        var starttime = new Date(res.start.str_month+" "+res.start.day+", "+res.start.year+" "+res.start.hour+":"+res.start.minute);
+                        var endtime = new Date(res.end.str_month+" "+res.end.day+", "+res.end.year+" "+res.end.hour+":"+res.end.minute);
+                        if (starttime.getTime() < endtime.getTime()) {
+                            start_date = start ;
+                            end_date = end ;
+                            $('#set-date-time').removeClass('md-show');
+                            icon = "success";
+                            message = "This exercise has been scheduled on "+res.start.str_month+" "+res.start.day+", "+res.start.year+"\n@"+res.start.hour_format+".";
+                            swal(message,{icon: icon});
                         }else{
-                            message = "Starting date must be greater than end date.";
+                            message = "Minute - End date must be greater than Start date.";
                             swal(message,{icon: icon});
                         }
+                    },
+                    error: function(jqXHR, textStatus, errorThrown){
+                        console.log(errorThrown);
+                        
                     }
                 });
                 // swal(message,{icon: icon});
@@ -487,7 +460,7 @@ $(document).ready(function () {
                     'You got '+response.score+' out of '+response.total+'\n'+response.percent+"%", {
                     icon: response.icon,
                 }).then((val)=>{
-                    location.href = "/ignite/student";
+                    location.href = "/hccs/student";
                 });
              },
              error: function(jqXHR, textStatus, errorThrown){
