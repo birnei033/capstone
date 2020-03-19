@@ -17,6 +17,7 @@
                     </div>
                     <div class="form-group">
                         <textarea name="raw-questionaire" id="raw-questionaire-tf" cols="30" rows="4" class="form-control"></textarea>
+                        <a target="_blank" href="<?=site_url('instructions')?>">Click here for instructions on how to use this feature.</a><br>
                         <a href="#" class="btn btn-primary" id="generate-questions-tf">Generate</a>
                     </div>
                     <div class="color-accordion " id="color-accordion" >
@@ -116,6 +117,9 @@
                     accordion +=                "</form>";
                     accordion +=            '</div>';
                     $('#set-true-false  #color-accordion').append(accordion);
+                    document.getElementById('raw-questionaire-tf').value = "";
+                }else{
+                    console.log('Please insert data');
                 }
             });
         });

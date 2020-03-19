@@ -22,6 +22,7 @@
                     </div>
                     <div class="raw-questionairewrapper">
                         <textarea name="raw-questionaire" id="raw-questionaire" cols="30" rows="4" class="form-control"></textarea>
+                        <a target="_blank" href="<?=site_url('instructions')?>">Click here for instructions on how to use this feature.</a><br>
                         <button class="btn btn-primary" id="generate-questions">Generate</button>
                     </div>
                     <div class="color-accordion " id="color-accordion" >
@@ -117,6 +118,7 @@
                         accordion +=                '</div>';
                         accordion +=            '</div>';
                         $('#set-mul-choice #color-accordion').append(accordion);
+                        document.getElementById('raw-questionaire').value = "";
                 }else{
                     console.log('Please insert data');
                 }
