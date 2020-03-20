@@ -80,9 +80,9 @@
             e.preventDefault();
             
             var data = document.getElementById('raw-questionaire').value; 
-            var dataArray = data.split(/[0-9]\./gm);
+            var dataArray = data.split(/^\d+\./gmi);
             dataArray.forEach(data => {
-                var data2 = data.split(/[a-d]\./);
+                var data2 = data.split(/^\b[a-d]\./gmi);
                 var qqq = [];
                 var answer = "";
                 var i = 0;

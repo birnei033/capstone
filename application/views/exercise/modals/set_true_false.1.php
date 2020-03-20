@@ -80,7 +80,7 @@
             
                 e.preventDefault();
                 var data = document.getElementById('raw-questionaire-tf').value;
-                var dataArray = data.split(/[0-9]\./gm); 
+                var dataArray = data.split(/^\d+\./gmi);
                 dataArray.forEach(data => {
                 var data2 = data.split(">>>");    
                 var qqq = data2[0].trim();
