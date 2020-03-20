@@ -12,7 +12,7 @@
             <form method="post">
                 <div class="card-block accordion-block color-accordion-block cards mb-5"  style="min-height: 550px">
                     <small>Click to edit</small>
-                    <div id="editor1" class="p-2 mb-2" contenteditable="true" style="border: 1px solid #eee">
+                    <div id="editor5" class="p-2 mb-2" contenteditable="true" style="border: 1px solid #eee">
                         <h4>Written / Essay</h4>
                     </div>
                     <div class="color-accordion " id="color-accordion" >
@@ -61,5 +61,11 @@
             accordion +=            '</div>';
             $('#set-written #color-accordion').append(accordion);
         });
+    });
+
+    jQuery(document).ready(function ($) {             
+        // Turn off automatic editor creation first.
+        CKEDITOR.disableAutoInline = true;
+        CKEDITOR.inline( 'editor5' );
     });
 </script>

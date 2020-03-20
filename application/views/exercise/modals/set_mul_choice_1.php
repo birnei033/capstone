@@ -17,7 +17,7 @@
                 </div>
                 <div class="card-block accordion-block color-accordion-block cards mb-5"  style="min-height: 550px">
                     <small>Click to edit</small>
-                    <div id="editor1" class="p-2 mb-2" contenteditable="true" style="border: 1px solid #eee">
+                    <div id="editor3" class="p-2 mb-2" contenteditable="true" style="border: 1px solid #eee">
                         <h4>Multiple Choice.</h4>
                     </div>
                     <div class="raw-questionairewrapper">
@@ -126,4 +126,11 @@
 
         });
     });
+
+    jQuery(document).ready(function ($) {             
+        // Turn off automatic editor creation first.
+        CKEDITOR.disableAutoInline = true;
+        CKEDITOR.inline( 'editor3' );
+    });
 </script>
+
